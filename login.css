@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 .logo {
@@ -22,14 +23,6 @@ html, body {
     margin-right: -150px;
 }
 
-.container_id {
-    margin-top: 5px;
-}
-
-.container_password {
-    margin-top: 5px;
-}
-
 .container_login {
     height: 100%;
     display: flex;
@@ -38,7 +31,7 @@ html, body {
   }
   
 .login {
-    width: 140px;
+    width: 140px;   
     height: 45px;
     font-family: 'Roboto', sans-serif;
     font-size: 11px;
