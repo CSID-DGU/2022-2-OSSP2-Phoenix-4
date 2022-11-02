@@ -1,0 +1,98 @@
+.main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.logo {
+    margin-bottom: 15px;
+}
+
+.logo_image {
+    display: block;
+    margin: 0 auto;
+}
+
+.container_input {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding-top: 10px;
+    margin-left: -150px;
+    margin-right: -150px;
+}
+
+.container_id {
+    margin-top: 5px;
+}
+
+.container_password {
+    margin-top: 5px;
+}
+
+.container_login {
+    text-align: center;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+  
+button {
+    position: relative;
+    height: 50px;
+    width: 280px;
+    border: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 0.2em;
+    overflow: hidden;
+    box-shadow: 0 4px 12px 0 rgba(152, 160, 180, 10);
+    z-index: -2;
+}
+  
+  
+.fill_login {
+    position: absolute;
+    background-image: linear-gradient(to right, #E040FB, #00BCD4);
+    background-size: 150% 150%;
+    height: 70px;
+    width: 420px;
+    border-radius: 5px;
+    margin: -40px 0 0 -140px;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+  
+.container_login:hover .fill_login {
+    -webkit-animation: gradient 3s ease infinite;
+    -moz-animation: gradient 3s ease infinite;
+    animation: gradient 3s ease infinite;
+}
+
+@-moz-keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
+  
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
