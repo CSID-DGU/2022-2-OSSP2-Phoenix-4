@@ -2,21 +2,38 @@ html, body {
     height: 100%;
     width: 100%;
     text-align: center;
+    background-color:rgba(255, 254, 180, 0.588);
 }
 
-.logo {
-    margin-top: 100px;
-    margin-bottom: 15px;
+.ment{
+    border: 10px solid rgb(103, 216, 46);
+            width: 750px;
+            font-size: 20px;
+            background-color:rgb(103, 216, 46);
+            width: 750px; 
+            border-radius: 20px;
+            position:relative;
+            left:370px;
+            top:70px;
 }
 
-.logo_image {
-    display: block;
-    margin: 0 auto;
+.logoback{
+    width:250px;
+    height:110px;
+    border:5pt solid rgb(255,201,14);
+    background: transparent url('logo.jpg') no-repeat center;
+    border-radius:50%;
+    position: absolute;
+    left:630px;
+    top: 250px;
 }
 
 .container_login {
     display: flex;
     justify-content: center;
+    position: absolute;
+    left: 600px;
+    top: 400px;
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -43,18 +60,24 @@ html, body {
     width: 140px;   
     height: 45px;
     font-family: 'Roboto', sans-serif;
-    font-size: 11px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
     color: #000;
-    background-color: #fff;
+    background-color: rgb(230, 255, 227);
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+}
+
+.save_check{
+    position: relative;
+    top: 50px;
+    right: 125px;
 }
   
 .login:hover {
@@ -66,8 +89,10 @@ html, body {
 
 .container_text {
     display: inline;
+    position: relative;
+    top: auto;  /*이 부분좀 고쳐주세요 저 못해요 우엑*/
+    left: auto;
 }
-
 .join_membership:link, .find_id:link, .find_password:link {
     color: #2EE59D;
     text-decoration: none;

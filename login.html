@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style>
+        input:focus{
+            background-color: rgb(230, 255, 227);
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +15,11 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="logo.png" alt="" class="logo_image">
+    <div class="ment">
+            <h1>"당신만을 위한, 가장 건강한 끼니"</h1>
     </div>
+
+    <div class="logoback"></div>
     <div class="container_login">
         <div class="container_input">
             <input type="text" id="id" placeholder="아이디를 입력해주세요">
@@ -20,6 +27,9 @@
         </div>
         <div class="container_login_btn">
             <button class="login" id="login">로그인</button>
+        </div>
+        <div class="save_check">
+            <input type="checkbox" name="remember?" value="save" checked="checked"/>로그인 기억
         </div>
     </div>
     <div class="container_text">
