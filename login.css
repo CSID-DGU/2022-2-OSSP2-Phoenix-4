@@ -6,40 +6,23 @@ html, body {
 }
 
 .container_main {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    background-color: white;
 }
 
-.ment{
-    border: 10px solid rgb(103, 216, 46);
-            width: 750px;
-            font-size: 20px;
-            background-color:rgb(103, 216, 46);
-            width: 750px; 
-            border-radius: 20px;
-            display: inline;
+.container_logoback {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-self: center;
+    justify-self: center;
 }
 
-.logoback{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:250px;
-    height:110px;
-    border:5pt solid rgb(255,201,14);
-    background: transparent url('logo.jpg') no-repeat center;
-    border-radius:50%;
+.container_user {
+    display: inline-flexs;
 }
 
 .container_login {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    left: 600px;
-    top: 400px;
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -49,11 +32,6 @@ html, body {
     flex-direction: column;
 }
 
-#id, #password {
-    display: flex;
-    margin: 5px;
-}
-
 .container_login_btn {
     height: 100%;
     display: flex;
@@ -61,6 +39,40 @@ html, body {
     justify-content: center;
     margin-left: 20px;
 }
+.container_text {
+    display: inline;
+}
+
+.ment{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    border: 10px solid rgb(103, 216, 46);
+            width: 750px;
+            font-size: 20px;
+            background-color:rgb(103, 216, 46);
+            width: 750px; 
+            border-radius: 20px;
+            display: inline;
+}
+
+.logoback{
+    width:250px;
+    height:110px;
+    border:5pt solid rgb(255,201,14);
+    background: transparent url('logo.jpg') no-repeat center;
+    border-radius:50%;
+}
+
+
+
+#id, #password {
+    display: flex;
+    margin: 5px;
+}
+
   
 .login {
     width: 140px;   
@@ -93,12 +105,6 @@ html, body {
     transform: translateY(-7px);
 }
 
-.container_text {
-    display: inline;
-    position: relative;
-    top: auto;  /*이 부분좀 고쳐주세요 저 못해요 우엑*/
-    left: auto;
-}
 .join_membership:link, .find_id:link, .find_password:link {
     color: #2EE59D;
     text-decoration: none;
