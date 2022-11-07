@@ -21,7 +21,7 @@ html, body {
 }
 
 .container_login {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 20px;
