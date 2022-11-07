@@ -3,7 +3,7 @@
 
 <head>
     <style>
-        input:focus{
+        input:focus {
             background-color: rgb(230, 255, 227);
         }
     </style>
@@ -15,34 +15,37 @@
 </head>
 
 <body>
-    <div class="ment">
+    <div class="container_main">
+        <div class="ment">
             <h1>"당신만을 위한, 가장 건강한 끼니"</h1>
+        </div>
+
+        <div class="logoback"></div>
+        <div class="container_login">
+            <div class="container_input">
+                <input type="text" id="id" placeholder="아이디를 입력해주세요">
+                <input type="password" id="password" placeholder="패스워드를 입력해주세요">
+            </div>
+            <div class="container_login_btn">
+                <button class="login" id="login">로그인</button>
+            </div>
+            <div class="save_check">
+                <input type="checkbox" name="remember?" value="save" checked="checked" />로그인 기억
+            </div>
+        </div>
+        <div class="container_text">
+            <div class="container_membership">
+                <a href="" class="join_membership">회원가입</a>
+            </div>
+            <p class="find_text">
+                <a href="" class="find_id">아이디</a>
+                또는
+                <a href="" class="find_password">패스워드</a>
+                찾기
+            </p>
+        </div>
     </div>
 
-    <div class="logoback"></div>
-    <div class="container_login">
-        <div class="container_input">
-            <input type="text" id="id" placeholder="아이디를 입력해주세요">
-            <input type="password" id="password" placeholder="패스워드를 입력해주세요">
-        </div>
-        <div class="container_login_btn">
-            <button class="login" id="login">로그인</button>
-        </div>
-        <div class="save_check">
-            <input type="checkbox" name="remember?" value="save" checked="checked"/>로그인 기억
-        </div>
-    </div>
-    <div class="container_text">
-        <div class="container_membership">
-            <a href="" class="join_membership">회원가입</a>
-        </div>
-        <p class="find_text">
-            <a href="" class="find_id">아이디</a>
-            또는
-            <a href="" class="find_password">패스워드</a>
-            찾기
-        </p>
-    </div>
     <script src="login.js"></script>
 </body>
 

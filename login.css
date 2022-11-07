@@ -5,6 +5,12 @@ html, body {
     background-color:rgba(255, 254, 180, 0.588);
 }
 
+.container_main {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: white;
+}
+
 .ment{
     border: 10px solid rgb(103, 216, 46);
             width: 750px;
@@ -12,26 +18,26 @@ html, body {
             background-color:rgb(103, 216, 46);
             width: 750px; 
             border-radius: 20px;
-            position:relative;
-            left:370px;
-            top:70px;
+            display: inline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logoback{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width:250px;
     height:110px;
     border:5pt solid rgb(255,201,14);
     background: transparent url('logo.jpg') no-repeat center;
     border-radius:50%;
-    position: absolute;
-    left:630px;
-    top: 250px;
 }
 
 .container_login {
     display: flex;
     justify-content: center;
-    position: absolute;
     left: 600px;
     top: 400px;
     margin-top: 50px;
