@@ -62,7 +62,7 @@ html, body {
     width:250px;
     height:110px;
     border:5pt solid rgb(255,201,14);
-    background: transparent url('logo.jpg') no-repeat center;
+    background: transparent url('/img/logo.jpg') no-repeat center;
     border-radius:50%;
 }
 
