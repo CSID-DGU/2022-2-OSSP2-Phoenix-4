@@ -4,62 +4,60 @@ html, body {
 }
 
 .main {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .container_navigation {
-
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    flex-grow: 1;
 }
 
 .container_ {
-    
+    display: flex;
+    flex-direction: row;
 }
 
 .container_period {
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .container_recommend {
-
+    display: flex;
+    flex-direction: row;
 }
 
 .container_essential {
-
+    display: flex;
+    flex-direction: row;
 }
 
 .container_submit {
-
+    display: flex;
 }
 
-#breakfast {
-
+#breakfast, #lunch, #dinner {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-#lunch {
-
+#start, #end {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-#dinner {
-
+#recommend_ingredient, #recommend_expirationDate{
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
-#start {
-
-}
-
-#end {
-
-}
-
-#recommend_ingredient {
-
-}
-
-#recommend_expirationDate {
-
-}
-
 
 #submit {
-    
+    width: 140px;
+    height: 45px;
 }
