@@ -1,0 +1,41 @@
+html,
+body {
+  background-color: gainsboro;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_birthday,
+.container_name,
+.container_gender,
+.container_id,
+.container_password,
+.container_password_check,
+.container_allergy,
+.container_address,
+.container_phoneNumber,
+.container_authenticationNumber,
+.container_email {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  left: 650px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.container_signUp {
+  display: flex;
+}
+
+#description {
+  width: 130px;
+  margin-left: 5px;
+}
+
+#signUp {
+  align-items: center;
+}

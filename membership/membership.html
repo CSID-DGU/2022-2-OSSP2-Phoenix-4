@@ -12,44 +12,44 @@
 <body>
     <div class="main">
         <div class="container_birthday">
-            <p>생년월일: </p>
+            <p id="description">생년월일: </p>
             <input type="text" id="birthday">
         </div>
 
         <div class="container_name">
-            <p>이름: </p>
+            <p id="description">이름: </p>
             <input type="text" id="name">
         </div>
 
         <div class="container_gender">
-            <p>성별: </p>
-            <input type="button" value="남">
-            <input type="button" value="여">
+            <p id="description">성별: </p>
+            <input type="radio" name="gender" value="man">남
+            <input type="radio" name="gender" value="woman">여
         </div>
 
         <div class="container_id">
-            <p>아이디: </p>
+            <p id="description">아이디: </p>
             <input type="text" id="id">
         </div>
 
         <div class="container_password">
-            <p>비밀번호: </p>
+            <p id="description">비밀번호: </p>
             <input type="text" id="password">
         </div>
 
         <div class="container_password_check">
-            <p>비밀번호 재입력: </p>
+            <p id="description">비밀번호 재입력: </p>
             <input type="text" id="password_check">
         </div>
 
         <div class="container_allergy">
-            <p>알레르기: </p>
+            <p id="description">알레르기: </p>
             <input type="text" id="allergy">
             <button id="allergy_search"></button>
         </div>
 
         <div class="container_address">
-            <p>주소: </p>
+            <p id="description">주소: </p>
             <div class="container_roadname_address">
                 <input type="text" id="roadname_search">
                 <button>도로명주소 검색</button>
@@ -61,23 +61,23 @@
         </div>
 
         <div class="container_phoneNumber">
-            <p>핸드폰 번호: </p>
+            <p id="description">핸드폰 번호: </p>
             <input type="text" id="phoneNumber">
         </div>
 
         <div class="container_authenticationNumber">
-            <p>인증번호: </p>
+            <p id="description">인증번호: </p>
             <input type="text" id="authenticationNumber">
         </div>
 
         <div class="container_email">
-            <p>e-mail</p>
-            <input type="checkbox" name="remember?" id="email_receive">수신동의
+            <p id="description">e-mail</p>
             <input type="email" id="email">
+            <input type="checkbox" name="remember?" id="email_receive">수신동의
         </div>
 
         <div class="container_signUp">
-            <button>가입하기</button>
+            <button id="signUp">가입하기</button>
         </div>
     </div>
 
