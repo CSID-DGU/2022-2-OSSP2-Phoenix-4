@@ -10,5 +10,9 @@ public class HomeController {
     public String home(){
         return "login";
     }
+    @GetMapping("membership")
+    public String Joinmembership(){
+        return "membership";
+    }
 
 }
