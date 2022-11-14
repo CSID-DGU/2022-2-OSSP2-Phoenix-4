@@ -67,4 +67,8 @@ public class MemberController {
     public String dispAdmin() {
         return "/admin";
     }
+
+    @GetMapping("/main")
+    public String dispMain(){return "/home";
+    }
 }

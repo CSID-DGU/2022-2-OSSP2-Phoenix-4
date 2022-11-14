@@ -13,12 +13,10 @@ body {
 .container_gender,
 .container_id,
 .container_password,
-.container_password_check,
-.container_allergy,
-.container_address,
-.container_phoneNumber,
-.container_authenticationNumber,
-.container_email {
+.container_height,
+.container_weight,
+.container_email,
+.container_signUp{
   display: flex;
   position: relative;
   flex-direction: row;
@@ -26,9 +24,6 @@ body {
   left: 650px;
   margin-top: 8px;
   margin-bottom: 8px;
-}
-.container_signUp {
-  display: flex;
 }
 
 #description {
