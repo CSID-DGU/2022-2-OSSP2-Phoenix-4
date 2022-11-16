@@ -18,7 +18,7 @@ body {
 }
 
 .container_user {
-  display: inline-flexs;
+
 }
 
 .container_login {
@@ -64,7 +64,7 @@ body {
   height: 110px;
   border: 5pt solid rgb(255, 201, 14);
   background: transparent
-    url("/Mymichef/src/main/resources/static/front/img/logo.jpg") no-repeat
+    url("../img/logo.jpg") no-repeat
     center;
   border-radius: 50%;
 }
