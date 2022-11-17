@@ -1,55 +1,64 @@
 package phoenix.Mymichef.config;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import phoenix.Mymichef.service.MemberService;
+import phoenix.Mymichef.handler.LoginFailHandler;
 
+//spring security 사용 이유는 보안적으로 뛰어나다는 것, 사용자가 일일이 구현하지 않아도 된다는 점 등
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
-public class SecurityConfig{
-    private MemberService memberService;
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
+    @Autowired
+    LoginFailHandler loginFailHandler; //로그인 핸들러 의존성 주입
+    @Bean // 패스워드 암호화 관련 메소드
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+    // spring security 쓰는 이유 중 하나
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer()
-    {
-        // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
-        return (web)-> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+    /**
+     * spring security web 관련 설정
+     */
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**");
+        // 사용자 요청 중 /resources로 시작하는 요청은 제외
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    /**
+     * spring security 권한 인증 관련 설정
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests()
-                // 페이지 권한 설정
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/myinfo").hasRole("MEMBER")
-                .antMatchers("/**").permitAll()
-                .and() // 로그인 설정
-                .formLogin()
-                .loginPage("/user/login")
-                .defaultSuccessUrl("/user/login/result")
-                .permitAll()
-                .and() // 로그아웃 설정
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/logout/result")
-                .invalidateHttpSession(true)
+                .antMatchers("/home").authenticated()
+                .anyRequest().permitAll() //인증없이 접근하게 해주는 프론트쪽 주소 현재는 home으로 임의 설정
                 .and()
-                // 403 예외처리 핸들링
-                .exceptionHandling().accessDeniedPage("/user/denied");
-        return http.build();
+
+                .formLogin()
+                .loginPage("/login") //로그인 페이지 설정
+                .defaultSuccessUrl("/") // 로그인 성공시 뜨는 화면
+                .usernameParameter("id") // 로그인 시 보내는 형식의 username --> 이 부분 프론트랑 맞춰야 화면이 돌아감
+                .passwordParameter("password") // 이것도 마찬가지임
+                .failureHandler(new LoginFailHandler()) // 로그인 실패하면 생성되는 객체 handler 폴더에서 따로 관리
+                .and()
+                .logout()
+                .logoutSuccessUrl("/") // 로그아웃 시 페이지
+                .invalidateHttpSession(true)
+        ;
     }
+
+
+
 }
+
+
+
