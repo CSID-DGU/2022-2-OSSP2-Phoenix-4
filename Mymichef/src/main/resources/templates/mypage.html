@@ -14,13 +14,17 @@
         <div class="navigation"></div>
 
         <div class="container_information">
-            <p id="nickname">닉네임</p>
-            <p id="info_nickname"></p>
-            <input type="text" id="input_nickname">
+            <p id="name">이름</p>
+            <p id="info_name"></p>
+            <input type="text" id="input_name" placeholder="이름 수정">
+
+            <p id="email">이메일</p>
+            <p id="info_email"></p>
 
             <p id="gender">성별</p>
             <p id="info_gender"></p>
-            <input type="text" id="input_gender">
+            <input type="radio" name="gender" id="man" placeholder="남">
+            <input type="radio" name="gender" id="woman" placeholder="여">
 
             <p id="height">키</p>
             <p id="info_height"></p>
@@ -31,11 +35,13 @@
             <input type="text" id="input_weight">
 
             <p id="allergy">알레르기</p>
-            <p id="info_allergy"></p>
+            <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
+            <input type="search" name="" id="search_allergy">
 
             <p id="vegan">비건</p>
             <p id="info_vegan"></p>
-            <button id="btn_vegan"></button>
+            <input type="radio" name="vegan_radio" id="vegan_o" placeholder="O">
+            <input type="radio" name="vegan_radio" id="vegan_x" placeholder="X">
 
             <p id="calorie">희망칼로리</p>
             <p id="info_calorie"></p>
@@ -43,12 +49,12 @@
 
         </div>
         <div>
-            <button class="correct_btn"></button>
+            <button id="edit_btn"></button>
         </div>
 
     </div>
 
-    <script src="/front/js/mypage.js"></script>
+    <script src="../static/front/js/mypage.js"></script>
 </body>
 
 </html>
