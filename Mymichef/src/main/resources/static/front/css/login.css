@@ -17,9 +17,7 @@ body {
   justify-self: center;
 }
 
-.container_user {
 
-}
 
 .container_login {
   display: flex;
@@ -95,8 +93,8 @@ body {
 
 .save_check {
   position: relative;
-  top: 50px;
-  right: 125px;
+  top: 30px;
+  right: 70px;
 }
 
 .login:hover {
