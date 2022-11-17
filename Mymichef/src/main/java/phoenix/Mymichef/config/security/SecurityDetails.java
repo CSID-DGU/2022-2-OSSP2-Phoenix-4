@@ -1,18 +1,18 @@
-package phoenix.Mymichef.domain;
+package phoenix.Mymichef.config.security;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import phoenix.Mymichef.data.entity.UserEntity;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
+//인증에 성공한 객체에 대한 정보 Detail 설정
 public class SecurityDetails implements UserDetails {
 
-    private User SecurityUser;
+    private UserEntity securityUserEntity;
 
-    public SecurityDetails(User SecurityUser){
-        this.SecurityUser = SecurityUser;
+    public SecurityDetails(UserEntity securityUserEntity){
+        this.securityUserEntity = securityUserEntity;
     }
 
     @Override
@@ -21,11 +21,11 @@ public class SecurityDetails implements UserDetails {
     }
 
     @Override
-    public String getPassword(){return SecurityUser.getPw();}
+    public String getPassword(){ return securityUserEntity.getPw(); }
 
     @Override
     public String getUsername() {
-        return SecurityUser.getId();
+        return securityUserEntity.getId();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package phoenix.Mymichef.config;
+package phoenix.Mymichef.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import phoenix.Mymichef.handler.LoginFailHandler;
+import phoenix.Mymichef.data.handler.LoginFailHandler;
 
 //spring security 사용 이유는 보안적으로 뛰어나다는 것, 사용자가 일일이 구현하지 않아도 된다는 점 등
 @Configuration

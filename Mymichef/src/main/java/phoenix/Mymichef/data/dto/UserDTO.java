@@ -1,34 +1,34 @@
-package phoenix.Mymichef.domain;
+package phoenix.Mymichef.data.dto;
 
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import phoenix.Mymichef.data.entity.UserEntity;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
-public class UserFormDto {
-    private String id;
+public class UserDTO {
+
     private String name;
-     private Long birth;
-    private String pw;
+
     private String gender;
+
+    private String id;
+    private String pw;
     private Long height;
     private Long weight;
-    private String allergy;
     private String phone;
 
-    public User toEntity(PasswordEncoder passwordEncoder){
-        return User.builder()
-                .id(id)
+    public UserEntity toEntity(PasswordEncoder passwordEncoder){
+        return phoenix.Mymichef.data.entity.UserEntity.builder()
                 .name(name)
-                .birth(birth)
-                .pw(pw)
                 .gender(gender)
+                .id(id)
+                .pw(pw)
                 .height(height)
                 .weight(weight)
-                .allergy(allergy)
                 .phone(phone)
                 .build();
     }

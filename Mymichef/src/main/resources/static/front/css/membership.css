@@ -1,6 +1,9 @@
 html,
 body {
-  background-color: gainsboro;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 254, 180, 0.588);
 }
 
 .main {

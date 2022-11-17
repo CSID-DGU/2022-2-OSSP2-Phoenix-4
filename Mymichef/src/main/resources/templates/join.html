@@ -10,44 +10,45 @@
 </head>
 
 <body>
-<form action="/user/signup" method="post">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<form action="/join" method="post">
+<!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
 
     <div class="main">
-        <div class="container_birthday">
-            <p id="description">생년월일: </p>
-            <input type="text" name="birth">
-        </div>
 
         <div class="container_name">
-            <p id="description">이름: </p>
+            <p id="name">이름: </p>
             <input type="text" name="name">
         </div>
 
         <div class="container_gender">
-            <p id="description">성별: </p>
+            <p id="gender">성별: </p>
             <input type="radio" name="gender" value="man">남
             <input type="radio" name="gender" value="woman">여
         </div>
 
         <div class="container_id">
-            <p id="description">아이디(이메일): </p>
-            <input type="text" name="email">
+            <p id="id">아이디: </p>
+            <input type="text" name="id">
         </div>
 
         <div class="container_password">
-            <p id="description">비밀번호: </p>
-            <input type="password" name="password">
+            <p id="password">비밀번호: </p>
+            <input type="password" name="pw">
         </div>
 
         <div class="container_height">
-            <p id="description">키: </p>
+            <p id="height">키: </p>
             <input type="text" name="height">
         </div>
 
         <div class="container_weight">
-            <p id="description">몸무게: </p>
+            <p id="weight">몸무게: </p>
             <input type="text" name="weight">
+        </div>
+
+        <div class="container_phone">
+            <p id="phone">핸드폰(_없이 입력): </p>
+            <input type="text" name="phone">
         </div>
 
         <div class="container_signUp">

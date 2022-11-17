@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import phoenix.Mymichef.domain.UserFormDto;
+import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.service.UserService;
 
 //일단은 회원가입 controller인데 아직 join 프론트가 없는듯하여 일단 보류
@@ -19,27 +19,27 @@ public class JoinController {
 
     @GetMapping(value = "/join")
     public String join(Model model){
-        model.addAttribute("UserFromDto", new UserFormDto());
+        model.addAttribute("UserFormDto", new UserDTO());
         return "join";
     }
 
     @PostMapping(value = "/join")
-    public String join(UserFormDto userFormDto, BindingResult bindingResult, Model model){
+    public String join(UserDTO userDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             return "join";
         }
         try{
-            userService.saveUser(userFormDto);
+            userService.saveUser(userDto);
         }catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
-            model.addAttribute("userFormDto", new UserFormDto());
+            model.addAttribute("userFormDto", new UserDTO());
             return "join";
         }
         catch(Exception e){
             model.addAttribute("errorMessage", e.getMessage());
-            return "home";
+            return "login";
         }
 
-        return "redirect:/";
+        return "login";
     }
 }

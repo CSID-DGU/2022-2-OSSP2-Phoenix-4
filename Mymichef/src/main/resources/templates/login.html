@@ -22,12 +22,15 @@
         </div>
 
         <div class="container_logoback">
-            <div class="logoback"></div>
+            <div class="logoback">
+                <img src="logo.jpg" alt="logo">
+            </div>
+
         </div>
 
         <div class="container_user">
             <div class="container_login">
-                <form action="/user/login" method="post" class="container_input">
+                <form action="/userEntity/login" method="post" class="container_input">
                     <input type="hidden" th:name="${id}" th:value="${password}" />
 
                     <input type="text" name="username" placeholder="아이디를 입력해주세요">
@@ -43,7 +46,7 @@
             </div>
             <div class="container_text">
                 <div class="container_membership">
-                    <a href="/user/signup" class="join_membership">회원가입</a>
+                    <a href="/join" class="join_membership">회원가입</a>
                 </div>
                 <p class="find_text">
                     <a href="" class="find_id">아이디</a>

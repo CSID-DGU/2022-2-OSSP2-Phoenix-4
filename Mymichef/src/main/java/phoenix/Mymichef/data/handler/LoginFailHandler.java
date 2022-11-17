@@ -1,4 +1,4 @@
-package phoenix.Mymichef.handler;
+package phoenix.Mymichef.data.handler;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
