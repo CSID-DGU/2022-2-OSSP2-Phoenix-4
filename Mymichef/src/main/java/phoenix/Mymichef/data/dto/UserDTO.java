@@ -3,10 +3,13 @@ package phoenix.Mymichef.data.dto;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import phoenix.Mymichef.data.entity.UserEntity;
+import phoenix.Mymichef.data.role.Role;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @NoArgsConstructor
@@ -32,20 +35,26 @@ public class UserDTO implements UserDetails {
         this.SecurityUserEntity = SecurityUserEntity;
     }
     public UserEntity toEntity(PasswordEncoder passwordEncoder){
-        return phoenix.Mymichef.data.entity.UserEntity.builder()
+        return UserEntity.builder()
                 .name(name)
                 .gender(gender)
                 .id(id)
-                .pw(pw)
+                .pw(passwordEncoder.encode(pw))
                 .height(height)
                 .weight(weight)
                 .phone(phone)
                 .build();
     }
 
+    //임의로 rhwo84라는 아이디 아니면 모두 User 권한 주도록 설정.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> collection = new ArrayList<>();
+        Role role;
+        if("rhwo84".equals(SecurityUserEntity.getId())){role = Role.ROLE_ADMIN;}
+        else {role=Role.ROLE_USER;}
+        collection.add(new SimpleGrantedAuthority(role.getValue()));
+        return collection;
     }
 
     @Override

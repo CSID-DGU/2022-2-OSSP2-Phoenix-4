@@ -25,15 +25,17 @@ public class UserService implements UserDetailsService {
     /**
      *  회원가입 서비스
      */
-    public void saveUser(UserDTO userDto)throws Exception{
+    public void saveUser(UserDTO userDto)throws Exception {
         UserEntity userEntity = userDto.toEntity(passwordEncoder);
+        validateDuplicateUser(userEntity);
+    }
+
+    private void validateDuplicateUser(UserEntity userEntity) throws Exception {
         Optional<UserEntity> findUser = userRepository.findById(userEntity.getId());
         findUser.ifPresent(m -> {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         });
         userRepository.save(userEntity);
-        System.out.println("넘어온 정보 = " + userEntity.getId());
-        System.out.println("넘어온 정보 = " + userEntity.getPw());
         throw new Exception("회원가입에 성공했습니다!");
     }
 

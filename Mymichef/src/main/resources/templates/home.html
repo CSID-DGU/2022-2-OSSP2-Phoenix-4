@@ -11,11 +11,24 @@
 
 <body>
 <p>
-    <span sec:authentication="name"></span>님 환영합니다~
+<!--    <span sec:authentication="name"></span>님 환영합니다~-->
+<div sec:authorize ="isAnonymous()">
+    <p class="mb-5" data-aos="fade-right" data-aos-delay="100">당신의 식단을 어쩌구</p>
+    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="login" class="btn btn-outline-white">로그인</a></p>
+</div>
+<div sec:authorize ="isAuthenticated()">
+    <p class="mb-5" data-aos="fade-right" data-aos-delay="100"><span sec:authentication="name"></span>님! 안녕하세요 :) </p>
+    <form action="/logout" method="POST">
+        <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><button type="submit" class="btn btn-outline-white">로그아웃</button></p>
+    </form>
+    <form action="/mypage" method="POST">
+    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><button type="submit" class="btn btn-outline-white">마이페이지</button></p>
+    </form>
+</div>
 <p/>
-<a sec:authorize="isAuthenticated()" th:href="@{/userEntity/logout}">로그아웃</a>
-<a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/userEntity/info}">내정보</a>
-<a th:href="@{'/main'}">메인으로 이동</a>
+<!--<a sec:authorize="isAuthenticated()" th:href="/">로그아웃</a>-->
+<!--<a sec:authorize="hasRole('ROLE_USER')" th:href="/mypage">내정보</a>-->
+<!--<a th:href="/">메인으로 이동</a>-->
     <script src="/front/js/home.js"></script>
 </body>
 
