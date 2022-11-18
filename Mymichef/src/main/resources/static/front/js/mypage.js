@@ -42,6 +42,30 @@ let edit = false
 
 editBtn.innerText = "수정"
 
+// input value 가져오기
+function getValue() {
+    name    = getName.value
+    height  = getHeight.value
+    weight  = getWeight.value
+    allergy = getAllergy.value
+    calorie = getCalorie.value
+    getGender.forEach((node) => {
+        if (node.checked) {
+            gender = node.value
+        }
+    })
+    getVegan.forEach((node) => {
+        if (node.checked) {
+            vegan = node.value
+        }
+    })
+}
+
+// db 업데이트
+function dbUpdate() {
+
+}
+
 // 마이페이지 정보 업데이트(수정예정)
 function infoUpdate() {
     infoName.innerText    = dbName
@@ -54,38 +78,14 @@ function infoUpdate() {
     infoCalorie.innerText = dbCalorie
 }
 
-// db 업데이트
-function dbUpdate() {
-
-}
-
 // 수정 or 확인 버튼 클릭 이벤트
 function onEditClick() {
     if (edit) {
         edit = false
         editBtn.innerText = "수정"
     } else {
-        // 입력값 가져오기
-        name    = getName.value
-        height  = getHeight.value
-        weight  = getWeight.value
-        allergy = getAllergy.value
-        calorie = getCalorie.value
-        getGender.forEach((node) => {
-            if (node.checked) {
-                gender = node.value
-            }
-        })
-        getVegan.forEach((node) => {
-            if (node.checked) {
-                vegan = node.value
-            }
-        })
-
-        // db 업데이트
+        getValue()
         dbUpdate()
-
-        // info 업데이트
         infoUpdate()
 
         edit = true
