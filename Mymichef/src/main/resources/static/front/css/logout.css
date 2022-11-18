@@ -1,3 +1,23 @@
+:root {
+  /* fonts */
+  --font-rockwell: Rockwell;
+  --font-gill-sans-mt: "Gill Sans MT";
+  --font-segoe-ui: "Segoe UI";
+
+  /* font sizes */
+  --font-size-sm: 50px;
+  --font-size-base: 70px;
+
+  /* Colors */
+  --color-gray: #707070;
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* border radiuses */
+  --br-sm: 20px;
+  --br-md: 25px;
+}
+
 body {
   margin: 0;
   line-height: normal;
@@ -47,3 +67,18 @@ body {
   color: var(--color-gray);
   font-family: var(--font-gill-sans-mt);
 }
+
+.web-1920-1-div {
+  position: relative;
+  background-color: #fff3a5;
+  width: 1920px;
+  height: 1080px;
+  max-width: 50%;
+  max-height: 50%;
+  overflow: auto;
+  text-align: center;
+  font-size: 80px;
+  color: var(--color-gray);
+  font-family: var(--font-gill-sans-mt);
+}
+
