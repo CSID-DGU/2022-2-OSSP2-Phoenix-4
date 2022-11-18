@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style>
+        input:focus {
+            background-color: #ffeacf;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,49 +19,61 @@
         <div class="navigation"></div>
 
         <div class="container_information">
-            <p id="name">이름</p>
-            <p id="info_name"></p>
-            <input type="text" id="input_name" placeholder="이름 수정">
+            <div id="name">이름
+                <input type="text" id="input_name" placeholder="이름 수정">
+                <p id="info_name"></p>
+            </div>
 
-            <p id="pw">비밀번호 변경</p>
-            <p id="info_now_p/w"></p>
-            <input type="password" id="input_now_p/w" placeholder="현재 비밀번호">
-            <button id="check_btn"></button>
-            <p id="info_new_p/w"></p>
-            <input type="password" id="input_new_p/w" placeholder="바꿀 비밀번호">
-            <p id="info_again_p/w"></p>
-            <input type="password" id="input_again_p/w" placeholder="비밀번호 재입력">
+            <div>
+                <div id="pw">비밀번호 변경
+                    <input type="password" id="input_now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
+                    <button id="check_btn">확인</button>
+                </div>
+                <div class="new&check">
+                    <input class="input2" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
+                    <input class="input3" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
+                </div>
+                <p id="info_now_p/w"></p>
+            </div>
 
-            <p id="email">이메일</p>
-            <p id="info_email"></p>
+            <div id="email">이메일
+                <input type="email" id="input_email" placeholder="example@mmc.com">
+                <p id="info_email"></p>
+            </div>
 
-            <p id="gender">성별</p>
-            <p id="info_gender"></p>
-            <input type="radio" name="gender" value="man" placeholder="남">
-            <input type="radio" name="gender" value="woman" placeholder="여">
+            <div id="gender">성별
+                <input type="radio" name="gender" value="man"> 남
+                <input type="radio" name="gender" value="woman"> 여
+                <p id="info_gender"></p>
+            </div>
 
-            <p id="height">키</p>
-            <p id="info_height"></p>
-            <input type="text" id="input_height">
+            <div id="height">키
+                <input type="number" id="input_height" placeholder="cm" min="{10}" max="{250}">
+                <p id="info_height"></p>
+            </div>
 
-            <p id="weight">몸무게</p>
-            <p id="info_weight"></p>
-            <input type="text" id="input_weight">
+            <div id="weight">몸무게
+                <input type="number" id="input_weight" placeholder="kg" min="{0}" max="{200}">
+                <p id="info_weight"></p>
+            </div>
 
-            <p id="allergy">알레르기</p>
-            <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
-            <input type="search" name="" id="search_allergy">
+            <div id="allergy">알레르기
+                <input type="search" name="" id="search_allergy">
+                <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
+            </div>
 
-            <p id="vegan">비건</p>
-            <p id="info_vegan"></p>
-            <input type="radio" name="vegan_radio" placeholder="O" value="vegan">
-            <input type="radio" name="vegan_radio" placeholder="X" value="non-vegan">
+            <div id="vegan">비건
+                <input type="radio" name="vegan_radio" value="vegan"> Yes
+                <input type="radio" name="vegan_radio" value="non-vegan"> No
+                <p id="info_vegan"></p>
+            </div>
 
-            <p id="calorie">희망칼로리</p>
-            <p id="info_calorie"></p>
-            <input type="text" id="input_calorie">
-
+            <div id="calorie">희망칼로리
+                <input type="number" id="input_calorie" placeholder="kcal">
+                <p id="info_calorie"></p>
+            </div>
         </div>
+
         <div>
             <button id="edit_btn"></button>
         </div>

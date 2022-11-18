@@ -1,10 +1,56 @@
 html,
 body {
-  margin: 0;
-  line-height: normal;
   height: 100%;
   width: 100%;
   text-align: center;
-  background: #fffdef;
+  background-color: rgba(255, 254, 180, 0.588);
 }
+
+#name{
+
+
+}
+
+
+#pw{
+
+}
+
+.new&check{
+
+}
+
+#email{
+
+}
+
+#gender{
+
+}
+
+#height{
+
+}
+
+#weight{
+
+}
+
+#allergy{
+
+}
+
+#vegan{
+
+}
+
+#calorie{
+
+}
+
+#edit_btn{
+
+}
+
+
 
