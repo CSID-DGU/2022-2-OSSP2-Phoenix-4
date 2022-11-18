@@ -9,6 +9,9 @@ let calorie   = null
 
 // 사용자 info
 const infoName    = document.getElementById("info_name")
+const infoNowP/W  = document.getElementById("info_now_p/w")
+const infoNewP/W  = document.getElementById("info_new_p/w")
+const infoAgnP/W  = document.getElementById("info_again_p/w")
 const infoEmail   = document.getElementById("info_email")
 const infoGender  = document.getElementById("info_gender")
 const infoHeight  = document.getElementById("info_gender")
@@ -19,6 +22,9 @@ const infoCalorie = document.getElementById("info_calorie")
 
 // 사용자 input
 const getName    = document.getElementById("input_name")
+const getNowP/W  = document.getElementById("input_now_p/w")
+const getNewP/W  = document.getElementById("input_new_p/w")
+const getAgnP/W  = document.getElementById("input_again_p/w")
 const getGender  = document.getElementsByName("gender")
 const getHeight  = document.getElementById("input_height")
 const getWeight  = document.getElementById("input_weight")
@@ -28,6 +34,7 @@ const getCalorie = document.getElementById("input_calorie")
 
 // 사용자 db(연동 요청)
 let dbName      = null
+let dbP/W       = null      //손봐주세용...............
 let dbEmail     = null
 let dbGender    = null
 let dbHeight    = null
@@ -37,14 +44,18 @@ let dbVegan     = null
 let dbCalorie   = null
 
 const editBtn   = document.getElementById("edit_btn")
+const CheckBtn  = document.getElementById("check_btn")
 
 let edit = false
+let check = false
 
 editBtn.innerText = "수정"
+checkBtn.innerText="확인"
 
 // input value 가져오기
 function getValue() {
     name    = getName.value
+    //여기도 pw!!!!!!!!!!!!!!!!
     height  = getHeight.value
     weight  = getWeight.value
     allergy = getAllergy.value
@@ -69,6 +80,7 @@ function dbUpdate() {
 // 마이페이지 정보 업데이트(수정예정)
 function infoUpdate() {
     infoName.innerText    = dbName
+    //비밀번호 db관련 수정 필요해요!!!!!!!!!!!!!!!!!!!!
     infoEmail.innerText   = dbEmail
     infoGender.innerText  = dbGender
     infoHeight.innerText  = dbHeight
@@ -93,6 +105,22 @@ function onEditClick() {
     }
 }
 
+//여기좀 손봐주세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function onCheckClick() {
+    if (check) {
+        check = false
+        CheckBtn.innerText = "확인"
+    } else {
+        getValue()
+        dbUpdate()
+        infoUpdate()
+
+        check = true
+        CheckBtn.innerText = "일치"
+    }
+}
+
 infoUpdate()
 
 editBtn.addEventListener("click", onEditClick)
+checkBtn.addEventListener("click", onCheckClick)
