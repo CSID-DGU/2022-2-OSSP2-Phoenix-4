@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class MypageController {
 
-    @GetMapping(value = "/mypage")
+    @GetMapping(value = "/userEntity/info")
     public String mypage(Model model){
         return "mypage";
     }

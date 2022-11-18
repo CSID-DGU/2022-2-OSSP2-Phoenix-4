@@ -11,4 +11,10 @@ public class HomeController {
     public String home(Model model){
         return "home";
     }
+
+    @GetMapping(value = "/home")
+    public String hometohome(Model model){
+        return "home";
+    }
+
 }

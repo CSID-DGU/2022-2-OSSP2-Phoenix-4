@@ -39,13 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/").authenticated()
+                .antMatchers("/home").authenticated()
                 .anyRequest().permitAll() //인증없이 접근하게 해주는 프론트쪽 주소 현재는 home으로 임의 설정
                 .and()
 
                 .formLogin()
                 .loginPage("/login") //로그인 페이지 설정
-                .defaultSuccessUrl("/") // 로그인 성공시 뜨는 화면
+                .defaultSuccessUrl("/home") // 로그인 성공시 뜨는 화면
                 .failureHandler(new LoginFailHandler()) // 로그인 실패하면 생성되는 객체 handler 폴더에서 따로 관리
                 .and()
                 .logout()
