@@ -4,48 +4,69 @@ body {
   width: 100%;
   text-align: center;
   background-color: rgba(255, 254, 180, 0.588);
+  top: 50px;
+}
+
+.navigation{
+
+}
+
+.container_main{
+position: relative;
+font-size:20px;
+top: 140px;
 }
 
 #name{
-
-
+position: relative;
+right:40px;
 }
-
 
 #pw{
-
+position:relative;
+right:60px;
 }
-
-.new&check{
-
+#new&check{         //이 아이는 위치수정을 어째야 좋을까요...? 위아래칸 맞추고싶은뎅...
+position:absolute;
+top:200px;
+left:270px;
 }
 
 #email{
-
+position: relative;
+right:50px;
 }
 
-#gender{
-
+#gender{            //젠더에 남 여 폰트크리 15px로 하고싶어요
+position: relative;
+right:70px;
 }
+
 
 #height{
-
+position: relative;
+right:30px;
 }
 
 #weight{
-
+position: relative;
+right: 50px;
 }
 
 #allergy{
-
+position: relative;
+right: 60px;
 }
 
-#vegan{
-
+#vegan{                     //비건에 yes no도 15px 맞추고싶어요
+position: relative;
+right:70px;
 }
+
 
 #calorie{
-
+position: relative;
+right: 70px;
 }
 
 #edit_btn{
