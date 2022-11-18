@@ -9,9 +9,9 @@ let calorie   = null
 
 // 사용자 info
 const infoName    = document.getElementById("info_name")
-const infoNowP/W  = document.getElementById("info_now_p/w")
-const infoNewP/W  = document.getElementById("info_new_p/w")
-const infoAgnP/W  = document.getElementById("info_again_p/w")
+const infoNowPW   = document.getElementById("info_now_p/w")
+const infoNewPW   = document.getElementById("info_new_p/w")
+const infoAgnPW   = document.getElementById("info_again_p/w")
 const infoEmail   = document.getElementById("info_email")
 const infoGender  = document.getElementById("info_gender")
 const infoHeight  = document.getElementById("info_gender")
@@ -22,9 +22,9 @@ const infoCalorie = document.getElementById("info_calorie")
 
 // 사용자 input
 const getName    = document.getElementById("input_name")
-const getNowP/W  = document.getElementById("input_now_p/w")
-const getNewP/W  = document.getElementById("input_new_p/w")
-const getAgnP/W  = document.getElementById("input_again_p/w")
+const getNowPW   = document.getElementById("input_now_p/w")
+const getNewPW   = document.getElementById("input_new_p/w")
+const getAgnPW   = document.getElementById("input_again_p/w")
 const getGender  = document.getElementsByName("gender")
 const getHeight  = document.getElementById("input_height")
 const getWeight  = document.getElementById("input_weight")
@@ -34,7 +34,7 @@ const getCalorie = document.getElementById("input_calorie")
 
 // 사용자 db(연동 요청)
 let dbName      = null
-let dbP/W       = null      //손봐주세용...............
+let dbPW        = null      //손봐주세용...............
 let dbEmail     = null
 let dbGender    = null
 let dbHeight    = null
@@ -50,7 +50,7 @@ let edit = false
 let check = false
 
 editBtn.innerText = "수정"
-checkBtn.innerText="확인"
+CheckBtn.innerText= "확인"
 
 // input value 가져오기
 function getValue() {
@@ -123,4 +123,4 @@ function onCheckClick() {
 infoUpdate()
 
 editBtn.addEventListener("click", onEditClick)
-checkBtn.addEventListener("click", onCheckClick)
+CheckBtn.addEventListener("click", onCheckClick)
