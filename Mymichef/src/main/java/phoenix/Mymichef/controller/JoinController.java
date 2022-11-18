@@ -17,7 +17,7 @@ public class JoinController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/join")
+    @GetMapping("/join")
     public String join(Model model){
         model.addAttribute("UserFormDto", new UserDTO());
         return "join";
