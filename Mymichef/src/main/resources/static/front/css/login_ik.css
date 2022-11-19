@@ -1,0 +1,227 @@
+:root {
+  /* fonts */
+  --font-helveticaneue: HelveticaNeue;
+  --font-helvetica-neue: "Helvetica Neue";
+  --font-helveticaneue-medium: HelveticaNeue-Medium;
+  --font-segoe-ui: "Segoe UI";
+
+  /* font sizes */
+  --font-size-sm: 16px;
+  --font-size-base: 40px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-gray-100: #e0e0e0;
+  --color-gray-200: #868d96;
+  --color-gray-300: #707070;
+  --color-gray-400: #212529;
+
+  /* border radiuses */
+  --br-md: 5px;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+.div,
+.logo-icon {
+  position: absolute;
+}
+.div {
+  top: 0;
+  left: 0;
+  background-color: #ffc90d;
+  border: 1px solid var(--color-gray-300);
+  box-sizing: border-box;
+  width: 1090px;
+  height: 1080px;
+}
+.logo-icon {
+  top: 373px;
+  left: 277px;
+  width: 536px;
+  height: 167px;
+  object-fit: cover;
+}
+.p {
+  margin: 0;
+}
+.div1 {
+  position: absolute;
+  top: 576px;
+  left: 390px;
+  display: inline-block;
+}
+.div3 {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  background-color: #d3d3d3;
+  border: 1px solid var(--color-gray-300);
+  box-sizing: border-box;
+  opacity: 0.37;
+}
+.div3,
+.header-div,
+.rectangle-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header-div {
+  font-size: var(--font-size-base);
+  font-family: var(--font-helveticaneue-medium);
+  display: inline-block;
+}
+.rectangle-div {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background-color: var(--color-white);
+  border: 1px solid #b7b7b7;
+  box-sizing: border-box;
+}
+.checkbox-div {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.label-div {
+  position: relative;
+  display: inline-block;
+  margin-top: 1px;
+}
+.forminputcheckbox-groupdefa-div {
+  position: absolute;
+  top: calc(50% + 84.71px);
+  left: calc(50% - 35px);
+  width: 103px;
+  height: 21.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 5px;
+}
+.inputbase-div,
+.inputbase-div1 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.inputbase-div1 {
+  height: calc(100% + 2px);
+  width: calc(100% + 2px);
+  top: -2px;
+  left: -2px;
+  border-radius: var(--br-md);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-100);
+  box-sizing: border-box;
+}
+.inputbase-div {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.text-state-div {
+  position: absolute;
+  top: calc(50% - 12.5px);
+  left: 12.5px;
+  display: inline-block;
+}
+.forminputtextdefault-div {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 38px;
+}
+.formform-groupbasicdefault-div {
+  position: absolute;
+  width: calc(100% - 33px);
+  top: calc(50% + 14px);
+  right: 0;
+  left: 33px;
+  height: 38px;
+  color: var(--color-gray-200);
+}
+.primary-007bff {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-md);
+  background-color: #007bff;
+}
+.sign-in-div {
+  position: absolute;
+  top: calc(50% - 9.5px);
+  left: calc(50% - 24.5px);
+  display: inline-block;
+}
+.buttondefaultprimary-div {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 24px);
+  width: 81px;
+  height: 37px;
+  color: var(--color-white);
+  font-family: var(--font-helvetica-neue);
+}
+.forminputtextdefault-div1 {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 19px);
+  right: 0;
+  left: 0;
+  height: 38px;
+}
+.formform-grouphelperdefault-div {
+  position: absolute;
+  width: calc(100% - 33px);
+  top: calc(50% - 56.71px);
+  right: 0;
+  left: 33px;
+  height: 38px;
+  color: var(--color-gray-200);
+}
+.div2,
+.div4 {
+  position: absolute;
+}
+.div4 {
+  top: calc(50% - 220px);
+  left: calc(50% - 213px);
+  width: 320px;
+  height: 352px;
+}
+.div2 {
+  top: 0;
+  right: 0;
+  width: 830px;
+  height: 1080px;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-400);
+  font-family: var(--font-helveticaneue);
+}
+.init-div {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1080px;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-300);
+  font-family: var(--font-segoe-ui);
+}
