@@ -1,38 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/home.css">
-    <title>My Mini Chef</title>
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/front/css/login_ik.css">
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@400&display=swap"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=HelveticaNeue-Medium:wght@400&display=swap"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=HelveticaNeue:wght@400&display=swap"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Helvetica Neue:wght@400&display=swap"
+    />
 </head>
-
 <body>
-<p>
-    <!--    <span sec:authentication="name"></span>님 환영합니다~-->
-    <a sec:authorize="isAuthenticated()" sec:authentication="name"> </a>
-<p/>
-<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
-<a sec:authorize="isAuthenticated()" th:href="@{/userEntity/info}">마이페이지</a>
-<a sec:authorize="isAnonymous()" th:href="@{'/login'}" }>로그인으로 이동</a>
-<!--<p>
-&lt;!&ndash;    <span sec:authentication="name"></span>님 환영합니다~&ndash;&gt;
-<div sec:authorize ="isAnonymous()">
-    <p class="mb-5" data-aos="fade-right" data-aos-delay="100">당신의 식단을 어쩌구</p>
-    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="login" class="btn btn-outline-white">로그인</a></p>
-@ -25,12 +31,12 @@
-    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><button type="submit" class="btn btn-outline-white">마이페이지</button></p>
+<div class="login-ik-div">
+    <div class="div">   <!-- 주황 배경 묶음 -->
+        <div class="div1">
+            <p class="p">당신만을 위한,</p>
+            <p class="p">가장 건강한 끼니</p>
+        </div>
+    </div>
+    <img class="logo-icon" alt="" src="../static/front/jpg/logo!.png" />
+</div>
+<div class="container">
+    <form class="form" id="login">
+        <h1 class="form__title">Login</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+            <input type="text" class="form__input" autofocus placeholder="ID">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" autofocus placeholder="Password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+            <a href="#" class="form__link">비밀번호 찾기</a>
+        </p>
+        <p class="form__text">
+            <a class="form__link" href="./" id="linkCreateAccount">계정이 없으신가요? 회원가입하기</a>
+        </p>
+    </form>
+    <form class="form form--hidden" id="createAccount">
+        <h1 class="form__title">회원 가입</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+            <input type="text" id="signupUsername" class="form__input" autofocus placeholder="ID">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="text" class="form__input" autofocus placeholder="e-mail">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" autofocus placeholder="Password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" autofocus placeholder="Confirm Password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+            <a class="form__link" href="./" id="linkLogin">계정이 있으신가요? Log in</a>
+        </p>
     </form>
 </div>
-<p/>
-<p/>-->
-<!--<a sec:authorize="isAuthenticated()" th:href="/">로그아웃</a>-->
-<!--<a sec:authorize="hasRole('ROLE_USER')" th:href="/mypage">내정보</a>-->
-<!--<a th:href="/">메인으로 이동</a>-->
-<script src="/front/js/home.js"></script>
+<script src="/front/js/login_ik.js"></script>
 </body>
-
-</html>
 
