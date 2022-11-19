@@ -20,59 +20,55 @@
 
     <div class="container_information">
         <div id="name">이름
-            <input type="text" id="input_name" placeholder="이름 수정">
+            <input type="text" class="input name" placeholder="이름 수정">
             <p id="info_name"></p>
         </div>
 
         <div id="pw">비밀번호 변경
-            <input type="password" id="input_now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
-            <button id="check_btn">확인</button>
+            <input type="password" class="input now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
+            <button class="check btn">확인</button>
             <div class="new&check">
-                <input class="input3" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
-                <input class="input2" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
+                <input class="input pw" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
+                <input class="input pw" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
             </div>
-            <p id="info_now_p/w"></p>
+            <p class="info now_p/w"></p>
         </div>
 
         <h3 id="email">이메일
-            <input type="email" id="input_email" placeholder="example@mmc.com">
-            <p id="info_email"></p>
+            <input type="email" class="input email" placeholder="example@mmc.com">
+            <p class="info email"></p>
         </h3>
 
         <h3 id="gender">성별
-            <input type="radio" id="gender_m" name="gender" value="man">
-            <label for="gender_m">남</label>
-            <input type="radio" id="gender_fm" name="gender" value="woman">
-            <label for="gender_fm">여</label>
-            <p id="info_gender"></p>
+            <input type="radio" class="radio gender man" name="gender" value="man">
+            <input type="radio" class="radio gender woman" name="gender" value="woman">
+            <p class="info gender"></p>
         </h3>
 
         <h3 id="height">키
-            <input type="number" id="input_height" placeholder="cm" min="{10}" max="{250}">
-            <p id="info_height"></p>
+            <input type="number" class="input height" placeholder="cm" min="{10}" max="{250}">
+            <p class="info height"></p>
         </h3>
 
         <h3 id="weight">몸무게
-            <input type="number" id="input_weight" placeholder="kg" min="{0}" max="{200}">
-            <p id="info_weight"></p>
+            <input type="number" class="input weight" placeholder="kg" min="{0}" max="{200}">
+            <p class="info weight"></p>
         </h3>
 
         <h3 id="allergy">알레르기
-            <input type="search" name="" id="search_allergy">
-            <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
+            <input type="search" name="" class="search allergy">
+            <p class="array allergy"></p>   <!-- 추후 디자인 수정 예정-->
         </h3>
 
         <h3 id="vegan">비건
-            <input type="radio" id="vegan_y" name="vegan_radio" value="vegan">
-            <label for="vegan_y">Yes</label>
-            <input type="radio" id="vegan_n" name="vegan_radio" value="non-vegan">
-            <label for="vegan_n">No</label>
-            <p id="info_vegan"></p>
+            <input type="radio" class="input vegan" name="vegan_radio" value="vegan">
+            <input type="radio" class="input vegan" name="vegan_radio" value="non-vegan">
+            <p class="info vegan"></p>
         </h3>
 
         <h3 id="calorie">희망칼로리
-            <input type="number" id="input_calorie" placeholder="kcal">
-            <p id="info_calorie"></p>
+            <input type="number" class="input calorie" placeholder="kcal">
+            <p class="info calorie"></p>
         </h3>
     </div>
 
