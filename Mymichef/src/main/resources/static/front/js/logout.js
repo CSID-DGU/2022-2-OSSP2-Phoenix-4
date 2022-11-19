@@ -27,8 +27,8 @@ const ModalWindow = {
 
     openModal(modalOptions = {}) {
         modalOptions = Object.assign({
-            title: 'Modal Title',
-            content: 'Modal Content'
+            title: '여기를 좀',
+            content: '지워줘ㅠㅜ'
         }, modalOptions);
 
         const modalTemplate = this.getHtmlTemplate(modalOptions);
