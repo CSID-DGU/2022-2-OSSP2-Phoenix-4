@@ -5,20 +5,23 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
-  background-color: rgba(255, 254, 180, 0.588);
+  background-color: lightgray;
 }
 
 label {
   all: unset;
   display: flex;
+  width: 100%;
   flex-direction: column;
-  width: 500px;
-  height: 100px;
-  align-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: black;
 }
 
 .input.login {
   all: unset;
+  width: 350px;
+  height: 20px;
   padding: 10px 0;
   border-radius: 10px;
   background-color: white;
