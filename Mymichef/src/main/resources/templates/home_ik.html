@@ -2,96 +2,50 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <title>home_인경</title>
   <meta name="description" content="" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/front/css/home_ik.css">
+  <title>My Mini Chef</title>
 
-  <link rel="stylesheet" href="/front/css/home_ik.css" />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@400&display=swap"
+  />
 
-  <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Gill Sans MT:wght@700&display=swap"
-  />
-  <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Rockwell:wght@400&display=swap"
-  />
-  <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@400;700&display=swap"
-  />
+</head>
 
 <body>
-<div class="home-div">
+<div class="div">
   <img class="kitchen-icon" alt="" src="kitchen.jpg" />
 
-  <button class="button">
-  <img
-          class="room-icon"
-          alt=""
-          src="public/room@2x.png"
-          id="roomImage"
-          data-animate-on-scroll
-  />
-  <b class="b1">마이페이지</b>
-  </button>
+  <div class="div1">
+    <img class="room-icon" alt="" src="room.jpg" />
+    <b class="b">마이페이지</b>
+  </div>
 
-  <button class="button1">
-    <img class="list-icon" alt="" src="list.jpg" />
-    <b class="b2">장보기 목록</b>
-  </button>
-
-  <button class="button2">
-    <img class="menu-icon" alt="" src="menu.jpg" />
-    <b class="b3">메뉴 추천받기</b>
-  </button>
-
-  <button class="button3">
-    <img
-          class="checkfood-icon"
-          alt=""
-          src="checkfood.jpg"
-          data-animate-on-scroll
-    />
-    <b class="b4">식단 확인하기</b>
-  </button>
-
-  <button class="button4">
+  <div class="div2">
     <img class="refrig-icon" alt="" src="refrig.jpg" />
-    <b class="b5">
-      <p class="p">식재료</p>
-      <p class="p">입력하기</p>
-    </b>
-  </button>
+    <b class="b1">식재료 입력</b>
+  </div>
+
+  <div class="div3">
+    <img class="room-icon" alt="" src="menu.jpg" />
+    <b class="b2">메뉴 추천</b>
+  </div>
+
+  <div class="div4">
+    <img class="room-icon" alt="" src="list.jpg" />
+    <b class="b3">장보기 목록</b>
+  </div>
+
+  <div class="div5">
+    <img class="checkfood-icon" alt="" src="checkfood.jpg" />
+    <b class="b4">식단 확인</b>
+  </div>
 </div>
 
-<script>
-      var roomImage = document.getElementById("roomImage");
-      if (roomImage) {
-        roomImage.addEventListener("click", function (e) {
-          window.location.href = "./my-page.html";
-        });
-      }
-      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
-      var observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting || entry.intersectionRatio > 0) {
-              const targetElement = entry.target;
-              targetElement.classList.add("animate");
-              observer.unobserve(targetElement);
-            }
-          }
-        },
-        {
-          threshold: 0.15,
-        }
-      );
-
-      for (let i = 0; i < scrollAnimElements.length; i++) {
-        observer.observe(scrollAnimElements[i]);
-      }
-      </script>
+<script></script>
 </body>
 </html>
 
