@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(new LoginFailHandler()) // 로그인 실패하면 생성되는 객체 handler 폴더에서 따로 관리
                 .and()
                 .logout()
-                .logoutSuccessUrl("/") // 로그아웃 시 페이지
+                .logoutSuccessUrl("/user/logout") // 로그아웃 시 페이지
                 .invalidateHttpSession(true)
         ;
     }

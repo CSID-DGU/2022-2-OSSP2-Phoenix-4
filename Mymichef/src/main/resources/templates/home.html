@@ -1,85 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
-    <style>
-        input:focus {
-            background-color: #ffeacf;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/mypage.css">
+    <link rel="stylesheet" href="/front/css/home.css">
     <title>My Mini Chef</title>
 </head>
 
 <body>
-<div class="container_main">
-    <div class="navigation"></div>
-
-    <div class="container_information">
-        <div id="name">이름
-            <input type="text" id="input_name" placeholder="이름 수정">
-            <p id="info_name"></p>
-        </div>
-
-        <div>
-            <div id="pw">비밀번호 변경
-                <input type="password" id="input_now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
-                <button id="check_btn">확인</button>
-                <div id="new&check">
-                    <input class="input2" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
-                    <input class="input3" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
-                </div>
-                <p id="info_now_p/w"></p>
-            </div>
-        </div>
-
-        <div id="email">이메일
-            <input type="email" id="input_email" placeholder="example@mmc.com">
-            <p id="info_email"></p>
-        </div>
-
-        <div id="gender">성별
-            <input type="radio" name="gender" value="man"> 남
-            <input type="radio" name="gender" value="woman"> 여
-            <p id="info_gender"></p>
-        </div>
-
-        <div id="height">키
-            <input type="number" id="input_height" placeholder="cm" min="{10}" max="{250}">
-            <p id="info_height"></p>
-        </div>
-
-        <div id="weight">몸무게
-            <input type="number" id="input_weight" placeholder="kg" min="{0}" max="{200}">
-            <p id="info_weight"></p>
-        </div>
-
-        <div id="allergy">알레르기
-            <input type="search" name="" id="search_allergy">
-            <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
-        </div>
-
-        <div id="vegan">비건
-            <input type="radio" name="vegan_radio" value="vegan"> Yes
-            <input type="radio" name="vegan_radio" value="non-vegan"> No
-            <p id="info_vegan"></p>
-        </div>
-
-        <div id="calorie">희망칼로리
-            <input type="number" id="input_calorie" placeholder="kcal">
-            <p id="info_calorie"></p>
-        </div>
-    </div>
-
-    <div>
-        <button id="edit_btn">수정</button>
-    </div>
+<p>
+    <!--    <span sec:authentication="name"></span>님 환영합니다~-->
+    <a sec:authorize="isAuthenticated()" sec:authentication="name"> </a>
+<p/>
+<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/userEntity/info}">마이페이지</a>
+<a sec:authorize="isAnonymous()" th:href="@{'/login'}" }>로그인으로 이동</a>
+<!--<p>
+&lt;!&ndash;    <span sec:authentication="name"></span>님 환영합니다~&ndash;&gt;
+<div sec:authorize ="isAnonymous()">
+    <p class="mb-5" data-aos="fade-right" data-aos-delay="100">당신의 식단을 어쩌구</p>
+    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="login" class="btn btn-outline-white">로그인</a></p>
+@ -25,12 +31,12 @@
+    <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><button type="submit" class="btn btn-outline-white">마이페이지</button></p>
+    </form>
 </div>
-
-<script src="../static/front/js/mypage.js"></script>
+<p/>
+<p/>-->
+<!--<a sec:authorize="isAuthenticated()" th:href="/">로그아웃</a>-->
+<!--<a sec:authorize="hasRole('ROLE_USER')" th:href="/mypage">내정보</a>-->
+<!--<a th:href="/">메인으로 이동</a>-->
+<script src="/front/js/home.js"></script>
 </body>
 
 </html>
