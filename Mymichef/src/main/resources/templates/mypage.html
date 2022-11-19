@@ -19,59 +19,61 @@
     <div class="navigation"></div>
 
     <div class="container_information">
-        <div id="name">이름
+        <h3 id="name">이름
             <input type="text" id="input_name" placeholder="이름 수정">
             <p id="info_name"></p>
-        </div>
+        </h3>
 
-        <div>
-            <div id="pw">비밀번호 변경
-                <input type="password" id="input_now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
-                <button id="check_btn">확인</button>
-                <div id="new&check">
-                    <input class="input2" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
-                    <input class="input3" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
-                </div>
-                <p id="info_now_p/w"></p>
+        <h3 id="pw">비밀번호 변경
+            <input type="password" id="input_now_p/w" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
+            <button id="check_btn">확인</button>
+            <div class="new&check">
+                <input class="input3" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
+                <input class="input2" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
             </div>
-        </div>
+            <p id="info_now_p/w"></p>
+        </h3>
 
-        <div id="email">이메일
+        <h3 id="email">이메일
             <input type="email" id="input_email" placeholder="example@mmc.com">
             <p id="info_email"></p>
-        </div>
+        </h3>
 
-        <div id="gender">성별
-            <input type="radio" name="gender" value="man"> 남
-            <input type="radio" name="gender" value="woman"> 여
+        <h3 id="gender">성별
+            <input type="radio" id="gender_m" name="gender" value="man">
+            <label for="gender_m">남</label>
+            <input type="radio" id="gender_fm" name="gender" value="woman">
+            <label for="gender_fm">여</label>
             <p id="info_gender"></p>
-        </div>
+        </h3>
 
-        <div id="height">키
+        <h3 id="height">키
             <input type="number" id="input_height" placeholder="cm" min="{10}" max="{250}">
             <p id="info_height"></p>
-        </div>
+        </h3>
 
-        <div id="weight">몸무게
+        <h3 id="weight">몸무게
             <input type="number" id="input_weight" placeholder="kg" min="{0}" max="{200}">
             <p id="info_weight"></p>
-        </div>
+        </h3>
 
-        <div id="allergy">알레르기
+        <h3 id="allergy">알레르기
             <input type="search" name="" id="search_allergy">
             <p id="info_allergy"></p>   <!-- 추후 디자인 수정 예정-->
-        </div>
+        </h3>
 
-        <div id="vegan">비건
-            <input type="radio" name="vegan_radio" value="vegan"> Yes
-            <input type="radio" name="vegan_radio" value="non-vegan"> No
+        <h3 id="vegan">비건
+            <input type="radio" id="vegan_y" name="vegan_radio" value="vegan">
+            <label for="vegan_y">Yes</label>
+            <input type="radio" id="vegan_n" name="vegan_radio" value="non-vegan">
+            <label for="vegan_n">No</label>
             <p id="info_vegan"></p>
-        </div>
+        </h3>
 
-        <div id="calorie">희망칼로리
+        <h3 id="calorie">희망칼로리
             <input type="number" id="input_calorie" placeholder="kcal">
             <p id="info_calorie"></p>
-        </div>
+        </h3>
     </div>
 
     <div>

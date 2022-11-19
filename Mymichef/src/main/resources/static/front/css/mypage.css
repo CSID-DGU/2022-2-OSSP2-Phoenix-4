@@ -11,62 +11,65 @@ body {
 
 }
 
+label{
+    font-size: 13px;
+}
+
 .container_main{
-position: relative;
-font-size:20px;
-top: 140px;
+    position: relative;
+    font-size:20px;
+    top: 140px;
 }
 
 #name{
-position: relative;
-right:40px;
+    position: relative;
+    right:30px;
 }
 
 #pw{
-position:relative;
-right:60px;
+    position:relative;
+    right:55px;
 }
-#new&check{         //이 아이는 위치수정을 어째야 좋을까요...? 위아래칸 맞추고싶은뎅...
-position:absolute;
-top:200px;
-left:270px;
+
+//이 아이는 위치수정을 어째야 좋을까요...? 위아래칸 맞추고싶은뎅...
+.new&check{
+    display: flex;
+    flex-direction: column;
 }
 
 #email{
-position: relative;
-right:50px;
+    position: relative;
+    right:40px;
 }
 
-#gender{            //젠더에 남 여 폰트크리 15px로 하고싶어요
-position: relative;
-right:70px;
+#gender{
+    position: relative;
+    right:70px;
 }
-
 
 #height{
-position: relative;
-right:30px;
+    position: relative;
+    right:20px;
 }
 
 #weight{
-position: relative;
-right: 50px;
+    position: relative;
+    right: 45px;
 }
 
 #allergy{
-position: relative;
-right: 60px;
+    position: relative;
+    right: 55px;
 }
 
-#vegan{                     //비건에 yes no도 15px 맞추고싶어요
-position: relative;
-right:70px;
+#vegan{
+    position: relative;
+    right:65px;
 }
-
 
 #calorie{
-position: relative;
-right: 70px;
+    position: relative;
+    right: 65px;
 }
 
 #edit_btn{
