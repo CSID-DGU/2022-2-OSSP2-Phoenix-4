@@ -14,45 +14,48 @@
 <!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
 
     <div class="main">
+        <h1 id="title">회원가입</h1>
 
         <p class="text name" id="name">이름</p>
         <label>
-            <input type="text" name="name">
+            <input type="text" name="name" placeholder="이름 입력">
         </label>
 
         <p class="text gender" id="gender">성별</p>
-        <label>
-            <input type="radio" name="gender" value="man">남
-            <input type="radio" name="gender" value="woman">여
-        </label>
+        <div id="radio">
+            <button class="btn gender" id="man" value="man">남</button>
+            <button class="btn gender" id="woman" value="woman">여</button>
+        </div>
 
         <p class="text id" id="id">아이디</p>
         <label>
-            <input type="text" name="id">
+            <input type="text" name="id" placeholder="ID 입력">
         </label>
 
         <p class="text password" id="password">비밀번호</p>
         <label>
-            <input type="password" name="pw">
+            <input type="password" name="pw" placeholder="password 입력">
         </label>
 
         <p class="text height" id="height">키</p>
         <label>
-            <input type="text" name="height">
+            <input type="text" name="height" placeholder="키 입력">
         </label>
 
-        <p class="weight" id="weight">몸무게</p>
+        <p class="text weight" id="weight">몸무게</p>
         <label>
-            <input type="text" name="weight">
+            <input type="text" name="weight" placeholder="몸무게 입력">
         </label>
 
-        <p class="text phone" id="phone">핸드폰(-없이 입력)</p>
+        <p class="text phone" id="phone">핸드폰번호</p>
         <label>
-            <input type="text" name="phone">
+            <input type="text" name="phone" placeholder="핸드폰 번호 입력">
         </label>
 
+        <div id="containerSubmit">
+            <button id="submit" type = "submit">가입하기</button>
+        </div>
     </div>
-    <button type = "submit">가입하기</button>
 </form>
 
     <script src="/front/js/membership.js"></script>

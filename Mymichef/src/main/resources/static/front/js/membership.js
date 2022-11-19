@@ -1,0 +1,5 @@
+const name  = document.getElementsByName("id")
+const man   = document.getElementById("man")
+const woman = document.getElementById("woman")
+const id    = document.getElementsByName("id")
+const pw    = document.getElementsByName("pw")
