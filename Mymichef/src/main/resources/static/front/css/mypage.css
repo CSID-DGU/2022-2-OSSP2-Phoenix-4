@@ -1,3 +1,5 @@
+@import "reset.css";
+
 html,
 body {
   height: 100%;
@@ -7,74 +9,90 @@ body {
   top: 50px;
 }
 
-.navigation{
-
+.container.information {
+  display: grid;
+  grid-template-columns: minmax(100px, auto) auto;
+  grid-template-rows: auto;
+  column-gap: 8px;
+  row-gap: 10px;
 }
 
-label{
-    font-size: 13px;
+.text {
+  grid-column: 1/2;
 }
 
-.container_main{
-    position: relative;
-    font-size:20px;
-    top: 140px;
+.input {
+  grid-column: 2/3;
 }
 
-#name{
-    position: relative;
-    right:30px;
-}
+/*.navigation{*/
 
-#pw{
-    position:relative;
-    right:55px;
-}
+/*}*/
 
-//이 아이는 위치수정을 어째야 좋을까요...? 위아래칸 맞추고싶은뎅...
-.new&check{
-    display: flex;
-    flex-direction: column;
-}
+/*label{*/
+/*    font-size: 13px;*/
+/*}*/
 
-#email{
-    position: relative;
-    right:40px;
-}
+/*.container_main{*/
+/*    position: relative;*/
+/*    font-size:20px;*/
+/*    top: 140px;*/
+/*}*/
 
-#gender{
-    position: relative;
-    right:70px;
-}
+/*#name{*/
+/*    position: relative;*/
+/*    right:30px;*/
+/*}*/
 
-#height{
-    position: relative;
-    right:20px;
-}
+/*#pw{*/
+/*    position:relative;*/
+/*    right:55px;*/
+/*}*/
 
-#weight{
-    position: relative;
-    right: 45px;
-}
+/*//이 아이는 위치수정을 어째야 좋을까요...? 위아래칸 맞추고싶은뎅...*/
+/*.new&check{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-#allergy{
-    position: relative;
-    right: 55px;
-}
+/*#email{*/
+/*    position: relative;*/
+/*    right:40px;*/
+/*}*/
 
-#vegan{
-    position: relative;
-    right:65px;
-}
+/*#gender{*/
+/*    position: relative;*/
+/*    right:70px;*/
+/*}*/
 
-#calorie{
-    position: relative;
-    right: 65px;
-}
+/*#height{*/
+/*    position: relative;*/
+/*    right:20px;*/
+/*}*/
 
-#edit_btn{
+/*#weight{*/
+/*    position: relative;*/
+/*    right: 45px;*/
+/*}*/
 
-}
+/*#allergy{*/
+/*    position: relative;*/
+/*    right: 55px;*/
+/*}*/
+
+/*#vegan{*/
+/*    position: relative;*/
+/*    right:65px;*/
+/*}*/
+
+/*#calorie{*/
+/*    position: relative;*/
+/*    right: 65px;*/
+/*}*/
+
+/*#edit_btn{*/
+
+/*}*/
 
 
 
