@@ -5,8 +5,17 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
-  background-color: rgba(255, 254, 180, 0.588);
+  background-color: lightgray;
   top: 50px;
+}
+
+label {
+  all: unset;
+  position: absolute;
+  background-color: white;
+  padding: 10px 0;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .container.information {
@@ -22,6 +31,7 @@ body {
 }
 
 .input {
+  all: unset;
   grid-column: 2/3;
 }
 
