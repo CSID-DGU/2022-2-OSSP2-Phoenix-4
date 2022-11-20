@@ -7,10 +7,10 @@ import phoenix.Mymichef.data.dto.UserDTO;
 
 @Controller
 public class HomeController {
-    @GetMapping(value = "/")
-    public String home(Model model){
-        return "home";
-    }
+//    @GetMapping(value = "/")
+//    public String home(Model model){
+//        return "login";
+//    }
 
     @GetMapping(value = "/home")
     public String hometohome(Model model){

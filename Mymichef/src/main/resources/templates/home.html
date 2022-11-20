@@ -14,9 +14,9 @@
     <!--    <span sec:authentication="name"></span>님 환영합니다~-->
     <a sec:authorize="isAuthenticated()" sec:authentication="name"> </a>
 <p/>
-<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
-<a sec:authorize="isAuthenticated()" th:href="@{/userEntity/info}">마이페이지</a>
-<a sec:authorize="isAnonymous()" th:href="@{'/login'}" }>로그인으로 이동</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/mypage}">마이페이지</a>
+<!--<a sec:authorize="isAnonymous()" th:href="@{'/login'}" }>로그인으로 이동</a>-->
 <!--<p>
 &lt;!&ndash;    <span sec:authentication="name"></span>님 환영합니다~&ndash;&gt;
 <div sec:authorize ="isAnonymous()">

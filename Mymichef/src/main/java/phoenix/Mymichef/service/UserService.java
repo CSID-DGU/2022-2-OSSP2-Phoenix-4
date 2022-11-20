@@ -11,6 +11,8 @@ import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.entity.UserEntity;
 import phoenix.Mymichef.data.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
@@ -19,13 +21,13 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
 
-   @Autowired
-   private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
-     *  회원가입 서비스
+     * 회원가입 서비스
      */
-    public void saveUser(UserDTO userDto)throws Exception {
+    public void saveUser(UserDTO userDto) throws Exception {
         UserEntity userEntity = userDto.toEntity(passwordEncoder);
         validateDuplicateUser(userEntity);
     }
@@ -42,9 +44,9 @@ public class UserService implements UserDetailsService {
     /**
      * 로그인 서비스
      */
-    public UserDTO loadUserByUsername(String id)throws UsernameNotFoundException{
+    public UserDTO loadUserByUsername(String id) throws UsernameNotFoundException {
         Optional<UserEntity> user = userRepository.findById(id);
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException("아이디와 비밀번호를 확인하세요.");
         }
         UserEntity userEntity = user.get();
@@ -53,4 +55,26 @@ public class UserService implements UserDetailsService {
 
         return new UserDTO(userEntity);
     }
+
+    /**
+     * 마이페이지 서비스
+     */
+
+public UserDTO findUser(String id){
+    Optional<UserEntity> findUser = userRepository.findById(id);
+    UserEntity userEntity = findUser.get();
+    UserDTO userDTO = UserDTO.builder()
+            .id(userEntity.getId())
+            .pw(userEntity.getPw())
+            .height(userEntity.getHeight())
+            .weight(userEntity.getWeight())
+            .gender(userEntity.getGender())
+            .name(userEntity.getName())
+            .phone(userEntity.getPhone())
+            .build();
+    return userDTO;
+
+}
+
+
 }

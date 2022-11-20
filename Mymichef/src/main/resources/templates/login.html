@@ -37,6 +37,10 @@
                     <input type="checkbox" name="remember?" value="save" checked="checked" />로그인 기억
                 </div>
             </div>
+            </form>
+            <div th:if="${param.error}">
+                <p th:text="${exception}" class="alert alert-danger"></p>
+            </div>
             <div class="container_text">
                 <div class="container_membership">
                     <a href="/join" class="join_membership">회원가입</a>

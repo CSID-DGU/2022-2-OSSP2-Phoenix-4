@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @AllArgsConstructor
 public class LoginController {
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login(@RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "exception", required = false)String exception,
                         Model model){
