@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/user_input.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/front/css/user_input.css" />
     <title>My Mini Chef</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="container_navigation">
-            <button>식재료 입력</button>
-            <button>식재료 확인</button>
-            <button>메뉴추천</button>
-            <button>My Mini Chef</button>
-            <button>장바구니</button>
-            <button>마이페이지</button>
-        </div>
+      <div class="container_navigation">
+        <!--네비게이션 바-->
+      </div>
 
-        <div class="container_">
-            <button id="breakfast">아침</button>
-            <button id="lunch">점심</button>
-            <button id="dinner">저녁</button>
-        </div>
+      <div class="container_">
+        <button id="breakfast">아침</button>
+        <button id="lunch">점심</button>
+        <button id="dinner">저녁</button>
+      </div>
 
-        <div class="container_period">
-            <p>기간: </p>
-            <input type="date" id="start">
-            ~
-            <input type="date" id="end">
-        </div>
+      <div class="container_period">
+        <p>기간:</p>
+        <input type="date" id="start" />
+        ~
+        <input type="date" id="end" />
+      </div>
 
-        <div class="container_recommend">
-            <p>추천순: </p>
-            <input type="button" id="recommend_ingredient" disabled="disabled" value="재료 적은 순">
-            <input type="button" id="recommend_expirationDate" disabled="disabled" value="유통기한 임박 순">
-        </div>
+      <div class="container_recommend">
+        <p>추천순:</p>
+        <input
+          type="button"
+          id="recommend_ingredient"
+          disabled="disabled"
+          value="재료 적은 순"
+        />
+        <input
+          type="button"
+          id="recommend_expirationDate"
+          disabled="disabled"
+          value="유통기한 임박 순"
+        />
+      </div>
 
-        <div class="container_essential">
-            <p>필수: </p>
-        </div>
+      <div class="container_essential">
+        <p>필수:</p>
+      </div>
 
-        <div class="container_submit">
-            <button id="submit">추천받기</button>
-        </div>
+      <div class="container_submit">
+        <button id="submit">추천받기</button>
+      </div>
     </div>
 
     <script src="/front/js/user_input.js"></script>
-</body>
-
+  </body>
 </html>
