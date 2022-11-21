@@ -15,36 +15,47 @@
 </head>
 
 <body>
-<img class ="main_img" src="/front/jpg/kitchen.png" />
+
 <div class="icon_boxes">
 
   <a class="icon_box_1" href="/"> <!-- 링크 삽입 PLZ -->
     <img class="refrig-icon" alt="" src="/front/jpg/refrig.jpg" />
-    <b class="b1">식재료 입력</b>
   </a>
 
   <a class="icon_box_2" href="/"> <!-- 링크 삽입 PLZ -->
     <img class="menu-icon" alt="" src="/front/jpg/menu.jpg" />
-    <b class="b2">메뉴 추천</b>
   </a>
 
   <a class="icon_box_3" href="/"> <!-- 링크 삽입 PLZ -->
-    <img class="memo-icon" alt="" src="/front/jpg/list.jpg" />
-    <b class="b3">장보기 목록</b>
+    <img class="memo-icon" alt="" src="/front/jpg/list.png" />
   </a>
 
   <a class="icon_box_4" href="/"> <!-- 링크 삽입 PLZ -->
-    <img class="checkfood-icon" alt="" src="/front/jpg/checkfood.jpg" />
-    <b class="b4">식단 확인</b>
+    <img class="checkfood-icon" alt="" src="/front/jpg/checkfood.png" />
   </a>
 
   <a class="icon_box_5" href="/"> <!-- 링크 삽입 PLZ -->
-    <img class="mypage-icon" alt="" src="/front/jpg/room.jpg" />
-    <b class="b5">마이페이지</b>
+    <img class="mypage-icon" alt="" src="/front/jpg/room.png" />
   </a>
 
 </div>
+<div class="container">
+  <button id="logout" class="logout">Log Out</button>
+  <div id="popup">
+    <div class="ma">
+      <button id="close" class="close"><i class="fas fa-times"></i></button>
+      <svg width="92" height="82" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M27.3333 54.6667V41C27.3333 37.3754 28.7731 33.8992 31.3361 31.3362C33.8991 28.7732 37.3753 27.3333 40.9999 27.3333C44.6245 27.3333 48.1007 28.7732 50.6637 31.3362C53.2267 33.8992 54.6666 37.3754 54.6666 41V54.6667" fill="#FF7474"/>
+        <path d="M62.8667 19.1333L60.475 21.525M10.25 41H13.6667H10.25ZM41 10.25V13.6667V10.25ZM68.3333 41H71.75H68.3333ZM19.1333 19.1333L21.525 21.525L19.1333 19.1333Z" stroke="#FFCC81" stroke-width="5.125" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M58.0833 54.6667H23.9167C22.0297 54.6667 20.5 56.1964 20.5 58.0833V64.9167C20.5 66.8036 22.0297 68.3333 23.9167 68.3333H58.0833C59.9703 68.3333 61.5 66.8036 61.5 64.9167V58.0833C61.5 56.1964 59.9703 54.6667 58.0833 54.6667Z" fill="#C6E0FF"/>
+      </svg>
+      <p>로그아웃 하시겠습니까?</p>
+      <button class="logout_y" id="logout_y">예</button>
+      <button class="logout_n" id="logout_n">아니오</button>
+    </div>
+  </div>
+</div>
 
-<script></script>
+<script src="/front/js/init_ik.js"></script>
 </body>
 </html>
