@@ -28,11 +28,6 @@ public class LoginController {
 
         return "login";
     }
-    @GetMapping("/user/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "logout";
-    }
 
     //아이디 찾기
     @PostMapping(value = "/find_id")
