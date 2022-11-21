@@ -6,10 +6,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.service.UserService;
 
@@ -18,8 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/")
 public class LoginController {
-    @GetMapping("/")
+
+    private UserService userService;
+    @GetMapping("")
     public String login(@RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "exception", required = false)String exception,
                         Model model){
@@ -32,5 +32,14 @@ public class LoginController {
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return "logout";
+    }
+
+    //아이디 찾기
+    @PostMapping(value = "/find_id")
+    @ResponseBody
+    public String find_id(Model model, String name) {
+        String result = userService.findId(name);
+        model.addAttribute("result", result);
+        return "findId";
     }
 }

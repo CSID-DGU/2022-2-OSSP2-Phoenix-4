@@ -2,7 +2,6 @@ package phoenix.Mymichef.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,8 +10,7 @@ import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.entity.UserEntity;
 import phoenix.Mymichef.data.repository.UserRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
@@ -74,6 +72,17 @@ public UserDTO findUser(String id){
             .build();
     return userDTO;
 
+}
+
+/**
+ *  아이디, 비밀번호 찾기 서비스
+ */
+public String findId(String name){
+Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByName(name));
+UserDTO findUser = UserDTO.builder()
+        .id(String.valueOf(findId.get()))
+        .build();
+return findUser.toString();
 }
 
 
