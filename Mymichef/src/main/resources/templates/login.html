@@ -1,60 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
-
-<head>
-    <style>
-        input:focus {
-            background-color: rgb(230, 255, 227);
-        }
-    </style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/login.css">
-    <title>My Mini Chef</title>
-</head>
-
-<body>
-    <div class="container_main">
-
-        <h1>"당신만을 위한, 가장 건강한 끼니"</h1>
-        <img src="/front/jpg/logo.jpg">
-
-        <div class="container_user">
-            <div class="container_login">
-                <form action="/login" method="post" class="container_input">
-                    <input type="hidden" th:name="${id}" th:value="${password}" />
-
-                    <label>
-                        <input type="text" name="username" class="input login" placeholder="아이디를 입력해주세요">
-                        <input type="password" name="password" class="input login" placeholder="패스워드를 입력해주세요">
-                    </label>
-                    <div class="container_login_btn">
-                        <button type="submit">로그인</button>
-                    </div>
-                </form>
-                <div class="save_check">
-                    <input type="checkbox" name="remember?" value="save" checked="checked" />로그인 기억
-                </div>
-            </div>
-            </form>
-            <div th:if="${param.error}">
-                <p th:text="${exception}" class="alert alert-danger"></p>
-            </div>
-            <div class="container_text">
-                <div class="container_membership">
-                    <a href="/join" class="join_membership">회원가입</a>
-                </div>
-                <p class="find_text">
-                    <a href="/find_id" class="find_id">아이디</a>
-                    또는
-                    <a href="" class="find_password">패스워드</a>
-                    찾기
-                </p>
-            </div>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Login / Sign Up Form</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/front/css/login_ik.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=HelveticaNeue-Medium:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=HelveticaNeue:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Helvetica Neue:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="login-ik-div">
+      <div class="div">
+        <!-- 주황 배경 묶음 -->
+        <div class="div1">
+          <p class="p">당신만을 위한</p>
+          <p class="p">가장 건강한 끼니</p>
         </div>
+      </div>
+      <img class="logo-icon" alt="" src="/front/jpg/logo!.png" />
     </div>
-    <script src="/front/js/login.js"></script>
-</body>
-
+    <div sec:authorize="isAnonymous()" class="container">
+      <form action="/login" method="post" class="container_input">
+        <h1 class="form__title">Login</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input
+            type="text"
+            name="username"
+            class="form__input"
+            autofocus
+            placeholder="ID"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input
+            type="password"
+            name="password"
+            class="form__input"
+            autofocus
+            placeholder="Password"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+          <a href="#" class="form__link">비밀번호 찾기</a>
+        </p>
+        <p class="form__text">
+          <a class="form__link" href="./" id="linkCreateAccount"
+            >계정이 없으신가요? 회원가입하기</a
+          >
+        </p>
+      </form>
+      <form class="form form--hidden" id="createAccount">
+        <h1 class="form__title">회원 가입</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input
+            type="text"
+            id="signupUsername"
+            class="form__input"
+            autofocus
+            placeholder="ID"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input
+            type="text"
+            class="form__input"
+            autofocus
+            placeholder="e-mail"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input
+            type="password"
+            class="form__input"
+            autofocus
+            placeholder="Password"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input
+            type="password"
+            class="form__input"
+            autofocus
+            placeholder="Confirm Password"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+          <a class="form__link" href="./" id="linkLogin"
+            >계정이 있으신가요? Log in</a
+          >
+        </p>
+      </form>
+    </div>
+    <p>
+      <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}"
+        >로그아웃</a
+      >
+      <a sec:authorize="isAuthenticated()" th:href="@{/userEntity/info}"
+        >마이페이지</a
+      >
+    </p>
+    <script src="/front/js/login_ik.js"></script>
+  </body>
 </html>
