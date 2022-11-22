@@ -3,39 +3,24 @@
 html {
   background-color: #e4e4e4;
 }
-
-.container-main {
+body {
   display: flex;
   flex-direction: column;
 }
-
 .home {
   height: 5%;
   background-color: #ffc90d;
 }
-
-.container-navigation {
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-}
 .navigation {
-  border-left-color: dimgray;
 }
 
-.container-information {
+.container.information {
   display: grid;
   grid-template-columns: 11.2rem auto;
   grid-template-rows: auto;
   padding: 3.5rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-  margin-top: 5%;
 }
 
 .text {
-  grid-column: 1/2;
-}
-
-.info {
-  grid-column: 2/3;
 }
