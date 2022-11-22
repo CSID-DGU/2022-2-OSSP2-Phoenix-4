@@ -64,7 +64,7 @@ body {
 
 .div1 {
   margin-top: 25rem;
-  margin-left: 0rem;
+  margin-left: 0;
 }
 
 .login-ik-div {
@@ -87,7 +87,7 @@ body {
   border-radius: var(--border-radius);
   background: #ffffff;
   position: absolute;
-  right:5%;
+  right: 5%;
 }
 
 .container,

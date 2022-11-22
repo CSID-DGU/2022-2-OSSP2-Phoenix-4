@@ -1,88 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <style>
-        input:focus {
-            background-color: #ffeacf;
-        }
+      input:focus {
+        background-color: #ffeacf;
+      }
     </style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/mypage.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/front/css/mypage.css" />
     <title>My Mini Chef</title>
-</head>
+  </head>
 
-<body>
-<div class="container main">
-    <div class="navigation"></div>
-
-    <div class="container information">
-        <p class="text name">이름</p>
-        <label>
-            <input type="text" class="input name" th:value="${UserDTO?.name}" placeholder="이름 수정">
-        </label>
-        <p id="info name"></p>
-
-        <p class="text pw">비밀번호</p>
-        <label>
-            <input type="password" class="input now_p/w" th:value="${UserDTO?.pw}" placeholder="현재 비밀번호" maxlength="{12}" minlength="{4}"/>
-        </label>
-        <button class="check btn">확인</button>
-        <div class="new&check">
-            <label for="input_new_p/w"></label><input class="input pw" type="password" id="input_new_p/w" placeholder="바꿀 비밀번호" maxlength="{12}" minlength="{4}"/>
-            <label for="input_again_p/w"></label><input class="input pw" type="password" id="input_again_p/w" placeholder="비밀번호 재입력 " maxlength="{12}" minlength="{4}"/>
+  <body>
+    <div class="container-main">
+      <img
+        src="../static/front/jpg/logo!.png"
+        alt="home img"
+        class="home"
+        id="home"
+      />
+      <div class="container-navigation">
+        <div class="navigation">
+          <p>식재료입력</p>
         </div>
-        <p class="info now_p/w"></p>
+        <div class="navigation">
+          <p>메뉴추천</p>
+        </div>
+        <div class="navigation">
+          <p>직거래장터</p>
+        </div>
+        <div class="navigation">
+          <p>마이페이지</p>
+        </div>
+      </div>
+
+      <div class="container-information">
+        <p class="text name">이름</p>
+        <p class="info name" id="info name"></p>
+
+        <!--        <p class="text pw">비밀번호</p>-->
+        <!--        <label>-->
+        <!--          <input-->
+        <!--            type="password"-->
+        <!--            class="input now_p/w"-->
+        <!--            th:value="${UserDTO?.pw}"-->
+        <!--            placeholder="현재 비밀번호"-->
+        <!--            maxlength="{12}"-->
+        <!--            minlength="{4}"-->
+        <!--          />-->
+        <!--        </label>-->
+        <!--        <button class="check btn">확인</button>-->
+        <!--        <div class="new&check">-->
+        <!--          <label for="input_new_p/w"></label-->
+        <!--          ><input-->
+        <!--            class="input pw"-->
+        <!--            type="password"-->
+        <!--            id="input_new_p/w"-->
+        <!--            placeholder="바꿀 비밀번호"-->
+        <!--            maxlength="{12}"-->
+        <!--            minlength="{4}"-->
+        <!--          />-->
+        <!--          <label for="input_again_p/w"></label-->
+        <!--          ><input-->
+        <!--            class="input pw"-->
+        <!--            type="password"-->
+        <!--            id="input_again_p/w"-->
+        <!--            placeholder="비밀번호 재입력 "-->
+        <!--            maxlength="{12}"-->
+        <!--            minlength="{4}"-->
+        <!--          />-->
+        <!--        </div>-->
+        <!--        <p class="info now_p/w"></p>-->
 
         <p class="text gender">성별</p>
-        <label>
-            <input type="radio" class="radio gender man" name="gender" value="man">
-            <input type="radio" class="radio gender woman" name="gender" value="woman">
-        </label>
         <p class="info gender"></p>
 
         <p class="text height">키</p>
-        <label>
-            <input type="number" class="input height" th:value="${UserDTO?.height}"placeholder="cm" min="{10}" max="{250}">
-        </label>
+
         <p class="info height"></p>
 
         <p class="text weight">몸무게</p>
-        <label>
-            <input type="number" class="input weight" th:value="${UserDTO?.weight}" placeholder="kg" min="{0}" max="{200}">
-        </label>
         <p class="info weight"></p>
 
         <p class="text allergy">알레르기</p>
-        <label>
-            <input type="search" name="" class="search allergy">
-        </label>
-        <p class="array allergy"></p>   <!-- 추후 디자인 수정 예정-->
+        <p class="array allergy"></p>
+        <!-- 추후 디자인 수정 예정-->
 
         <p class="text vegan">비건</p>
-        <label>
-            <input type="radio" class="input vegan" name="vegan_radio" value="vegan">
-            <input type="radio" class="input vegan" name="vegan_radio" value="non-vegan">
-        </label>
-            <p class="info vegan"></p>
+        <p class="info vegan"></p>
 
         <p class="text calorie">희망 칼로리</p>
-        <label>
-            <input type="number" class="input calorie" placeholder="kcal">
-        </label>
         <p class="info calorie"></p>
-    </div>
+      </div>
 
-    <div>
+      <div>
         <button id="edit_btn">수정</button>
+      </div>
     </div>
 
-</div>
-
-<script src="../static/front/js/mypage.js"></script>
-</body>
-
+    <script src="../static/front/js/mypage.js"></script>
+  </body>
 </html>
-
