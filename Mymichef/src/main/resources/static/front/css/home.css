@@ -218,6 +218,7 @@ body {
 .exit {
   animation: exit 0.7s ease-out forwards;
 }
+
 @keyframes enter {
   0% {
     transform: translate(-50%, -50%), scale(0.5);
