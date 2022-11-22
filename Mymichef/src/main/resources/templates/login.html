@@ -6,22 +6,6 @@
     <title>Login / Sign Up Form</title>
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="stylesheet" href="/front/css/login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=HelveticaNeue-Medium:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=HelveticaNeue:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Helvetica Neue:wght@400&display=swap"
-    />
   </head>
   <body>
     <div class="login-ik-div">
@@ -59,15 +43,85 @@
           <div class="form__input-error-message"></div>
         </div>
         <button class="form__button" type="submit">Continue</button>
+
         <p class="form__text">
-          <a href="#" class="form__link">비밀번호 찾기</a>
+          <a class="form__link" href="###" id="linkFindID">아이디 찾기</a>
         </p>
         <p class="form__text">
-          <a class="form__link" href="./" id="linkCreateAccount"
-            >계정이 없으신가요? 회원가입하기</a
+          <a class="form__link" href="###" id="linkFindPassword">비밀번호 찾기</a>
+        </p>
+        <p class="form__text">
+          <a class="form__link" href="###" id="linkCreateAccount">계정이 없으신가요? 회원가입하기</a>
+        </p>
+      </form>
+
+      <form class="form form--hidden" id="findID">
+        <h1 class="form__title">아이디 찾기</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input
+                  type="text"
+                  id="findid_name"
+                  class="form__input"
+                  autofocus
+                  placeholder="이름"
+          />
+        </div>
+        <div class="form__input-group">
+          <input
+                  type="text"
+                  class="form__input"
+                  autofocus
+                  placeholder="e-mail"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+          <a class="form__link" href="./" id="id_linkLogin"
+          >아이디를 찾으셨나요? Log in</a
           >
         </p>
       </form>
+
+      <form class="form form--hidden" id="findPassword">
+        <h1 class="form__title">비밀번호 찾기</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input
+                  type="text"
+                  id="findpw_name"
+                  class="form__input"
+                  autofocus
+                  placeholder="이름"
+          />
+        </div>
+        <div class="form__input-group">
+          <input
+                  type="text"
+                  id="findpw_id"
+                  class="form__input"
+                  autofocus
+                  placeholder="ID"
+          />
+        </div>
+        <div class="form__input-group">
+          <input
+                  type="text"
+                  class="form__input"
+                  autofocus
+                  placeholder="e-mail"
+          />
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+          <a class="form__link" href="./" id="pw_linkLogin"
+          >비밀번호를 찾으셨나요? Log in</a
+          >
+        </p>
+      </form>
+
       <form class="form form--hidden" id="createAccount">
         <h1 class="form__title">회원 가입</h1>
         <div class="form__message form__message--error"></div>

@@ -25,21 +25,47 @@ function clearInputError(inputElement) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
-  const createAccountForm = document.querySelector("#createAccount");
-
+  const findIDForm = document.querySelector("#findID");
   document
-    .querySelector("#linkCreateAccount")
-    .addEventListener("click", (e) => {
+        .querySelector("#linkFindID")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          loginForm.classList.add("form--hidden");
+          findIDForm.classList.remove("form--hidden");
+        });
+  document.querySelector("#id_linkLogin").addEventListener("click", (e) => {
       e.preventDefault();
-      loginForm.classList.add("form--hidden");
-      createAccountForm.classList.remove("form--hidden");
+      loginForm.classList.remove("form--hidden");
+      findIDForm.classList.add("form--hidden");
     });
 
+  const findPasswordForm = document.querySelector("#findPassword");
+  document
+      .querySelector("#linkFindPassword")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        findPasswordForm.classList.remove("form--hidden");
+      });
+  document.querySelector("#pw_linkLogin").addEventListener("click", (e) => {
+      e.preventDefault();
+      loginForm.classList.remove("form--hidden");
+      findPasswordForm.classList.add("form--hidden");
+    });
+
+  const createAccountForm = document.querySelector("#createAccount");
+  document
+      .querySelector("#linkCreateAccount")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.remove("form--hidden");
+      });
   document.querySelector("#linkLogin").addEventListener("click", (e) => {
-    e.preventDefault();
-    loginForm.classList.remove("form--hidden");
-    createAccountForm.classList.add("form--hidden");
-  });
+      e.preventDefault();
+      loginForm.classList.remove("form--hidden");
+      createAccountForm.classList.add("form--hidden");
+    });
 
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
