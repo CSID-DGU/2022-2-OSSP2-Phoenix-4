@@ -68,3 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function joinMembership() {
+  const userList = [];
+  const userData = {};
+
+  userData.name = document.getElementById("signupUsername");
+  userData.email = document.getElementById("signupUserEmail");
+  userData.password = document.getElementById("password");
+
+  userList.push(userData);
+}
