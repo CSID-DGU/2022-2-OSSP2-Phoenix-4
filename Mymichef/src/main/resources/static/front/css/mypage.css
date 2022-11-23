@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "font.css";
 
 html {
   background-color: #e4e4e4;
@@ -25,11 +26,13 @@ html {
 
 .container-information {
   display: grid;
+  max-width: 50rem;
   grid-template-columns: 11.2rem auto;
   grid-template-rows: auto;
   padding: 3.5rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   margin-top: 5%;
+  font-family: var(--font-helvetica-neue);
 }
 
 .text {

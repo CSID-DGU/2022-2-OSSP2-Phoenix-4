@@ -1,0 +1,12 @@
+:root {
+  /* fonts */
+  --font-helvetica-neue: "Helvetica Neue";
+  --font-helveticaneue: HelveticaNeue;
+  --font-segoe-ui: "Segoe UI";
+
+  /* font sizes */
+  --font-size-base: 20px;
+  --font-size-lg: 23px;
+  --font-size-xl: 25px;
+  --font-size-2xl: 30px;
+}
