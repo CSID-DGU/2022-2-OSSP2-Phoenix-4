@@ -14,91 +14,213 @@
   </head>
 
   <body>
-    <div class="container-main">
-      <img
-        src="../static/front/jpg/logo!.png"
-        alt="home img"
-        class="home"
-        id="home"
-      />
-      <div class="container-navigation">
-        <div class="navigation">
-          <p>식재료입력</p>
+    <div class="admin-panel clearfix">
+      <div class="slidebar">
+        <div class="logo">
+          <a href=""></a>
         </div>
-        <div class="navigation">
-          <p>메뉴추천</p>
-        </div>
-        <div class="navigation">
-          <p>직거래장터</p>
-        </div>
-        <div class="navigation">
-          <p>마이페이지</p>
-        </div>
+        <ul>
+          <li><a href="#dashboard" id="targeted">dashboard</a></li>
+          <li><a href="#posts">posts</a></li>
+          <li><a href="#media">media</a></li>
+          <li><a href="#pages">pages</a></li>
+          <li><a href="#links">links</a></li>
+          <li><a href="#comments">comments</a></li>
+          <li><a href="#widgets">widgets</a></li>
+          <li><a href="#plugins">plugins</a></li>
+          <li><a href="#users">users</a></li>
+          <li><a href="#tools">tools</a></li>
+          <li><a href="#settings">settings</a></li>
+        </ul>
       </div>
-
-      <div class="container-information">
-        <p class="text name">이름</p>
-        <p class="info name" id="info name"></p>
-
-        <!--        <p class="text pw">비밀번호</p>-->
-        <!--        <label>-->
-        <!--          <input-->
-        <!--            type="password"-->
-        <!--            class="input now_p/w"-->
-        <!--            th:value="${UserDTO?.pw}"-->
-        <!--            placeholder="현재 비밀번호"-->
-        <!--            maxlength="{12}"-->
-        <!--            minlength="{4}"-->
-        <!--          />-->
-        <!--        </label>-->
-        <!--        <button class="check btn">확인</button>-->
-        <!--        <div class="new&check">-->
-        <!--          <label for="input_new_p/w"></label-->
-        <!--          ><input-->
-        <!--            class="input pw"-->
-        <!--            type="password"-->
-        <!--            id="input_new_p/w"-->
-        <!--            placeholder="바꿀 비밀번호"-->
-        <!--            maxlength="{12}"-->
-        <!--            minlength="{4}"-->
-        <!--          />-->
-        <!--          <label for="input_again_p/w"></label-->
-        <!--          ><input-->
-        <!--            class="input pw"-->
-        <!--            type="password"-->
-        <!--            id="input_again_p/w"-->
-        <!--            placeholder="비밀번호 재입력 "-->
-        <!--            maxlength="{12}"-->
-        <!--            minlength="{4}"-->
-        <!--          />-->
-        <!--        </div>-->
-        <!--        <p class="info now_p/w"></p>-->
-
-        <p class="text gender">성별</p>
-        <p class="info gender"></p>
-
-        <p class="text height">키</p>
-
-        <p class="info height"></p>
-
-        <p class="text weight">몸무게</p>
-        <p class="info weight"></p>
-
-        <p class="text allergy">알레르기</p>
-        <p class="array allergy"></p>
-        <!-- 추후 디자인 수정 예정-->
-
-        <p class="text vegan">비건</p>
-        <p class="info vegan"></p>
-
-        <p class="text calorie">희망 칼로리</p>
-        <p class="info calorie"></p>
-      </div>
-
-      <div>
-        <button id="edit_btn">수정</button>
+      <div class="main">
+        <ul class="topbar clearfix">
+          <li><a href="#">q</a></li>
+          <li><a href="#">p</a></li>
+          <li><a href="#">o</a></li>
+          <li><a href="#">f</a></li>
+          <li><a href="#">n</a></li>
+        </ul>
+        <div class="mainContent clearfix">
+          <div id="dashboard">
+            <h2 class="header"><span class="icon"></span>Dashboard</h2>
+            <div class="monitor">
+              <h4>Right Now</h4>
+              <div class="clearfix">
+                <ul class="content">
+                  <li>content</li>
+                  <li class="posts">
+                    <span class="count">179</span><a href="">posts</a>
+                  </li>
+                  <li class="pages">
+                    <span class="count">13</span><a href="">pages</a>
+                  </li>
+                  <li class="categories">
+                    <span class="count">21</span><a href="">categories</a>
+                  </li>
+                  <li class="tags">
+                    <span class="count">305</span><a href="">tags</a>
+                  </li>
+                </ul>
+                <ul class="discussions">
+                  <li>discussions</li>
+                  <li class="comments">
+                    <span class="count">353</span><a href="">comments</a>
+                  </li>
+                  <li class="approved">
+                    <span class="count">319</span><a href="">approved</a>
+                  </li>
+                  <li class="pending">
+                    <span class="count">0</span><a href="">pending</a>
+                  </li>
+                  <li class="spam">
+                    <span class="count">34</span><a href="">spam</a>
+                  </li>
+                </ul>
+              </div>
+              <p>
+                Theme <a href="">Twenty Eleven</a> with <a href="">3 widgets</a>
+              </p>
+            </div>
+            <div class="quick-press">
+              <h4>Quick Press</h4>
+              <form action="" method="post">
+                <input type="text" name="title" placeholder="Title" />
+                <input type="text" name="content" placeholder="Content" />
+                <input type="text" name="tags" placeholder="Tags" />
+                <button type="button" class="save">l</button>
+                <button type="button" class="delet">m</button>
+                <button type="submit" class="submit" name="submit">
+                  Publish
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id="posts">
+            <h2 class="header">posts</h2>
+          </div>
+          <div id="media">
+            <h2 class="header">media</h2>
+          </div>
+          <div id="pages">
+            <h2 class="header">pages</h2>
+          </div>
+          <div id="links">
+            <h2 class="header">links</h2>
+          </div>
+          <div id="comments">
+            <h2 class="header">comments</h2>
+          </div>
+          <div id="widgets">
+            <h2 class="header">widgets</h2>
+          </div>
+          <div id="plugins">
+            <h2 class="header">plugins</h2>
+          </div>
+          <div id="users">
+            <h2 class="header">users</h2>
+          </div>
+          <div id="tools">
+            <h2 class="header">tools</h2>
+          </div>
+          <div id="settings">
+            <h2 class="header">settings</h2>
+          </div>
+        </div>
+        <ul class="statusbar">
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+          <li class="profiles-setting"><a href="">s</a></li>
+          <li class="logout"><a href="">k</a></li>
+        </ul>
       </div>
     </div>
+
+    <!--    <div class="container-main">-->
+    <!--      <img-->
+    <!--        src="../static/front/jpg/logo!.png"-->
+    <!--        alt="home img"-->
+    <!--        class="home"-->
+    <!--        id="home"-->
+    <!--      />-->
+    <!--      <div class="container-navigation">-->
+    <!--        <div class="navigation">-->
+    <!--          <p>식재료입력</p>-->
+    <!--        </div>-->
+    <!--        <div class="navigation">-->
+    <!--          <p>메뉴추천</p>-->
+    <!--        </div>-->
+    <!--        <div class="navigation">-->
+    <!--          <p>직거래장터</p>-->
+    <!--        </div>-->
+    <!--        <div class="navigation">-->
+    <!--          <p>마이페이지</p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+
+    <!--      <div class="container-information">-->
+    <!--        <p class="text name">이름</p>-->
+    <!--        <p class="info name" id="info name"></p>-->
+
+    <!--        &lt;!&ndash;        <p class="text pw">비밀번호</p>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <label>&ndash;&gt;-->
+    <!--        &lt;!&ndash;          <input&ndash;&gt;-->
+    <!--        &lt;!&ndash;            type="password"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            class="input now_p/w"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            th:value="${UserDTO?.pw}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            placeholder="현재 비밀번호"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            maxlength="{12}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            minlength="{4}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;          />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        </label>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <button class="check btn">확인</button>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <div class="new&check">&ndash;&gt;-->
+    <!--        &lt;!&ndash;          <label for="input_new_p/w"></label&ndash;&gt;-->
+    <!--        &lt;!&ndash;          ><input&ndash;&gt;-->
+    <!--        &lt;!&ndash;            class="input pw"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            type="password"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            id="input_new_p/w"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            placeholder="바꿀 비밀번호"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            maxlength="{12}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            minlength="{4}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;          />&ndash;&gt;-->
+    <!--        &lt;!&ndash;          <label for="input_again_p/w"></label&ndash;&gt;-->
+    <!--        &lt;!&ndash;          ><input&ndash;&gt;-->
+    <!--        &lt;!&ndash;            class="input pw"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            type="password"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            id="input_again_p/w"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            placeholder="비밀번호 재입력 "&ndash;&gt;-->
+    <!--        &lt;!&ndash;            maxlength="{12}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            minlength="{4}"&ndash;&gt;-->
+    <!--        &lt;!&ndash;          />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <p class="info now_p/w"></p>&ndash;&gt;-->
+
+    <!--        <p class="text gender">성별</p>-->
+    <!--        <p class="info gender"></p>-->
+
+    <!--        <p class="text height">키</p>-->
+
+    <!--        <p class="info height"></p>-->
+
+    <!--        <p class="text weight">몸무게</p>-->
+    <!--        <p class="info weight"></p>-->
+
+    <!--        <p class="text allergy">알레르기</p>-->
+    <!--        <p class="array allergy"></p>-->
+    <!--        &lt;!&ndash; 추후 디자인 수정 예정&ndash;&gt;-->
+
+    <!--        <p class="text vegan">비건</p>-->
+    <!--        <p class="info vegan"></p>-->
+
+    <!--        <p class="text calorie">희망 칼로리</p>-->
+    <!--        <p class="info calorie"></p>-->
+    <!--      </div>-->
+
+    <!--      <div>-->
+    <!--        <button id="edit_btn">수정</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <script src="../static/front/js/mypage.js"></script>
   </body>
