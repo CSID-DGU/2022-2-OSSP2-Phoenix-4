@@ -111,9 +111,12 @@ function joinMembership() {
   const userList = [];
   const userData = {};
 
-  userData.name = document.getElementById("signupUsername");
-  userData.email = document.getElementById("signupUserEmail");
-  userData.password = document.getElementById("password");
+  userData.name = document.getElementById("signupUsername").value;
+  userData.email = document.getElementById("signupEmail").value;
+  userData.password = document.getElementById("signupPassword").value;
+  userData.confirmPassword = document.getElementById(
+    "signupConfirmPassword"
+  ).value;
   if (userData.name !== "") {
     if (userData.email !== "") {
       if (userData.password !== "") {
@@ -126,14 +129,20 @@ function joinMembership() {
       console.log();
     }
   }
+
+  console.log(userList);
 }
 
 function onSubmitClick() {
-  const userID = document.getElementById("username");
-  const userPassword = document.getElementById("password");
+  const userID = document.getElementById("signupUsername");
+  const submitEmail = document.getElementById("signupEmail");
+  const submitPassword = document.getElementById("signupPassword");
+  const submitConfirmPassword = document.getElementById(
+    "signupConfirmPassword"
+  );
 
   console.log(userID.value, userPassword.value);
 }
 
 const submitBtn = document.getElementById("submitBtn");
-submitBtn.addEventListener("click", onSubmitClick);
+submitBtn.addEventListener("click", joinMembership);

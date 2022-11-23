@@ -32,13 +32,13 @@ const state = {
   todayYear,
 };
 const daysStr = {
-  0: "Sun",
-  1: "Mon",
-  2: "Tue",
-  3: "Wed",
-  4: "Thu",
-  5: "Fri",
-  6: "Sat",
+  0: "일요일",
+  1: "월요일",
+  2: "화요일",
+  3: "수요일",
+  4: "목요일",
+  5: "금요일",
+  6: "토요일",
 };
 const daysIndex = {
   Sun: 0,
@@ -222,8 +222,8 @@ currentDayDOM.innerHTML = daysStr[todayDay];
 currentDateDOM.innerHTML = todayDate;
 currentMonthDOM.innerHTML = monthsStr[state.todayMonth];
 currentYearDOM.innerHTML = todayYear;
-var currentFullYear = analyizYear(state.todayYear);
-var currentFullMonth = currentFullYear.months[monthsStr[state.todayMonth]];
+let currentFullYear = analyizYear(state.todayYear);
+let currentFullMonth = currentFullYear.months[monthsStr[state.todayMonth]];
 
 //run App
 showCalenderInfo();
@@ -458,7 +458,7 @@ function printMonthCalendarInDOM() {
 
 function nextMonth() {
   state.todayMonth += 1;
-  if (state.todayMonth == 12) {
+  if (state.todayMonth === 12) {
     state.todayYear += 1;
     currentFullYear = analyizYear(state.todayYear);
     state.todayMonth = 0;
@@ -469,7 +469,7 @@ function nextMonth() {
 
 function prevMonth() {
   state.todayMonth -= 1;
-  if (state.todayMonth == 0) {
+  if (state.todayMonth === 0) {
     state.todayYear -= 1;
     currentFullYear = analyizYear(state.todayYear);
     state.todayMonth = 11;
@@ -563,7 +563,7 @@ function seletectChosenColor() {
   for (let i = 0; i < colorsOptions.length; i++) {
     const currentChild = colorsOptions[i].firstElementChild;
 
-    if (currentColor.name == currentChild.id) {
+    if (currentColor.name === currentChild.id) {
       currentChild.innerHTML = "<i class='fas fa-check checkmark'></i>";
     } else {
       currentChild.innerHTML = "";
@@ -590,22 +590,22 @@ document.body.addEventListener("click", (e) => {
   let noteId;
   let note;
   let verbWord;
-  if (e.target.parentElement.parentElement.id == "table-body") {
+  if (e.target.parentElement.parentElement.id === "table-body") {
     if (e.target.classList.contains("tooltip-container")) {
       verbWord = "Edit";
       // deleteBtnInPopup.style.display = "display";
       noteId = e.target.id;
       console.log("noteId:", noteId);
-      if (noteId == "current-day") {
+      if (noteId === "current-day") {
         noteDate =
           state.todayYear +
           " " +
           (state.todayMonth + 1) +
           " " +
           state.todayDate;
-        note = notes.filter((n) => n.date == noteDate);
+        note = notes.filter((n) => n.date === noteDate);
       } else {
-        note = notes.filter((n) => n.id == noteId);
+        note = notes.filter((n) => n.id === noteId);
       }
       console.log("note:", note);
       noteDate = note[0].date;
@@ -615,7 +615,7 @@ document.body.addEventListener("click", (e) => {
     } else if (e.target.classList.contains("currMonth")) {
       noteId = e.target.id;
       noteDate = e.target.innerHTML;
-      if (noteId == "current-day") {
+      if (noteId === "current-day") {
         noteDate = state.todayDate;
       }
       console.log("Add New Note");
@@ -643,12 +643,12 @@ document.body.addEventListener("click", (e) => {
 
     console.log("edit note (sticky)");
     noteId = e.target.parentElement.parentElement.id;
-    if (noteId == "current-day") {
+    if (noteId === "current-day") {
       noteDate =
         state.todayYear + " " + (state.todayMonth + 1) + " " + state.todayDate;
-      note = notes.filter((n) => n.date == noteDate);
+      note = notes.filter((n) => n.date === noteDate);
     } else {
-      note = notes.filter((n) => n.id == noteId);
+      note = notes.filter((n) => n.id === noteId);
     }
     // note = notes.filter(n => n.id == noteId);
     noteDate = note[0].date;
@@ -683,7 +683,7 @@ saveBtnInPopup.addEventListener("click", () => {
     (currentFullMonth.month_idx + 1) +
     " " +
     getSelectedNoteDay;
-  let oldNote = notes.filter((note) => note.date == noteDate)[0];
+  let oldNote = notes.filter((note) => note.date === noteDate)[0];
   if (oldNote) {
     notes = notes.filter((note) => oldNote.id !== note.id);
   }
@@ -713,7 +713,7 @@ saveBtnInPopup.addEventListener("click", () => {
 
 // delete note
 deleteBtnInPopup.addEventListener("click", () => {
-  if (getSelectedNoteId == "current-day") {
+  if (getSelectedNoteId === "current-day") {
     noteDate =
       state.todayYear + " " + (state.todayMonth + 1) + " " + state.todayDate;
     notes = notes.filter((note) => note.date !== noteDate);
@@ -770,7 +770,7 @@ document
   );
 
 //to stop the calculating time if it is on orientation mode
-var mql = window.matchMedia("(orientation: portrait)");
+const mql = window.matchMedia("(orientation: portrait)");
 //if the user launched this app while on portrait mode
 if (!mql.matches) {
   makeClockTikTok();
