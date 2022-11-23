@@ -12,6 +12,6 @@ public class ShoppingController {
 
     @GetMapping(value = "/home/shopping")
     public String shopping(Model model){
-        return "shopping";
+        return "shopping_ik";
     }
 }

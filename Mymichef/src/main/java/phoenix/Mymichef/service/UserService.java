@@ -58,32 +58,33 @@ public class UserService implements UserDetailsService {
      * 마이페이지 서비스
      */
 
-public UserDTO findUser(String id){
-    Optional<UserEntity> findUser = userRepository.findById(id);
-    UserEntity userEntity = findUser.get();
-    UserDTO userDTO = UserDTO.builder()
-            .id(userEntity.getId())
-            .pw(userEntity.getPw())
-            .height(userEntity.getHeight())
-            .weight(userEntity.getWeight())
-            .gender(userEntity.getGender())
-            .name(userEntity.getName())
-            .phone(userEntity.getPhone())
-            .build();
-    return userDTO;
+    public UserDTO findUser(String id) {
+        Optional<UserEntity> findUser = userRepository.findById(id);
+        UserEntity userEntity = findUser.get();
+        UserDTO userDTO = UserDTO.builder()
+                .id(userEntity.getId())
+                .pw(userEntity.getPw())
+                .height(userEntity.getHeight())
+                .weight(userEntity.getWeight())
+                .gender(userEntity.getGender())
+                .name(userEntity.getName())
+                .phone(userEntity.getPhone())
+                .build();
+        return userDTO;
+
+    }
+
+    /**
+     * 아이디, 비밀번호 찾기 서비스
+     */
+    public String findId(String name) {
+        Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByName(name));
+        UserDTO findUser = UserDTO.builder()
+                .id(String.valueOf(findId.get()))
+                .build();
+        return findUser.toString();
+    }
+
 
 }
 
-/**
- *  아이디, 비밀번호 찾기 서비스
- */
-public String findId(String name){
-Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByName(name));
-UserDTO findUser = UserDTO.builder()
-        .id(String.valueOf(findId.get()))
-        .build();
-return findUser.toString();
-}
-
-
-}
