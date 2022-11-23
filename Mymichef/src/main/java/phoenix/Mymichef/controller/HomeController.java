@@ -22,7 +22,7 @@ public class HomeController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "login";
+        return "redirect:/";
     }
 
 }
