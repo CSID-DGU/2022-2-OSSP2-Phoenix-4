@@ -15,101 +15,110 @@
 
   <body>
     <div class="container">
-      <h1>마이페이지</h1>
-      <hr>
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-3">
-          <div class="text-center">
-            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-            <h6>프로필 업데이트</h6>
 
-            <input type="file" class="form-control">
-          </div>
+      <h1 class="title">마이페이지</h1>
+
+      <div class="grid">
+        <div class="form-group name-group">
+          <label for="name">이름</label>
+          <input id="name" type="text" placeholder="홍길동">
         </div>
 
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-          <div class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a>
-            <i class="fa fa-coffee"></i>
-            정보를 수정하여 <strong>맞춤형 식단</strong>을 추천받아보세요!
-          </div>
-          <h3>정보 수정</h3>
+        <div class="form-group email-group">
+          <label for="email">Email</label>
+          <input id="email" type="text" placeholder="example@mmc.com">
+        </div>
 
-          <form class="form-horizontal" role="form">
-            <div class="form-group">
-              <label class="col-lg-3 control-label">이름</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="홍길동">
-              </div>
+        <div class="form-group phone-group">
+          <label for="phone">전화번호</label>
+          <input id="phone" type="text" placeholder="010-1234-1234">
+        </div>
+
+        <div class="form-group height-group">
+          <label for="first-name">키</label>
+          <input id="first-name" type="number" placeholder="cm">
+        </div>
+
+        <div class="form-group weight-group">
+          <label for="weight">몸무게</label>
+          <input id="weight" type="number" placeholder="kg">
+        </div>
+
+        <div class="form-group cal-group">
+          <label for="cal">희망 칼로리</label>
+          <input id="cal" type="number" placeholder="kcal">
+        </div>
+
+        <div class="form-group pw-group">
+          <label for="password">비밀번호</label>
+          <input id="password" type="password" placeholder="1234">
+        </div>
+        <div class="form-group pwch-group">
+          <label for="c_password">비밀번호 확인</label>
+          <input id="c_password" type="password" placeholder="비밀번호 확인">
+        </div>
+
+        <div class="form-group">
+          <div>
+            <label for="allergy1">알레르기1</label>
+            <label for="allergy2">알레르기2</label>
+          </div>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="allergy1" class="form-control">
+                <option value="없음" selected="selected">없음</option>
+                <option value="메밀">메밀</option>
+                <option value="밀">밀</option>
+                <option value="대두">대두</option>
+                <option value="땅콩">땅콩</option>
+                <option value="견과">견과</option>
+                <option value="아황산류">아황산류</option>
+                <option value="복숭아">복숭아</option>
+                <option value="토마토">토마토</option>
+                <option value="난류">난류</option>
+                <option value="유제품">유제품</option>
+                <option value="새우">새우</option>
+                <option value="고등어">고등어</option>
+                <option value="오징어">오징어</option>
+                <option value="갑각류">갑각류</option>
+                <option value="조개류">조개류</option>
+                <option value="돼지고기">돼지고기</option>
+                <option value="쇠고기">쇠고기</option>
+                <option value="닭고기">닭고기</option>
+              </select>
+              <select id="allergy2" class="form-control">
+                <option value="없음" selected="selected">없음</option>
+                <option value="메밀">메밀</option>
+                <option value="밀">밀</option>
+                <option value="대두">대두</option>
+                <option value="땅콩">땅콩</option>
+                <option value="견과">견과</option>
+                <option value="아황산류">아황산류</option>
+                <option value="복숭아">복숭아</option>
+                <option value="토마토">토마토</option>
+                <option value="난류">난류</option>
+                <option value="유제품">유제품</option>
+                <option value="새우">새우</option>
+                <option value="고등어">고등어</option>
+                <option value="오징어">오징어</option>
+                <option value="갑각류">갑각류</option>
+                <option value="조개류">조개류</option>
+                <option value="돼지고기">돼지고기</option>
+                <option value="쇠고기">쇠고기</option>
+                <option value="닭고기">닭고기</option>
+              </select>
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">키:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="number" value="cm">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">몸무게:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="number" value="kg">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Email:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="janesemail@gmail.com">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Time Zone:</label>
-              <div class="col-lg-8">
-                <div class="ui-select">
-                  <select id="user_time_zone" class="form-control">
-                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                    <option value="Alaska">(GMT-09:00) Alaska</option>
-                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                    <option value="Arizona">(GMT-07:00) Arizona</option>
-                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Username:</label>
-              <div class="col-md-8">
-                <input class="form-control" type="text" value="janeuser">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Password:</label>
-              <div class="col-md-8">
-                <input class="form-control" type="password" value="11111122333">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Confirm password:</label>
-              <div class="col-md-8">
-                <input class="form-control" type="password" value="11111122333">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label"></label>
-              <div class="col-md-8">
-                <input type="button" class="btn btn-primary" value="Save Changes">
-                <span></span>
-                <input type="reset" class="btn btn-default" value="Cancel">
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
+
+      <div class="button-container">
+        <button class="button">수정</button>
+        <!-- 수정누르면 데이터 업데이트, 화면은 그대로. -->
+        <input type="reset" class="btn btn-default" value="취소">
+        <!-- 취소누르면 홈으로 되돌아가는 링크 삽입 PLZ -->
+      </div>
     </div>
-    <hr>
     <script src="../static/front/js/mypage.js"></script>
   </body>
 </html>

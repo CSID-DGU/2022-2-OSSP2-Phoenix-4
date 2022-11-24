@@ -1,27 +1,146 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
-
-.body {
-// custom fonts, etcetera can go here
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+body {
+	box-sizing: border-box;
+	background: #f2f2f2;
+	font-family: "Roboto", sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.jumbotron-flat {
-  background-color: solid #4DB8FFF;
-  height: 100%;
-  border: 1px solid #4DB8FF;
-  background: white;
-  width: 100%;
-  text-align: center;
-  overflow: auto;
-}
-
-.paymentAmt {
-    font-size: 80px;
-}
-
-.centered {
-    text-align: center;
+.container {
+	background: #fff;
+	width: 100%;
+	height: 90%;
+	padding: 1rem;
 }
 
 .title {
- padding-top: 15px;
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #374151;
+	padding-bottom: 11px;
+	border-bottom: 1px solid #d7dbdf;
+}
+
+.form-group {
+	margin-top: 25px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	color: #374151;
+	font-size: 16px;
+	line-height: 19px;
+	margin-bottom: 10px;
+}
+
+.form-group [type] {
+	border: 1px solid #d2d6db;
+	border-radius: 6px;
+	padding: 15px;
+}
+.form-group [type]:hover {
+	border-color: #a8afb9;
+}
+.form-group [type]:focus {
+	border-color: #5850eb;
+}
+
+.btn,
+.button {
+	font-weight: bold;
+	line-height: 19px;
+	background: #5850eb;
+	border: none;
+	padding: 15px 25px;
+	border-radius: 6px;
+	color: white;
+	width: 100%;
+	margin-top: 24px;
+}
+.btn,
+.button:hover {
+	background: #6e67ee;
+}
+.btn,
+.button:focus {
+	background: #4239e8;
+}
+
+@media screen and (min-width: 768px) {
+	body {
+		align-items: center;
+		justify-content: center;
+	}
+
+	.container {
+		margin: 2rem;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+		border-radius: 4px;
+		max-width: 32rem;
+		padding: 2rem;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.container {
+		max-width: 80%;
+		width: 100%;
+	}
+
+	.grid {
+		display: grid;
+		grid-gap: 24px;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-auto-rows: 1fr;
+	}
+
+	.email-group {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.phone-group {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.height-group {
+		grid-column: 1;
+		grid-row: span 2;
+	}
+
+    .weight-group{
+        grid-column: 2;
+    	grid-row: span 2;
+    }
+
+    .cal-group{
+        grid-column: 3;
+        grid-row: span 2;
+    }
+
+    .pw-group{
+        grid-column: 1;
+        grid-row: span 3;
+    }
+
+    .pwch-group{
+        grid-column: 2;
+        grid-row: span 3;
+    }
+
+	.button-container {
+		text-align: right;
+	}
+
+    .btn,
+	.button {
+		/* bon, bon, bon
+		c'est pas tout mais j'ai faim moi ^^
+		*/
+		width: auto;
+	}
 }
