@@ -21,7 +21,7 @@ function createNoteElement(id, content) {
 
   element.classList.add("note");
   element.value = content;
-  element.placeholder = "Empty Sticky Note";
+  element.placeholder = "내용을 추가하세요";
 
   element.addEventListener("change", () => {
     updateNote(id, element.value);
@@ -29,7 +29,7 @@ function createNoteElement(id, content) {
 
   element.addEventListener("dblclick", () => {
     const doDelete = confirm(
-      "Are you sure you wish to delete this sticky note?"
+      "삭제하시겠습니까??"
     );
 
     if (doDelete) {

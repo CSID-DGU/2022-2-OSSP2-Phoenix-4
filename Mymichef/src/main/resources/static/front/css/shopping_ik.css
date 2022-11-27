@@ -3,6 +3,14 @@ body {
   background: #009578;
 }
 
+#info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align: center;
+}
+
+
 #app {
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
