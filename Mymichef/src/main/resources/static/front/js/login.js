@@ -39,7 +39,7 @@ function clearInputError(inputElement) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("#login");
+  const loginForm = document.getElementById("#login");
   const findIDForm = document.querySelector("#findID");
   document.querySelector("#linkFindID").addEventListener("click", (e) => {
     e.preventDefault();
@@ -106,11 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/////////////////////////////////////////////////////////////////////////////////////
+//대체 여기는 뭐가 어떻게 돌아가는거며
 // 회원가입 시 json 형식 데이터 생성
 function joinMembership() {
   const userList = [];
   const userData = {};
 
+/////////////////////////////////////////////////////////////////////////////////////
+//여기에 signupUserEmail이니 password는 왜 요렇게 바뀌어있을까?
+//그리고 userList.push(userData)는? 뭐 이유야 있겠다만 난 암것두 몰라유ㅠ 다른점만 설명한겨
   userData.name = document.getElementById("signupUsername").value;
   userData.email = document.getElementById("signupEmail").value;
   userData.password = document.getElementById("signupPassword").value;
