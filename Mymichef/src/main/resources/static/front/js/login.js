@@ -81,6 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
   loginForm.addEventListener("submit", (e) => {
     // e.preventDefault();
 
+    // 아래 두 함수는 콘솔창에 입력된 id, password 출력하도록 만든 것
+    // 두 값을 이용해서 로그인 기능 만들 수 있음
+    // console.log(e.target[0].value); // 입력된 id 값
+    // console.log(e.target[1].value); // 입력된 password 값
+
     // Perform your AJAX/Fetch login
 
     setFormMessage(loginForm, "error", "Invalid username/password combination");
