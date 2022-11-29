@@ -120,3 +120,7 @@ body {
 .sec_cal .cal_wrap .day.disable {
   color: #ddd;
 }
+
+#popup {
+  margin-top: 30px;
+}

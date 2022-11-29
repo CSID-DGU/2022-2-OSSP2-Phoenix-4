@@ -1,18 +1,3 @@
-// 로그인 input
-const id = document.getElementById("id");
-const password = document.getElementById("password");
-
-// 아이디 찾기 input
-const findIdName = document.getElementById("find_id_name");
-const findIdEmail = document.getElementById("find_id_email");
-
-// 비밀번호 찾기 input
-const findPwName = document.getElementById("find_pw_name");
-const findPwId = document.getElementById("find_pw_id");
-const findPwEmail = document.getElementById("find_pw_email");
-
-// 회원가입 input
-
 function setFormMessage(formElement, type, message) {
   const messageElement = formElement.querySelector(".form__message");
 
@@ -41,30 +26,33 @@ function clearInputError(inputElement) {
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
   const findIDForm = document.querySelector("#findID");
+  const findPasswordForm = document.querySelector("#findPassword");
+  const createAccountForm = document.querySelector("#createAccount");
+
   document.querySelector("#linkFindID").addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.classList.add("form--hidden");
     findIDForm.classList.remove("form--hidden");
   });
+
   document.querySelector("#id_linkLogin").addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.classList.remove("form--hidden");
     findIDForm.classList.add("form--hidden");
   });
 
-  const findPasswordForm = document.querySelector("#findPassword");
   document.querySelector("#linkFindPassword").addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.classList.add("form--hidden");
     findPasswordForm.classList.remove("form--hidden");
   });
+
   document.querySelector("#pw_linkLogin").addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.classList.remove("form--hidden");
     findPasswordForm.classList.add("form--hidden");
   });
 
-  const createAccountForm = document.querySelector("#createAccount");
   document
     .querySelector("#linkCreateAccount")
     .addEventListener("click", (e) => {
@@ -72,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loginForm.classList.add("form--hidden");
       createAccountForm.classList.remove("form--hidden");
     });
+
   document.querySelector("#linkLogin").addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.classList.remove("form--hidden");
@@ -79,14 +68,140 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   loginForm.addEventListener("submit", (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
-    // 아래 두 함수는 콘솔창에 입력된 id, password 출력하도록 만든 것
-    // 두 값을 이용해서 로그인 기능 만들 수 있음
-    // console.log(e.target[0].value); // 입력된 id 값
-    // console.log(e.target[1].value); // 입력된 password 값
+    // 데이터 담을 리스트
+    const data = {};
 
-    // Perform your AJAX/Fetch login
+    // // 데이터 형식
+    // data = {
+    //   user_id: "",
+    //   email: "",
+    //   password: "",
+    //   name: "",
+    //   phoneNumber: 0,
+    //   height: 0,
+    //   weight: 0,
+    //   allergy: 0,
+    //   gender: "",
+    // };
+
+    // 로그인 폼
+    if (e.target.id === "login") {
+      const inputId = e.target[0].value;
+      const inputPw = e.target[1].value;
+
+      if (inputId !== "" && inputPw !== "") {
+        data.user_id = inputId;
+        data.password = inputPw;
+
+        $.ajax({
+          url: "localhost8080/join",
+          type: "POST",
+          dataType: "json",
+          data: data,
+
+          success: function (response) {
+            console.log("로그인 post success");
+            console.log(response);
+          },
+          error: function (error) {
+            console.log("로그인 post error");
+            console.log(error);
+          },
+        });
+      }
+    }
+
+    // 아이디 찾기 폼
+    if (e.target.id === "findID") {
+      const inputName = e.target[0].value;
+      const inputEmail = e.target[1].value;
+
+      if (inputName !== "" && inputEmail !== "") {
+        data.findIDName = inputName;
+        data.findIDEmail = inputEmail;
+
+        $.ajax({
+          url: "localhost8080/join",
+          type: "POST",
+          dataType: "json",
+          data: data,
+
+          success: function (response) {
+            console.log("아이디 찾기 get success");
+            console.log(response);
+          },
+          error: function (error) {
+            console.log("아이디 찾기 get error");
+            console.log(error);
+          },
+        });
+      }
+    }
+    // 비밀번호 찾기 폼
+    if (e.target.id === "findPassword") {
+      const inputName = e.target[0].value;
+      const inputID = e.target[1].value;
+      const inputEmail = e.target[2].value;
+      if (inputName !== "" && inputID !== "" && inputEmail !== "") {
+        data.findPasswordName = inputName;
+        data.findPasswordID = inputID;
+        data.findPasswordEmail = inputEmail;
+
+        $.ajax({
+          url: "localhost8080/join",
+          type: "POST",
+          dataType: "json",
+          data: data,
+
+          success: function (response) {
+            console.log("비밀번호 찾기 post success");
+            console.log(response);
+          },
+          error: function (error) {
+            console.log("비밀번호 찾기 post error");
+            console.log(error);
+          },
+        });
+      }
+    }
+
+    // 회원가입 폼
+    if (e.target.id === "createAccount") {
+      const inputID = e.target[0].value;
+      const inputEmail = e.target[1].value;
+      const inputPw = e.target[2].value;
+      const inputConfirmPw = e.target[3].value;
+
+      if (
+        inputID !== "" &&
+        inputEmail !== "" &&
+        inputPw !== "" &&
+        inputPw === inputConfirmPw
+      ) {
+        // 데이터 생성
+        data.user_id = inputID;
+        data.email = inputEmail;
+        data.password = inputPw;
+
+        $.ajax({
+          type: "POST",
+          url: "localhost8080/join",
+          data: data,
+          dataType: "json",
+          success: function (response) {
+            console.log("회원가입 post success");
+            console.log(response);
+            console.log(data);
+          },
+          error: function (error) {
+            console.log("회원가입 post error");
+            console.log(error);
+          },
+        });
+      }
+    }
 
     setFormMessage(loginForm, "error", "Invalid username/password combination");
   });
@@ -110,51 +225,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-/////////////////////////////////////////////////////////////////////////////////////
-//대체 여기는 뭐가 어떻게 돌아가는거며
-// 회원가입 시 json 형식 데이터 생성
-function joinMembership() {
-  const userList = [];
-  const userData = {};
-
-  /////////////////////////////////////////////////////////////////////////////////////
-  //여기에 signupUserEmail이니 password는 왜 요렇게 바뀌어있을까?
-  //그리고 userList.push(userData)는? 뭐 이유야 있겠다만 난 암것두 몰라유ㅠ 다른점만 설명한겨
-  userData.name = document.getElementById("signupUsername").value;
-  userData.email = document.getElementById("signupEmail").value;
-  userData.password = document.getElementById("signupPassword").value;
-  userData.confirmPassword = document.getElementById(
-    "signupConfirmPassword"
-  ).value;
-  if (userData.name !== "") {
-    if (userData.email !== "") {
-      if (userData.password !== "") {
-        userList.push(userData);
-        console.log("userdata 생성 완료");
-      } else {
-        console.log("password error");
-      }
-    } else {
-      console.log();
-    }
-  }
-
-  console.log(userList);
-}
-
-function onSubmitClick() {
-  const userID = document.getElementById("signupUsername");
-  const submitEmail = document.getElementById("signupEmail");
-  const submitPassword = document.getElementById("signupPassword");
-  const submitConfirmPassword = document.getElementById(
-    "signupConfirmPassword"
-  );
-
-  console.log(userID.value, userPassword.value);
-}
-
-console.log();
-//
-// const submitBtn = document.getElementById("submitBtn");
-// submitBtn.addEventListener("click", joinMembership);
