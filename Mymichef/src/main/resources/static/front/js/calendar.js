@@ -1,3 +1,5 @@
+import menuData from "../json/menu.json" assert { type: "json" };
+
 $(document).ready(function () {
   calendarInit();
 });
@@ -95,11 +97,47 @@ function calendarInit() {
     renderCalender(thisMonth);
   });
 
-  const days = Array.from(document.getElementsByClassName("current"));
+  const days = Array.from(document.getElementsByClassName("day"));
+
+  let popup = document.getElementById("popup");
+  popup.innerHTML = "";
 
   // 날짜 클릭
   function onDayClick(event) {
-    console.log(event.target.textContent);
+    console.log(currentYear, currentMonth, Number(event.target.textContent));
+    console.log(
+      menuData.length,
+      menuData[0].year,
+      menuData[0].month,
+      menuData[0].day,
+      menuData[0].foods,
+      menuData[0].recipe
+    );
+
+    for (let index = 0; index < menuData.length; index++) {
+      console.log("find correct");
+      if (menuData[index].year === currentYear) {
+        console.log("year correct");
+        if (menuData[index].month === currentMonth + 1) {
+          console.log("month correct");
+          if (menuData[index].day === Number(event.target.textContent)) {
+            console.log("date correct");
+
+            const yearMonth =
+              "<h1>" + currentYear + "-" + (currentMonth + 1) + "</h1>";
+            const foods = menuData[index].foods;
+            const recipe = "<p>" + menuData[index].recipe + "</p>";
+            let food = "";
+            for (let i = 0; i < foods.length; i++) {
+              food = food + "<a>" + foods[i] + "</a>";
+            }
+            console.log(yearMonth + food + recipe);
+
+            popup.innerHTML = yearMonth + food + recipe;
+          }
+        }
+      }
+    }
   }
   days.forEach((day) => day.addEventListener("click", onDayClick));
 }
