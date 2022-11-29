@@ -20,49 +20,59 @@ import java.util.Collection;
 public class UserDTO implements UserDetails {
 
 
+    private String userId;
+
+    private String password;
+
+    private String email;
     private String name;
 
+    private String phoneNumber;
     private String gender;
 
-    private String id;
-    private String pw;
+    private String allergy;
     private Long height;
     private Long weight;
-    private String phone;
+
+
 
     private UserEntity SecurityUserEntity;
     public UserDTO(UserEntity SecurityUserEntity){
+
         this.SecurityUserEntity = SecurityUserEntity;
     }
     public UserEntity toEntity(PasswordEncoder passwordEncoder){
         return UserEntity.builder()
+                .userId(userId)
+                .email(email)
+                .password(passwordEncoder.encode(password))
                 .name(name)
-                .gender(gender)
-                .id(id)
-                .pw(passwordEncoder.encode(pw))
+                .phoneNumber(phoneNumber)
                 .height(height)
                 .weight(weight)
-                .phone(phone)
+                .allergy(allergy)
+                .gender(gender)
                 .build();
     }
+
 
     //임의로 rhwo84라는 아이디 아니면 모두 User 권한 주도록 설정.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();
         Role role;
-        if("rhwo84".equals(SecurityUserEntity.getId())){role = Role.ROLE_ADMIN;}
+        if("rhwo84".equals(SecurityUserEntity.getUserId())){role = Role.ROLE_ADMIN;}
         else {role=Role.ROLE_USER;}
         collection.add(new SimpleGrantedAuthority(role.getValue()));
         return collection;
     }
 
     @Override
-    public String getPassword(){ return SecurityUserEntity.getPw(); }
+    public String getPassword(){ return SecurityUserEntity.getPassword(); }
 
     @Override
     public String getUsername() {
-        return SecurityUserEntity.getId();
+        return SecurityUserEntity.getName();
     }
 
     @Override

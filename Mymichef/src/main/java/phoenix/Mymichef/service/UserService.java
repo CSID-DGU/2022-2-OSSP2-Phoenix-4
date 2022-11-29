@@ -1,23 +1,22 @@
 package phoenix.Mymichef.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.UserDTO;
+import phoenix.Mymichef.data.entity.JoinEntity;
 import phoenix.Mymichef.data.entity.UserEntity;
+import phoenix.Mymichef.data.repository.JoinRepository;
 import phoenix.Mymichef.data.repository.UserRepository;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,13 +30,14 @@ public class UserService implements UserDetailsService {
     }
 
     private void validateDuplicateUser(UserEntity userEntity) throws Exception {
-        Optional<UserEntity> findUser = userRepository.findById(userEntity.getId());
+        Optional<UserEntity> findUser = userRepository.findById(userEntity.getUserId());
         findUser.ifPresent(m -> {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         });
         userRepository.save(userEntity);
         throw new Exception("회원가입에 성공했습니다!");
     }
+
 
     /**
      * 로그인 서비스
@@ -62,13 +62,15 @@ public class UserService implements UserDetailsService {
         Optional<UserEntity> findUser = userRepository.findById(id);
         UserEntity userEntity = findUser.get();
         UserDTO userDTO = UserDTO.builder()
-                .id(userEntity.getId())
-                .pw(userEntity.getPw())
+                .userId(userEntity.getUserId())
+                .email(userEntity.getEmail())
+                .password(userEntity.getPassword())
                 .height(userEntity.getHeight())
                 .weight(userEntity.getWeight())
                 .gender(userEntity.getGender())
                 .name(userEntity.getName())
-                .phone(userEntity.getPhone())
+                .allergy(userEntity.getAllergy())
+                .phoneNumber(userEntity.getPhoneNumber())
                 .build();
         return userDTO;
 
@@ -79,10 +81,11 @@ public class UserService implements UserDetailsService {
      */
     public String findId(String name) {
         Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByName(name));
-        UserDTO findUser = UserDTO.builder()
-                .id(String.valueOf(findId.get()))
-                .build();
-        return findUser.toString();
+        if(findId.isPresent()){
+            return findId.get().getUserId();
+        }else{
+            return "아이디와 비밀번호를 확인하세요";
+        }
     }
 
 

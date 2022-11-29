@@ -1,8 +1,6 @@
 package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.util.Map;
 
-@Controller
+@RestController
 @AllArgsConstructor
 @RequestMapping("/")
 public class LoginController {
@@ -29,12 +27,16 @@ public class LoginController {
         return "login";
     }
 
-    //아이디 찾기
-    @PostMapping(value = "/find_id")
-    @ResponseBody
-    public String find_id(Model model, String name) {
-        String result = userService.findId(name);
-        model.addAttribute("result", result);
-        return "findId";
-    }
+    /**
+     *  회원가입 API
+     */
+   @PostMapping("/join")
+    public String join(@RequestBody UserDTO userDTO) throws Exception {
+       try {
+           userService.saveUser(userDTO);
+       } catch (Exception e) {
+           return "join_fail";
+       }
+       return "join_success";
+   }
 }
