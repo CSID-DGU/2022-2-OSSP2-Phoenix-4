@@ -114,6 +114,7 @@ function calendarInit() {
       menuData[0].recipe
     );
 
+    // 데이터베이스 날짜 비교
     for (let index = 0; index < menuData.length; index++) {
       console.log("find correct");
       if (menuData[index].year === currentYear) {
@@ -123,8 +124,15 @@ function calendarInit() {
           if (menuData[index].day === Number(event.target.textContent)) {
             console.log("date correct");
 
+            // popup html 생성
             const yearMonth =
-              "<h1>" + currentYear + "-" + (currentMonth + 1) + "</h1>";
+              "<h1>" +
+              menuData[index].year +
+              "-" +
+              menuData[index].month +
+              "-" +
+              menuData[index].day +
+              "</h1>";
             const foods = menuData[index].foods;
             const recipe = "<p>" + menuData[index].recipe + "</p>";
             let food = "";
@@ -134,10 +142,12 @@ function calendarInit() {
             console.log(yearMonth + food + recipe);
 
             popup.innerHTML = yearMonth + food + recipe;
+            return;
           }
         }
       }
     }
+    popup.innerHTML = "";
   }
   days.forEach((day) => day.addEventListener("click", onDayClick));
 }
