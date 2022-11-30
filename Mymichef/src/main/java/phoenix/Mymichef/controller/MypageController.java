@@ -1,14 +1,15 @@
 package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.service.UserService;
 
@@ -25,9 +26,62 @@ public class MypageController {
 
     @GetMapping("")
     public String mypage(Principal principal, Model model){
-        String id = principal.getName();
-        UserDTO userDto =userService.findUser(id);
-        model.addAttribute("UserDTO", userDto);
+
         return "mypage";
     }
+
+    /**
+     * 마이페이지 정보확인
+     */
+
+    @PostMapping("/userInfo")
+    public @ResponseBody String checkMyInfo(@RequestBody UserDTO userDTO){
+        JSONObject jsonObject = new JSONObject();
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDTO userDetail = (UserDTO) principal;
+        String userId = ((UserDTO) principal).getUsername();
+
+        UserDTO userInfo = userService.findUser(userId);
+
+        jsonObject.put("userId", userInfo.getUserId());
+        jsonObject.put("name", userInfo.getName());
+        jsonObject.put("password", userInfo.getPassword());
+        jsonObject.put("email", userInfo.getEmail());
+        jsonObject.put("gender", userInfo.getGender());
+        jsonObject.put("phoneNumber", userInfo.getPhoneNumber());
+        jsonObject.put("allergy", userInfo.getAllergy());
+        jsonObject.put("height", userInfo.getHeight());
+        jsonObject.put("weight", userInfo.getWeight());
+
+        return jsonObject.toString();
+    }
+
+    /**
+     *  마이페이지 정보 수정
+     */
+
+    public @ResponseBody String updateUserInfo(@RequestBody UserDTO userDTO)throws Exception{
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDTO userDetail = (UserDTO) principal;
+        String id = ((UserDTO) principal).getUsername();
+        UserDTO update =new UserDTO();
+        try {
+            update = userService.findUser(id);
+            update.setUserId(userDTO.getUserId());
+            update.setName(userDTO.getName());
+            update.setEmail(userDTO.getEmail());
+            update.setPassword(userDTO.getPassword());
+            update.setAllergy(userDTO.getAllergy());
+            update.setGender(userDTO.getGender());
+            update.setPhoneNumber(userDTO.getPhoneNumber());
+            update.setHeight(userDTO.getHeight());
+            update.setWeight(userDTO.getWeight());
+        }catch (Exception e) {
+            return "update data 오류";
+        }
+        userService.saveUser(update);
+        return "update date 통신 성공";
+    }
+
 }

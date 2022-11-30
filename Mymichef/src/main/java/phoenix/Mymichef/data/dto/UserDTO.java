@@ -72,7 +72,7 @@ public class UserDTO implements UserDetails {
 
     @Override
     public String getUsername() {
-        return SecurityUserEntity.getName();
+        return SecurityUserEntity.getUserId();
     }
 
     @Override
