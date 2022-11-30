@@ -35,15 +35,19 @@ public class MypageController {
      */
 
     @PostMapping("/userInfo")
-    public @ResponseBody String checkMyInfo(@RequestBody UserDTO userDTO){
+    public @ResponseBody String checkMyInfo(@RequestBody UserDTO userDTO)throws Exception{
         JSONObject jsonObject = new JSONObject();
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDTO userDetail = (UserDTO) principal;
         String userId = ((UserDTO) principal).getUsername();
 
-        UserDTO userInfo = userService.findUser(userId);
-
+        UserDTO userInfo = new UserDTO();
+        try {
+            userInfo = userService.findUser(userId);
+        } catch (Exception e){
+            return "정보 불러오기 오류 발생(server)";
+        }
         jsonObject.put("userId", userInfo.getUserId());
         jsonObject.put("name", userInfo.getName());
         jsonObject.put("password", userInfo.getPassword());
@@ -78,10 +82,10 @@ public class MypageController {
             update.setHeight(userDTO.getHeight());
             update.setWeight(userDTO.getWeight());
         }catch (Exception e) {
-            return "update data 오류";
+            return "update data 오류 (server)";
         }
         userService.saveUser(update);
-        return "update date 통신 성공";
+        return "update date 통신 성공 (server)";
     }
 
 }
