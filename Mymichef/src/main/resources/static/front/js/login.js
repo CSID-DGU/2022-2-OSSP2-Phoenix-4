@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // // 데이터 형식
   let data = {
-    user_id: "",
+    userId: "",
     email: "",
     password: "",
     name: "",
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   const inputPw = e.target[1].value;
   //
   //   if (inputId !== "" && inputPw !== "") {
-  //     data.user_id = inputId;
+  //     data.userId = inputId;
   //     data.password = inputPw;
   //
   //     $.ajax({
@@ -208,16 +208,16 @@ document.addEventListener("DOMContentLoaded", () => {
       inputPw === inputConfirmPw
     ) {
       // 데이터 생성
-      data.user_id = inputID;
+      data.userId = inputID;
       data.email = inputEmail;
       data.password = inputPw;
 
       $.ajax({
         type: "POST",
         url: "/join",
-        contentType: 'application/json',
+        contentType: "application/json",
         data: JSON.stringify(data),
-//        dataType: "json",
+        //        dataType: "json",
         success: function (response) {
           console.log("회원가입 post success");
           console.log(response);
