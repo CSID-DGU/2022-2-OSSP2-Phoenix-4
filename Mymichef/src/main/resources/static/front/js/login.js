@@ -142,12 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
         data: JSON.stringify(data),
 
         success: function (response) {
-          console.log("아이디 찾기 get success");
+          console.log("아이디 찾기 통신 성공");
           console.log(response);
           console.log(data);
+          alert(userId);
         },
         error: function (error) {
-          console.log("아이디 찾기 get error");
+          console.log("아이디 찾기 통신 오류");
           console.log(error);
         },
       });
@@ -168,9 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputID = event.target[1].value;
     const inputEmail = event.target[2].value;
     if (inputName !== "" && inputID !== "" && inputEmail !== "") {
-      data.findPasswordName = inputName;
-      data.findPasswordID = inputID;
-      data.findPasswordEmail = inputEmail;
+      data.name = inputName;
+      data.userId = inputID;
+      data.password = inputEmail;
 
       $.ajax({
          url: "/findPw",

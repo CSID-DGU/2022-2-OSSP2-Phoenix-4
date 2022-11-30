@@ -57,11 +57,11 @@ public class LoginController {
         try {
             returnJSON = userService.findId(userDTO.getName(), userDTO.getEmail());
         }catch (Exception e){
-            log.info("e: ", e);
-            return "통신 오류 발생(server)";
+            log.info("e", e);
+            return "data 처리 오류 발생(server)";
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("password", returnJSON);
+        jsonObject.put("userId", returnJSON);
         return jsonObject.toString();
     }
 
@@ -71,12 +71,15 @@ public class LoginController {
 
     @RequestMapping (value = "/findPw")
     public @ResponseBody String findPw(@RequestBody UserDTO userDTO) throws Exception{
+        String returnJSON;
         try{
-            userService.findPw(userDTO.getUserId());
+           returnJSON = userService.findPw(userDTO.getUserId(), userDTO.getName());
         }catch (Exception e){
             log.info("e", e);
-            return "입력하신 정보를 확인해주세요.(server)";
+            return "data 처리 오류 발생(server)";
         }
-        return "findPw_success(server)";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("password", returnJSON);
+        return jsonObject.toString();
     }
 }

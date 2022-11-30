@@ -82,26 +82,26 @@ public class UserService implements UserDetailsService {
     public String findId(String name, String email) throws Exception{
         ArrayList<UserEntity> find = userRepository.findIdByName(name);
         if(find.isEmpty()){
-           throw new Exception("아이디를 확인하세요");
+           throw new Exception("입력 정보를 확인하세요");
         }else{
             for(int i = 0 ; i< find.size(); i++){
                 if(find.get(i).getEmail().equals(email)){
-                    return find.get(i).getPassword();
+                    return find.get(i).getUserId();
                 }
             }
-        } throw new Exception("이메일을 확인하세요");
+        } throw new Exception("입력 정보를 확인하세요");
     }
 
-    public String findPw(String id) throws Exception{
-        String pw;
-        UserDTO userDTO = new UserDTO();
-        try {
-            userDTO = findUser(id);
-        }catch (Exception e){
-            return "입력된 정보 확인 필요";
-        }
-        pw = userDTO.getPassword();
-        return pw;
+
+    public String findPw(String id, String name) throws Exception{
+        Optional<UserEntity> find = userRepository.findById(id);
+        if(find.isEmpty()){
+            throw new Exception("입력 정보를 확인하세요");
+        }else{
+           if(find.get().getName().equals(name)){
+               return find.get().getPassword();
+            }
+        } throw new Exception("입력 정보를 확인하세요");
     }
 
 
