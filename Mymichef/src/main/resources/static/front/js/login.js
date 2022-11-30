@@ -127,11 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const inputName = event.target[0].value;
-    const inputEmail = event.target[1].value;
+    const
+
+    inputEmail = event.target[1].value;
 
     if (inputName !== "" && inputEmail !== "") {
-      data.findIDName = inputName;
-      data.findIDEmail = inputEmail;
+      data.name = inputName;
+      data.email = inputEmail;
 
       $.ajax({
         url: "/findId",
@@ -142,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         success: function (response) {
           console.log("아이디 찾기 get success");
           console.log(response);
-
+          console.log(data);
         },
         error: function (error) {
           console.log("아이디 찾기 get error");
@@ -171,14 +173,16 @@ document.addEventListener("DOMContentLoaded", () => {
       data.findPasswordEmail = inputEmail;
 
       $.ajax({
-        url: "localhost8080/join",
-        type: "POST",
-        dataType: "json",
-        data: JSON.stringify(data),
+         url: "/findPw",
+         type: "POST",
+         contentType: "application/json",
+         data: JSON.stringify(data),
 
         success: function (response) {
           console.log("비밀번호 찾기 post success");
           console.log(response);
+          alert(password);
+          console(data);
         },
         error: function (error) {
           console.log("비밀번호 찾기 post error");

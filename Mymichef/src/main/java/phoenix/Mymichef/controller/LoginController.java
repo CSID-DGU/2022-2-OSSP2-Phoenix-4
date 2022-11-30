@@ -1,7 +1,10 @@
 package phoenix.Mymichef.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,18 +53,30 @@ public class LoginController {
 
     @RequestMapping(value = "/findId")
     public @ResponseBody String findId(@RequestBody UserDTO userDTO) throws Exception {
-                try {
-            String userEmail = userService.findId(userDTO.getEmail());
-            try {
-                userDTO = userService.findUser(userEmail);
-            } catch (Exception e) {
-                log.info("e: ", e);
-                return "잘못된 e-mail 입니다.(server)";
-            }
-        } catch (Exception e) {
+        String returnJSON;
+        try {
+            returnJSON = userService.findId(userDTO.getName(), userDTO.getEmail());
+        }catch (Exception e){
             log.info("e: ", e);
-            return "잘못된 이름 입니다.(server)";
+            return "통신 오류 발생(server)";
         }
-        return "findId_success(server)";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("password", returnJSON);
+        return jsonObject.toString();
+    }
+
+    /**
+     *  비밀번호 찾기 API
+     */
+
+    @RequestMapping (value = "/findPw")
+    public @ResponseBody String findPw(@RequestBody UserDTO userDTO) throws Exception{
+        try{
+            userService.findPw(userDTO.getUserId());
+        }catch (Exception e){
+            log.info("e", e);
+            return "입력하신 정보를 확인해주세요.(server)";
+        }
+        return "findPw_success(server)";
     }
 }

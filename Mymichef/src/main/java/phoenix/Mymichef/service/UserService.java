@@ -9,6 +9,8 @@ import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.entity.UserEntity;
 import phoenix.Mymichef.data.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
@@ -77,13 +79,29 @@ public class UserService implements UserDetailsService {
     /**
      * 아이디, 비밀번호 찾기 서비스
      */
-    public String findId(String email) {
-        Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByEmail(email));
-        if(findId.isPresent()){
-            return findId.get().getUserId();
+    public String findId(String name, String email) throws Exception{
+        ArrayList<UserEntity> find = userRepository.findIdByName(name);
+        if(find.isEmpty()){
+           throw new Exception("아이디를 확인하세요");
         }else{
-            return "아이디와 비밀번호를 확인하세요";
+            for(int i = 0 ; i< find.size(); i++){
+                if(find.get(i).getEmail().equals(email)){
+                    return find.get(i).getPassword();
+                }
+            }
+        } throw new Exception("이메일을 확인하세요");
+    }
+
+    public String findPw(String id) throws Exception{
+        String pw;
+        UserDTO userDTO = new UserDTO();
+        try {
+            userDTO = findUser(id);
+        }catch (Exception e){
+            return "입력된 정보 확인 필요";
         }
+        pw = userDTO.getPassword();
+        return pw;
     }
 
 
