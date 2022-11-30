@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "localhost8080/join",
           type: "POST",
           dataType: "json",
-          data: data,
+          data: JSON.stringify(data),
 
           success: function (response) {
             console.log("로그인 post success");
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "localhost8080/join",
           type: "POST",
           dataType: "json",
-          data: data,
+          data: JSON.stringify(data),
 
           success: function (response) {
             console.log("아이디 찾기 get success");
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "localhost8080/join",
           type: "POST",
           dataType: "json",
-          data: data,
+          data: JSON.stringify(data),
 
           success: function (response) {
             console.log("비밀번호 찾기 post success");
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $.ajax({
           type: "POST",
           url: "localhost8080/join",
-          data: data,
+          data: JSON.stringify(data),
           dataType: "json",
           success: function (response) {
             console.log("회원가입 post success");
