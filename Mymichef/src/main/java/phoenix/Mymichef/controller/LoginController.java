@@ -73,13 +73,14 @@ public class LoginController {
     public @ResponseBody String findPw(@RequestBody UserDTO userDTO) throws Exception{
         String returnJSON;
         try{
-           returnJSON = userService.findPw(userDTO.getUserId(), userDTO.getName());
+            returnJSON = userService.findPw(userDTO.getName(), userDTO.getUserId(), userDTO.getEmail());
         }catch (Exception e){
             log.info("e", e);
-            return "data 처리 오류 발생(server)";
+            return "입력하신 정보를 확인해주세요.(server)";
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("password", returnJSON);
+        jsonObject.put("userPw", returnJSON);
         return jsonObject.toString();
     }
+
 }

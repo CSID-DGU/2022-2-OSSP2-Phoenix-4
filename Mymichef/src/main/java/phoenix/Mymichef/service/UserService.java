@@ -93,15 +93,12 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public String findPw(String id, String name) throws Exception{
-        Optional<UserEntity> find = userRepository.findById(id);
+    public String findPw(String name, String userId, String email) throws Exception{
+        Optional<UserEntity> find = Optional.ofNullable(userRepository.findByNameAndUserIdAndEmail(name, userId, email));
         if(find.isEmpty()){
-            throw new Exception("입력 정보를 확인하세요");
-        }else{
-           if(find.get().getName().equals(name)){
-               return find.get().getPassword();
-            }
-        } throw new Exception("입력 정보를 확인하세요");
+            throw new Exception("해당 회원이 존재하지 않습니다.");
+        }
+        return find.get().getPassword();
     }
 
 

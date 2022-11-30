@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputName !== "" && inputID !== "" && inputEmail !== "") {
       data.name = inputName;
       data.userId = inputID;
-      data.password = inputEmail;
+      data.email = inputEmail;
 
       $.ajax({
          url: "/findPw",
