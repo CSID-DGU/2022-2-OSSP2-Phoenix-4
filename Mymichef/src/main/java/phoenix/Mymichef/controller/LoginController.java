@@ -11,7 +11,7 @@ import phoenix.Mymichef.service.UserService;
 import javax.validation.Valid;
 import java.util.Map;
 
-@RestController
+@Controller
 @AllArgsConstructor
 @RequestMapping("/")
 public class LoginController {
@@ -19,22 +19,24 @@ public class LoginController {
     private UserService userService;
     @GetMapping("")
     public String login(@RequestParam(value = "error", required = false) String error,
-                        @RequestParam(value = "exception", required = false)String exception,
-                        Model model){
-        model.addAttribute("error",error);
-        model.addAttribute("exception",exception);
+                @RequestParam(value = "exception", required = false)String exception,
+                Model model){
+            model.addAttribute("error",error);
+            model.addAttribute("exception",exception);
 
-        return "login";
+            return "login";
     }
 
     /**
      *  회원가입 API
      */
-   @PostMapping("/join")
-    public String join(@RequestBody UserDTO userDTO) throws Exception {
+
+   @RequestMapping(value = "/join")
+    public @ResponseBody String join(@RequestBody UserDTO userDTO) throws Exception {
        try {
            userService.saveUser(userDTO);
        } catch (Exception e) {
+           System.out.println("e = " + e);
            return "join_fail";
        }
        return "join_success";

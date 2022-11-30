@@ -28,7 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * spring security web 관련 설정
      */
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/resources/**")
+                .antMatchers("/localhost8080/**");
         // 사용자 요청 중 /resources로 시작하는 요청은 제외
     }
 
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/home").authenticated()
+                .antMatchers("/localhost8080/**").authenticated()
                 .anyRequest().permitAll() //인증없이 접근하게 해주는 프론트쪽 주소 현재는 home으로 임의 설정
                 .and()
 

@@ -214,9 +214,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       $.ajax({
         type: "POST",
-        url: "localhost8080/join",
+        url: "/join",
+        contentType: 'application/json',
         data: JSON.stringify(data),
-        dataType: "json",
+//        dataType: "json",
         success: function (response) {
           console.log("회원가입 post success");
           console.log(response);
