@@ -134,14 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
       data.findIDEmail = inputEmail;
 
       $.ajax({
-        url: "localhost8080/join",
+        url: "/findId",
         type: "POST",
-        dataType: "json",
+        contentType: "application/json",
         data: JSON.stringify(data),
 
         success: function (response) {
           console.log("아이디 찾기 get success");
           console.log(response);
+
         },
         error: function (error) {
           console.log("아이디 찾기 get error");

@@ -6,9 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.UserDTO;
-import phoenix.Mymichef.data.entity.JoinEntity;
 import phoenix.Mymichef.data.entity.UserEntity;
-import phoenix.Mymichef.data.repository.JoinRepository;
 import phoenix.Mymichef.data.repository.UserRepository;
 
 import java.util.Optional;
@@ -79,8 +77,8 @@ public class UserService implements UserDetailsService {
     /**
      * 아이디, 비밀번호 찾기 서비스
      */
-    public String findId(String name) {
-        Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByName(name));
+    public String findId(String email) {
+        Optional<UserEntity> findId = Optional.ofNullable(userRepository.findIdByEmail(email));
         if(findId.isPresent()){
             return findId.get().getUserId();
         }else{

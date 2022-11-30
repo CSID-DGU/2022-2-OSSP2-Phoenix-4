@@ -1,6 +1,7 @@
 package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
+@Slf4j
 @AllArgsConstructor
 @RequestMapping("/")
 public class LoginController {
@@ -37,8 +39,29 @@ public class LoginController {
            userService.saveUser(userDTO);
        } catch (Exception e) {
            System.out.println("e = " + e);
-           return "join_fail";
+           return "join_fail(server)";
        }
-       return "join_success";
+       return "join_success(server)";
    }
+
+    /**
+     *  아이디 찾기 API
+     */
+
+    @RequestMapping(value = "/findId")
+    public @ResponseBody String findId(@RequestBody UserDTO userDTO) throws Exception {
+                try {
+            String userEmail = userService.findId(userDTO.getEmail());
+            try {
+                userDTO = userService.findUser(userEmail);
+            } catch (Exception e) {
+                log.info("e: ", e);
+                return "잘못된 e-mail 입니다.(server)";
+            }
+        } catch (Exception e) {
+            log.info("e: ", e);
+            return "잘못된 이름 입니다.(server)";
+        }
+        return "findId_success(server)";
+    }
 }
