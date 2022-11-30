@@ -66,19 +66,20 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.classList.remove("form--hidden");
     createAccountForm.classList.add("form--hidden");
   });
+  const data = {};
 
   // // 데이터 형식
-  let data = {
-    userId: "",
-    email: "",
-    password: "",
-    name: "",
-    phoneNumber: 0,
-    height: 0,
-    weight: 0,
-    allergy: 0,
-    gender: "",
-  };
+  // let data = {
+  //   userId: "",
+  //   email: "",
+  //   password: "",
+  //   name: "",
+  //   phoneNumber: 0,
+  //   height: 0,
+  //   weight: 0,
+  //   allergy: 0,
+  //   gender: "",
+  // };
 
   // 로그인 클릭 이벤트
   // loginForm.addEventListener("submit", (e) => {
