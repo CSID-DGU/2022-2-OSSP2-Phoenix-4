@@ -67,143 +67,183 @@ document.addEventListener("DOMContentLoaded", () => {
     createAccountForm.classList.add("form--hidden");
   });
 
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  // // 데이터 형식
+  let data = {
+    user_id: "",
+    email: "",
+    password: "",
+    name: "",
+    phoneNumber: 0,
+    height: 0,
+    weight: 0,
+    allergy: 0,
+    gender: "",
+  };
 
-    // 데이터 담을 리스트
-    const data = {};
+  // 로그인 클릭 이벤트
+  // loginForm.addEventListener("submit", (e) => {
+  //   e.preventDefault();
+  //
+  //   const inputId = e.target[0].value;
+  //   const inputPw = e.target[1].value;
+  //
+  //   if (inputId !== "" && inputPw !== "") {
+  //     data.user_id = inputId;
+  //     data.password = inputPw;
+  //
+  //     $.ajax({
+  //       url: "localhost8080/join",
+  //       type: "POST",
+  //       // dataType: "json",
+  //       data: JSON.stringify(data),
+  //
+  //       success: function (response) {
+  //         console.log("로그인 post success");
+  //         console.log(response);
+  //       },
+  //       error: function (request, error) {
+  //         console.log("로그인 post error");
+  //         console.log(error);
+  //         console.log(
+  //           "code:" +
+  //             request.status +
+  //             "\n" +
+  //             "message: " +
+  //             request.responseText +
+  //             "\n" +
+  //             "error:" +
+  //             error
+  //         );
+  //       },
+  //     });
+  //   }
+  //
+  //   setFormMessage(loginForm, "error", "Invalid username/password combination");
+  // });
 
-    // // 데이터 형식
-    // data = {
-    //   user_id: "",
-    //   email: "",
-    //   password: "",
-    //   name: "",
-    //   phoneNumber: 0,
-    //   height: 0,
-    //   weight: 0,
-    //   allergy: 0,
-    //   gender: "",
-    // };
+  // ID 찾기 이벤트 리스너
+  findIDForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    // 로그인 폼
-    if (e.target.id === "login") {
-      const inputId = e.target[0].value;
-      const inputPw = e.target[1].value;
+    const inputName = event.target[0].value;
+    const inputEmail = event.target[1].value;
 
-      if (inputId !== "" && inputPw !== "") {
-        data.user_id = inputId;
-        data.password = inputPw;
+    if (inputName !== "" && inputEmail !== "") {
+      data.findIDName = inputName;
+      data.findIDEmail = inputEmail;
 
-        $.ajax({
-          url: "localhost8080/join",
-          type: "POST",
-          dataType: "json",
-          data: JSON.stringify(data),
+      $.ajax({
+        url: "localhost8080/join",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(data),
 
-          success: function (response) {
-            console.log("로그인 post success");
-            console.log(response);
-          },
-          error: function (error) {
-            console.log("로그인 post error");
-            console.log(error);
-          },
-        });
-      }
+        success: function (response) {
+          console.log("아이디 찾기 get success");
+          console.log(response);
+        },
+        error: function (error) {
+          console.log("아이디 찾기 get error");
+          console.log(error);
+        },
+      });
     }
 
-    // 아이디 찾기 폼
-    if (e.target.id === "findID") {
-      const inputName = e.target[0].value;
-      const inputEmail = e.target[1].value;
+    setFormMessage(
+      findIDForm,
+      "error",
+      "Invalid username/password combination"
+    );
+  });
 
-      if (inputName !== "" && inputEmail !== "") {
-        data.findIDName = inputName;
-        data.findIDEmail = inputEmail;
+  // Password 찾기 이벤트 리스너
+  findPasswordForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-        $.ajax({
-          url: "localhost8080/join",
-          type: "POST",
-          dataType: "json",
-          data: JSON.stringify(data),
+    const inputName = event.target[0].value;
+    const inputID = event.target[1].value;
+    const inputEmail = event.target[2].value;
+    if (inputName !== "" && inputID !== "" && inputEmail !== "") {
+      data.findPasswordName = inputName;
+      data.findPasswordID = inputID;
+      data.findPasswordEmail = inputEmail;
 
-          success: function (response) {
-            console.log("아이디 찾기 get success");
-            console.log(response);
-          },
-          error: function (error) {
-            console.log("아이디 찾기 get error");
-            console.log(error);
-          },
-        });
-      }
-    }
-    // 비밀번호 찾기 폼
-    if (e.target.id === "findPassword") {
-      const inputName = e.target[0].value;
-      const inputID = e.target[1].value;
-      const inputEmail = e.target[2].value;
-      if (inputName !== "" && inputID !== "" && inputEmail !== "") {
-        data.findPasswordName = inputName;
-        data.findPasswordID = inputID;
-        data.findPasswordEmail = inputEmail;
+      $.ajax({
+        url: "localhost8080/join",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(data),
 
-        $.ajax({
-          url: "localhost8080/join",
-          type: "POST",
-          dataType: "json",
-          data: JSON.stringify(data),
-
-          success: function (response) {
-            console.log("비밀번호 찾기 post success");
-            console.log(response);
-          },
-          error: function (error) {
-            console.log("비밀번호 찾기 post error");
-            console.log(error);
-          },
-        });
-      }
+        success: function (response) {
+          console.log("비밀번호 찾기 post success");
+          console.log(response);
+        },
+        error: function (error) {
+          console.log("비밀번호 찾기 post error");
+          console.log(error);
+        },
+      });
     }
 
-    // 회원가입 폼
-    if (e.target.id === "createAccount") {
-      const inputID = e.target[0].value;
-      const inputEmail = e.target[1].value;
-      const inputPw = e.target[2].value;
-      const inputConfirmPw = e.target[3].value;
+    setFormMessage(
+      findPasswordForm,
+      "error",
+      "Invalid username/password combination"
+    );
+  });
 
-      if (
-        inputID !== "" &&
-        inputEmail !== "" &&
-        inputPw !== "" &&
-        inputPw === inputConfirmPw
-      ) {
-        // 데이터 생성
-        data.user_id = inputID;
-        data.email = inputEmail;
-        data.password = inputPw;
+  // 회원가입 이벤트 리스너
+  createAccountForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-        $.ajax({
-          type: "POST",
-          url: "localhost8080/join",
-          data: JSON.stringify(data),
-          dataType: "json",
-          success: function (response) {
-            console.log("회원가입 post success");
-            console.log(response);
-            console.log(data);
-          },
-          error: function (error) {
-            console.log("회원가입 post error");
-            console.log(error);
-          },
-        });
-      }
+    const inputID = event.target[0].value;
+    const inputEmail = event.target[1].value;
+    const inputPw = event.target[2].value;
+    const inputConfirmPw = event.target[3].value;
+
+    if (
+      inputID !== "" &&
+      inputEmail !== "" &&
+      inputPw !== "" &&
+      inputPw === inputConfirmPw
+    ) {
+      // 데이터 생성
+      data.user_id = inputID;
+      data.email = inputEmail;
+      data.password = inputPw;
+
+      $.ajax({
+        type: "POST",
+        url: "localhost8080/join",
+        data: JSON.stringify(data),
+        dataType: "json",
+        success: function (response) {
+          console.log("회원가입 post success");
+          console.log(response);
+          console.log(data);
+        },
+        error: function (request, error) {
+          console.log("회원가입 post error");
+          console.log(error);
+          console.log(
+            "code:" +
+              request.status +
+              "\n" +
+              "message: " +
+              request.responseText +
+              "\n" +
+              "error:" +
+              error
+          );
+        },
+      });
     }
 
-    setFormMessage(loginForm, "error", "Invalid username/password combination");
+    setFormMessage(
+      createAccountForm,
+      "error",
+      "Invalid username/password combination"
+    );
   });
 
   document.querySelectorAll(".form__input").forEach((inputElement) => {
