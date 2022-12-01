@@ -35,7 +35,6 @@ public class LoginController {
     /**
      *  회원가입 API
      */
-
    @RequestMapping(value = "/join")
     public @ResponseBody String join(@RequestBody UserDTO userDTO) throws Exception {
        try {
@@ -46,6 +45,7 @@ public class LoginController {
        }
        return "join_success(server)";
    }
+
 
     /**
      *  아이디 찾기 API
@@ -82,5 +82,4 @@ public class LoginController {
         jsonObject.put("userPw", returnJSON);
         return jsonObject.toString();
     }
-
 }
