@@ -97,10 +97,17 @@ function calendarInit() {
     renderCalender(thisMonth);
   });
 
+  // 날짜들 배열
   const days = Array.from(document.getElementsByClassName("day"));
 
-  let popup = document.getElementById("popup");
-  popup.innerHTML = "";
+  // 팝업 div
+  const popup = document.getElementById("popup");
+  const popupInner = document.getElementById("popupInner");
+
+  // 팝업 닫기 함수
+  function onPopupClose() {
+    popup.style.display = "none";
+  }
 
   // 날짜 클릭
   function onDayClick(event) {
@@ -117,62 +124,66 @@ function calendarInit() {
     // 데이터베이스 날짜 비교
     for (let index = 0; index < menuData.length; index++) {
       console.log("find correct");
-      if (menuData[index].year === currentYear) {
-        console.log("year correct");
-        if (menuData[index].month === currentMonth + 1) {
-          console.log("month correct");
-          if (menuData[index].day === Number(event.target.textContent)) {
-            console.log("date correct");
-
-            // popup html 생성
-            const yearMonth =
-              "<h1>" +
-              menuData[index].year +
-              "-" +
-              menuData[index].month +
-              "-" +
-              menuData[index].day +
-              "</h1>";
-            const foods = menuData[index].foods;
-            const recipe = "<p>" + menuData[index].recipe + "</p>";
-            let food = "";
-            for (let i = 0; i < foods.length; i++) {
-              food = food + "<a>" + foods[i] + "</a>";
-            }
-            console.log(yearMonth + food + recipe);
-
-            popup.innerHTML = yearMonth + food + recipe;
-            return;
-          }
+      if (
+        menuData[index].year === currentYear &&
+        menuData[index].month === currentMonth + 1 &&
+        menuData[index].day === Number(event.target.textContent)
+      ) {
+        // popup html 생성
+        const yearMonth =
+          "<h1>" +
+          menuData[index].year +
+          "-" +
+          menuData[index].month +
+          "-" +
+          menuData[index].day +
+          "</h1>";
+        const foods = menuData[index].foods;
+        const recipe = "<p>" + menuData[index].recipe + "</p>";
+        let food = "";
+        for (let i = 0; i < foods.length; i++) {
+          food = food + "<p>" + foods[i] + "</p>";
         }
+
+        // 팝업 보이게
+        popup.style.display = "block";
+
+        // 팝업 html 삽입
+        popupInner.innerHTML =
+          yearMonth + food + recipe + `<button id="closeBtn">닫기</button>`;
+
+        // 팝업 닫기 버튼 이벤트
+        document
+          .getElementById("closeBtn")
+          .addEventListener("click", onPopupClose);
+        return;
       }
     }
-    popup.innerHTML = "";
+    popup.style.display = "none";
   }
+
+  // 각 날짜에 이벤트리스너 삽입
   days.forEach((day) => day.addEventListener("click", onDayClick));
 }
-(function() {
+(function () {
+  "use strict";
 
-  'use strict';
-
-  document.querySelector('.material-design-hamburger__icon').addEventListener(
-    'click',
-    function() {
+  document
+    .querySelector(".material-design-hamburger__icon")
+    .addEventListener("click", function () {
       var child;
 
-      document.body.classList.toggle('background--blur');
-      this.parentNode.nextElementSibling.classList.toggle('menu--on');
+      document.body.classList.toggle("background--blur");
+      this.parentNode.nextElementSibling.classList.toggle("menu--on");
 
       child = this.childNodes[1].classList;
 
-      if (child.contains('material-design-hamburger__icon--to-arrow')) {
-        child.remove('material-design-hamburger__icon--to-arrow');
-        child.add('material-design-hamburger__icon--from-arrow');
+      if (child.contains("material-design-hamburger__icon--to-arrow")) {
+        child.remove("material-design-hamburger__icon--to-arrow");
+        child.add("material-design-hamburger__icon--from-arrow");
       } else {
-        child.remove('material-design-hamburger__icon--from-arrow');
-        child.add('material-design-hamburger__icon--to-arrow');
+        child.remove("material-design-hamburger__icon--from-arrow");
+        child.add("material-design-hamburger__icon--to-arrow");
       }
-
     });
-
 })();
