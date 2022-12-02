@@ -22,6 +22,7 @@ import java.util.Map;
 public class LoginController {
 
     private UserService userService;
+
     @GetMapping("")
     public String login(@RequestParam(value = "error", required = false) String error,
                 @RequestParam(value = "exception", required = false)String exception,
@@ -79,7 +80,9 @@ public class LoginController {
             return "입력하신 정보를 확인해주세요.(server)";
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userPw", returnJSON);
+        jsonObject.put("password", returnJSON);
+        userService.mailsend(userDTO.getEmail(), returnJSON);
+
 
         return jsonObject.toString();
     }

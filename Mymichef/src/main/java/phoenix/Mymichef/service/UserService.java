@@ -25,8 +25,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private JavaMailSender mailsender;
-    private static final String FromAdress = "rualneox@dgu.ac.kr";
+    @Autowired
+    private JavaMailSender emailsender;
 
     /**
      * 회원가입 서비스
@@ -45,15 +45,15 @@ public class UserService implements UserDetailsService {
         throw new Exception("회원가입에 성공했습니다!");
     }
 
-    public void mailsend(String ToAdress, String passwordmsg){
+    public void mailsend(String ToAdress, String passwordmsg) throws Exception{
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(ToAdress);
-        message.setFrom(FromAdress);
+        message.setFrom("rualneox@dgu.ac.kr");
         message.setSubject("[MyMichef] 임시 비밀번호 발급 입니다.");
         String emailmsg = "회원님의 임시 비밀번호는 '" + passwordmsg + "'입니다." ;
         message.setText(emailmsg);
 
-        mailsender.send(message);
+        emailsender.send(message);
     }
 
     /**
