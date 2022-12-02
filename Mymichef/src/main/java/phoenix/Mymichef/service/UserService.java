@@ -1,6 +1,9 @@
 package phoenix.Mymichef.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +15,7 @@ import phoenix.Mymichef.data.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class UserService implements UserDetailsService {
 
@@ -20,6 +24,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    private JavaMailSender mailsender;
+    private static final String FromAdress = "rualneox@dgu.ac.kr";
 
     /**
      * 회원가입 서비스
@@ -38,6 +45,16 @@ public class UserService implements UserDetailsService {
         throw new Exception("회원가입에 성공했습니다!");
     }
 
+    public void mailsend(String ToAdress, String passwordmsg){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(ToAdress);
+        message.setFrom(FromAdress);
+        message.setSubject("[MyMichef] 임시 비밀번호 발급 입니다.");
+        String emailmsg = "회원님의 임시 비밀번호는 '" + passwordmsg + "'입니다." ;
+        message.setText(emailmsg);
+
+        mailsender.send(message);
+    }
 
     /**
      * 로그인 서비스
@@ -75,6 +92,30 @@ public class UserService implements UserDetailsService {
         return userDTO;
 
     }
+    /**
+     * 임시 비밀번호 생성서비스
+     */
+    public String getTempPassword(){
+        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        String str = "";
+
+        int idx = 0;
+        for (int i = 0; i < 10; i++) {
+            idx = (int) (charSet.length * Math.random());
+            str += charSet[idx];
+        }
+        return str;
+    }
+
+    /**
+     * 비밀번호 저장 서비스
+     */
+    public void updatepassword(String userId, String password){
+        Optional<UserEntity> user = userRepository.findById(userId);
+        userRepository.save(UserEntity.builder().userId(userId).name(user.get().getName()).email(user.get().getEmail()).height(user.get().getHeight()).weight(user.get().getWeight()).allergy(user.get().getAllergy()).phoneNumber(user.get().getPhoneNumber()).gender(user.get().getGender()).password(passwordEncoder.encode(password)).build());
+    }
 
     /**
      * 아이디, 비밀번호 찾기 서비스
@@ -98,7 +139,9 @@ public class UserService implements UserDetailsService {
         if(find.isEmpty()){
             throw new Exception("해당 회원이 존재하지 않습니다.");
         }
-        return find.get().getPassword();
+        String pw = getTempPassword();
+        updatepassword(find.get().getUserId(), pw);
+        return pw;
     }
 
 
