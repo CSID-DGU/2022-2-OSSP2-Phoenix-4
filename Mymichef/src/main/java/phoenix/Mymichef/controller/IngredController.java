@@ -31,7 +31,7 @@ public class IngredController {
     public void loadJsonFromApi(){
         String result = "";
         try{
-            URL url = new URL("http://211.237.50.150:7080/openapi/c5e63e0e3954b0a121c42218411e5d26f585504daa3904f54fe0a7af1505c1cb/json/Grid_20150827000000000227_1/3001/4000");
+            URL url = new URL("http://211.237.50.150:7080/openapi/c5e63e0e3954b0a121c42218411e5d26f585504daa3904f54fe0a7af1505c1cb/json/Grid_20150827000000000227_1/6001/7000");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("Content-type", "application/json");
