@@ -1,14 +1,13 @@
-
-:root{
---color-pink: #F7A4A4;
---color-orange: #FEBE8C;
---color-yellow:#FCF9BE;
---color-grass:#B6E2A1;
---color-mint: #E8F3D6;
---color-lightorange: #FFDCA9;
---color-olive:#CCD6A6;
---color-leaf:#DAE2B6;
---color-beige:#F4EAD5;
---color-ivory:#FFFBE9;
---color-verylightgray:##e4e4e4;
+:root {
+  --color-pink: #f7a4a4;
+  --color-orange: #febe8c;
+  --color-yellow: #fcf9be;
+  --color-grass: #b6e2a1;
+  --color-mint: #e8f3d6;
+  --color-lightorange: #ffdca9;
+  --color-olive: #ccd6a6;
+  --color-leaf: #dae2b6;
+  --color-beige: #f4ead5;
+  --color-ivory: #fffbe9;
+  --color-verylightgray: #e4e4e4;
 }

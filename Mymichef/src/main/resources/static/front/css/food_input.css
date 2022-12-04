@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-body{
-    background: #e3e9d5;
+body {
+  background: #e3e9d5;
 }
 
 .main.container {
@@ -39,9 +39,16 @@ body{
   overflow-x: hidden;
 }
 
-#ingredientsResult::-webkit-scrollbar-thumb {
-  color: lightgoldenrodyellow;
-}
+/*#ingredientsResult::-webkit-scrollbar-thumb {*/
+/*  background-color: bisque;*/
+/*}*/
+
+/*#ingredientsResult::-webkit-scrollbar-track {*/
+/*  background-color: lightgoldenrodyellow;*/
+/*}*/
+
+/*#ingredientsResult::-webkit-scrollbar-button {*/
+/*}*/
 .ingredient {
   display: inline-block;
   margin: 10px;
