@@ -1,8 +1,63 @@
-
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 body {
   background: #009688;
+}
+
+.main.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.search.container,
+.info.container,
+.save.container {
+  width: 500px;
+  height: 800px;
+  padding: 10px;
+  background-color: lightyellow;
+}
+
+#ingredientSearch {
+  all: unset;
+  width: 440px;
+  font-weight: 500;
+  border-radius: 18px;
+  padding: 2px 7px;
+  background-color: white;
+  border: 4px solid black;
+  cursor: pointer;
+  margin: 8px auto;
+}
+
+#ingredientsResult {
+  display: flex;
+  flex-wrap: wrap;
+  height: 720px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#ingredientsResult::-webkit-scrollbar-thumb {
+  color: lightgoldenrodyellow;
+}
+.ingredient {
+  display: inline-block;
+  margin: 10px;
+  background-color: white;
+  border-radius: 15px;
+  width: 100px;
+  height: 140px;
+  padding: 20px;
+  text-align: center;
+}
+.ingredientImg {
+  height: 400px;
+  width: 400px;
+  margin: 2px auto;
+  background-color: dimgray;
+  border-radius: 18px;
 }
 
 .wrapper {
@@ -18,8 +73,8 @@ body {
 }
 
 .menu {
-  font-size:2em;
-  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  font-family: "Roboto", sans-serif;
   color: #333;
 }
 
@@ -82,14 +137,15 @@ body {
   animation-timing-function: ease-in-out;
 }
 
-.material-design-hamburger__layer:before, .material-design-hamburger__layer:after {
+.material-design-hamburger__layer:before,
+.material-design-hamburger__layer:after {
   display: block;
   width: inherit;
   height: 10px;
   position: absolute;
   background: inherit;
   left: 0;
-  content: '';
+  content: "";
   animation-duration: 300ms;
   animation-timing-function: ease-in-out;
 }
@@ -184,4 +240,3 @@ body {
   100% {
   }
 }
-

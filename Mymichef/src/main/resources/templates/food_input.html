@@ -17,30 +17,37 @@
         </button>
       </section>
 
-    <section class="menu menu--off">
+      <section class="menu menu--off">
         <div><a href="/home/user_input" target="_blank">메뉴추천</a></div>
-        <div> <a href="/home/calendar" target="_blank">식단확인</a></div>
+        <div><a href="/home/calendar" target="_blank">식단확인</a></div>
         <div><a href="/home/shopping" target="_blank">메모패드</a></div>
         <div><a href="/mypage" target="_blank">마이페이지</a></div>
+      </section>
     </section>
 
-</section>
-
     <!--본문-->
-    <form id="foodSearchForm">
-      <input id="foodSearch" placeholder="음식을 입력해 주세요" />
-      <button type="submit">찾기</button>
-    </form>
-
-    <div id="foodsList"></div>
-
-    <form id="foodInfoForm">
-      <div id="foodInfo">
-        <p id="foodName"></p>
-        <input type="number" id="expirationDate" />
-        <input type="number" id="quantity" />
+    <div class="main container">
+      <div class="search container">
+        <label for="ingredientSearch"></label
+        ><input id="ingredientSearch" placeholder="음식을 입력해 주세요" />
+        <div id="ingredientsResult"></div>
       </div>
-    </form>
+
+      <div class="info container">
+        <form id="ingredientInfoForm">
+          <div id="ingredientInfo">
+            <p id="infoName"></p>
+            <input type="number" id="expirationDate" />
+            <input type="number" id="quantity" />
+            <img src="" id="infoImg" />
+          </div>
+        </form>
+      </div>
+
+      <div class="save container"></div>
+    </div>
+
+    <div id="ingredientsList"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/food_input.js"></script>
