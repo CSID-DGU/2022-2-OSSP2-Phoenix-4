@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class FoodController {
 
-    @GetMapping(value = "/food/input")
-    public String shopping(Model model){
+    @GetMapping(value = "/home/food_input")
+    public String food_input(Model model){
         return "food_input";
     }
 }
