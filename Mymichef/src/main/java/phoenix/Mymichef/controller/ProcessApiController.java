@@ -35,7 +35,7 @@ public class ProcessApiController {
     public void loadJsonFromProcessApi(){
         String result = "";
         try{
-            URL url = new URL("http://211.237.50.150:7080/openapi/92aaf6a9a8913d68cb992758b141a50b31b9361fb03df2ab619443dbb460cec7/json/Grid_20150827000000000228_1/1001/2000");
+            URL url = new URL("http://211.237.50.150:7080/openapi/92aaf6a9a8913d68cb992758b141a50b31b9361fb03df2ab619443dbb460cec7/json/Grid_20150827000000000228_1/3001/3100");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("Content-type", "application/json");

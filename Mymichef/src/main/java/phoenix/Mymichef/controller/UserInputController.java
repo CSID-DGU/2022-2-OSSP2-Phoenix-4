@@ -12,7 +12,7 @@ public class UserInputController {
 
     @GetMapping(value = "/home/user_input")
     public String User_input(Model model){
-        return "user_input";
+        return "recommend";
     }
 
 }
