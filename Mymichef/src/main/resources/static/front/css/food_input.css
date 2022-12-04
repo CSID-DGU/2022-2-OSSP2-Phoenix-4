@@ -3,7 +3,7 @@
 @import url("./color.css");
 
 body {
-  background-color: var(--color-olive);
+  background-color: var(--color-grass);
 }
 
 .main.container {
