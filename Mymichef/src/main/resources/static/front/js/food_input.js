@@ -80,7 +80,7 @@ function ingredientInputInit() {
 
   // 재료 정보 입력
   const infoForm = document.getElementById("ingredientInfoForm");
-  const infoName = document.getElementById("ingredientName");
+  const infoName = document.getElementById("infoName");
   const items = Array.from(document.getElementsByClassName("ingredient"));
 
   // 재로 클릭 이벤트

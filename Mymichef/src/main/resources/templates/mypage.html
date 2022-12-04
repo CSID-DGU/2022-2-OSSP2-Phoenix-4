@@ -14,63 +14,62 @@
   </head>
 
   <body>
-  <section class="wrapper">
-    <section class="material-design-hamburger">
-      <button class="material-design-hamburger__icon">
-        <span class="material-design-hamburger__layer"></span>
-      </button>
+    <section class="wrapper">
+      <section class="material-design-hamburger">
+        <button class="material-design-hamburger__icon">
+          <span class="material-design-hamburger__layer"></span>
+        </button>
+      </section>
+
+      <section class="menu menu--off">
+        <div><a href="/food/input">식재료입력</a></div>
+        <div><a href="/home/recommend">메뉴추천</a></div>
+        <div><a href="/home/shopping">메모패드</a></div>
+        <div><a href="/mypage">마이페이지</a></div>
+      </section>
     </section>
 
-    <section class="menu menu--off">
-      <div><a href="/food/input">식재료입력</a></div>
-      <div><a href="/home/recommend">메뉴추천</a></div>
-      <div><a href="/home/shopping">메모패드</a></div>
-      <div><a href="/mypage">마이페이지</a></div>
-    </section>
-  </section>
-
-  <div class="container">
-
+    <div class="container">
       <h1 class="title">마이페이지</h1>
 
       <div class="grid">
         <div class="form-group name-group">
           <label for="name">이름</label>
-          <input id="name" type="text" placeholder="홍길동">
+          <input id="name" type="text" placeholder="홍길동" disabled />
         </div>
 
         <div class="form-group email-group">
           <label for="email">Email</label>
-          <input id="email" type="text" placeholder="example@mmc.com">
+          <input id="email" type="text" placeholder="example@mmc.com" />
         </div>
 
         <div class="form-group phone-group">
           <label for="phone">전화번호</label>
-          <input id="phone" type="text" placeholder="010-1234-1234">
+          <input id="phone" type="text" placeholder="010-1234-1234" />
         </div>
 
         <div class="form-group height-group">
           <label for="first-name">키</label>
-          <input id="first-name" type="number" placeholder="cm">
+          <input id="first-name" type="number" placeholder="cm" />
         </div>
 
         <div class="form-group weight-group">
           <label for="weight">몸무게</label>
-          <input id="weight" type="number" placeholder="kg">
+          <input id="weight" type="number" placeholder="kg" />
         </div>
 
         <div class="form-group cal-group">
           <label for="cal">희망 칼로리</label>
-          <input id="cal" type="number" placeholder="kcal">
+          <input id="cal" type="number" placeholder="kcal" />
         </div>
 
         <div class="form-group pw-group">
           <label for="password">비밀번호 수정</label>
-          <input id="password" type="password">
+          <input id="password" type="password" />
         </div>
         <div class="form-group pwch-group">
           <label for="c_password">비밀번호 확인</label>
-          <input id="c_password" type="password">
+          <input id="c_password" type="password" />
         </div>
 
         <div class="form-group alg-group">
@@ -128,7 +127,7 @@
 
         <div class="form-group gender-group">
           <label for="switch">성별</label>
-          <input id="switch" type="checkbox" hidden>
+          <input id="switch" type="checkbox" hidden />
           <label for="switch" class="switch">
             <h1 class="female">✝</h1>
             <h1 class="male">➜</h1>
@@ -138,20 +137,20 @@
         <div class="form-group vegan-group">
           <label for="check">비건</label>
           <label class="pure-material-checkbox">
-            <input id="check" type="checkbox">
+            <input id="check" type="checkbox" />
             <span>비건입니다.</span>
           </label>
         </div>
-
       </div>
 
       <div class="button-container">
-        <button class="button">수정</button>
+        <button id="editBtn" class="button">수정</button>
         <!-- 수정누르면 데이터 업데이트, 화면은 그대로. -->
-        <input type="reset" class="btn btn-default" value="취소">
+        <input type="reset" class="btn btn-default" value="취소" />
         <!-- 취소누르면 홈으로 되돌아가는 링크 삽입 PLZ -->
       </div>
     </div>
-  <script src="../static/front/js/mypage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/front/js/mypage.js"></script>
   </body>
 </html>

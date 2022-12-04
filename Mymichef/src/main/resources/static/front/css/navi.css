@@ -39,8 +39,7 @@
   width: 20%;
   display: block;
   background: #eee;
-  min-height: 600px;
-  height: 90%;
+  height: 430px;
   margin-top: 1em;
   transition: all 300ms;
 }

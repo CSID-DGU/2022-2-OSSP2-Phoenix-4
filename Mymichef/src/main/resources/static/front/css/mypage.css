@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");*/
 @import url("./navi.css");
 @import url("./color.css");
 
@@ -6,14 +6,15 @@ body {
 	box-sizing: border-box;
 	background-color: var(--color-ivory);
 	font-family: "Roboto", sans-serif;
-	display: flex;
+	/*display: flex;*/
 	align-items: center;
 	justify-content: center;
 }
 
+
 .container {
 	background: #fff;
-	width: 100%;
+	width: 90%;
 	height: 90%;
 	padding: 1rem;
 }
@@ -56,14 +57,16 @@ body {
        background-color:white;
        width:6vw;
        height:4vh;
-       position:absolute;
+       /*position:absolute;*/
        border-radius:30vw;
        border:0.2vw solid #ccc;
        cursor: pointer;
        user-select: none;
        display:inline-block;
-       top:87%;
-       left:14%;
+       /*top:87%;*/
+       /*left:14%;*/
+    margin-top: 30px;
+    margin-left: 50px;
        transform:translate(-50%, -50%);
     }
     .switch::before, .switch::after{
@@ -296,7 +299,7 @@ body {
 	}
 
 	.container {
-		margin: 2rem;
+		margin: 2rem auto;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 		border-radius: 4px;
 		max-width: 32rem;
