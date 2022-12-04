@@ -1,6 +1,6 @@
-@import color
+@import color.css
 body {
-  background-color: var(--color-olive);
+  background-color: #e4e4e4;
 }
 
 .calendar {
