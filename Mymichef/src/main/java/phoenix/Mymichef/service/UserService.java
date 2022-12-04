@@ -45,6 +45,9 @@ public class UserService implements UserDetailsService {
         throw new Exception("회원가입에 성공했습니다!");
     }
 
+    /**
+     * 이메일 발송 서비스
+     */
     public void mailsend(String ToAdress, String passwordmsg) throws Exception{
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(ToAdress);
@@ -118,7 +121,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * 아이디, 비밀번호 찾기 서비스
+     * 아이디 찾기 서비스
      */
     public String findId(String name, String email) throws Exception{
         ArrayList<UserEntity> find = userRepository.findIdByName(name);
@@ -133,7 +136,9 @@ public class UserService implements UserDetailsService {
         } throw new Exception("입력 정보를 확인하세요");
     }
 
-
+    /**
+     * 비밀번호 찾기 서비스
+     */
     public String findPw(String name, String userId, String email) throws Exception{
         Optional<UserEntity> find = Optional.ofNullable(userRepository.findByNameAndUserIdAndEmail(name, userId, email));
         if(find.isEmpty()){
