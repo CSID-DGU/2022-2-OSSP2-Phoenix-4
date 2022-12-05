@@ -25,8 +25,7 @@ public class MypageController {
     private UserService userService;
 
     @GetMapping("")
-    public String mypage(Principal principal, Model model){
-
+    public String mypage(){
         return "mypage";
     }
 
@@ -65,6 +64,7 @@ public class MypageController {
      *  마이페이지 정보 수정
      */
 
+    @PostMapping("/updateUserInfo")
     public @ResponseBody String updateUserInfo(@RequestBody UserDTO userDTO)throws Exception{
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDTO userDetail = (UserDTO) principal;

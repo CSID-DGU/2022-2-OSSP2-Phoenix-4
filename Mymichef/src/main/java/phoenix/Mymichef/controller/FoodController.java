@@ -5,16 +5,14 @@ import org.json.JSONObject;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserIngredDto;
 import phoenix.Mymichef.service.UserIngredientService;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("")
 public class FoodController {
 
     private UserIngredientService userIngredientService;
@@ -25,12 +23,15 @@ public class FoodController {
     }
 
 
-    @PostMapping("/food_input")
+    /**
+     *  식재료 입력 api
+     */
+    @PostMapping(value = "/food_input")
     public @ResponseBody String checkMyInfo(@RequestBody UserIngredDto userIngredDto) throws Exception {
         JSONObject jsonObject = new JSONObject();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDTO userDetail = (UserDTO) principal;
-        String userId = ((UserDTO) principal).getUsername();
+        String userId = userDetail.getUsername();
 
         try {
             userIngredientService.saveUserIngred(userIngredDto, userId);
