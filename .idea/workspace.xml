@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="fix bug">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +102,7 @@
       <updated>1669793886053</updated>
       <workItem from="1669793887955" duration="89000" />
       <workItem from="1669793993120" duration="2849000" />
-      <workItem from="1669796865232" duration="47289000" />
+      <workItem from="1669796865232" duration="50004000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -163,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670139426063</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update">
+      <created>1670144147666</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670144147666</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,9 +188,9 @@
     <MESSAGE value="로그인 화면 eventListener 변경" />
     <MESSAGE value="뭔가 추가됐는데 뭔지 모름" />
     <MESSAGE value="calendar 팝업기능 추가&#10;내부 내용과 디자인은 추후 수정" />
-    <MESSAGE value="update" />
     <MESSAGE value="fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

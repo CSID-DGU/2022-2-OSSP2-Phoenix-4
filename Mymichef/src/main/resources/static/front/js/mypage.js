@@ -1,3 +1,39 @@
+const data1 = [];
+const data2 = [];
+
+$.ajax({
+  url: "/mypage/userInfo",
+  type: "GET",
+  contentType: "json",
+  data: JSON.stringify(data1),
+
+  success: function (response) {
+    console.log("userInfo success");
+    console.log(response);
+  },
+  error: function (error) {
+    console.log("userInfo error");
+    console.log(error);
+    document.querySelector("body").innerHTML += error.responseText;
+  },
+});
+$.ajax({
+  url: "/updateUserInfo",
+  type: "POST",
+  contentType: "application/json",
+  data: JSON.stringify(data2),
+
+  success: function (response) {
+    console.log("updateUserInfo success");
+    console.log(response);
+  },
+  error: function (error) {
+    console.log("updateUserInfo error");
+    console.log(error);
+    document.querySelector("body").innerHTML += error.responseText;
+  },
+});
+
 (function () {
   "use strict";
 
