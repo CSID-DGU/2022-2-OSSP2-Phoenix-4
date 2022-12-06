@@ -98,11 +98,12 @@ function ingredientInputInit() {
       const element = ingredientsName[i].name;
       if (id === element || id === element + "name" || id === element + "img") {
         clickItem = element;
-        itemImg = `<img src=${clickItem} alt=${clickItem}>`;
+        itemImg = `<img class="infoImg" src=${clickItem} alt=${clickItem}>`;
         infoForm.style.display = "flex";
       }
     }
     infoName.innerText = clickItem;
+    // infoDiv.innerHTML += itemImg;
 
     let inputData = {
       name: clickItem,
