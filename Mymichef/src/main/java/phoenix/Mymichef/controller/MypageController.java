@@ -81,6 +81,7 @@ public class MypageController {
             update.setHeight(userDTO.getHeight());
             update.setWeight(userDTO.getWeight());
         }catch (Exception e) {
+            System.out.println("e = " + e);
             return "update data 오류 (server)";
         }
         userService.saveUser(update);

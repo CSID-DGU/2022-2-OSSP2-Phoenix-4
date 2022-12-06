@@ -1,6 +1,8 @@
 package phoenix.Mymichef.data.dto;
 
 import lombok.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import phoenix.Mymichef.data.entity.UserIngredEntity;
 
 @NoArgsConstructor
@@ -25,5 +27,15 @@ public class UserIngredDto {
                 .ingreddate(ingreddate)
                 .ingredtype(ingredtype)
                 .build();
+    }
+    /**
+     * 로그인 정보 반환
+     * @return 현재 로그인한 유저 아이디
+     */
+    public static String currentUserId() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
     }
 }

@@ -1,7 +1,7 @@
 // 서버 음식 api accept
 let ingredientsData = {};
 $.ajax({
-  url: "/food_input",
+  url: "/food/input",
   type: "POST",
   contentType: "application/json",
   data: JSON.stringify(ingredientsData),

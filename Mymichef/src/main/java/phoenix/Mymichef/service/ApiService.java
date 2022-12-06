@@ -12,10 +12,8 @@ import phoenix.Mymichef.data.repository.CookingProcessRepository;
 
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
 import phoenix.Mymichef.data.dto.IngredDTO;
-import phoenix.Mymichef.data.entity.ApiEntity;
 import phoenix.Mymichef.data.entity.CookingInfoEntity;
 import phoenix.Mymichef.data.entity.IngredEntity;
-import phoenix.Mymichef.data.repository.ApiRespository;
 import phoenix.Mymichef.data.repository.CookingInfoRepository;
 import phoenix.Mymichef.data.repository.IngredRepository;
 

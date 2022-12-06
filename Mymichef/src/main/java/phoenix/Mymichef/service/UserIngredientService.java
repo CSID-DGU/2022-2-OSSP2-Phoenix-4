@@ -12,15 +12,19 @@ public class UserIngredientService {
     @Autowired
     private UserIngredRepository userIngredRepository;
 
-    public void saveUserIngred(UserIngredDto userIngredDto, String userid) throws Exception{
-        userIngredDto.setUserid(userid);
+
+    /**
+     *  식재료 저장 서비스
+     */
+    public void saveUserIngred(UserIngredDto userIngredDto, String userId) throws Exception{
+        userIngredDto.setUserid(userId);
         UserIngredEntity userIngredEntity = userIngredDto.toEntity();
         validateDuplicateUserIngred(userIngredEntity);
     }
 
     private void validateDuplicateUserIngred(UserIngredEntity userIngredEntity) throws Exception {
-        Optional<UserIngredEntity> findUser = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userIngredEntity.getUserid(), userIngredEntity.getIngredname()));
-        findUser.ifPresent(m -> {
+        Optional<UserIngredEntity> find = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userIngredEntity.getUserid(), userIngredEntity.getIngredname()));
+        find.ifPresent(m -> {
             throw new IllegalStateException("이미 등록 되어있는 재료입니다.");
         });
         userIngredRepository.save(userIngredEntity);

@@ -12,34 +12,32 @@ import phoenix.Mymichef.service.UserIngredientService;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("")
+@RequestMapping("/food")
 public class FoodController {
 
     private UserIngredientService userIngredientService;
 
-    @GetMapping(value = "/home/food_input")
+    @GetMapping(" ")
     public String food_input(Model model){
         return "food_input";
     }
 
 
     /**
-     *  식재료 입력 api
+     *    식재료 입력 API
      */
-    @PostMapping(value = "/food_input")
+    @PostMapping(value = "/input")
     public @ResponseBody String checkMyInfo(@RequestBody UserIngredDto userIngredDto) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDTO userDetail = (UserDTO) principal;
-        String userId = userDetail.getUsername();
+        String userId = UserIngredDto.currentUserId();
 
         try {
             userIngredientService.saveUserIngred(userIngredDto, userId);
         } catch (Exception e) {
             System.out.println("e = " + e);
-            return "재료 등록 실패";
+            return "재료 등록 실패(server)";
         }
-        return "재료 등록 성공";
+        return "재료 등록 성공(server)";
     }
 }
 //보류

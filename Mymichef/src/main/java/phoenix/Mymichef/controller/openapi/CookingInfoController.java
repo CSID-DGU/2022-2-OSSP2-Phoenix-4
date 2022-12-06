@@ -1,4 +1,4 @@
-package phoenix.Mymichef.controller;
+package phoenix.Mymichef.controller.openapi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
-import phoenix.Mymichef.data.dto.IngredDTO;
 import phoenix.Mymichef.service.ApiService;
 
 import java.io.BufferedReader;
