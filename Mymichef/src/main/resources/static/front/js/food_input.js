@@ -84,6 +84,7 @@ function ingredientInputInit() {
 
   // 재료 정보 입력
   const infoForm = document.getElementById("ingredientInfoForm");
+  const infoDiv = document.getElementById("ingredientInfo");
   const infoName = document.getElementById("infoName");
   const items = Array.from(document.getElementsByClassName("ingredient"));
 
@@ -91,11 +92,13 @@ function ingredientInputInit() {
   function onResultClick(event) {
     const id = event.target.id;
     let clickItem;
+    let itemImg;
 
     for (let i = 0; i < ingredientsName.length; i++) {
       const element = ingredientsName[i].name;
       if (id === element || id === element + "name" || id === element + "img") {
         clickItem = element;
+        itemImg = `<img src=${clickItem} alt=${clickItem}>`;
         infoForm.style.display = "flex";
       }
     }

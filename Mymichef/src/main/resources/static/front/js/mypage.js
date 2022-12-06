@@ -14,7 +14,7 @@ $.ajax({
   error: function (error) {
     console.log("userInfo error");
     console.log(error);
-    document.querySelector("body").innerHTML += error.responseText;
+    console.log(error.responseText);
   },
 });
 $.ajax({
@@ -30,7 +30,7 @@ $.ajax({
   error: function (error) {
     console.log("updateUserInfo error");
     console.log(error);
-    document.querySelector("body").innerHTML += error.responseText;
+    console.log(error.responseText);
   },
 });
 
