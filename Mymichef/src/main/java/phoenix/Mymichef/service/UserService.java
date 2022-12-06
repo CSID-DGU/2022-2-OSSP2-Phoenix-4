@@ -1,6 +1,7 @@
 package phoenix.Mymichef.service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +16,7 @@ import phoenix.Mymichef.data.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+@Slf4j
 
 @Service
 public class UserService implements UserDetailsService {
@@ -80,19 +82,7 @@ public class UserService implements UserDetailsService {
 
     public UserDTO findUser(String id) {
         Optional<UserEntity> findUser = userRepository.findById(id);
-        UserEntity userEntity = findUser.get();
-        UserDTO userDTO = UserDTO.builder()
-                .userId(userEntity.getUserId())
-                .email(userEntity.getEmail())
-                .password(userEntity.getPassword())
-                .height(userEntity.getHeight())
-                .weight(userEntity.getWeight())
-                .gender(userEntity.getGender())
-                .name(userEntity.getName())
-                .allergy(userEntity.getAllergy())
-                .phoneNumber(userEntity.getPhoneNumber())
-                .build();
-        return userDTO;
+        return findUser.get().toDto();
 
     }
     /**
@@ -148,6 +138,11 @@ public class UserService implements UserDetailsService {
         updatepassword(find.get().getUserId(), pw);
         return pw;
     }
+
+    /**
+     *  현재 로그인한 정보 가져오기
+     */
+
 
 
 }

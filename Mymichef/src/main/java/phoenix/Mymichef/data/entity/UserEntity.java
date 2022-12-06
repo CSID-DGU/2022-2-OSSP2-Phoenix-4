@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
+import phoenix.Mymichef.data.dto.UserDTO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,6 +56,20 @@ public class UserEntity {
         this.height = height;
         this.weight = weight;
         this.allergy = allergy;
+    }
+
+    public UserDTO toDto(){
+        return UserDTO.builder()
+                .userId(userId)
+                .email(email)
+                .password(password)
+                .name(name)
+                .phoneNumber(phoneNumber)
+                .height(height)
+                .weight(weight)
+                .allergy(allergy)
+                .gender(gender)
+                .build();
     }
 
 }

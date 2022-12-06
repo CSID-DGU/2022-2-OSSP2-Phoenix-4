@@ -2,8 +2,11 @@ package phoenix.Mymichef.data.dto;
 
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import phoenix.Mymichef.data.entity.UserEntity;
@@ -41,6 +44,7 @@ public class UserDTO implements UserDetails {
 
         this.SecurityUserEntity = SecurityUserEntity;
     }
+
     public UserEntity toEntity(PasswordEncoder passwordEncoder){
         return UserEntity.builder()
                 .userId(userId)
@@ -53,6 +57,17 @@ public class UserDTO implements UserDetails {
                 .allergy(allergy)
                 .gender(gender)
                 .build();
+    }
+
+    /**
+     * 로그인 정보 반환
+     * @return 현재 로그인한 유저 아이디
+     */
+    public static String currentUserId() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
     }
 
 

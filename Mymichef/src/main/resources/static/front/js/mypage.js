@@ -3,8 +3,8 @@ const data2 = [];
 
 $.ajax({
   url: "/mypage/userInfo",
-  type: "GET",
-  contentType: "json",
+  type: "POST",
+  contentType: "application/json",
   data: JSON.stringify(data1),
 
   success: function (response) {

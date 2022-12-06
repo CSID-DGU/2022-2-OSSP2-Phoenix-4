@@ -1,6 +1,7 @@
 package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
+@Slf4j
 @Controller
 @AllArgsConstructor
 @RequestMapping("/mypage")
@@ -34,22 +36,19 @@ public class MypageController {
      */
 
     @PostMapping("/userInfo")
-    public @ResponseBody String checkMyInfo(@RequestBody UserDTO userDTO)throws Exception{
+    @ResponseBody
+    public String checkMyInfo()throws Exception{
         JSONObject jsonObject = new JSONObject();
-
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDTO userDetail = (UserDTO) principal;
-        String userId = ((UserDTO) principal).getUsername();
-
         UserDTO userInfo = new UserDTO();
-        try {
-            userInfo = userService.findUser(userId);
-        } catch (Exception e){
-            return "정보 불러오기 오류 발생(server)";
-        }
+        String userId = UserDTO.currentUserId();
+    try {
+        userInfo = userService.findUser(userId);
+        System.out.println("api에서 정보 확인 userInfo = " + userInfo.getUserId());
+    }catch (Exception e){
+        return "정보 불러오기 오류 발생(server)";
+    }
         jsonObject.put("userId", userInfo.getUserId());
         jsonObject.put("name", userInfo.getName());
-        jsonObject.put("password", userInfo.getPassword());
         jsonObject.put("email", userInfo.getEmail());
         jsonObject.put("gender", userInfo.getGender());
         jsonObject.put("phoneNumber", userInfo.getPhoneNumber());
@@ -66,12 +65,12 @@ public class MypageController {
 
     @PostMapping("/updateUserInfo")
     public @ResponseBody String updateUserInfo(@RequestBody UserDTO userDTO)throws Exception{
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDTO userDetail = (UserDTO) principal;
-        String id = ((UserDTO) principal).getUsername();
+
+        String userId = UserDTO.currentUserId();
         UserDTO update =new UserDTO();
+
         try {
-            update = userService.findUser(id);
+            update = userService.findUser(userId);
             update.setUserId(userDTO.getUserId());
             update.setName(userDTO.getName());
             update.setEmail(userDTO.getEmail());

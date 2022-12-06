@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/localhost8080/**").authenticated()
+                .antMatchers("/localhost8080").authenticated()
                 .anyRequest().permitAll() //인증없이 접근하게 해주는 프론트쪽 주소 현재는 home으로 임의 설정
                 .and()
 
