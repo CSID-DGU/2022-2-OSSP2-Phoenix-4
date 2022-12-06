@@ -29,7 +29,7 @@
       </section>
     </section>
 
-    <div class="container">
+    <form class="container"  onsubmit="return confirm('저장하시겠습니까?');">
       <h1 class="title">마이페이지</h1>
 
       <div class="grid">
@@ -143,13 +143,15 @@
         </div>
       </div>
 
-      <div class="button-container">
-        <button id='editBtn' class="button" onclick='completeEdit()'>수정</button>
-        <!-- 수정누르면 데이터 업데이트, 화면은 그대로. -->
-        <input type="reset" class="btn btn-default" value="홈으로" />
-        <!-- 취소누르면 홈으로 되돌아가는 링크 삽입 PLZ -->
+      <div class="parent">
+        <div class="wrapper">
+          <button class=" button button--disappear" type="button" onclick='undoEdit()'>취소</button>
+          <button class=" button button--disappear" >저장</button>
+          <button id='editBtn' type="button" class=" button button--trigger">수정하기</button>
+        </div>
       </div>
-    </div>
+
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/mypage.js"></script>
   </body>
