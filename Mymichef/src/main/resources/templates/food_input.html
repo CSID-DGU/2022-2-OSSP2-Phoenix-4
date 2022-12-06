@@ -17,39 +17,45 @@
         </button>
       </section>
 
-    <section class="menu menu--off">
+      <section class="menu menu--off">
         <div><a href="/home">홈</a></div>
         <div><a href="/home/recommend">메뉴추천</a></div>
         <div><a href="/home/shopping">메모패드</a></div>
-        <div> <a href="/home/calendar">식단확인</a></div>
+        <div><a href="/home/calendar">식단확인</a></div>
         <div><a href="/mypage">마이페이지</a></div>
+      </section>
     </section>
-
-</section>
 
     <!--본문-->
     <div class="main container">
       <div class="search container">
+        <h1>식재료 검색</h1>
         <label for="ingredientSearch"></label
         ><input id="ingredientSearch" placeholder="음식을 입력해 주세요" />
         <div id="ingredientsResult"></div>
       </div>
 
       <div class="info container">
-        <form id="ingredientInfoForm">
+        <h1>식재료 입력</h1>
+        <form id="ingredientInfoForm" style="display: none">
           <div id="ingredientInfo">
             <p id="infoName"></p>
-            <input type="number" id="expirationDate" />
-            <input type="number" id="quantity" />
-            <img src="" id="infoImg" />
+            <h2>유통기한</h2>
+            <label for="expirationDate"></label
+            ><input type="date" id="expirationDate" name="date" />
+            <h2>수량</h2>
+            <label for="quantity"></label
+            ><input type="number" id="quantity" name="quantity" />
+            <img src="" id="infoImg" alt="" />
           </div>
+          <button type="submit" id="infoBtn">확인</button>
         </form>
       </div>
 
-      <div class="save container"></div>
+      <div class="save container">
+        <h1>내 식재료 리스트</h1>
+      </div>
     </div>
-
-    <div id="ingredientsList"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/food_input.js"></script>

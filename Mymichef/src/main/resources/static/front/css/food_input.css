@@ -15,10 +15,16 @@ body {
 .search.container,
 .info.container,
 .save.container {
-  width: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
   height: 800px;
-  padding: 10px;
+  padding: 12px;
   background-color: lightyellow;
+}
+
+h1 {
+  margin-left: 18px;
 }
 
 #ingredientSearch {
@@ -30,36 +36,44 @@ body {
   background-color: white;
   border: 4px solid black;
   cursor: pointer;
-  margin: 8px auto;
+  margin: 18px auto;
 }
 
 #ingredientsResult {
   display: flex;
   flex-wrap: wrap;
-  height: 720px;
+  height: 620px;
   overflow: scroll;
   overflow-x: hidden;
+  justify-content: space-evenly;
 }
 
-/*#ingredientsResult::-webkit-scrollbar-thumb {*/
-/*  background-color: bisque;*/
-/*}*/
+#ingredientsResult::-webkit-scrollbar {
+  width: 12px;
+}
 
-/*#ingredientsResult::-webkit-scrollbar-track {*/
-/*  background-color: lightgoldenrodyellow;*/
-/*}*/
+#ingredientsResult::-webkit-scrollbar-thumb {
+  border-radius: 18px;
+  background: var(--color-grass);
+}
+
+#ingredientsResult::-webkit-scrollbar-track {
+  background: var(--color-mint);
+  border-radius: 18px;
+}
 
 /*#ingredientsResult::-webkit-scrollbar-button {*/
+/*  display: none;*/
 /*}*/
 .ingredient {
   display: inline-block;
-  margin: 10px;
   background-color: white;
   border-radius: 15px;
-  width: 100px;
+  width: 18%;
   height: 140px;
   padding: 20px;
   text-align: center;
+  margin-bottom: 18px;
 }
 .ingredientImg {
   height: 400px;
@@ -67,4 +81,26 @@ body {
   margin: 2px auto;
   background-color: dimgray;
   border-radius: 18px;
+}
+
+/*식재료 정보 입력*/
+#ingredientInfoForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#infoName {
+  width: 100%;
+  height: 3rem;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+#infoBtn {
+  all: unset;
+  width: 100px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 18px;
+  background-color: var(--color-olive);
 }

@@ -51,12 +51,16 @@ function ingredientInputInit() {
     const ingredientName = ingredientsName[i].name;
     const ingredientImg = "../jpg/logo!.png";
 
-    const divName = `<div class="ingredientName">${ingredientName}</div>`;
-    const divImg = `<img class="ingredientImg" src=${ingredientImg} alt=${ingredientName}>`;
+    const divName = `<div class="ingredientName" id=${
+      ingredientName + "name"
+    }>${ingredientName}</div>`;
+    const divImg = `<img class="ingredientImg" id=${
+      ingredientName + "img"
+    } src=${ingredientImg} alt=${ingredientName}>`;
 
     ingredientsResult.innerHTML =
       ingredientsResult.innerHTML +
-      `<div class="ingredient">` +
+      `<div class="ingredient" id=${ingredientName}>` +
       divImg +
       divName +
       `</div>`;
@@ -86,8 +90,20 @@ function ingredientInputInit() {
   // 재로 클릭 이벤트
   function onResultClick(event) {
     const id = event.target.id;
-    console.log(event);
-    console.log(id);
+    let clickItem;
+
+    for (let i = 0; i < ingredientsName.length; i++) {
+      const element = ingredientsName[i].name;
+      if (id === element || id === element + "name" || id === element + "img") {
+        clickItem = element;
+        infoForm.style.display = "flex";
+      }
+    }
+    infoName.innerText = clickItem;
+
+    let inputData = {
+      name: clickItem,
+    };
   }
   items.forEach((item) => item.addEventListener("click", onResultClick));
 
