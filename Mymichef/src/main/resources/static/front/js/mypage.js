@@ -58,7 +58,19 @@ $.ajax({
     });
 })();
 
-function completeEdit()  {
-  const btnElement = document.getElementById('editBtn');
-  btnElement.innerText = '저장';
+
+function undoEdit()  {
+  $('.button--trigger').show()
+    $(this).removeClass('active').addClass('out');
+
+        setTimeout(function(){
+          $('.button--disappear').hide()
+        }, 0); //Same time as animation
 }
+
+$('.button--trigger').on('click', function(e) {
+  $('.button--trigger').hide()
+  $('.button--disappear').show();
+  $('.button--disappear').removeClass('out').addClass('active');
+});
+
