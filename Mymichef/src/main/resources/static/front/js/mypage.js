@@ -57,3 +57,8 @@ $.ajax({
       }
     });
 })();
+
+function completeEdit()  {
+  const btnElement = document.getElementById('editBtn');
+  btnElement.innerText = '저장';
+}
