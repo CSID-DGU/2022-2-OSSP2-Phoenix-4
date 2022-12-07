@@ -40,7 +40,7 @@ body {
 body {
   height: 100vh;
   width: 100vw;
-  background-image: url("/front/jpg/kitchen.png");
+  /*background-image: url("/front/jpg/kitchen.png");*/
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -52,11 +52,6 @@ body {
 
   width: 100vw;
   height: 100vh;
-
-  text-align: center;
-  font-size: var(--font-size-base);
-  color: var(--color-gray);
-  font-family: var(--font-segoe-ui);
 }
 
 .icon_boxes > .icon_box_1,
