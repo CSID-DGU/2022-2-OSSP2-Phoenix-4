@@ -1,15 +1,20 @@
 package phoenix.Mymichef.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.UserIngredDto;
 import phoenix.Mymichef.data.entity.UserIngredEntity;
 import phoenix.Mymichef.data.repository.UserIngredRepository;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class UserIngredientService {
 
-    @Autowired
+
     private UserIngredRepository userIngredRepository;
 
 
@@ -29,5 +34,36 @@ public class UserIngredientService {
         });
         userIngredRepository.save(userIngredEntity);
         throw new Exception("재료 등록 성공");
+    }
+
+    /**
+     *  식재료 확인 서비스
+     */
+    public ArrayList<String> CheckIngredname(String userid) throws Exception{
+        ArrayList<String> Ingredname = new ArrayList<>();
+        ArrayList<UserIngredEntity> find = userIngredRepository.findByUserid(userid);
+        if(find.isEmpty()){
+            throw new Exception("등록된 재료가 없습니다.");
+        }
+        else {
+            for (int i = 0; i < find.size() ; i ++){
+                Ingredname.add(find.get(i).getIngredname());
+            }
+            return Ingredname;
+        }
+    }
+
+    public ArrayList<String> CheckIngredamount(String userid) throws Exception{
+        ArrayList<String> Ingredamount = new ArrayList<>();
+        ArrayList<UserIngredEntity> find = userIngredRepository.findByUserid(userid);
+        if(find.isEmpty()){
+            throw new Exception("등록된 재료가 없습니다.");
+        }
+        else {
+            for (int i = 0; i < find.size() ; i ++){
+                Ingredamount.add(find.get(i).getIngredamount());
+            }
+            return Ingredamount;
+        }
     }
 }
