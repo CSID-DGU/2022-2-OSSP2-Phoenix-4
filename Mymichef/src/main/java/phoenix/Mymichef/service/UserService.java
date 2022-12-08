@@ -105,9 +105,12 @@ public class UserService implements UserDetailsService {
     /**
      * 비밀번호 저장 서비스
      */
-    public void updatepassword(String userId, String password){
+    public void updatepassword(String userId, String password) {
         Optional<UserEntity> user = userRepository.findById(userId);
-        userRepository.save(UserEntity.builder().userId(userId).name(user.get().getName()).email(user.get().getEmail()).height(user.get().getHeight()).weight(user.get().getWeight()).allergy(user.get().getAllergy()).phoneNumber(user.get().getPhoneNumber()).gender(user.get().getGender()).password(passwordEncoder.encode(password)).build());
+        user.ifPresent(selectUser->{
+            selectUser.setPassword(passwordEncoder.encode(password));
+        });
+
     }
 
     /**
