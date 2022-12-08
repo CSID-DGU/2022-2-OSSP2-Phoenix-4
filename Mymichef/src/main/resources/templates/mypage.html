@@ -40,27 +40,32 @@
 
         <div class="form-group email-group">
           <label for="email">Email</label>
-          <input id="email" type="text" placeholder="example@mmc.com" />
+          <input
+            id="email"
+            type="text"
+            placeholder="example@mmc.com"
+            disabled
+          />
         </div>
 
         <div class="form-group phone-group">
           <label for="phone">전화번호</label>
-          <input id="phone" type="text" placeholder="010-1234-1234" />
+          <input id="phone" type="text" placeholder="010-1234-1234" disabled />
         </div>
 
         <div class="form-group height-group">
           <label for="height">키</label>
-          <input id="height" type="number" placeholder="cm" />
+          <input id="height" type="number" placeholder="cm" disabled />
         </div>
 
         <div class="form-group weight-group">
           <label for="weight">몸무게</label>
-          <input id="weight" type="number" placeholder="kg" />
+          <input id="weight" type="number" placeholder="kg" disabled />
         </div>
 
         <div class="form-group cal-group">
           <label for="cal">희망 칼로리</label>
-          <input id="cal" type="number" placeholder="kcal" />
+          <input id="cal" type="number" placeholder="kcal" disabled />
         </div>
 
         <div class="form-group pw-group">
@@ -152,7 +157,7 @@
           >
             취소
           </button>
-          <button class="button button--disappear">저장</button>
+          <button type="submit" class="button button--disappear">저장</button>
           <button
             id="updateUserInfo"
             type="button"

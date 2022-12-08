@@ -70,15 +70,15 @@ parentForm.addEventListener("submit", (event) => {
 
   let inputPassword = event.target[2].value;
 
-  inputPhoneNumber = event.target[4].value;
+  let inputPhoneNumber = event.target[4].value;
 
-  inputHeight = event.target[5].value;
+  let inputHeight = event.target[5].value;
 
-  inputWeight = event.target[6].value;
+  let inputWeight = event.target[6].value;
 
-  inputAllergy = event.target[7].value;
+  let inputAllergy = event.target[7].value;
 
-  inputGender = event.target[8].value;
+  let inputGender = event.target[8].value;
   /*와ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ 못해먹겠다 js 후하후하,,,,,,,,,,,,SOS...*/
 
   $.ajax({
