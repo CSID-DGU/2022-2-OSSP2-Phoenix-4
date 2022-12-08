@@ -14,7 +14,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserIngredientService {
 
-
     private UserIngredRepository userIngredRepository;
 
 
@@ -65,5 +64,19 @@ public class UserIngredientService {
             }
             return Ingredamount;
         }
+    }
+
+    /**
+     *  식재료 수정 서비스
+     */
+    public void ModifyIngred(String userid, String ingredname, String ingredamount){
+        UserIngredEntity useringred = userIngredRepository.findByUseridAndIngredname(userid, ingredname);
+        Float amount = Float.valueOf(useringred.getIngredamount()) - Float.valueOf(ingredamount);
+        if(amount > 0) {
+            useringred.setIngredamount(String.valueOf(amount));
+            userIngredRepository.save(useringred);
+        }
+        else
+            userIngredRepository.delete(useringred);
     }
 }

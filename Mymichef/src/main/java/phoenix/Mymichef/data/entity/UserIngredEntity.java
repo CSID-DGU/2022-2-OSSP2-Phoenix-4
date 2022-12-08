@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import phoenix.Mymichef.data.dto.UserDTO;
+import phoenix.Mymichef.data.dto.UserIngredDto;
 
 import javax.persistence.*;
 
@@ -39,5 +41,16 @@ public class UserIngredEntity {
         this.ingredamount = ingredamount;
         this.ingreddate = ingreddate;
         this.ingredtype = ingredtype;
+    }
+
+    public  UserIngredDto toDto(){
+        return UserIngredDto.builder()
+                .id(id)
+                .userid(userid)
+                .ingredname(ingredname)
+                .ingredamount(ingredamount)
+                .ingreddate(ingreddate)
+                .ingredtype(ingredtype)
+                .build();
     }
 }
