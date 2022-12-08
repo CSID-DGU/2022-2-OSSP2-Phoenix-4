@@ -6,9 +6,8 @@ body {
   box-sizing: border-box;
   background-color: var(--color-lightorange);
   font-family: "Roboto", sans-serif;
-  /*display: flex;*/
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  overflow:hidden;
 }
 
 .container {
@@ -301,12 +300,13 @@ input:checked + .switch:after {
 
 @media screen and (min-width: 768px) {
   body {
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    position: relative;
   }
 
   .container {
     margin: 2rem auto;
+    margin-top:10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     max-width: 32rem;
@@ -395,11 +395,8 @@ input:checked + .switch:after {
 }
 
 .parent {
-  display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  bottom: 15%;
   flex-wrap: wrap;
   padding-top: 50px;
 }

@@ -146,27 +146,29 @@
             <span>비건입니다.</span>
           </label>
         </div>
+
+        <form id="parent">
+          <div class="wrapper">
+            <button
+                    class="button button--disappear"
+                    type="button"
+                    onclick="undoEdit()"
+            >
+              취소
+            </button>
+            <button type="submit" class="button button--disappear">저장</button>
+            <button
+                    id="updateUserInfo"
+                    type="button"
+                    class="button button--trigger"
+            >
+              수정하기
+            </button>
+          </div>
+        </form>
       </div>
 
-      <form id="parent">
-        <div class="wrapper">
-          <button
-            class="button button--disappear"
-            type="button"
-            onclick="undoEdit()"
-          >
-            취소
-          </button>
-          <button type="submit" class="button button--disappear">저장</button>
-          <button
-            id="updateUserInfo"
-            type="button"
-            class="button button--trigger"
-          >
-            수정하기
-          </button>
-        </div>
-      </form>
+
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/mypage.js"></script>
