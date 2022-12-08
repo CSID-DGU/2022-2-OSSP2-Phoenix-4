@@ -1,15 +1,38 @@
-let userData = [];
+let data1 = [];
 let data2 = [];
 
 $.ajax({
   url: "/mypage/userInfo",
   type: "POST",
   contentType: "json",
-  data: JSON.stringify(userData),
+  data: JSON.stringify(data1),
 
   success: function (response) {
     console.log("userInfo success");
     console.log(response);
+    const userData = JSON.parse(response);
+    console.log(typeof response);
+    console.log("name: " + userData.name);
+    console.log("email: " + userData.email);
+    console.log("phone: " + userData.phoneNumber);
+    console.log("height: " + userData.height);
+    console.log("weight: " + userData.weight);
+    console.log("cal: " + userData.calory);
+    console.log("allergy: " + userData.allergy);
+
+    const inputName = document.getElementById("name");
+    const inputEmail = document.getElementById("email");
+    const inputPhone = document.getElementById("phone");
+    const inputHeight = document.getElementById("height");
+    const inputWeight = document.getElementById("weight");
+    const inputCal = document.getElementById("cal");
+    const inputAllergies = document.getElementById("allergies");
+
+    inputName.value = userData.name;
+    inputEmail.value = userData.email;
+    inputPhone.value = userData.phoneNumber;
+    inputHeight.value = userData.height;
+    inputWeight.value = userData.weight;
   },
   error: function (error) {
     console.log("userInfo error");
@@ -18,7 +41,26 @@ $.ajax({
   },
 });
 
+// 정보 업데이트
+function updateInfo() {
+  const inputName = document.getElementById("name");
+  const inputEmail = document.getElementById("email");
+  const inputPhone = document.getElementById("phone");
+  const inputHeight = document.getElementById("height");
+  const inputWeight = document.getElementById("weight");
+  const inputCal = document.getElementById("cal");
+  const inputAllergies = document.getElementById("allergies");
+  // const inputGender = document.getElementById();
+  // const inputVegan = document.getElementById("");
+
+  console.log(typeof userData);
+}
+
+updateInfo();
+
 const parentForm = document.querySelector(".container");
+
+// 정보 수정
 
 parentForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -26,7 +68,7 @@ parentForm.addEventListener("submit", (event) => {
   const inputName = event.target[0].value;
   const inputEmail = event.target[1].value;
 
-  inputPassword = event.target[2].value;
+  let inputPassword = event.target[2].value;
 
   inputPhoneNumber = event.target[4].value;
 

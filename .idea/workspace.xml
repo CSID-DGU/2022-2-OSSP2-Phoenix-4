@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="updata">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +34,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="JpbToolWindowState">
-    <option name="myId2FirstActivated">
-      <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
-      </map>
-    </option>
-    <option name="myId2Visible">
-      <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
-      </map>
-    </option>
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,7 +60,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/shinj/node_modules/prettier&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\shinj\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;380d2e7f6890bd25a458be6017625348&quot;
   }
 }</component>
@@ -103,7 +96,10 @@
       <updated>1669793886053</updated>
       <workItem from="1669793887955" duration="89000" />
       <workItem from="1669793993120" duration="2849000" />
-      <workItem from="1669796865232" duration="64628000" />
+      <workItem from="1669796865232" duration="65304000" />
+      <workItem from="1670375100116" duration="82000" />
+      <workItem from="1670375199656" duration="4147000" />
+      <workItem from="1670471598053" duration="1026000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -196,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670310565538</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updata">
+      <created>1670374450136</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670374450136</updated>
+    </task>
+    <task id="LOCAL-00015" summary="updata">
+      <created>1670374525745</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670374525745</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +229,8 @@
     <MESSAGE value="calendar 팝업기능 추가&#10;내부 내용과 디자인은 추후 수정" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="updata" />
+    <option name="LAST_COMMIT_MESSAGE" value="updata" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

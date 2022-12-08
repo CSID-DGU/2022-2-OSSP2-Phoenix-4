@@ -29,7 +29,7 @@
       </section>
     </section>
 
-    <form class="container"  onsubmit="return confirm('저장하시겠습니까?');">
+    <form class="container" onsubmit="return confirm('저장하시겠습니까?');">
       <h1 class="title">마이페이지</h1>
 
       <div class="grid">
@@ -49,8 +49,8 @@
         </div>
 
         <div class="form-group height-group">
-          <label for="first-name">키</label>
-          <input id="first-name" type="number" placeholder="cm" />
+          <label for="height">키</label>
+          <input id="height" type="number" placeholder="cm" />
         </div>
 
         <div class="form-group weight-group">
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group alg-group">
-          <div>
+          <div id="allergies">
             <label for="allergy1">알레르기1</label>
             <label for="allergy2">알레르기2</label>
           </div>
@@ -145,12 +145,23 @@
 
       <form id="parent">
         <div class="wrapper">
-          <button class=" button button--disappear" type="button" onclick='undoEdit()'>취소</button>
-          <button class=" button button--disappear" >저장</button>
-          <button id='updateUserInfo' type="button" class=" button button--trigger">수정하기</button>
+          <button
+            class="button button--disappear"
+            type="button"
+            onclick="undoEdit()"
+          >
+            취소
+          </button>
+          <button class="button button--disappear">저장</button>
+          <button
+            id="updateUserInfo"
+            type="button"
+            class="button button--trigger"
+          >
+            수정하기
+          </button>
         </div>
       </form>
-
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/mypage.js"></script>
