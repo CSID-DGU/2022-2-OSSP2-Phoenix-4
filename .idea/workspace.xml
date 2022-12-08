@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="updata">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
       <workItem from="1669796865232" duration="65304000" />
       <workItem from="1670375100116" duration="82000" />
       <workItem from="1670375199656" duration="4147000" />
-      <workItem from="1670471598053" duration="4520000" />
+      <workItem from="1670471598053" duration="6091000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -216,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670472633161</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="updata">
+      <created>1670479251741</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1670479251741</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

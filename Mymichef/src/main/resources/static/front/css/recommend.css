@@ -1,71 +1,12 @@
 @import url("./navi.css");
 @import url("./color.css");
 
-html,
 body {
-  background-color: var(--color-olive);
+  background-color: var(--color-lightorange);
 }
 
 .main {
-  display: flex;
-  items-align:center;
-  flex-direction: column;
-}
-
-.container_navigation {
-  display: flex;
-  flex-direction: row;
-  height: 80px;
-  margin-top: 50px;
-  margin-bottom: 100px;
-  flex-grow: 1;
-}
-
-.container_ {
-  display: flex;
-  flex-direction: row;
-}
-
-.container_period {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.container_recommend {
-  display: flex;
-  flex-direction: row;
-}
-
-.container_essential {
-  display: flex;
-  flex-direction: row;
-}
-
-.container_submit {
-  display: flex;
-}
-
-#breakfast,
-#lunch,
-#dinner {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#start,
-#end {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#recommend_ingredient,
-#recommend_expirationDate {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#submit {
-  width: 140px;
-  height: 45px;
+  width: 90%;
+  height: 90%;
+  background-color: var(--color-ivory);
 }
