@@ -63,6 +63,9 @@ const parentForm = document.querySelector(".container");
 // 정보 수정
 
 parentForm.addEventListener("submit", (event) => {
+  if(confirm('저장하시겠습니까?')){
+    return;
+  }
   event.preventDefault();
 
   const inputName = event.target[0].value;
@@ -124,6 +127,10 @@ parentForm.addEventListener("submit", (event) => {
 })();
 
 function undoEdit() {
+      if(!confirm('취소하시겠습니까?새로 입력한 정보가 사라집니다.')){
+        return;
+      }
+
   $(".button--trigger").show();
   $(this).removeClass("active").addClass("out");
 
