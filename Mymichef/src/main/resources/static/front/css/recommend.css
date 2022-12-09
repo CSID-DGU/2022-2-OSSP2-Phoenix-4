@@ -15,6 +15,9 @@ body {
   flex-direction:column;
   justify-content:center;
   text-align: center;
+  position: relative
+  top:-80px;
+  z-index:0;
 }
 
 .form-container h1 {
@@ -46,13 +49,13 @@ form {
   text-align: center;
 }
 
-.form-container input[type='submit']{
+.form-container button[type='submit']{
   border: 1px solid #e67e22;
   width: 120px;
   height: 40px;
   background-color: #fefefe;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 0px;
+  margin-bottom: 10px;
   color: #e67e22;
   font-family: sans-serif;
   font-weight: 300;
@@ -60,8 +63,8 @@ form {
   border-radius: 50px;
 }
 
-.form-container input[type='submit']:hover,
-.form-container input[type='submit']:active {
+.form-container button[type='submit']:hover,
+.form-container button[type='submit']:active {
   background-color: #e67e22;
   color: #fefefe;
 }
@@ -72,13 +75,18 @@ form {
     font-size: 17px;
 }
 
+ul.dish-box,
 ul.ks-cboxtags {
     list-style: none;
-    padding: 20px;
+    padding: 10px;
 }
+
+ul.dish-box li,
 ul.ks-cboxtags li{
   display: inline;
 }
+
+ul.dish-box li label,
 ul.ks-cboxtags li label{
     display: inline-block;
     background-color: rgba(255, 255, 255, .9);
@@ -96,11 +104,13 @@ ul.ks-cboxtags li label{
     transition: all .2s;
 }
 
+ul.dish-box li label,
 ul.ks-cboxtags li label {
     padding: 8px 12px;
     cursor: pointer;
 }
 
+ul.dish-box li label::before,
 ul.ks-cboxtags li label::before {
     display: inline-block;
     font-style: normal;
@@ -111,16 +121,18 @@ ul.ks-cboxtags li label::before {
     font-weight: 900;
     font-size: 12px;
     padding: 2px 6px 2px 2px;
-    content: "\f067";
+    content: "+";
     transition: transform .3s ease-in-out;
 }
 
+ul.dish-box li input[type="checkbox"]:checked + label::before,
 ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
-    content: "\f00c";
     transform: rotate(-360deg);
+    content: "v";
     transition: transform .3s ease-in-out;
 }
 
+ul.dish-box li input[type="checkbox"]:checked + label,
 ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     border: 2px solid #1bdbf8;
     background-color: #12bbd4;
@@ -128,13 +140,18 @@ ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     transition: all .2s;
 }
 
+ul.dish-box li input[type="checkbox"],
 ul.ks-cboxtags li input[type="checkbox"] {
   display: absolute;
 }
+
+ul.dish-box li input[type="checkbox"],
 ul.ks-cboxtags li input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
+
+ul.dish-box li input[type="checkbox"]:focus + label
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   border: 2px solid #e9a1ff;
 }
