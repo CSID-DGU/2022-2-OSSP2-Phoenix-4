@@ -5,8 +5,13 @@ body {
   background: #009578;
 }
 
+.container{
+    position: relative;
+    top:-80px;
+    z-index:0;
+}
+
 #info{
-    display:flex;
     flex-direction:column;
     justify-content:center;
     text-align: center;
