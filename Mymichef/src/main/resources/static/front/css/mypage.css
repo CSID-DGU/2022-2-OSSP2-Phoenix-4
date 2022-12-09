@@ -7,7 +7,6 @@ body {
   background-color: var(--color-lightorange);
   font-family: "Roboto", sans-serif;
   display: flex;
-  overflow:hidden;
 }
 
 .container {
