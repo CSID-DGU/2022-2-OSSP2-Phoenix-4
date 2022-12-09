@@ -1,3 +1,26 @@
+let data1 = [];
+
+ $.ajax({
+    url: "/recommend/default",
+    type: "POST",
+    contentType: "json",
+    data: JSON.stringify(data1),
+
+    success: function (response) {
+      console.log("recommend success");
+      console.log(response);
+      const userData = JSON.parse(response);
+      console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
+    },
+    error: function (error) {
+      console.log("recommend error");
+      console.log(error);
+      console.log(error.responseText);
+    },
+ });
+
+
+
 (function() {
 
   'use strict';

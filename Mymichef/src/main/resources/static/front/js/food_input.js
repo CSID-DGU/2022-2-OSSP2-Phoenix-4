@@ -17,21 +17,21 @@ $.ajax({
     console.log(error.responseText);
   },
 });
-$.ajax({
-  url: "/food/input",
-  type: "POST",
-  contentType: "application/json",
-  data: JSON.stringify(ingredientsData),
-
-  success: function (response) {
-    console.log("ingredients api post success");
-    console.log(response);
-  },
-  error: function (error) {
-    console.log("ingredients api post error");
-    console.log(error);
-  },
-});
+//$.ajax({
+//  url: "/food/input",
+//  type: "POST",
+//  contentType: "application/json",
+//  data: JSON.stringify(ingredientsData),
+//
+//  success: function (response) {
+//    console.log("ingredients api post success");
+//    console.log(response);
+//  },
+//  error: function (error) {
+//    console.log("ingredients api post error");
+//    console.log(error);
+//  },
+//});
 
 
 $(document).ready(function () {

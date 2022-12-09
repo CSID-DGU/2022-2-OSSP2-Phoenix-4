@@ -3,6 +3,8 @@ package phoenix.Mymichef.data.dto;
 
 import lombok.*;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import phoenix.Mymichef.data.entity.CookingInfoEntity;
 
 
@@ -53,5 +55,28 @@ public class CookingInfoDTO {
                 .LEVEL_NM(LEVEL_NM)
                 .IRDNT_CODE(IRDNT_CODE)
                 .build();
+    }
+
+    public CookingInfoDTO(CookingInfoEntity cookingInfoEntity){
+        ROW_NUM = cookingInfoEntity.ROW_NUM;
+        RECIPE_ID = cookingInfoEntity.RECIPE_ID;
+        RECIPE_NM_KO = cookingInfoEntity.RECIPE_NM_KO;
+        SUMRY = cookingInfoEntity.SUMRY;
+        NATION_CODE = cookingInfoEntity.NATION_CODE;
+        NATION_NM = cookingInfoEntity.NATION_NM;
+        TY_CODE = cookingInfoEntity.TY_CODE;
+        TY_NM = cookingInfoEntity.TY_NM;
+        COOKING_TIME = cookingInfoEntity.COOKING_TIME;
+        CALORIE = cookingInfoEntity.CALORIE;
+        QNT = cookingInfoEntity.QNT;
+        LEVEL_NM = cookingInfoEntity.LEVEL_NM;
+        IRDNT_CODE = cookingInfoEntity.IRDNT_CODE;
+    }
+
+    public static String currentUserId() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
     }
 }
