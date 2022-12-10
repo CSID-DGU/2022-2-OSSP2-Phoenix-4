@@ -15,7 +15,7 @@ import phoenix.Mymichef.data.entity.CookingInfoEntity;
 @AllArgsConstructor
 public class CookingInfoDTO {
     public String ROW_NUM;
-    public String RECIPE_ID;
+    public String recipeid;
 
     public String RECIPE_NM_KO;
 
@@ -42,7 +42,7 @@ public class CookingInfoDTO {
     public CookingInfoEntity toEntity(){
         return CookingInfoEntity.builder()
                 .ROW_NUM(ROW_NUM)
-                .RECIPE_ID(RECIPE_ID)
+                .recipeid(recipeid)
                 .RECIPE_NM_KO(RECIPE_NM_KO)
                 .SUMRY(SUMRY)
                 .NATION_CODE(NATION_CODE)
@@ -59,7 +59,7 @@ public class CookingInfoDTO {
 
     public CookingInfoDTO(CookingInfoEntity cookingInfoEntity){
         ROW_NUM = cookingInfoEntity.ROW_NUM;
-        RECIPE_ID = cookingInfoEntity.RECIPE_ID;
+        recipeid = cookingInfoEntity.recipeid;
         RECIPE_NM_KO = cookingInfoEntity.RECIPE_NM_KO;
         SUMRY = cookingInfoEntity.SUMRY;
         NATION_CODE = cookingInfoEntity.NATION_CODE;

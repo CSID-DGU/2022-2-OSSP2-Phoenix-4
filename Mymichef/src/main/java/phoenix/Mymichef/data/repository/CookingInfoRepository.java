@@ -5,5 +5,6 @@ import phoenix.Mymichef.data.entity.CookingInfoEntity;
 
 
 public interface CookingInfoRepository extends JpaRepository<CookingInfoEntity, String> {
+    CookingInfoEntity findByRecipeid(String RECIPE_ID);
 
 }
