@@ -30,7 +30,7 @@ public class CookingInfoEntity {
     public String NATION_CODE;
 
     @Column(name = "NATION_NM")
-    public String NATION_NM;
+    public String nationnm;
 
     @Column(name = "TY_CODE")
     public String TY_CODE;
@@ -48,7 +48,7 @@ public class CookingInfoEntity {
     public String QNT;
 
     @Column(name = "LEVEL_NM")
-    public String LEVEL_NM;
+    public String levelnm;
 
     @Column(name = "IRDNT_CODE")
     public String IRDNT_CODE;
@@ -60,26 +60,26 @@ public class CookingInfoEntity {
                              String RECIPE_NM_KO,
                              String SUMRY,
                              String NATION_CODE,
-                             String NATION_NM,
+                             String nationnm,
                              String TY_CODE,
                              String TY_NM,
                              String COOKING_TIME,
                              String CALORIE,
                              String QNT,
-                             String LEVEL_NM,
+                             String levelnm,
                              String IRDNT_CODE) {
         this.ROW_NUM = ROW_NUM;
         this.recipeid = recipeid;
         this.RECIPE_NM_KO = RECIPE_NM_KO;
         this.SUMRY = SUMRY;
         this.NATION_CODE = NATION_CODE;
-        this.NATION_NM = NATION_NM;
+        this.nationnm = nationnm;
         this.TY_CODE = TY_CODE;
         this.TY_NM = TY_NM;
         this.COOKING_TIME = COOKING_TIME;
         this.CALORIE = CALORIE;
         this.QNT = QNT;
-        this.LEVEL_NM = LEVEL_NM;
+        this.levelnm = levelnm;
         this.IRDNT_CODE = IRDNT_CODE;
     }
 }

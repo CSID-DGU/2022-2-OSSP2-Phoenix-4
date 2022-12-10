@@ -1,4 +1,5 @@
 let data1 = [];
+let data2 = [];
 
  $.ajax({
     url: "/recommend/default",
@@ -18,6 +19,45 @@ let data1 = [];
       console.log(error.responseText);
     },
  });
+
+setTimeout(function() {
+
+ $.ajax({
+     url: "/recommend/save",
+     type: "POST",
+     contentType: "application/json",
+     data: JSON.stringify(data2),
+
+     success: function (response) {
+       console.log("recommendInfo save success");
+       console.log(response);
+
+     },
+     error: function (error) {
+       console.log("recommendInfo save error");
+       console.log(error);
+       console.log(error.responseText);
+     },
+  })
+    console.log('Works!');
+  }, 3000);
+
+  $.ajax({
+      url: "/recommend/nation",
+      type: "POST",
+      contentType: "json",
+      data: JSON.stringify(data1),
+
+      success: function (response) {
+        console.log("recommend(nation) success");
+        console.log(response);
+      },
+      error: function (error) {
+        console.log("recommend(nation) error");
+        console.log(error);
+        console.log(error.responseText);
+      },
+   });
 
 
 

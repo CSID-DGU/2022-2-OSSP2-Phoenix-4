@@ -23,7 +23,7 @@ public class CookingInfoDTO {
 
     public String NATION_CODE;
 
-    public String NATION_NM;
+    public String nationnm;
 
     public String TY_CODE;
 
@@ -35,7 +35,7 @@ public class CookingInfoDTO {
 
     public String QNT;
 
-    public String LEVEL_NM;
+    public String levelnm;
 
     public String IRDNT_CODE;
 
@@ -46,13 +46,13 @@ public class CookingInfoDTO {
                 .RECIPE_NM_KO(RECIPE_NM_KO)
                 .SUMRY(SUMRY)
                 .NATION_CODE(NATION_CODE)
-                .NATION_NM(NATION_NM)
+                .nationnm(nationnm)
                 .TY_CODE(TY_CODE)
                 .TY_NM(TY_NM)
                 .COOKING_TIME(COOKING_TIME)
                 .CALORIE(CALORIE)
                 .QNT(QNT)
-                .LEVEL_NM(LEVEL_NM)
+                .levelnm(levelnm)
                 .IRDNT_CODE(IRDNT_CODE)
                 .build();
     }
@@ -63,13 +63,13 @@ public class CookingInfoDTO {
         RECIPE_NM_KO = cookingInfoEntity.RECIPE_NM_KO;
         SUMRY = cookingInfoEntity.SUMRY;
         NATION_CODE = cookingInfoEntity.NATION_CODE;
-        NATION_NM = cookingInfoEntity.NATION_NM;
+        nationnm = cookingInfoEntity.nationnm;
         TY_CODE = cookingInfoEntity.TY_CODE;
         TY_NM = cookingInfoEntity.TY_NM;
         COOKING_TIME = cookingInfoEntity.COOKING_TIME;
         CALORIE = cookingInfoEntity.CALORIE;
         QNT = cookingInfoEntity.QNT;
-        LEVEL_NM = cookingInfoEntity.LEVEL_NM;
+        levelnm = cookingInfoEntity.levelnm;
         IRDNT_CODE = cookingInfoEntity.IRDNT_CODE;
     }
 

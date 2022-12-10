@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.IngredInterface;
+import phoenix.Mymichef.data.dto.UserDietDto;
+import phoenix.Mymichef.data.entity.CookingInfoEntity;
+import phoenix.Mymichef.data.entity.UserDietEntity;
 import phoenix.Mymichef.data.repository.CookingInfoRepository;
 import phoenix.Mymichef.data.repository.IngredRepository;
+import phoenix.Mymichef.data.repository.UserDietRepository;
 import phoenix.Mymichef.data.repository.UserIngredRepository;
 
 import java.util.*;
@@ -20,6 +24,9 @@ public class UserDietService {
     private IngredRepository ingredRepository;
     @Autowired
     private CookingInfoRepository cookingInfoRepository;
+
+    @Autowired
+    private UserDietRepository userDietRepository;
 
     /**
      * 식단 추천 서비스 (default) 폐기
@@ -136,10 +143,74 @@ public class UserDietService {
         if (MenuList.isEmpty()) {
             throw new Exception("해당하는 데이터가 없습니다.");
         } else {
-            a = random.nextInt(100) % (MenuList.size());
+            while(true) {
+                //젤 많은 종류가 537개라
+                a = random.nextInt(538) % (MenuList.size());
+
+                if(MenuList.get(a) != null){
+                    break;
+                }
+            }
             recipeId = MenuList.get(a).getrecipe();
             return cookingInfoRepository.findByRecipeid(recipeId).getRECIPE_NM_KO();
 
         }
+    }
+
+
+    /**
+     *  추천 식단 저장 서비스
+     */
+
+    public void saveRecommendInfo(UserDietDto userDietDto) throws Exception{
+        UserDietEntity userDietEntity = userDietDto.toEntity();
+
+        userDietRepository.save(userDietEntity);
+
+        throw new Exception("추천메뉴, 시간, 날짜 저장완료");
+    }
+
+    /**
+     * 식단 추천 (나라별)
+     */
+    public String recommendNation(String nationName) throws Exception{
+        List<CookingInfoEntity> recipe = cookingInfoRepository.findAllByNationnm(nationName);
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        int a = 0;
+
+        while(true) {
+            //젤 많은 종류가 537개라
+            a = random.nextInt(538) % (recipe.size());
+
+            if(recipe.get(a) != null){
+                break;
+            }
+        }
+
+       return recipe.get(a).getRECIPE_NM_KO();
+
+    }
+
+    /**
+     * 식단 추천 (난이도별)
+     */
+    public String recommendDifficulty(String difficulty) throws Exception{
+        List<CookingInfoEntity> recipe = cookingInfoRepository.findAllByLevelnm(difficulty);
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        int a = 0;
+
+        while(true) {
+            //젤 많은 종류가 537개라
+            a = random.nextInt(538) % (recipe.size());
+
+            if(recipe.get(a) != null){
+                break;
+            }
+        }
+
+        return recipe.get(a).getRECIPE_NM_KO();
+
     }
 }

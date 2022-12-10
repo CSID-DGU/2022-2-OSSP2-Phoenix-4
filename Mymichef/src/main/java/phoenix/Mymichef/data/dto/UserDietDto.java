@@ -2,6 +2,8 @@ package phoenix.Mymichef.data.dto;
 
 
 import lombok.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import phoenix.Mymichef.data.entity.UserDietEntity;
 
 @NoArgsConstructor
@@ -17,6 +19,12 @@ public class UserDietDto {
     private String date;
     private String time;
 
+    public static String currentUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
+    }
+
     public UserDietEntity toEntity(){
         return UserDietEntity.builder()
                 .id(id)
@@ -26,6 +34,8 @@ public class UserDietDto {
                 .time(time)
                 .build();
     }
+
+
 }
 
 

@@ -1,15 +1,11 @@
 package phoenix.Mymichef.data.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @Entity(name = "userdiet")
 public class UserDietEntity {
     @Id
@@ -36,4 +32,6 @@ public class UserDietEntity {
         this.date = date;
         this.time = time;
     }
+
+    public UserDietEntity(){}
 }

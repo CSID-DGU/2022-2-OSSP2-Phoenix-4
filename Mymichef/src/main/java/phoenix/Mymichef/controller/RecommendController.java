@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
+import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
 
@@ -21,6 +22,7 @@ public class RecommendController {
     private UserDietService userDietService;
     private UserIngredientService userIngredientService;
 
+
     @GetMapping(value = "")
     public String recommend(){
         return "recommend";
@@ -29,6 +31,8 @@ public class RecommendController {
     /**
      * 식단추천 API
      */
+
+    // 식재료 기반 (default)
     @PostMapping("/default")
     @ResponseBody
     public String recommendDiet()throws Exception{
@@ -49,4 +53,56 @@ public class RecommendController {
         return jsonObject.toString();
     }
 
+    //나라별 추천
+    @PostMapping("/nation")
+    @ResponseBody
+    public String recommendDietByNation(@RequestParam("nation") String nation) throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        String menu;
+        try {
+            menu = userDietService.recommendNation(nation);
+        }catch (Exception e){
+            return "나라별 식단 추천 오류 발생(server)";
+        }
+        jsonObject.put("RECIPE_NM_KO", menu);
+
+        return jsonObject.toString();
+    }
+
+    //난이도별 추천
+    @PostMapping("/difficulty")
+    @ResponseBody
+    public String recommendDietDiffi(@RequestParam("difficulty") String difficulty)throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        String menu;
+        try {
+            menu = userDietService.recommendDifficulty(difficulty);
+        }catch (Exception e) {
+            return "난이도별 식단 추천 오류 발생(server)";
+        }
+        jsonObject.put("RECIPE_NM_KO", menu);
+
+        return jsonObject.toString();
+    }
+
+    @PostMapping("/save")
+    public @ResponseBody String saveRecommendInfo(@RequestBody UserDietDto userDietDto, @RequestParam("recipeId") String recipeId) throws Exception {
+        String userId = UserDietDto.currentUserId();
+        UserDietDto save = new UserDietDto();
+
+        try {
+            save.setUserid(userDietDto.getUserid());
+            save.setDate(userDietDto.getDate());
+            save.setRecipeid(recipeId);
+            save.setTime(userDietDto.getTime());
+        } catch (Exception e) {
+            System.out.println("e = " + e);
+            return "식단, 시간, 날짜 저장 오류(server)";
+        }
+        userDietService.saveRecommendInfo(save);
+
+        return "식단, 시간, 날짜 저장 성공(server)";
+
+
+    }
 }
