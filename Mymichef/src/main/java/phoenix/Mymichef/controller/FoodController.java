@@ -1,20 +1,14 @@
 package phoenix.Mymichef.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserIngredDto;
-import phoenix.Mymichef.data.entity.UserIngredEntity;
-import phoenix.Mymichef.service.RecommandService;
 import phoenix.Mymichef.service.UserIngredientService;
-
-import java.util.ArrayList;
 
 @Controller
 @Slf4j
