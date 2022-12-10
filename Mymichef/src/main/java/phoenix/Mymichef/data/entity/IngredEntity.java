@@ -17,6 +17,7 @@ public class IngredEntity {
     @Id
     @Column(name="ROW_NUM")
     public String ROW_NUM;
+
     @Column(name = "RECIPE_ID")
     public String RECIPE_ID;
 
