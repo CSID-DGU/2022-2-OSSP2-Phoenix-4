@@ -109,6 +109,7 @@ public class UserService implements UserDetailsService {
         Optional<UserEntity> user = userRepository.findById(userId);
         user.ifPresent(selectUser->{
             selectUser.setPassword(passwordEncoder.encode(password));
+            userRepository.save(selectUser);
         });
 
     }

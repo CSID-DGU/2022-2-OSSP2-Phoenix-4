@@ -20,6 +20,10 @@ public class IngredDTO {
 
     public String IRDNT_CPCTY;
 
+    public String IRDNT_AM;
+
+    public String IRDNT_UN;
+
     public String IRDNT_TY_CODE;
 
     public String IRDNT_TY_NM;
@@ -31,6 +35,8 @@ public class IngredDTO {
                 .IRDNT_SN(IRDNT_SN)
                 .IRDNT_NM(IRDNT_NM)
                 .IRDNT_CPCTY(IRDNT_CPCTY)
+                .IRDNT_AM(IRDNT_AM)
+                .IRDNT_UN(IRDNT_UN)
                 .IRDNT_TY_CODE(IRDNT_TY_CODE)
                 .IRDNT_TY_NM(IRDNT_TY_NM)
                 .build();

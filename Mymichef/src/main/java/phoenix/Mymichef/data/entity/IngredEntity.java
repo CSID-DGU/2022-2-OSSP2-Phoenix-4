@@ -30,6 +30,12 @@ public class IngredEntity {
     @Column(name = "IRDNT_CPCTY")
     public String IRDNT_CPCTY;
 
+    @Column(name = "IRDNT_AM")
+    public String IRDNT_AM;
+
+    @Column(name = "IRDNT_UN")
+    public String IRDNT_UN;
+
     @Column(name = "IRDNT_TY_CODE")
     public String IRDNT_TY_CODE;
 
@@ -37,19 +43,17 @@ public class IngredEntity {
     public String IRDNT_TY_NM;
 
     @Builder
-    public IngredEntity(String ROW_NUM,
-                     String RECIPE_ID,
-                     String IRDNT_SN,
-                     String IRDNT_NM,
-                     String IRDNT_CPCTY,
-                     String IRDNT_TY_CODE,
-                     String IRDNT_TY_NM){
-        this.ROW_NUM=ROW_NUM;
+
+    public IngredEntity(String ROW_NUM, String RECIPE_ID, String IRDNT_SN, String IRDNT_NM, String IRDNT_CPCTY, String IRDNT_AM, String IRDNT_UN, String IRDNT_TY_CODE, String IRDNT_TY_NM) {
+        this.ROW_NUM = ROW_NUM;
         this.RECIPE_ID = RECIPE_ID;
         this.IRDNT_SN = IRDNT_SN;
         this.IRDNT_NM = IRDNT_NM;
         this.IRDNT_CPCTY = IRDNT_CPCTY;
+        this.IRDNT_AM = IRDNT_AM;
+        this.IRDNT_UN = IRDNT_UN;
         this.IRDNT_TY_CODE = IRDNT_TY_CODE;
         this.IRDNT_TY_NM = IRDNT_TY_NM;
     }
 }
+
