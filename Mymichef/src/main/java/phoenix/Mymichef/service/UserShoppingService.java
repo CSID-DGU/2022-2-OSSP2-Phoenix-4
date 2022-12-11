@@ -26,6 +26,37 @@ public class UserShoppingService {
 
 
     /**
+     * 장바구니 불러오기 서비스
+     */
+
+    public ArrayList<String> CheckShoppingname(String userid) throws Exception {
+        ArrayList<String> Ingredname = new ArrayList<>();
+        ArrayList<UserShoppingEntity> find = userShoppingRepository.findByUserid(userid);
+        if(find.isEmpty()){
+            throw new Exception("등록된 장바구니가 없습니다.");
+        }
+        else {
+            for (int i = 0; i < find.size() ; i ++){
+                Ingredname.add(find.get(i).getIngred());
+            }
+            return Ingredname;
+        }
+    }
+
+    public ArrayList<String> CheckShoppingamount(String userid) throws Exception {
+        ArrayList<String> Ingredname = new ArrayList<>();
+        ArrayList<UserShoppingEntity> find = userShoppingRepository.findByUserid(userid);
+        if(find.isEmpty()){
+            throw new Exception("등록된 장바구니가 없습니다.");
+        }
+        else {
+            for (int i = 0; i < find.size() ; i ++){
+                Ingredname.add(find.get(i).getAmount());
+            }
+            return Ingredname;
+        }
+    }
+    /**
      * 장바구니 서비스
      */
 

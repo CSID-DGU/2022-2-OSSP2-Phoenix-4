@@ -1,3 +1,21 @@
+let shoppinglist = {};
+$.ajax({
+  url: "/home/shopping/check",
+  type: "POST",
+  contentType: "json",
+  data: JSON.stringify(shoppinglist),
+
+  success: function (response) {
+    console.log("shoppinglist success");
+    console.log(response);
+  },
+  error: function (error) {
+    console.log("shoppinglist error");
+    console.log(error);
+    console.log(error.responseText);
+  },
+});
+
 const notesContainer = document.getElementById("app");
 const addNoteButton = notesContainer.querySelector(".add-note");
 
