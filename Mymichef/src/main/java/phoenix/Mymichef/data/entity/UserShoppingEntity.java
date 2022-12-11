@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import phoenix.Mymichef.data.dto.UserShoppingDto;
 
 import javax.persistence.*;
 
@@ -26,12 +27,32 @@ public class UserShoppingEntity {
     @Column(name = "amount")
     private String amount;
 
+    @Column(name = "need")
+    private String need;
+
+    @Column(name = "have")
+    private String have;
+
     @Builder
-    public UserShoppingEntity(Long id, String userid, String ingred, String amount) {
+    public UserShoppingEntity(Long id, String userid, String ingred, String amount, String need, String have) {
         this.id = id;
         this.userid = userid;
         this.ingred = ingred;
         this.amount = amount;
+        this.need = need;
+        this.have = have;
+    }
+
+    public UserShoppingDto toDto(){
+        return UserShoppingDto.builder()
+                .id(id)
+                .userid(userid)
+                .ingred(ingred)
+                .amount(amount)
+                .need(need)
+                .have(have)
+                .build();
+
     }
 }
 

@@ -12,7 +12,7 @@ import phoenix.Mymichef.data.entity.IngredEntity;
 @AllArgsConstructor
 public class IngredDTO {
     public String ROW_NUM;
-    public String RECIPE_ID;
+    public String recipeid;
 
     public String IRDNT_SN;
 
@@ -31,7 +31,7 @@ public class IngredDTO {
     public IngredEntity toEntity(){
         return IngredEntity.builder()
                 .ROW_NUM(ROW_NUM)
-                .RECIPE_ID(RECIPE_ID)
+                .recipeid(recipeid)
                 .IRDNT_SN(IRDNT_SN)
                 .IRDNT_NM(IRDNT_NM)
                 .IRDNT_CPCTY(IRDNT_CPCTY)

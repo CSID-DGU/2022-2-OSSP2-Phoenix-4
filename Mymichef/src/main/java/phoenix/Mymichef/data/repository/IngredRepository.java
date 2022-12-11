@@ -15,5 +15,7 @@ public interface IngredRepository extends JpaRepository<IngredEntity, String> {
             value = "select RECIPE_ID as recipe, count(IRDNT_NM) as cnt from cookingingred where IRDNT_NM In (:useringred)  group by RECIPE_ID having count(IRDNT_NM) >= 1 order by count(IRDNT_NM) DESC")
     List<IngredInterface> findTest(@Param("useringred") ArrayList<String> useringred);
 
+    ArrayList<IngredEntity> findByRecipeid(String recipeid);
+
 
 }

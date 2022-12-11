@@ -15,6 +15,8 @@ public class UserShoppingDto {
     private String userid;
     private String ingred;
     private String amount;
+    private String need;
+    private String have;
 
     public UserShoppingEntity toEntity(){
         return UserShoppingEntity.builder()
@@ -22,6 +24,8 @@ public class UserShoppingDto {
                 .userid(userid)
                 .ingred(ingred)
                 .amount(amount)
+                .need(need)
+                .have(have)
                 .build();
     }
 }

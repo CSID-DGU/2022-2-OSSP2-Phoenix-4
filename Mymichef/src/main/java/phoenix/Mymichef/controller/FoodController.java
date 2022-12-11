@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserIngredDto;
+import phoenix.Mymichef.data.entity.UserShoppingEntity;
 import phoenix.Mymichef.service.UserIngredientService;
+import phoenix.Mymichef.service.UserShoppingService;
 
 @Controller
 @Slf4j
@@ -17,6 +19,7 @@ import phoenix.Mymichef.service.UserIngredientService;
 public class FoodController {
 
     private final UserIngredientService userIngredientService;
+    private final UserShoppingService userShoppingService;
 
     @GetMapping(" ")
     public String food_input(Model model){
