@@ -33,14 +33,18 @@ public class UserShoppingEntity {
     @Column(name = "have")
     private String have;
 
+    @Column(name = "unit")
+    private String unit;
+
     @Builder
-    public UserShoppingEntity(Long id, String userid, String ingred, String amount, String need, String have) {
+    public UserShoppingEntity(Long id, String userid, String ingred, String amount, String need, String have, String unit) {
         this.id = id;
         this.userid = userid;
         this.ingred = ingred;
         this.amount = amount;
         this.need = need;
         this.have = have;
+        this.unit = unit;
     }
 
     public UserShoppingDto toDto(){
@@ -51,6 +55,7 @@ public class UserShoppingEntity {
                 .amount(amount)
                 .need(need)
                 .have(have)
+                .unit(unit)
                 .build();
 
     }

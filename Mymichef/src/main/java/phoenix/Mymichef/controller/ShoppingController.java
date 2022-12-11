@@ -34,7 +34,12 @@ public class ShoppingController {
         int size = userShoppingService.CheckShoppingname(userId).size();
         for(int i = 0; i < size; i++) {
             try {
-                jsonObject.put(userShoppingService.CheckShoppingname(userId).get(i), userShoppingService.CheckShoppingamount(userId).get(i));
+                if(!userShoppingService.CheckShoppingamount(userId).get(i).equals("0")) {
+                    if (!userShoppingService.CheckShoppingunit(userId).get(i).equals("양념"))
+                        jsonObject.put(userShoppingService.CheckShoppingname(userId).get(i), userShoppingService.CheckShoppingamount(userId).get(i)+userShoppingService.CheckShoppingunit(userId).get(i));
+                    else
+                        jsonObject.put(userShoppingService.CheckShoppingname(userId).get(i), userShoppingService.CheckShoppingunit(userId).get(i));
+                }
             } catch (Exception e) {
                 log.info("e", e);
                 return "data 처리 오류 발생(server)";

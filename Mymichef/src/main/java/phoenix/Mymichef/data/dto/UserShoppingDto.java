@@ -17,6 +17,7 @@ public class UserShoppingDto {
     private String amount;
     private String need;
     private String have;
+    private String unit;
 
     public UserShoppingEntity toEntity(){
         return UserShoppingEntity.builder()
@@ -26,6 +27,7 @@ public class UserShoppingDto {
                 .amount(amount)
                 .need(need)
                 .have(have)
+                .unit(unit)
                 .build();
     }
 }

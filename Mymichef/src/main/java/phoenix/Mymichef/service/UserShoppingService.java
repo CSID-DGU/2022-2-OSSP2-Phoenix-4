@@ -44,16 +44,30 @@ public class UserShoppingService {
     }
 
     public ArrayList<String> CheckShoppingamount(String userid) throws Exception {
-        ArrayList<String> Ingredname = new ArrayList<>();
+        ArrayList<String> Ingredamount = new ArrayList<>();
         ArrayList<UserShoppingEntity> find = userShoppingRepository.findByUserid(userid);
         if(find.isEmpty()){
             throw new Exception("등록된 장바구니가 없습니다.");
         }
         else {
             for (int i = 0; i < find.size() ; i ++){
-                Ingredname.add(find.get(i).getAmount());
+                Ingredamount.add(find.get(i).getAmount());
             }
-            return Ingredname;
+            return Ingredamount;
+        }
+    }
+
+    public ArrayList<String> CheckShoppingunit(String userid) throws Exception {
+        ArrayList<String> Ingredunit = new ArrayList<>();
+        ArrayList<UserShoppingEntity> find = userShoppingRepository.findByUserid(userid);
+        if(find.isEmpty()){
+            throw new Exception("등록된 장바구니가 없습니다.");
+        }
+        else {
+            for (int i = 0; i < find.size() ; i ++){
+                Ingredunit.add(find.get(i).getUnit());
+            }
+            return Ingredunit;
         }
     }
     /**
@@ -77,6 +91,10 @@ public class UserShoppingService {
                     user.setNeed(ingredDTO.getIRDNT_AM());
                     user.setHave("0");
                     user.setAmount(ingredDTO.getIRDNT_AM());
+                    if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                        user.setUnit("양념");
+                    else
+                        user.setUnit(ingredDTO.getIRDNT_UN());
                     userShoppingRepository.save(user.toEntity());
                 }
             }
@@ -91,12 +109,20 @@ public class UserShoppingService {
                         userShoppingDto.setNeed(ingredDTO.getIRDNT_AM());
                         userShoppingDto.setHave("0");
                         userShoppingDto.setAmount(ingredDTO.getIRDNT_AM());
+                        if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                            userShoppingDto.setUnit("양념");
+                        else
+                            userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
                         userShoppingRepository.save(userShoppingDto.toEntity());
 
                     } else {
                         user.get().setNeed(String.valueOf(Float.valueOf(ingredDTO.getIRDNT_AM()) + Float.valueOf(user.get().getNeed())));
                         user.get().setHave("0");
                         user.get().setAmount(user.get().getNeed());
+                        if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                            user.get().setUnit("양념");
+                        else
+                            user.get().setUnit(ingredDTO.getIRDNT_UN());
                         userShoppingRepository.save(user.get());
                     }
                 }
@@ -132,8 +158,16 @@ public class UserShoppingService {
                     }
                     if (Float.valueOf(user.getNeed()) > Float.valueOf(user.getHave())) {
                         user.setAmount(String.valueOf(Float.valueOf(user.getNeed()) - Float.valueOf(user.getHave())));
+                        if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                            user.setUnit("양념");
+                        else
+                            user.setUnit(ingredDTO.getIRDNT_UN());
                     } else {
                         user.setAmount("0");
+                        if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                            user.setUnit("양념");
+                        else
+                            user.setUnit(ingredDTO.getIRDNT_UN());
                     }
                     userShoppingRepository.save(user.toEntity());
                 }
@@ -160,13 +194,25 @@ public class UserShoppingService {
 
                         if (count == havelist.size()) {
                             userShoppingDto.setHave("0");
+                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                                userShoppingDto.setUnit("양념");
+                            else
+                                userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
                         }
 
 
                         if (Float.valueOf(userShoppingDto.getNeed()) > Float.valueOf(userShoppingDto.getHave())) {
                             userShoppingDto.setAmount(String.valueOf(Float.valueOf(userShoppingDto.getNeed()) - Float.valueOf(userShoppingDto.getHave())));
+                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                                userShoppingDto.setUnit("양념");
+                            else
+                                userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
                         } else {
                             userShoppingDto.setAmount("0");
+                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                                userShoppingDto.setUnit("양념");
+                            else
+                                userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
                         }
                         userShoppingRepository.save(userShoppingDto.toEntity());
 
@@ -189,8 +235,16 @@ public class UserShoppingService {
 
                         if (Float.valueOf(user.get().getNeed()) > Float.valueOf(user.get().getHave())) {
                             user.get().setAmount(String.valueOf(Float.valueOf(user.get().getNeed()) - Float.valueOf(user.get().getHave())));
+                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                                user.get().setUnit("양념");
+                            else
+                                user.get().setUnit(ingredDTO.getIRDNT_UN());
                         } else {
                             user.get().setAmount("0");
+                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                                user.get().setUnit("양념");
+                            else
+                                user.get().setUnit(ingredDTO.getIRDNT_UN());
                         }
                         userShoppingRepository.save(user.get());
                     }
