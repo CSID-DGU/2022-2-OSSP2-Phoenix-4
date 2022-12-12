@@ -61,6 +61,7 @@ $.ajax({
 const selectRecommend = document.getElementById("recommend_type");
 const recommendList = document.getElementById("recommend_list");
 
+// 추천순 select
 function onRecommend(event) {
   const type = event.target.value;
   if (type === "country") {
@@ -122,7 +123,56 @@ function onRecommend(event) {
     recommendList.innerHTML = "";
   }
 }
+
 selectRecommend.addEventListener("change", onRecommend);
+
+// 추천받기 버튼
+const submitBtn = document.getElementById("submitBtn");
+submitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  const recommend_json = {};
+
+  const inputList = document.querySelectorAll("input");
+  const startDate = document.getElementById("start");
+  const endDate = document.getElementById("end");
+
+  const dishList = [];
+  for (let i = 0; i < inputList.length; i++) {
+    const element = inputList[i];
+    if (element.checked) {
+      if (element.name === "dish") {
+        dishList.push(element.value);
+      }
+      if (
+        element.name === "recommend_country" ||
+        element.name === "recommend_difficulty"
+      ) {
+        recommend_json.recommend = element.value;
+      }
+    }
+  }
+
+  // error
+  const errorMsg = document.getElementById("error_msg");
+  if (dishList.length === 0) {
+    console.log("dish error");
+    errorMsg.innerText = "아침, 점심, 저녁 중 최소 하나를 선택해 주세요";
+  }
+  if (startDate.value === "" || endDate.value === "") {
+    console.log("date error1");
+    errorMsg.innerText = "날짜를 선택해 주세요";
+  }
+  if (startDate.value > endDate.value) {
+    console.log("date error2");
+    errorMsg.innerText = "올바른 날짜를 선택해 주세요";
+  }
+
+  recommend_json.dish = dishList;
+  recommend_json.start = startDate.value;
+  recommend_json.end = endDate.value;
+
+  console.log(recommend_json);
+});
 
 (function () {
   "use strict";
@@ -147,6 +197,6 @@ selectRecommend.addEventListener("change", onRecommend);
     });
 })();
 
-$(input[(type = "submit")]).on("click", function (e) {
-  e.preventDefault();
-});
+// $(input[(type = "submit")]).on("click", function (e) {
+//   e.preventDefault();
+// });
