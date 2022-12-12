@@ -104,3 +104,12 @@ h1 {
   border-radius: 18px;
   background-color: var(--color-olive);
 }
+
+.food_list {
+  width: 90%;
+  height: 750px;
+  overflow: scroll;
+  overflow-x: unset;
+  background-color: white;
+  margin: 0 auto;
+}

@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="recommend update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670855014235</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="recommend update">
+      <created>1670855646513</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670855646513</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,5 +1,5 @@
 // 서버 음식 api accept
-let ingredientsData = {};
+let ingredientsData = [];
 let ingredlist = {};
 let ingred = {};
 $.ajax({
@@ -11,6 +11,36 @@ $.ajax({
   success: function (response) {
     console.log("userInfo success");
     console.log(response);
+    const foodsUnit = JSON.parse(response);
+
+    console.log(foodsUnit);
+    for (let key in foodsUnit) {
+      ingred.name = key;
+      ingred.unit = foodsUnit[key];
+      console.log(ingred);
+      ingredientsData.push(ingred);
+    }
+    console.log(ingredientsData);
+
+    const ingredientsResult = document.getElementById("ingredientsResult");
+    for (let i = 0; i < ingredientsData.length; i++) {
+      const ingredientName = ingredientsData[i].name;
+      const ingredientImg = "../jpg/logo!.png";
+
+      const divName = `<div class="ingredientName" id=${
+        ingredientName + "name"
+      }>${ingredientName}</div>`;
+      const divImg = `<img class="ingredientImg" id=${
+        ingredientName + "img"
+      } src=${ingredientImg} alt=${ingredientName}>`;
+
+      ingredientsResult.innerHTML =
+        ingredientsResult.innerHTML +
+        `<div class="ingredient" id=${ingredientName}>` +
+        divImg +
+        divName +
+        `</div>`;
+    }
   },
   error: function (error) {
     console.log("userInfo error");
@@ -18,6 +48,7 @@ $.ajax({
     console.log(error.responseText);
   },
 });
+console.log(ingredientsData);
 
 $.ajax({
   url: "/food/check",
@@ -51,7 +82,6 @@ $.ajax({
 //  },
 //});
 
-
 $(document).ready(function () {
   ingredientInputInit();
 });
@@ -82,25 +112,25 @@ function ingredientInputInit() {
     if (a.name < b.name) return -1;
   });
 
-  // 검색창 재료 목록
-  for (let i = 0; i < ingredientsName.length; i++) {
-    const ingredientName = ingredientsName[i].name;
-    const ingredientImg = "../jpg/logo!.png";
-
-    const divName = `<div class="ingredientName" id=${
-      ingredientName + "name"
-    }>${ingredientName}</div>`;
-    const divImg = `<img class="ingredientImg" id=${
-      ingredientName + "img"
-    } src=${ingredientImg} alt=${ingredientName}>`;
-
-    ingredientsResult.innerHTML =
-      ingredientsResult.innerHTML +
-      `<div class="ingredient" id=${ingredientName}>` +
-      divImg +
-      divName +
-      `</div>`;
-  }
+  // // 검색창 재료 목록
+  // for (let i = 0; i < ingredientsName.length; i++) {
+  //   const ingredientName = ingredientsName[i].name;
+  //   const ingredientImg = "../jpg/logo!.png";
+  //
+  //   const divName = `<div class="ingredientName" id=${
+  //     ingredientName + "name"
+  //   }>${ingredientName}</div>`;
+  //   const divImg = `<img class="ingredientImg" id=${
+  //     ingredientName + "img"
+  //   } src=${ingredientImg} alt=${ingredientName}>`;
+  //
+  //   ingredientsResult.innerHTML =
+  //     ingredientsResult.innerHTML +
+  //     `<div class="ingredient" id=${ingredientName}>` +
+  //     divImg +
+  //     divName +
+  //     `</div>`;
+  // }
 
   // 재료 검색
   function onSearch(event) {
