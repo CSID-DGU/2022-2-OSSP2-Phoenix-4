@@ -129,7 +129,7 @@ selectRecommend.addEventListener("change", onRecommend);
 // 추천받기 버튼
 const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   const recommend_json = {};
 
   const inputList = document.querySelectorAll("input");
