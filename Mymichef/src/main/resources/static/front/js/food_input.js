@@ -1,6 +1,24 @@
 // 서버 음식 api accept
 let ingredientsData = {};
+let ingredlist = {};
 let ingred = {};
+$.ajax({
+  url: "/food/list",
+  type: "POST",
+  contentType: "json",
+  data: JSON.stringify(ingredlist),
+
+  success: function (response) {
+    console.log("userInfo success");
+    console.log(response);
+  },
+  error: function (error) {
+    console.log("userInfo error");
+    console.log(error);
+    console.log(error.responseText);
+  },
+});
+
 $.ajax({
   url: "/food/check",
   type: "POST",

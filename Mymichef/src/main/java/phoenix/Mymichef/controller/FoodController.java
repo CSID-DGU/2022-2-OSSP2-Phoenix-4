@@ -12,6 +12,8 @@ import phoenix.Mymichef.data.entity.UserShoppingEntity;
 import phoenix.Mymichef.service.UserIngredientService;
 import phoenix.Mymichef.service.UserShoppingService;
 
+import java.util.ArrayList;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -45,16 +47,41 @@ public class FoodController {
     }
 
     /**
+     *    재료 넘기기 API
+     */
+    @PostMapping(value = "/list")
+    public @ResponseBody String ShowIngred(){
+        JSONObject jsonObject = new JSONObject();
+        String userId = UserDTO.currentUserId();
+        ArrayList<String> Ingredname =userIngredientService.IngredientNameList();
+        ArrayList<String> Ingredunit = userIngredientService.IngredientUnitList();
+        ArrayList<String> Seasoningname =userIngredientService.SeasoningNameList();
+        ArrayList<String> Seasoningunit =userIngredientService.SeasoningUnitList();
+        for(int i = 0 ; i < Ingredname.size(); i++){
+            jsonObject.put(Ingredname.get(i), Ingredunit.get(i));
+        }
+        for(int i = 0 ; i < Seasoningname.size(); i++){
+            jsonObject.put(Seasoningname.get(i), Seasoningunit.get(i));
+        }
+
+        System.out.printf("%s", String.valueOf(jsonObject));
+        return jsonObject.toString();
+    }
+
+    /**
      *    식재료 확인 API
      */
     @PostMapping(value = "/check")
     public @ResponseBody String CheckIngred()throws Exception{
         JSONObject jsonObject = new JSONObject();
         String userId = UserDTO.currentUserId();
+        ArrayList<String> UserIngred = userIngredientService.CheckIngredname(userId);
+        ArrayList<String> UserIngredamount = userIngredientService.CheckIngredamount(userId);
+
         int size = userIngredientService.CheckIngredamount(userId).size();
         for(int i = 0; i < size; i++) {
             try {
-                jsonObject.put(userIngredientService.CheckIngredname(userId).get(i), userIngredientService.CheckIngredamount(userId).get(i));
+                jsonObject.put(UserIngred.get(i), UserIngredamount.get(i));
             } catch (Exception e) {
                 log.info("e", e);
                 return "data 처리 오류 발생(server)";
@@ -63,5 +90,7 @@ public class FoodController {
         System.out.printf("%s", String.valueOf(jsonObject));
         return jsonObject.toString();
     }
+
+
 }
 //보류

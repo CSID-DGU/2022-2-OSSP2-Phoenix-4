@@ -51,8 +51,9 @@ public class ShoppingController {
             jsonObject.put("error", "등록된 장바구니가 없습니다.");
             return jsonObject.toString();
         }
-        
+
         System.out.printf("%s", String.valueOf(jsonObject));
+
 
         return jsonObject.toString();
 

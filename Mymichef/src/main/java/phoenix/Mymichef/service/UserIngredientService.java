@@ -1,10 +1,11 @@
 package phoenix.Mymichef.service;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.UserIngredDto;
+import phoenix.Mymichef.data.entity.IngredListEntity;
 import phoenix.Mymichef.data.entity.UserIngredEntity;
+import phoenix.Mymichef.data.repository.IngredListRepository;
 import phoenix.Mymichef.data.repository.UserIngredRepository;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class UserIngredientService {
 
     private UserIngredRepository userIngredRepository;
+    private IngredListRepository ingredListRepository;
 
 
     /**
@@ -94,4 +96,57 @@ public class UserIngredientService {
         else
             userIngredRepository.delete(useringred);
     }
+
+    /**
+     *  저장된 식재료 확인 서비스
+     */
+
+    public ArrayList<String> IngredientNameList(){
+        ArrayList<String> SaveIngredient = new ArrayList<>();
+        ArrayList<IngredListEntity> Ingredient1 = ingredListRepository.findByType("주재료");
+        ArrayList<IngredListEntity> Ingredient2 = ingredListRepository.findByType("부재료");
+        for(int i = 0 ; i < Ingredient1.size(); i++){
+            SaveIngredient.add(Ingredient1.get(i).getIngred());
+        }
+        for(int i = 0 ; i< Ingredient2.size(); i++){
+            SaveIngredient.add(Ingredient2.get(i).getIngred());
+        }
+        return SaveIngredient;
+    }
+
+    public ArrayList<String> IngredientUnitList(){
+        ArrayList<String> SaveIngredient = new ArrayList<>();
+        ArrayList<IngredListEntity> Ingredient1 = ingredListRepository.findByType("주재료");
+        ArrayList<IngredListEntity> Ingredient2 = ingredListRepository.findByType("부재료");
+        for(int i = 0 ; i < Ingredient1.size(); i++){
+            SaveIngredient.add(Ingredient1.get(i).getUnit());
+        }
+        for(int i = 0 ; i< Ingredient2.size(); i++){
+            SaveIngredient.add(Ingredient2.get(i).getUnit());
+        }
+        return SaveIngredient;
+    }
+
+    public ArrayList<String> SeasoningNameList(){
+        ArrayList<String> SaveSeasoning = new ArrayList<>();
+        ArrayList<IngredListEntity> Seasoning = ingredListRepository.findByType("양념");
+        for(int i = 0 ; i < Seasoning.size(); i++){
+            SaveSeasoning.add(Seasoning.get(i).getIngred());
+        }
+
+        return SaveSeasoning;
+    }
+
+    public ArrayList<String> SeasoningUnitList(){
+        ArrayList<String> SaveSeasoning = new ArrayList<>();
+        ArrayList<IngredListEntity> Seasoning = ingredListRepository.findByType("양념");
+        for(int i = 0 ; i < Seasoning.size(); i++){
+            SaveSeasoning.add(Seasoning.get(i).getUnit());
+        }
+
+        return SaveSeasoning;
+    }
+
+
+
 }

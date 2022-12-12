@@ -116,14 +116,15 @@ public class UserShoppingService {
                         userShoppingRepository.save(userShoppingDto.toEntity());
 
                     } else {
-                        user.get().setNeed(String.valueOf(Float.valueOf(ingredDTO.getIRDNT_AM()) + Float.valueOf(user.get().getNeed())));
-                        user.get().setHave("0");
-                        user.get().setAmount(user.get().getNeed());
+                        UserShoppingDto userdto = user.get().toDto();
+                        userdto.setNeed(String.valueOf(Float.valueOf(ingredDTO.getIRDNT_AM()) + Float.valueOf(user.get().getNeed())));
+                        userdto.setHave("0");
+                        userdto.setAmount(userdto.getNeed());
                         if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
-                            user.get().setUnit("양념");
+                            userdto.setUnit("양념");
                         else
-                            user.get().setUnit(ingredDTO.getIRDNT_UN());
-                        userShoppingRepository.save(user.get());
+                            userdto.setUnit(ingredDTO.getIRDNT_UN());
+                        userShoppingRepository.save(userdto.toEntity());
                     }
                 }
             }
@@ -217,36 +218,37 @@ public class UserShoppingService {
                         userShoppingRepository.save(userShoppingDto.toEntity());
 
                     } else {
-                        user.get().setNeed(String.valueOf(Float.valueOf(ingredDTO.getIRDNT_AM()) + Float.valueOf(user.get().getNeed())));
+                        UserShoppingDto userdto = user.get().toDto();
+                        userdto.setNeed(String.valueOf(Float.valueOf(ingredDTO.getIRDNT_AM()) + Float.valueOf(user.get().getNeed())));
 
                         int count = 0;
                         for (int j = 0; j < havelist.size(); j++) {
                             if (ingredDTO.getIRDNT_NM().equals(havelistname.get(j))) {
-                                user.get().setHave(havelistamount.get(j));
+                                userdto.setHave(havelistamount.get(j));
                                 break;
                             } else
                                 count++;
                         }
 
                         if (count == havelist.size()) {
-                            user.get().setHave("0");
+                            userdto.setHave("0");
                         }
 
 
-                        if (Float.valueOf(user.get().getNeed()) > Float.valueOf(user.get().getHave())) {
-                            user.get().setAmount(String.valueOf(Float.valueOf(user.get().getNeed()) - Float.valueOf(user.get().getHave())));
+                        if (Float.valueOf(userdto.getNeed()) > Float.valueOf(userdto.getHave())) {
+                            userdto.setAmount(String.valueOf(Float.valueOf(userdto.getNeed()) - Float.valueOf(userdto.getHave())));
                             if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
-                                user.get().setUnit("양념");
+                                userdto.setUnit("양념");
                             else
-                                user.get().setUnit(ingredDTO.getIRDNT_UN());
+                                userdto.setUnit(ingredDTO.getIRDNT_UN());
                         } else {
-                            user.get().setAmount("0");
+                            userdto.setAmount("0");
                             if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
-                                user.get().setUnit("양념");
+                                userdto.setUnit("양념");
                             else
-                                user.get().setUnit(ingredDTO.getIRDNT_UN());
+                                userdto.setUnit(ingredDTO.getIRDNT_UN());
                         }
-                        userShoppingRepository.save(user.get());
+                        userShoppingRepository.save(userdto.toEntity());
                     }
                 }
             }
