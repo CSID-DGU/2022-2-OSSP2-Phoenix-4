@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.service.UserShoppingService;
 
+import java.util.ArrayList;
+
 //home -> shopping(장바구니)
 @Controller
 @RequiredArgsConstructor
@@ -31,22 +33,29 @@ public class ShoppingController {
         JSONObject jsonObject = new JSONObject();
         String userId = UserDTO.currentUserId();
 
-        int size = userShoppingService.CheckShoppingname(userId).size();
-        for(int i = 0; i < size; i++) {
-            try {
-                if(!userShoppingService.CheckShoppingamount(userId).get(i).equals("0")) {
-                    if (!userShoppingService.CheckShoppingunit(userId).get(i).equals("양념"))
-                        jsonObject.put(userShoppingService.CheckShoppingname(userId).get(i), userShoppingService.CheckShoppingamount(userId).get(i)+userShoppingService.CheckShoppingunit(userId).get(i));
+        try {
+            ArrayList<String> UserIngredname = userShoppingService.CheckShoppingname(userId);
+            ArrayList<String> UserIngredamount = userShoppingService.CheckShoppingamount(userId);
+            ArrayList<String> UserIngredunit = userShoppingService.CheckShoppingunit(userId);
+            int size = UserIngredname.size();
+            for (int i = 0; i < size; i++) {
+                if (!UserIngredamount.get(i).equals("0")) {
+                    if (!UserIngredunit.get(i).equals("양념"))
+                        jsonObject.put(UserIngredname.get(i), UserIngredamount.get(i) + UserIngredunit.get(i));
                     else
-                        jsonObject.put(userShoppingService.CheckShoppingname(userId).get(i), userShoppingService.CheckShoppingunit(userId).get(i));
+                        jsonObject.put(UserIngredname.get(i), UserIngredunit.get(i));
                 }
-            } catch (Exception e) {
-                log.info("e", e);
-                return "data 처리 오류 발생(server)";
             }
+        }catch (Exception e) {
+            log.info("e", e);
+            jsonObject.put("error", "등록된 장바구니가 없습니다.");
+            return jsonObject.toString();
         }
+        
         System.out.printf("%s", String.valueOf(jsonObject));
+
         return jsonObject.toString();
+
     }
 }
 
