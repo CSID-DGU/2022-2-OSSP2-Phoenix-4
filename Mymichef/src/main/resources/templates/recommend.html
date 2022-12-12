@@ -9,74 +9,95 @@
   </head>
 
   <body>
+    <section class="wrapper">
+      <section class="material-design-hamburger">
+        <button class="material-design-hamburger__icon">
+          <span class="material-design-hamburger__layer"></span>
+        </button>
+      </section>
 
-  <section class="wrapper">
-
-    <section class="material-design-hamburger">
-      <button class="material-design-hamburger__icon">
-        <span class="material-design-hamburger__layer"></span>
-      </button>
+      <section class="menu menu--off">
+        <div><a href="/home">홈</a></div>
+        <div><a href="/food">식재료입력</a></div>
+        <div><a href="/home/shopping">메모패드</a></div>
+        <div><a href="/home/calendar">식단확인</a></div>
+        <div><a href="/mypage">마이페이지</a></div>
+      </section>
     </section>
 
-    <section class="menu menu--off">
-      <div><a href="/home">홈</a></div>
-      <div><a href="/food" >식재료입력</a></div>
-      <div> <a href="/home/shopping" >메모패드</a></div>
-      <div><a href="/home/calendar" >식단확인</a></div>
-      <div><a href="/mypage" >마이페이지</a></div>
-    </section>
-
-  </section>
-
-
-  <div class="form-container">
+    <div class="form-container">
       <h1>메뉴 추천받기</h1>
-      <form action="/home/calendar">
+      <form id="menu_recommend">
+        <!--          <form action="/home/calendar">-->
 
-          <div class="container_">
-              <ul class="dish-box">
-                  <li><input type="checkbox" id="breakfast"><label for="breakfast">아침</label></li>
-                  <li><input type="checkbox" id="lunch"><label for="lunch">점심</label></li>
-                  <li><input type="checkbox" id="dinner"><label for="dinner">저녁</label></li>
-              </ul>
-          </div>
+        <div class="container_">
+          <ul class="dish-box">
+            <li>
+              <input
+                type="checkbox"
+                id="breakfast"
+                name="dish"
+                value="breakfast"
+              /><label for="breakfast">아침</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="lunch"
+                name="dish"
+                value="lunch"
+              /><label for="lunch">점심</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="dinner"
+                name="dish"
+                value="dinner"
+              /><label for="dinner">저녁</label>
+            </li>
+          </ul>
+        </div>
 
-          <div class="container_period">
-              <p>기간:
-                  <input type="date" id="start" />
-                  ~
-                  <input type="date" id="end" />
-              </p>
-          </div>
+        <div class="container_period">
+          <p>
+            기간:
+            <input type="date" id="start" />
+            ~
+            <input type="date" id="end" />
+          </p>
+        </div>
 
-          <div class="container_recommend">
-              <p>추천순</p>
-              <select name="recommend" id="recommend_type">
-                  <option value="none">추천 선택</option>
-                  <option value="country">나라별 추천</option>
-                  <option value="difficulty">난이도별 추천</option>
-              </select>
-              <div id="recommend_list"></div>
-          </div>
+        <div class="container_recommend">
+          <p>추천순</p>
+          <label for="recommend_type"></label
+          ><select name="recommend" id="recommend_type">
+            <option value="none">추천 선택</option>
+            <option value="country">나라별 추천</option>
+            <option value="difficulty">난이도별 추천</option>
+          </select>
 
-<!--          <div class="container_essential">-->
-<!--              <p>필수:-->
-<!--                  <ul class="ks-cboxtags">-->
-<!--                      <li><input type="checkbox" id="checkboxOne" value="rice"><label for="checkboxOne">밥</label></li>-->
-<!--                      <li><input type="checkbox" id="checkboxTwo" value="soup"><label for="checkboxTwo">국</label></li>-->
-<!--                      <li><input type="checkbox" id="checkboxThree" value="meat"><label for="checkboxThree">고기</label></li>-->
-<!--                      <li><input type="checkbox" id="checkboxFour" value="vegetable"><label for="checkboxFour">채소</label></li>-->
-<!--                  </ul>-->
-<!--              </p>-->
-<!--          </div>-->
+          <div id="recommend_list"></div>
+        </div>
 
-          <div class="submit-container">
-              <button type="submit">추천받기</button>
-          </div>
+        <!--          <div class="container_essential">-->
+        <!--              <p>필수:-->
+        <!--                  <ul class="ks-cboxtags">-->
+        <!--                      <li><input type="checkbox" id="checkboxOne" value="rice"><label for="checkboxOne">밥</label></li>-->
+        <!--                      <li><input type="checkbox" id="checkboxTwo" value="soup"><label for="checkboxTwo">국</label></li>-->
+        <!--                      <li><input type="checkbox" id="checkboxThree" value="meat"><label for="checkboxThree">고기</label></li>-->
+        <!--                      <li><input type="checkbox" id="checkboxFour" value="vegetable"><label for="checkboxFour">채소</label></li>-->
+        <!--                  </ul>-->
+        <!--              </p>-->
+        <!--          </div>-->
 
+        <div class="submit-container">
+          <button type="submit" id="submitBtn">추천받기</button>
+        </div>
+        <p id="error_msg"></p>
       </form>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/recommend.js"></script>
   </body>
 </html>
