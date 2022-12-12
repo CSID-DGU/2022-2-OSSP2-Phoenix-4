@@ -1,6 +1,7 @@
 package phoenix.Mymichef.service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.IngredInterface;
@@ -12,10 +13,13 @@ import phoenix.Mymichef.data.repository.IngredRepository;
 import phoenix.Mymichef.data.repository.UserDietRepository;
 import phoenix.Mymichef.data.repository.UserIngredRepository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserDietService {
 
     @Autowired
@@ -174,11 +178,13 @@ public class UserDietService {
      * 식단 추천 (나라별)
      */
     public String recommendNation(String nationName) throws Exception{
-        List<CookingInfoEntity> recipe = cookingInfoRepository.findAllByNationnm(nationName);
+        List<CookingInfoEntity> recipe = cookingInfoRepository.findByNationnm(nationName);
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;
 
+
+        System.out.println("recipe사이즈 = " + recipe.size());
         while(true) {
             //젤 많은 종류가 537개라
             a = random.nextInt(538) % (recipe.size());
@@ -196,7 +202,7 @@ public class UserDietService {
      * 식단 추천 (난이도별)
      */
     public String recommendDifficulty(String difficulty) throws Exception{
-        List<CookingInfoEntity> recipe = cookingInfoRepository.findAllByLevelnm(difficulty);
+        List<CookingInfoEntity> recipe = cookingInfoRepository.findByLevelnm(difficulty);
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;
@@ -212,5 +218,21 @@ public class UserDietService {
 
         return recipe.get(a).getRECIPE_NM_KO();
 
+    }
+
+    /**
+     * 현재 시간 가져오기
+     *
+     */
+    public LocalDate currentTime(){
+        LocalDate now = LocalDate.now();
+
+        // 포맷 정의
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // 포맷 적용
+        String formatedNow = now.format(formatter);
+
+        return now;
     }
 }

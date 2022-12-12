@@ -19,6 +19,10 @@ public class UserDietDto {
     private String date;
     private String time;
 
+    private String nation;
+
+    private String difficulty;
+
     public static String currentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -32,6 +36,8 @@ public class UserDietDto {
                 .recipeid(recipeid)
                 .date(date)
                 .time(time)
+                .nation(nation)
+                .difficulty(difficulty)
                 .build();
     }
 

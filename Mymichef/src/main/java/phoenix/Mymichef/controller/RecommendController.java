@@ -11,6 +11,8 @@ import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 //home-> UserInput (식단 추천받기 위해 정보 입력하는 페이지)
 @Controller
@@ -56,12 +58,15 @@ public class RecommendController {
     //나라별 추천
     @PostMapping("/nation")
     @ResponseBody
-    public String recommendDietByNation(@RequestParam("nation") String nation) throws Exception{
+    public String recommendDietByNation(@RequestBody Map params) throws Exception{
         JSONObject jsonObject = new JSONObject();
         String menu;
         try {
-            menu = userDietService.recommendNation(nation);
+            System.out.println("가져온 값 = " + (String) params.get("nation"));
+            menu = userDietService.recommendNation((String) params.get("nation"));
+
         }catch (Exception e){
+            System.out.println("e = " + e);
             return "나라별 식단 추천 오류 발생(server)";
         }
         jsonObject.put("RECIPE_NM_KO", menu);
@@ -72,11 +77,11 @@ public class RecommendController {
     //난이도별 추천
     @PostMapping("/difficulty")
     @ResponseBody
-    public String recommendDietDiffi(@RequestParam("difficulty") String difficulty)throws Exception{
+    public String recommendDietDiffi(@RequestBody Map params)throws Exception{
         JSONObject jsonObject = new JSONObject();
         String menu;
         try {
-            menu = userDietService.recommendDifficulty(difficulty);
+            menu = userDietService.recommendDifficulty((String) params.get("difficulty"));
         }catch (Exception e) {
             return "난이도별 식단 추천 오류 발생(server)";
         }
@@ -89,6 +94,7 @@ public class RecommendController {
     public @ResponseBody String saveRecommendInfo(@RequestBody UserDietDto userDietDto, @RequestParam("recipeId") String recipeId) throws Exception {
         String userId = UserDietDto.currentUserId();
         UserDietDto save = new UserDietDto();
+        String now = String.valueOf(userDietService.currentTime());
 
         try {
             save.setUserid(userDietDto.getUserid());
