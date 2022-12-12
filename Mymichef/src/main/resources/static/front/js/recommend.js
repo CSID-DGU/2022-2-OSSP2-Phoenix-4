@@ -40,22 +40,22 @@ setTimeout(function () {
   console.log("Works!");
 }, 3000);
 
-$.ajax({
-  url: "/recommend/nation",
-  type: "POST",
-  contentType: "json",
-  data: JSON.stringify(data1),
-
-  success: function (response) {
-    console.log("recommend(nation) success");
-    console.log(response);
-  },
-  error: function (error) {
-    console.log("recommend(nation) error");
-    console.log(error);
-    console.log(error.responseText);
-  },
-});
+// $.ajax({
+//   url: "/recommend/nation",
+//   type: "POST",
+//   contentType: "json",
+//   data: JSON.stringify(data1),
+//
+//   success: function (response) {
+//     console.log("recommend(nation) success");
+//     console.log(response);
+//   },
+//   error: function (error) {
+//     console.log("recommend(nation) error");
+//     console.log(error);
+//     console.log(error.responseText);
+//   },
+// });
 
 // 추천순 종류
 const selectRecommend = document.getElementById("recommend_type");
@@ -129,7 +129,7 @@ selectRecommend.addEventListener("change", onRecommend);
 // 추천받기 버튼
 const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", (event) => {
-  // event.preventDefault();
+  event.preventDefault();
   const recommend_json = {};
 
   const inputList = document.querySelectorAll("input");
@@ -143,11 +143,11 @@ submitBtn.addEventListener("click", (event) => {
       if (element.name === "dish") {
         dishList.push(element.value);
       }
-      if (
-        element.name === "recommend_country" ||
-        element.name === "recommend_difficulty"
-      ) {
-        recommend_json.recommend = element.value;
+      if (element.name === "recommend_country") {
+        recommend_json.nation = element.value;
+      }
+      if (element.name === "recommend_difficulty") {
+        recommend_json.difficulty = element.value;
       }
     }
   }
@@ -157,21 +157,85 @@ submitBtn.addEventListener("click", (event) => {
   if (dishList.length === 0) {
     console.log("dish error");
     errorMsg.innerText = "아침, 점심, 저녁 중 최소 하나를 선택해 주세요";
+    return;
   }
   if (startDate.value === "" || endDate.value === "") {
     console.log("date error1");
     errorMsg.innerText = "날짜를 선택해 주세요";
+    return;
   }
   if (startDate.value > endDate.value) {
     console.log("date error2");
     errorMsg.innerText = "올바른 날짜를 선택해 주세요";
+    return;
   }
 
   recommend_json.dish = dishList;
   recommend_json.start = startDate.value;
   recommend_json.end = endDate.value;
 
+  // 서버 통신
   console.log(recommend_json);
+  console.log(Object.keys(recommend_json));
+  // 나라별 추천
+  if (Object.keys(recommend_json).find((value) => value === "nation")) {
+    $.ajax({
+      url: "/recommend/nation",
+      type: "POST",
+      contentType: "json",
+      data: JSON.stringify(recommend_json),
+
+      success: function (response) {
+        console.log("recommend(nation) success");
+        console.log(response);
+      },
+      error: function (error) {
+        console.log("recommend(nation) error");
+        console.log(error);
+        console.log(error.responseText);
+      },
+    });
+  } else if (
+    // 난이도별 추천
+    Object.keys(recommend_json).find((value) => value === "difficulty")
+  ) {
+    $.ajax({
+      url: "/recommend/difficulty",
+      type: "POST",
+      contentType: "json",
+      data: JSON.stringify(recommend_json),
+
+      success: function (response) {
+        console.log("recommend(difficulty) success");
+        console.log(response);
+      },
+      error: function (error) {
+        console.log("recommend(difficulty) error");
+        console.log(error);
+        console.log(error.responseText);
+      },
+    });
+  } else {
+    // default
+    // $.ajax({
+    //   url: "/recommend/default",
+    //   type: "POST",
+    //   contentType: "json",
+    //   data: JSON.stringify(data1),
+    //
+    //   success: function (response) {
+    //     console.log("recommend success");
+    //     console.log(response);
+    //     const userData = JSON.parse(response);
+    //     console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
+    //   },
+    //   error: function (error) {
+    //     console.log("recommend error");
+    //     console.log(error);
+    //     console.log(error.responseText);
+    //   },
+    // });
+  }
 });
 
 (function () {

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="recommend update">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="food_input update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670855646513</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="food_input update">
+      <created>1670863010142</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1670863010142</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +277,8 @@
     <MESSAGE value="추천 수정" />
     <MESSAGE value="update" />
     <MESSAGE value="recommend update" />
-    <option name="LAST_COMMIT_MESSAGE" value="recommend update" />
+    <MESSAGE value="food_input update" />
+    <option name="LAST_COMMIT_MESSAGE" value="food_input update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
