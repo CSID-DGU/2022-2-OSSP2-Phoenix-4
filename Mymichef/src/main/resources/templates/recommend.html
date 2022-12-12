@@ -50,20 +50,13 @@
           </div>
 
           <div class="container_recommend">
-              <p>추천순:
-                  <input
-                          type="button"
-                          id="recommend_ingredient"
-                          disabled="disabled"
-                          value="재료 적은 순"
-                  />
-                  <input
-                          type="button"
-                          id="recommend_expirationDate"
-                          disabled="disabled"
-                          value="유통기한 임박 순"
-                  />
-              </p>
+              <p>추천순</p>
+              <select name="recommend" id="recommend_type">
+                  <option value="none">추천 선택</option>
+                  <option value="country">나라별 추천</option>
+                  <option value="difficulty">난이도별 추천</option>
+              </select>
+              <div id="recommend_list"></div>
           </div>
 
           <div class="container_essential">

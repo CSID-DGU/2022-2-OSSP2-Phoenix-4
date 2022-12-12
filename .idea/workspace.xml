@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="updata">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/mypage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/navi.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
