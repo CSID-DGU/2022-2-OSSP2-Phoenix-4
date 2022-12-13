@@ -35,7 +35,7 @@ h1 {
   padding: 2px 7px;
   background-color: white;
   border: 4px solid black;
-  cursor: pointer;
+  cursor: auto;
   margin: 18px auto;
 }
 
