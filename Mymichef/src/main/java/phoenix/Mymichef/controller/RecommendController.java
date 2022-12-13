@@ -71,10 +71,11 @@ public class RecommendController {
         }
 
         for(int i = 0; i < menuList.size(); i++) {
-            jsonObject.put("RECIPE_NM_KO", menuList.get(i));
             System.out.println("menuList = " + menuList.get(i));
-            jsonArray.put(jsonObject);
+            jsonArray.put(menuList.get(i));
         }
+
+        jsonObject.put("RECIPE_NM_KO", jsonArray);
         return jsonArray.toString();
     }
 
