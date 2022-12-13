@@ -15,8 +15,8 @@ public class UserDietEntity {
     @Column(name = "userid")
     private String userid;
 
-    @Column(name = "recipeid")
-    private String recipeid;
+    @Column(name = "recipenm")
+    private String recipenm;
 
     @Column(name = "date")
     private String date;
@@ -31,10 +31,10 @@ public class UserDietEntity {
     private String difficulty;
 
     @Builder
-    public UserDietEntity(Long id, String userid, String recipeid, String date, String time, String nation, String difficulty) {
+    public UserDietEntity(Long id, String userid, String recipenm, String date, String time, String nation, String difficulty) {
         this.id = id;
         this.userid = userid;
-        this.recipeid = recipeid;
+        this.recipenm = recipenm;
         this.date = date;
         this.time = time;
         this.nation = nation;

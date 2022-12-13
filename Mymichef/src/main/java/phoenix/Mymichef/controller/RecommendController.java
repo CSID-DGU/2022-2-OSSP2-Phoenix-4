@@ -2,8 +2,8 @@ package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
@@ -11,6 +11,7 @@ import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
 
+import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class RecommendController {
         return "recommend";
     }
 
+
     /**
      * 식단추천 API
      */
@@ -41,13 +43,14 @@ public class RecommendController {
     @PostMapping("/default")
     @ResponseBody
     public String recommendDiet(@RequestBody Map params)throws Exception {
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = null;
         JSONArray jsonArray = new JSONArray();
         String userId = CookingInfoDTO.currentUserId();
         String menu;
         ArrayList<String> userIngred = userIngredientService.CheckIngredname(userId);
         String start, end;
-        List<String> menuList = new ArrayList<>();
+        LocalDate now = userDietService.currentTime();
+        UserDietDto save = new UserDietDto();
         int count  = 0;
 
         start = (String) params.get("start");
@@ -56,26 +59,32 @@ public class RecommendController {
         count = Integer.parseInt(end.substring(8)) - Integer.parseInt(start.substring(8))+1;
 
         List<String> dish = (List<String>) params.get("dish");
-        count *= dish.size();
 
-        System.out.println("count = " + count);
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < dish.size(); j++){
+                jsonObject = new JSONObject();
+                try {
+                    menu = userDietService.recommendMenu(userIngred);
+                }catch (Exception e){
+                    throw new Exception("식단 찾기 오류(server.controller)");
+                }
+                jsonObject.put("RECIPE_NM_KO",menu);
+                jsonObject.put("userid",userId);
+                jsonObject.put("time",dish.get(j));
 
-        for (int i = 0; i < count; i++) {
-            try {
-                menu = userDietService.recommendMenu(userIngred);
-                System.out.println("getRECIPE_NM_KO() = " + menu);
-            } catch (Exception e) {
-                return "정보 불러오기 오류 발생 (server.Controller)";
+                save.setRecipenm(menu);
+                save.setUserid(userId);
+                save.setTime(dish.get(j));
+
+                try {
+                    userDietService.saveRecommendInfo(save);
+                }catch (Exception e){
+                    throw new Exception("저장 문제 발생(server.controller)");
+                }
+                jsonArray.add(jsonObject);
             }
-            menuList.add(menu);
         }
 
-        for(int i = 0; i < menuList.size(); i++) {
-            System.out.println("menuList = " + menuList.get(i));
-            jsonArray.put(menuList.get(i));
-        }
-
-        jsonObject.put("RECIPE_NM_KO", jsonArray);
         return jsonArray.toString();
     }
 
@@ -83,56 +92,98 @@ public class RecommendController {
     @PostMapping("/nation")
     @ResponseBody
     public String recommendDietByNation(@RequestBody Map params) throws Exception{
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = null;
+        JSONArray jsonArray = new JSONArray();
         String menu;
-        try {
-            System.out.println("가져온 값 = " + (String) params.get("nation"));
-            menu = userDietService.recommendNation((String) params.get("nation"));
+        String start, end;
+        String userId = CookingInfoDTO.currentUserId();
+        LocalDate now = userDietService.currentTime();
+        UserDietDto save = new UserDietDto();
+        int count  = 0;
 
-        }catch (Exception e){
-            System.out.println("e = " + e);
-            return "나라별 식단 추천 오류 발생(server)";
+        start = (String) params.get("start");
+        end = (String) params.get("end");
+
+        count = Integer.parseInt(end.substring(8)) - Integer.parseInt(start.substring(8))+1;
+
+        List<String> dish = (List<String>) params.get("dish");
+
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < dish.size(); j++){
+                jsonObject = new JSONObject();
+                try {
+                    menu = userDietService.recommendNation((String) params.get("nation"));
+                }catch (Exception e){
+                    throw new Exception("국가별 추천 식단 불러오기 실패(server.controller)");
+                }
+
+                jsonObject.put("RECIPE_NM_KO",menu);
+                jsonObject.put("userid",userId);
+                jsonObject.put("time",dish.get(j));
+
+                save.setRecipenm(menu);
+                save.setUserid(userId);
+                save.setTime(dish.get(j));
+
+                try {
+                    userDietService.saveRecommendInfo(save);
+                }catch (Exception e){
+                    throw new Exception("저장 문제 발생(server.controller)");
+                }
+                jsonArray.add(jsonObject);
+            }
         }
-        jsonObject.put("RECIPE_NM_KO", menu);
 
-        return jsonObject.toString();
+        return jsonArray.toString();
     }
 
     //난이도별 추천
     @PostMapping("/difficulty")
     @ResponseBody
     public String recommendDietDiffi(@RequestBody Map params)throws Exception{
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = null;
+        JSONArray jsonArray = new JSONArray();
         String menu;
-        try {
-            menu = userDietService.recommendDifficulty((String) params.get("difficulty"));
-        }catch (Exception e) {
-            return "난이도별 식단 추천 오류 발생(server)";
-        }
-        jsonObject.put("RECIPE_NM_KO", menu);
-
-        return jsonObject.toString();
-    }
-
-    @PostMapping("/save")
-    public @ResponseBody String saveRecommendInfo(@RequestBody UserDietDto userDietDto, Map params) throws Exception {
-        String userId = UserDietDto.currentUserId();
+        String start, end;
+        String userId = CookingInfoDTO.currentUserId();
+        LocalDate now = userDietService.currentTime();
         UserDietDto save = new UserDietDto();
-        String now = String.valueOf(userDietService.currentTime());
+        int count  = 0;
 
-        try {
-            save.setUserid(userDietDto.getUserid());
-            save.setDate(userDietDto.getDate());
-//            save.setRecipeid(recipeId);
-            save.setTime(userDietDto.getTime());
-        } catch (Exception e) {
-            System.out.println("e = " + e);
-            return "식단, 시간, 날짜 저장 오류(server)";
+        start = (String) params.get("start");
+        end = (String) params.get("end");
+
+        count = Integer.parseInt(end.substring(8)) - Integer.parseInt(start.substring(8))+1;
+
+        List<String> dish = (List<String>) params.get("dish");
+
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < dish.size(); j++){
+                jsonObject = new JSONObject();
+                try {
+                    menu = userDietService.recommendDifficulty((String) params.get("difficulty"));
+                }catch (Exception e){
+                    throw new Exception("난이도별 추천 식단 불러오기 실패(server.controller)");
+                }
+
+                jsonObject.put("RECIPE_NM_KO",menu);
+                jsonObject.put("userid",userId);
+                jsonObject.put("time",dish.get(j));
+
+                save.setRecipenm(menu);
+                save.setUserid(userId);
+                save.setTime(dish.get(j));
+
+                try {
+                    userDietService.saveRecommendInfo(save);
+                }catch (Exception e){
+                    throw new Exception("저장 문제 발생(server.controller)");
+                }
+                jsonArray.add(jsonObject);
+            }
         }
-        userDietService.saveRecommendInfo(save);
 
-        return "식단, 시간, 날짜 저장 성공(server)";
-
-
+        return jsonArray.toString();
     }
+
 }

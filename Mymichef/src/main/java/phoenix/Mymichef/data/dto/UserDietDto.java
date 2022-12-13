@@ -15,7 +15,7 @@ import phoenix.Mymichef.data.entity.UserDietEntity;
 public class UserDietDto {
     private Long id;
     private String userid;
-    private String recipeid;
+    private String recipenm;
     private String date;
     private String time;
 
@@ -33,7 +33,7 @@ public class UserDietDto {
         return UserDietEntity.builder()
                 .id(id)
                 .userid(userid)
-                .recipeid(recipeid)
+                .recipenm(recipenm)
                 .date(date)
                 .time(time)
                 .nation(nation)

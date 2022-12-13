@@ -1,22 +1,3 @@
-//setTimeout(function () {
-//  $.ajax({
-//    url: "/recommend/save",
-//    type: "POST",
-//    contentType: "application/json",
-//    data: JSON.stringify(data2),
-//
-//    success: function (response) {
-//      console.log("recommendInfo save success");
-//      console.log(response);
-//    },
-//    error: function (error) {
-//      console.log("recommendInfo save error");
-//      console.log(error);
-//      console.log(error.responseText);
-//    },
-//  });
-//  console.log("Works!");
-//}, 3000);
 
 // 추천순 종류
 const selectRecommend = document.getElementById("recommend_type");

@@ -168,10 +168,11 @@ public class UserDietService {
 
     public void saveRecommendInfo(UserDietDto userDietDto) throws Exception{
         UserDietEntity userDietEntity = userDietDto.toEntity();
-
-        userDietRepository.save(userDietEntity);
-
-        throw new Exception("추천메뉴, 시간, 날짜 저장완료");
+        try {
+            userDietRepository.save(userDietEntity);
+        }catch (Exception e){
+            throw new Exception("저장 이상 발생(server)");
+        }
     }
 
     /**
