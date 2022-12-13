@@ -1,25 +1,3 @@
-let data1 = [];
-let data2 = [];
-
-$.ajax({
-  url: "/recommend/default",
-  type: "POST",
-  contentType: "json",
-  data: JSON.stringify(data1),
-
-  success: function (response) {
-    console.log("recommend success");
-    console.log(response);
-    const userData = JSON.parse(response);
-    console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
-  },
-  error: function (error) {
-    console.log("recommend error");
-    console.log(error);
-    console.log(error.responseText);
-  },
-});
-
 //setTimeout(function () {
 //  $.ajax({
 //    url: "/recommend/save",
@@ -39,8 +17,6 @@ $.ajax({
 //  });
 //  console.log("Works!");
 //}, 3000);
-
-
 
 // 추천순 종류
 const selectRecommend = document.getElementById("recommend_type");
@@ -139,6 +115,8 @@ submitBtn.addEventListener("click", (event) => {
 
   // error
   const errorMsg = document.getElementById("error_msg");
+  const today = new Date();
+  const start = new Date(startDate.value);
   if (dishList.length === 0) {
     console.log("dish error");
     errorMsg.innerText = "아침, 점심, 저녁 중 최소 하나를 선택해 주세요";
@@ -149,7 +127,7 @@ submitBtn.addEventListener("click", (event) => {
     errorMsg.innerText = "날짜를 선택해 주세요";
     return;
   }
-  if (startDate.value > endDate.value) {
+  if (startDate.value > endDate.value || today > start) {
     console.log("date error2");
     errorMsg.innerText = "올바른 날짜를 선택해 주세요";
     return;
@@ -202,24 +180,24 @@ submitBtn.addEventListener("click", (event) => {
     });
   } else {
     // default
-    // $.ajax({
-    //   url: "/recommend/default",
-    //   type: "POST",
-    //   contentType: "json",
-    //   data: JSON.stringify(data1),
-    //
-    //   success: function (response) {
-    //     console.log("recommend success");
-    //     console.log(response);
-    //     const userData = JSON.parse(response);
-    //     console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
-    //   },
-    //   error: function (error) {
-    //     console.log("recommend error");
-    //     console.log(error);
-    //     console.log(error.responseText);
-    //   },
-    // });
+    $.ajax({
+      url: "/recommend/default",
+      type: "POST",
+      contentType: "json",
+      data: JSON.stringify(recommend_json),
+
+      success: function (response) {
+        console.log("recommend success");
+        console.log(response);
+        const userData = JSON.parse(response);
+        console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
+      },
+      error: function (error) {
+        console.log("recommend error");
+        console.log(error);
+        console.log(error.responseText);
+      },
+    });
   }
 });
 

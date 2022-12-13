@@ -23,7 +23,7 @@
       <section class="menu menu--off">
         <div><a href="/home">홈</a></div>
         <div><a href="/food">식재료입력</a></div>
-        <div><a href="/home/recommend">메뉴추천</a></div>
+        <div><a href="/recommend">메뉴추천</a></div>
         <div><a href="/home/shopping">메모패드</a></div>
         <div><a href="/mypage">마이페이지</a></div>
       </section>
@@ -150,25 +150,23 @@
         <form id="parent">
           <div class="wrapper">
             <button
-                    class="button button--disappear"
-                    type="button"
-                    onclick="undoEdit()"
+              class="button button--disappear"
+              type="button"
+              onclick="undoEdit()"
             >
               취소
             </button>
             <button type="submit" class="button button--disappear">저장</button>
             <button
-                    id="updateUserInfo"
-                    type="button"
-                    class="button button--trigger"
+              id="updateUserInfo"
+              type="button"
+              class="button button--trigger"
             >
               수정하기
             </button>
           </div>
         </form>
       </div>
-
-
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/mypage.js"></script>
