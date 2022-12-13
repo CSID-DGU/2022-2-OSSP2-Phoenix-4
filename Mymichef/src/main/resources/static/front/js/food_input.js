@@ -1,12 +1,10 @@
 // 서버 음식 api accept
-let ingredientsData = [];
-let ingredlist = {};
-let ingred = {};
+let ingredientList = {};
 $.ajax({
   url: "/food/list",
   type: "POST",
   contentType: "json",
-  data: JSON.stringify(ingredlist),
+  data: JSON.stringify(ingredientList),
 
   success: function (response) {
     console.log("userInfo success");
@@ -14,13 +12,22 @@ $.ajax({
     const foodsUnit = JSON.parse(response);
 
     console.log(foodsUnit);
+    let ingredientsData = [];
+
+    let i = 0;
     for (let key in foodsUnit) {
-      ingred.name = key;
-      ingred.unit = foodsUnit[key];
-      console.log(ingred);
-      ingredientsData.push(ingred);
+      const ingredient = {};
+
+      ingredient.name = key;
+      ingredient.unit = foodsUnit[key];
+      ingredientsData.push(ingredient);
     }
-    console.log(ingredientsData);
+
+    // 오름차순 정렬
+    ingredientsData = ingredientsData.sort((a, b) => {
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
+    });
 
     const ingredientsResult = document.getElementById("ingredientsResult");
     for (let i = 0; i < ingredientsData.length; i++) {
@@ -41,6 +48,54 @@ $.ajax({
         divName +
         `</div>`;
     }
+    // 재료 검색
+    function onSearch(event) {
+      const search = event.target.value.toLowerCase();
+      const items = document.getElementsByClassName("ingredient");
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i].getElementsByClassName("ingredientName");
+        if (item[0].innerHTML.toLowerCase().indexOf(search) !== -1) {
+          items[i].style.display = "inline-block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+    const ingredientSearch = document.getElementById("ingredientSearch");
+    ingredientSearch.addEventListener("keyup", onSearch);
+
+    const infoForm = document.getElementById("ingredientInfoForm");
+    const infoDiv = document.getElementById("ingredientInfo");
+    const infoName = document.getElementById("infoName");
+    const items = Array.from(document.getElementsByClassName("ingredient"));
+
+    // 재로 클릭 이벤트
+    function onResultClick(event) {
+      const id = event.target.id;
+      let clickItem;
+      let itemImg;
+
+      for (let i = 0; i < ingredientsData.length; i++) {
+        const element = ingredientsData[i].name;
+        if (
+          id === element ||
+          id === element + "name" ||
+          id === element + "img"
+        ) {
+          clickItem = element;
+          itemImg = `<img class="infoImg" src=${clickItem} alt=${clickItem}>`;
+          infoForm.style.display = "flex";
+        }
+      }
+      infoName.innerText = clickItem;
+      // infoDiv.innerHTML += itemImg;
+
+      let inputData = {
+        name: clickItem,
+      };
+    }
+    items.forEach((item) => item.addEventListener("click", onResultClick));
   },
   error: function (error) {
     console.log("userInfo error");
@@ -48,7 +103,6 @@ $.ajax({
     console.log(error.responseText);
   },
 });
-console.log(ingredientsData);
 
 $.ajax({
   url: "/food/check",
@@ -81,104 +135,6 @@ $.ajax({
 //    console.log(error);
 //  },
 //});
-
-$(document).ready(function () {
-  ingredientInputInit();
-});
-
-function ingredientInputInit() {
-  // 식재료 찾기
-  const ingredientSearch = document.getElementById("ingredientSearch");
-  const ingredientsResult = document.getElementById("ingredientsResult");
-
-  let ingredientsName = [
-    { name: "쌀" },
-    { name: "감자" },
-    { name: "고구마" },
-    { name: "당근" },
-    { name: "콩나물" },
-    { name: "토마토" },
-    { name: "배추" },
-    { name: "오이" },
-    { name: "호박" },
-    { name: "양파" },
-    { name: "마늘" },
-    { name: "돼지고기" },
-    { name: "쇠고기" },
-    { name: "닭고기" },
-  ];
-  ingredientsName = ingredientsName.sort((a, b) => {
-    if (a.name > b.name) return 1;
-    if (a.name < b.name) return -1;
-  });
-
-  // // 검색창 재료 목록
-  // for (let i = 0; i < ingredientsName.length; i++) {
-  //   const ingredientName = ingredientsName[i].name;
-  //   const ingredientImg = "../jpg/logo!.png";
-  //
-  //   const divName = `<div class="ingredientName" id=${
-  //     ingredientName + "name"
-  //   }>${ingredientName}</div>`;
-  //   const divImg = `<img class="ingredientImg" id=${
-  //     ingredientName + "img"
-  //   } src=${ingredientImg} alt=${ingredientName}>`;
-  //
-  //   ingredientsResult.innerHTML =
-  //     ingredientsResult.innerHTML +
-  //     `<div class="ingredient" id=${ingredientName}>` +
-  //     divImg +
-  //     divName +
-  //     `</div>`;
-  // }
-
-  // 재료 검색
-  function onSearch(event) {
-    const search = event.target.value.toLowerCase();
-    const items = document.getElementsByClassName("ingredient");
-
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i].getElementsByClassName("ingredientName");
-      if (item[0].innerHTML.toLowerCase().indexOf(search) !== -1) {
-        items[i].style.display = "inline-block";
-      } else {
-        items[i].style.display = "none";
-      }
-    }
-  }
-  ingredientSearch.addEventListener("keyup", onSearch);
-
-  // 재료 정보 입력
-  const infoForm = document.getElementById("ingredientInfoForm");
-  const infoDiv = document.getElementById("ingredientInfo");
-  const infoName = document.getElementById("infoName");
-  const items = Array.from(document.getElementsByClassName("ingredient"));
-
-  // 재로 클릭 이벤트
-  function onResultClick(event) {
-    const id = event.target.id;
-    let clickItem;
-    let itemImg;
-
-    for (let i = 0; i < ingredientsName.length; i++) {
-      const element = ingredientsName[i].name;
-      if (id === element || id === element + "name" || id === element + "img") {
-        clickItem = element;
-        itemImg = `<img class="infoImg" src=${clickItem} alt=${clickItem}>`;
-        infoForm.style.display = "flex";
-      }
-    }
-    infoName.innerText = clickItem;
-    // infoDiv.innerHTML += itemImg;
-
-    let inputData = {
-      name: clickItem,
-    };
-  }
-  items.forEach((item) => item.addEventListener("click", onResultClick));
-
-  // 사용자 재료 리스트
-}
 
 (function () {
   "use strict";
