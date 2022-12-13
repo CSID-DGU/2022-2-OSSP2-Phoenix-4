@@ -13,7 +13,7 @@ public class CookingProcessDTO {
 
     public String ROW_NUM;
 
-    public String RECIPE_ID;
+    public String recipeid;
 
     public String COOKING_NO;
 
@@ -24,7 +24,7 @@ public class CookingProcessDTO {
     public CookingProcessEntity toEntity(){
         return CookingProcessEntity.builder()
                 .ROW_NUM(ROW_NUM)
-                .RECIPE_ID(RECIPE_ID)
+                .recipeid(recipeid)
                 .COOKING_NO(COOKING_NO)
                 .COOKING_DC(COOKING_DC)
                 .STEP_TIP(STEP_TIP)

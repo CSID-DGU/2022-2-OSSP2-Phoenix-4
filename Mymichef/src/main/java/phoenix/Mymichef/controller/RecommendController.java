@@ -8,15 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
 import phoenix.Mymichef.data.dto.UserDietDto;
+import phoenix.Mymichef.data.entity.UserDietEntity;
+import phoenix.Mymichef.data.repository.UserDietRepository;
 import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //home-> UserInput (식단 추천받기 위해 정보 입력하는 페이지)
 @Controller
@@ -79,16 +78,24 @@ public class RecommendController {
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
 
-
-                save.setRecipenm(menu);
-                save.setUserid(userId);
-                save.setTime(dish.get(j));
-                save.setDate(changeDate);
-
-                try {
-                    userDietService.saveRecommendInfo(save);
-                }catch (Exception e){
-                    throw new Exception("저장 문제 발생(server.controller)");
+                Optional<UserDietEntity> exist = userDietService.OverlapTime(userId, changeDate, dish.get(j));
+                if(exist.isEmpty()) {
+                    save.setRecipenm(menu);
+                    save.setUserid(userId);
+                    save.setTime(dish.get(j));
+                    save.setDate(changeDate);
+                    try {
+                        userDietService.saveRecommendInfo(save);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
+                }
+                else {
+                    try {
+                        userDietService.ModifyRecommendInfo(exist, menu);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
                 }
                 jsonArray.add(jsonObject);
             }
@@ -136,15 +143,24 @@ public class RecommendController {
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
 
-                save.setRecipenm(menu);
-                save.setUserid(userId);
-                save.setTime(dish.get(j));
-                save.setDate(changeDate);
-
-                try {
-                    userDietService.saveRecommendInfo(save);
-                }catch (Exception e){
-                    throw new Exception("저장 문제 발생(server.controller)");
+                Optional<UserDietEntity> exist = userDietService.OverlapTime(userId, changeDate, dish.get(j));
+                if(exist.isEmpty()) {
+                    save.setRecipenm(menu);
+                    save.setUserid(userId);
+                    save.setTime(dish.get(j));
+                    save.setDate(changeDate);
+                    try {
+                        userDietService.saveRecommendInfo(save);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
+                }
+                else {
+                    try {
+                        userDietService.ModifyRecommendInfo(exist, menu);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
                 }
                 jsonArray.add(jsonObject);
             }
@@ -192,15 +208,24 @@ public class RecommendController {
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
 
-                save.setRecipenm(menu);
-                save.setUserid(userId);
-                save.setTime(dish.get(j));
-                save.setDate(changeDate);
-
-                try {
-                    userDietService.saveRecommendInfo(save);
-                }catch (Exception e){
-                    throw new Exception("저장 문제 발생(server.controller)");
+                Optional<UserDietEntity> exist = userDietService.OverlapTime(userId, changeDate, dish.get(j));
+                if(exist.isEmpty()) {
+                    save.setRecipenm(menu);
+                    save.setUserid(userId);
+                    save.setTime(dish.get(j));
+                    save.setDate(changeDate);
+                    try {
+                        userDietService.saveRecommendInfo(save);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
+                }
+                else {
+                    try {
+                        userDietService.ModifyRecommendInfo(exist, menu);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
                 }
                 jsonArray.add(jsonObject);
             }

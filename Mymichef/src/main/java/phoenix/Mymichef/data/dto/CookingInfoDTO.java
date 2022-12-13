@@ -17,7 +17,7 @@ public class CookingInfoDTO {
     public String ROW_NUM;
     public String recipeid;
 
-    public String RECIPE_NM_KO;
+    public String recipenm;
 
     public String SUMRY;
 
@@ -43,7 +43,7 @@ public class CookingInfoDTO {
         return CookingInfoEntity.builder()
                 .ROW_NUM(ROW_NUM)
                 .recipeid(recipeid)
-                .RECIPE_NM_KO(RECIPE_NM_KO)
+                .recipenm(recipenm)
                 .SUMRY(SUMRY)
                 .NATION_CODE(NATION_CODE)
                 .nationnm(nationnm)
@@ -60,7 +60,7 @@ public class CookingInfoDTO {
     public CookingInfoDTO(CookingInfoEntity cookingInfoEntity){
         ROW_NUM = cookingInfoEntity.ROW_NUM;
         recipeid = cookingInfoEntity.recipeid;
-        RECIPE_NM_KO = cookingInfoEntity.RECIPE_NM_KO;
+        recipenm = cookingInfoEntity.recipenm;
         SUMRY = cookingInfoEntity.SUMRY;
         NATION_CODE = cookingInfoEntity.NATION_CODE;
         nationnm = cookingInfoEntity.nationnm;

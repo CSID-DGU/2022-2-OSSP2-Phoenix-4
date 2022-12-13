@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.IngredInterface;
 import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.data.entity.CookingInfoEntity;
+import phoenix.Mymichef.data.entity.CookingProcessEntity;
+import phoenix.Mymichef.data.entity.IngredEntity;
 import phoenix.Mymichef.data.entity.UserDietEntity;
-import phoenix.Mymichef.data.repository.CookingInfoRepository;
-import phoenix.Mymichef.data.repository.IngredRepository;
-import phoenix.Mymichef.data.repository.UserDietRepository;
-import phoenix.Mymichef.data.repository.UserIngredRepository;
+import phoenix.Mymichef.data.repository.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +30,9 @@ public class UserDietService {
 
     @Autowired
     private UserDietRepository userDietRepository;
+
+    @Autowired
+    private CookingProcessRepository cookingProcessRepository;
 
     /**
      * 식단 추천 서비스 (default) 폐기
@@ -147,30 +149,30 @@ public class UserDietService {
         if (MenuList.isEmpty()) {
             throw new Exception("해당하는 데이터가 없습니다.");
         } else {
-            while(true) {
+            while (true) {
                 //젤 많은 종류가 537개라
                 a = random.nextInt(538) % (MenuList.size());
 
-                if(MenuList.get(a) != null){
+                if (MenuList.get(a) != null) {
                     break;
                 }
             }
             recipeId = MenuList.get(a).getrecipe();
-            return cookingInfoRepository.findByRecipeid(recipeId).getRECIPE_NM_KO();
+            return cookingInfoRepository.findByRecipeid(recipeId).getRecipenm();
 
         }
     }
 
 
     /**
-     *  추천 식단 저장 서비스
+     * 추천 식단 저장 서비스
      */
 
-    public void saveRecommendInfo(UserDietDto userDietDto) throws Exception{
+    public void saveRecommendInfo(UserDietDto userDietDto) throws Exception {
         UserDietEntity userDietEntity = userDietDto.toEntity();
         try {
             userDietRepository.save(userDietEntity);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("저장 이상 발생(server)");
         }
     }
@@ -178,7 +180,7 @@ public class UserDietService {
     /**
      * 식단 추천 (나라별)
      */
-    public String recommendNation(String nationName) throws Exception{
+    public String recommendNation(String nationName) throws Exception {
         List<CookingInfoEntity> recipe = cookingInfoRepository.findByNationnm(nationName);
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
@@ -186,46 +188,45 @@ public class UserDietService {
 
 
         System.out.println("recipe사이즈 = " + recipe.size());
-        while(true) {
+        while (true) {
             //젤 많은 종류가 537개라
             a = random.nextInt(538) % (recipe.size());
 
-            if(recipe.get(a) != null){
+            if (recipe.get(a) != null) {
                 break;
             }
         }
 
-       return recipe.get(a).getRECIPE_NM_KO();
+        return recipe.get(a).getRecipenm();
 
     }
 
     /**
      * 식단 추천 (난이도별)
      */
-    public String recommendDifficulty(String difficulty) throws Exception{
+    public String recommendDifficulty(String difficulty) throws Exception {
         List<CookingInfoEntity> recipe = cookingInfoRepository.findByLevelnm(difficulty);
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;
 
-        while(true) {
+        while (true) {
             //젤 많은 종류가 537개라
             a = random.nextInt(538) % (recipe.size());
 
-            if(recipe.get(a) != null){
+            if (recipe.get(a) != null) {
                 break;
             }
         }
 
-        return recipe.get(a).getRECIPE_NM_KO();
+        return recipe.get(a).getRecipenm();
 
     }
 
     /**
      * 현재 시간 가져오기
-     *
      */
-    public LocalDate currentTime(){
+    public LocalDate currentTime() {
         LocalDate now = LocalDate.now();
 
         // 포맷 정의
@@ -238,9 +239,9 @@ public class UserDietService {
     }
 
     /**
-     *  날짜 변환
+     * 날짜 변환
      */
-    public String changeDate(String date, int a){
+    public String changeDate(String date, int a) {
         int idate = 0;
         String sDate;
 
@@ -250,8 +251,88 @@ public class UserDietService {
 
         StringBuffer replace = new StringBuffer();
         replace.append(date);
-        String changed = String.valueOf(replace.replace(8,10,sDate));
+        String changed = String.valueOf(replace.replace(8, 10, sDate));
 
         return changed;
     }
+
+    /**
+     * 중복 레시피 수정
+     */
+
+    public Optional<UserDietEntity> OverlapTime(String Userid, String date, String time) {
+        return userDietRepository.findByUseridAndDateAndTime(Userid, date, time);
+    }
+
+    /**
+     * 중복 시간 레시피 수정
+     */
+
+    public void ModifyRecommendInfo(Optional<UserDietEntity> user, String recipename) throws Exception {
+        user.ifPresent(selectUser -> {
+            selectUser.setRecipenm(recipename);
+            userDietRepository.save(selectUser);
+        });
+    }
+
+    /**
+     * 식단 확인 서비스
+     */
+
+    public ArrayList<String> CheckRecipe(String userid) throws Exception {
+        ArrayList<UserDietEntity> RecipeList = userDietRepository.findByUserid(userid);
+        ArrayList<String> recipe = new ArrayList<>();
+        ArrayList<String> recipeid = new ArrayList<>();
+        if (!RecipeList.isEmpty()) {
+            for (int i = 0; i < RecipeList.size(); i++) {
+                recipe.add(RecipeList.get(i).getRecipenm());
+            }
+            for (int i = 0; i < recipe.size(); i++) {
+                recipeid.add(cookingInfoRepository.findByRecipenm(recipe.get(i)).getRecipeid());
+            }
+            return recipeid;
+        }
+        else {
+            throw new Exception("저장된 식단이 존재하지 않습니다.");
+        }
+
+    }
+
+    public ArrayList<UserDietDto> Dto(String userid){
+        ArrayList<UserDietEntity> userDietEntities = userDietRepository.findByUserid(userid);
+        ArrayList<UserDietDto> userDietDtos = new ArrayList<>();
+        for(int i = 0 ; i< userDietEntities.size(); i++){
+            userDietDtos.add(userDietEntities.get(i).toDto());
+        }
+
+        return userDietDtos;
+    }
+
+    public ArrayList<String> IngredientNameList(String recipeid) {
+        ArrayList<String> ingrednamelist = new ArrayList<>();
+        ArrayList<IngredEntity> ingredlist = ingredRepository.findByRecipeid(recipeid);
+        for (int i = 0; i < ingredlist.size(); i++) {
+            ingrednamelist.add(ingredlist.get(i).getIRDNT_NM());
+        }
+        return ingrednamelist;
+    }
+
+    public ArrayList<String> IngredientCpctyList(String recipeid) {
+        ArrayList<String> ingredcpctylist = new ArrayList<>();
+        ArrayList<IngredEntity> ingredlist = ingredRepository.findByRecipeid(recipeid);
+        for (int i = 0; i < ingredlist.size(); i++) {
+            ingredcpctylist.add(ingredlist.get(i).getIRDNT_CPCTY());
+        }
+        return ingredcpctylist;
+    }
+
+    public ArrayList<String> CookingProcessList(String recipeid) {
+        ArrayList<String> cookingprocesslist = new ArrayList<>();
+        ArrayList<CookingProcessEntity> cookingprocess = cookingProcessRepository.findByRecipeid(recipeid);
+        for(int i = 0 ; i < cookingprocess.size(); i++){
+            cookingprocesslist.add(cookingprocess.get(i).getCOOKING_DC());
+        }
+        return cookingprocesslist;
+    }
 }
+

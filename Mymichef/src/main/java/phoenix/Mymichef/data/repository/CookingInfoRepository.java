@@ -13,4 +13,6 @@ public interface CookingInfoRepository extends JpaRepository<CookingInfoEntity, 
 
     List<CookingInfoEntity> findByLevelnm(String LEVEL_NM);
 
+    CookingInfoEntity findByRecipenm(String recipenm);
+
 }
