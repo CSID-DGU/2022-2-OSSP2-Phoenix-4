@@ -2,6 +2,7 @@ package phoenix.Mymichef.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,9 @@ import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
 
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,22 +40,42 @@ public class RecommendController {
     // 식재료 기반 (default)
     @PostMapping("/default")
     @ResponseBody
-    public String recommendDiet()throws Exception{
+    public String recommendDiet(@RequestBody Map params)throws Exception {
         JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
         String userId = CookingInfoDTO.currentUserId();
         String menu;
         ArrayList<String> userIngred = userIngredientService.CheckIngredname(userId);
+        String start, end;
+        List<String> menuList = new ArrayList<>();
+        int count  = 0;
 
-        try {
-            menu = userDietService.recommendMenu(userIngred);
-            System.out.println("getRECIPE_NM_KO() = " + menu);
-        }catch (Exception e){
-            return "정보 불러오기 오류 발생 (server.Controller)";
+        start = (String) params.get("start");
+        end = (String) params.get("end");
+
+        count = Integer.parseInt(end.substring(8)) - Integer.parseInt(start.substring(8))+1;
+
+        List<String> dish = (List<String>) params.get("dish");
+        count *= dish.size();
+
+        System.out.println("count = " + count);
+
+        for (int i = 0; i < count; i++) {
+            try {
+                menu = userDietService.recommendMenu(userIngred);
+                System.out.println("getRECIPE_NM_KO() = " + menu);
+            } catch (Exception e) {
+                return "정보 불러오기 오류 발생 (server.Controller)";
+            }
+            menuList.add(menu);
         }
-        //이 부분에 필요한 정보 저 json에 담아도 되는데 굳이 추천만 해줄거라 필요한가 싶어서 레시피 이름만 넣음
-        jsonObject.put("RECIPE_NM_KO", menu);
 
-        return jsonObject.toString();
+        for(int i = 0; i < menuList.size(); i++) {
+            jsonObject.put("RECIPE_NM_KO", menuList.get(i));
+            System.out.println("menuList = " + menuList.get(i));
+            jsonArray.put(jsonObject);
+        }
+        return jsonArray.toString();
     }
 
     //나라별 추천
@@ -91,7 +114,7 @@ public class RecommendController {
     }
 
     @PostMapping("/save")
-    public @ResponseBody String saveRecommendInfo(@RequestBody UserDietDto userDietDto, @RequestParam("recipeId") String recipeId) throws Exception {
+    public @ResponseBody String saveRecommendInfo(@RequestBody UserDietDto userDietDto, Map params) throws Exception {
         String userId = UserDietDto.currentUserId();
         UserDietDto save = new UserDietDto();
         String now = String.valueOf(userDietService.currentTime());
@@ -99,7 +122,7 @@ public class RecommendController {
         try {
             save.setUserid(userDietDto.getUserid());
             save.setDate(userDietDto.getDate());
-            save.setRecipeid(recipeId);
+//            save.setRecipeid(recipeId);
             save.setTime(userDietDto.getTime());
         } catch (Exception e) {
             System.out.println("e = " + e);

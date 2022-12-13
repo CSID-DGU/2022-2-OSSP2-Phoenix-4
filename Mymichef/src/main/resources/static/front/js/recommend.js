@@ -183,7 +183,7 @@ submitBtn.addEventListener("click", (event) => {
     $.ajax({
       url: "/recommend/default",
       type: "POST",
-      contentType: "json",
+      contentType: "application/json",
       data: JSON.stringify(recommend_json),
 
       success: function (response) {
