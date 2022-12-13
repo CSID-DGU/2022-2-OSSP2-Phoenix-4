@@ -52,6 +52,11 @@ public class RecommendController {
         LocalDate now = userDietService.currentTime();
         UserDietDto save = new UserDietDto();
         int count  = 0;
+        int k = 0;
+        String realDate;
+        String changeDate;
+        realDate = (String) params.get("start");
+
 
         start = (String) params.get("start");
         end = (String) params.get("end");
@@ -68,13 +73,17 @@ public class RecommendController {
                 }catch (Exception e){
                     throw new Exception("식단 찾기 오류(server.controller)");
                 }
+                changeDate = userDietService.changeDate(realDate, k);
+                jsonObject.put("date", changeDate);
                 jsonObject.put("RECIPE_NM_KO",menu);
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
 
+
                 save.setRecipenm(menu);
                 save.setUserid(userId);
                 save.setTime(dish.get(j));
+                save.setDate(changeDate);
 
                 try {
                     userDietService.saveRecommendInfo(save);
@@ -83,6 +92,7 @@ public class RecommendController {
                 }
                 jsonArray.add(jsonObject);
             }
+            k++;
         }
 
         return jsonArray.toString();
@@ -100,6 +110,10 @@ public class RecommendController {
         LocalDate now = userDietService.currentTime();
         UserDietDto save = new UserDietDto();
         int count  = 0;
+        int k = 0;
+        String realDate;
+        String changeDate;
+        realDate = (String) params.get("start");
 
         start = (String) params.get("start");
         end = (String) params.get("end");
@@ -116,7 +130,8 @@ public class RecommendController {
                 }catch (Exception e){
                     throw new Exception("국가별 추천 식단 불러오기 실패(server.controller)");
                 }
-
+                changeDate = userDietService.changeDate(realDate, k);
+                jsonObject.put("date", changeDate);
                 jsonObject.put("RECIPE_NM_KO",menu);
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
@@ -124,6 +139,7 @@ public class RecommendController {
                 save.setRecipenm(menu);
                 save.setUserid(userId);
                 save.setTime(dish.get(j));
+                save.setDate(changeDate);
 
                 try {
                     userDietService.saveRecommendInfo(save);
@@ -132,6 +148,7 @@ public class RecommendController {
                 }
                 jsonArray.add(jsonObject);
             }
+            k++;
         }
 
         return jsonArray.toString();
@@ -149,6 +166,10 @@ public class RecommendController {
         LocalDate now = userDietService.currentTime();
         UserDietDto save = new UserDietDto();
         int count  = 0;
+        int k = 0;
+        String realDate;
+        String changeDate;
+        realDate = (String) params.get("start");
 
         start = (String) params.get("start");
         end = (String) params.get("end");
@@ -165,7 +186,8 @@ public class RecommendController {
                 }catch (Exception e){
                     throw new Exception("난이도별 추천 식단 불러오기 실패(server.controller)");
                 }
-
+                changeDate = userDietService.changeDate(realDate, k);
+                jsonObject.put("date", changeDate);
                 jsonObject.put("RECIPE_NM_KO",menu);
                 jsonObject.put("userid",userId);
                 jsonObject.put("time",dish.get(j));
@@ -173,6 +195,7 @@ public class RecommendController {
                 save.setRecipenm(menu);
                 save.setUserid(userId);
                 save.setTime(dish.get(j));
+                save.setDate(changeDate);
 
                 try {
                     userDietService.saveRecommendInfo(save);
@@ -181,6 +204,7 @@ public class RecommendController {
                 }
                 jsonArray.add(jsonObject);
             }
+            k++;
         }
 
         return jsonArray.toString();

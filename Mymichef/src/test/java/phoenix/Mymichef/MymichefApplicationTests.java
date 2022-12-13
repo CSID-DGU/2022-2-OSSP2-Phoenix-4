@@ -21,27 +21,36 @@ class MymichefApplicationTests {
 
 
    @Test
-   public String recommendNation(String nationName) throws Exception{
-        nationName = "한식";
-       List<CookingInfoEntity> recipe = cookingInfoRepository.findByNationnm(nationName);
-       if(recipe.size() == 0){throw new Exception("먼일이고");}
-       Random random = new Random();
-       random.setSeed(System.currentTimeMillis());
-       int a = 0;
+   public void changeDate(){
+       String date = "2022-12-13";
+       int a= 2;
+       int idate = 0;
+       String sDate;
 
+       idate = Integer.parseInt(date.substring(8));
+       idate += a;
+       System.out.println("idate = " + idate);
+       System.out.println("idate 변화값 = " + idate);
 
-       System.out.println("recipe사이즈 = " + recipe.size());
-       while(true) {
-           //젤 많은 종류가 537개라
-           a = random.nextInt(538) % (recipe.size());
+       sDate = String.valueOf(idate);
+       System.out.println("sDate = " + sDate);
 
-           if(recipe.get(a) != null){
-               break;
-           }
-       }
-
-       return recipe.get(a).getRECIPE_NM_KO();
+       StringBuffer replace = new StringBuffer();
+       replace.append(date);
+       System.out.println("초기 replace = " + replace);
+       String changed = String.valueOf(replace.replace(8,10,sDate));
+       System.out.println("changed = " + changed);
 
    }
 
+//   @Test
+//    public void test(){
+//       String date = "2022-10-15";
+//       for(int i = 0; i < 5; i++){
+//
+//           changeDate(date,i);
+//           System.out.println("date = " + date);
+//       }
+//   }
 }
+

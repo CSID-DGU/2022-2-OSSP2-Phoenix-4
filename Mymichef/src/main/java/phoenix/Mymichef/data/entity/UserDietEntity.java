@@ -24,21 +24,14 @@ public class UserDietEntity {
     @Column(name = "time")
     private String time;
 
-    @Column(name = "nation")
-    private String nation;
-
-    @Column(name = "difficulty")
-    private String difficulty;
 
     @Builder
-    public UserDietEntity(Long id, String userid, String recipenm, String date, String time, String nation, String difficulty) {
+    public UserDietEntity(Long id, String userid, String recipenm, String date, String time) {
         this.id = id;
         this.userid = userid;
         this.recipenm = recipenm;
         this.date = date;
         this.time = time;
-        this.nation = nation;
-        this.difficulty = difficulty;
     }
 
     public UserDietEntity(){}

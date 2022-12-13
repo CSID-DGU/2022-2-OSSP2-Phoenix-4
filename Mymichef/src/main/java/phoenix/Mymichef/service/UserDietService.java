@@ -236,4 +236,22 @@ public class UserDietService {
 
         return now;
     }
+
+    /**
+     *  날짜 변환
+     */
+    public String changeDate(String date, int a){
+        int idate = 0;
+        String sDate;
+
+        idate = Integer.parseInt(date.substring(8));
+        idate += a;
+        sDate = String.valueOf(idate);
+
+        StringBuffer replace = new StringBuffer();
+        replace.append(date);
+        String changed = String.valueOf(replace.replace(8,10,sDate));
+
+        return changed;
+    }
 }
