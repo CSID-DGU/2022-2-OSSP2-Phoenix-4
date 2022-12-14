@@ -90,10 +90,6 @@ $.ajax({
       }
       infoName.innerText = clickItem;
       // infoDiv.innerHTML += itemImg;
-
-      let inputData = {
-        name: clickItem,
-      };
     }
     items.forEach((item) => item.addEventListener("click", onResultClick));
   },
