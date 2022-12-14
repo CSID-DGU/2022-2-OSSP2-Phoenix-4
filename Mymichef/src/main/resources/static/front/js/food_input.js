@@ -74,6 +74,7 @@ $.ajax({
       const id = event.target.id;
       let clickItem;
       let itemImg;
+      let unit;
 
       for (let i = 0; i < ingredientsData.length; i++) {
         const element = ingredientsData[i].name;
@@ -83,11 +84,13 @@ $.ajax({
           id === element + "img"
         ) {
           clickItem = element;
+          unit = foodsUnit[element];
           itemImg = `<img class="infoImg" src=${clickItem} alt=${clickItem}>`;
           infoForm.style.display = "flex";
         }
       }
       infoName.innerText = clickItem;
+      $("label[for='quantity']").text(unit);
       // infoDiv.innerHTML += itemImg;
     }
     items.forEach((item) => item.addEventListener("click", onResultClick));
@@ -99,11 +102,12 @@ $.ajax({
   },
 });
 
+let ingredient = [];
 $.ajax({
   url: "/food/check",
   type: "POST",
   contentType: "json",
-  data: JSON.stringify(ingred),
+  data: JSON.stringify(ingredient),
 
   success: function (response) {
     console.log("userInfo success");

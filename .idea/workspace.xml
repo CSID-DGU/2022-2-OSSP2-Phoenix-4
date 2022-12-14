@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="recommend update">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 식재료 입력 단위">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,7 @@
       <workItem from="1670375100116" duration="82000" />
       <workItem from="1670375199656" duration="4147000" />
       <workItem from="1670471598053" duration="6091000" />
-      <workItem from="1671021919510" duration="7412000" />
+      <workItem from="1671021919510" duration="8971000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -289,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670999745320</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="recommend update">
+      <created>1671040752467</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1671040752467</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +334,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="식재료 입력 update" />
     <MESSAGE value="recommend update" />
-    <option name="LAST_COMMIT_MESSAGE" value="recommend update" />
+    <MESSAGE value="update 식재료 입력 단위" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 식재료 입력 단위" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
