@@ -17,12 +17,14 @@ $.ajax({
     console.log("phone: " + userData.phoneNumber);
     console.log("height: " + userData.height);
     console.log("weight: " + userData.weight);
+    console.log("cal: " + userData.calory);
 
     const inputName = document.getElementById("name");
     const inputEmail = document.getElementById("email");
     const inputPhone = document.getElementById("phone");
     const inputHeight = document.getElementById("height");
     const inputWeight = document.getElementById("weight");
+    const inputCal = document.getElementById("cal");
 
     inputName.value = userData.name;
     inputEmail.value = userData.email;
@@ -44,6 +46,7 @@ function updateInfo() {
   const inputPhone = document.getElementById("phone");
   const inputHeight = document.getElementById("height");
   const inputWeight = document.getElementById("weight");
+  const inputCal = document.getElementById("cal");
   // const inputGender = document.getElementById();
 
   console.log(typeof userData);

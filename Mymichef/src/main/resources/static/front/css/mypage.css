@@ -346,9 +346,14 @@ input:checked + .switch:after {
     grid-row: span 2;
   }
 
-  .gender-group {
+  .cal-group {
     grid-column: 3;
     grid-row: span 2;
+  }
+
+  .gender-group {
+    grid-column: 1;
+    grid-row: span 3;
   }
 
   .button-container {

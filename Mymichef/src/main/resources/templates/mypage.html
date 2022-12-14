@@ -32,67 +32,70 @@
     <fieldset action="/mypage" class="container">
       <h1 class="title">마이페이지</h1>
 
-      <div id='btn_fieldset' class="field1">
-        <div class="grid">
-          <div class="form-group name-group">
-            <label for="name">이름</label>
-            <input id="name" type="text" placeholder="홍길동"/>
-          </div>
+      <div class="grid">
+        <div class="form-group name-group">
+          <label for="name">이름</label>
+          <input id="name" type="text" placeholder="홍길동"/>
+        </div>
 
-          <div class="form-group email-group">
-            <label for="email">Email</label>
-            <input
-              id="email"
-              type="text"
-              placeholder="example@mmc.com"
-            />
-          </div>
+        <div class="form-group email-group">
+          <label for="email">Email</label>
+          <input
+                  id="email"
+                  type="text"
+                  placeholder="example@mmc.com"
+          />
+        </div>
 
-          <div class="form-group phone-group">
-            <label for="phone">전화번호</label>
-            <input id="phone" type="text" placeholder="010-1234-1234"/>
-          </div>
+        <div class="form-group phone-group">
+          <label for="phone">전화번호</label>
+          <input id="phone" type="text" placeholder="010-1234-1234"/>
+        </div>
 
-          <div class="form-group height-group">
-            <label for="height">키</label>
-            <input id="height" type="number" placeholder="cm"/>
-          </div>
+        <div class="form-group height-group">
+          <label for="height">키</label>
+          <input id="height" type="number" placeholder="cm"/>
+        </div>
 
-          <div class="form-group weight-group">
-            <label for="weight">몸무게</label>
-            <input id="weight" type="number" placeholder="kg"/>
-          </div>
+        <div class="form-group weight-group">
+          <label for="weight">몸무게</label>
+          <input id="weight" type="number" placeholder="kg"/>
+        </div>
 
-          <div class="form-group gender-group">
-            <label for="switch">성별</label>
-            <input id="switch" type="checkbox" hidden />
-            <label for="switch" class="switch">
-              <h1 class="female">✝</h1>
-              <h1 class="male">➜</h1>
-            </label>
-          </div>
-      </div>
+        <div class="form-group cal-group">
+          <label for="cal">희망 칼로리</label>
+          <input id="cal" type="number" placeholder="kcal" disabled />
+        </div>
+
+        <div class="form-group gender-group">
+          <label for="switch">성별</label>
+          <input id="switch" type="checkbox" hidden />
+          <label for="switch" class="switch">
+            <h1 class="female">✝</h1>
+            <h1 class="male">➜</h1>
+          </label>
+        </div>
 
         <form id="parent">
-          <div class="wrapper">
+          <div class="btn-group">
             <button
-              class="button button--disappear"
-              type="button"
-              onclick="undoEdit()"
+                    class="button button--disappear"
+                    type="button"
+                    onclick="undoEdit()"
             >
               취소
             </button>
             <button type="submit" class="button button--disappear">저장</button>
             <button
-              id="updateUserInfo"
-              type="button"
-              class="button button--trigger"
-              onclick='fieldsetActive()'
+                    id="updateUserInfo"
+                    type="button"
+                    class="button button--trigger"
             >
               수정하기
             </button>
           </div>
         </form>
+
       </div>
     </fieldset>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
