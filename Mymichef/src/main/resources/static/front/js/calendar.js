@@ -1,5 +1,24 @@
 import menuData from "../json/menu.json" assert { type: "json" };
 
+let recipedata = {};
+
+$.ajax({
+  url: "/home/calendar/check",
+  type: "POST",
+  contentType: "json",
+  data: JSON.stringify(recipedata),
+
+  success: function (response) {
+    console.log("recipedata success");
+    console.log(response);
+  },
+  error: function (error) {
+    console.log("recipedata error");
+    console.log(error);
+    console.log(error.responseText);
+  },
+});
+
 $(document).ready(function () {
   calendarInit();
 });

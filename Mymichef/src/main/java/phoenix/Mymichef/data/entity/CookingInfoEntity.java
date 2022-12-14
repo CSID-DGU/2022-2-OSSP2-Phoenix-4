@@ -21,7 +21,7 @@ public class CookingInfoEntity {
     public String recipeid;
 
     @Column(name = "RECIPE_NM_KO")
-    public String RECIPE_NM_KO;
+    public String recipenm;
 
     @Column(name = "SUMRY")
     public String SUMRY;
@@ -57,7 +57,7 @@ public class CookingInfoEntity {
     @Builder
     public CookingInfoEntity(String ROW_NUM,
                              String recipeid,
-                             String RECIPE_NM_KO,
+                             String recipenm,
                              String SUMRY,
                              String NATION_CODE,
                              String nationnm,
@@ -70,7 +70,7 @@ public class CookingInfoEntity {
                              String IRDNT_CODE) {
         this.ROW_NUM = ROW_NUM;
         this.recipeid = recipeid;
-        this.RECIPE_NM_KO = RECIPE_NM_KO;
+        this.recipenm = recipenm;
         this.SUMRY = SUMRY;
         this.NATION_CODE = NATION_CODE;
         this.nationnm = nationnm;

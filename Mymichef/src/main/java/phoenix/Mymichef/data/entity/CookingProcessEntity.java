@@ -21,7 +21,7 @@ public class CookingProcessEntity {
     @Column(name = "ROW_NUM")
     public String ROW_NUM;
     @Column(name = "RECIPE_ID")
-    public String RECIPE_ID;
+    public String recipeid;
     @Column(name = "COOKING_NO")
     public String COOKING_NO;
     @Column(name = "COOKING_DC")
@@ -32,12 +32,12 @@ public class CookingProcessEntity {
 
     @Builder
     public CookingProcessEntity(String ROW_NUM,
-                                String RECIPE_ID,
+                                String recipeid,
                                 String COOKING_NO,
                                 String COOKING_DC,
                                 String STEP_TIP) {
         this.ROW_NUM = ROW_NUM;
-        this.RECIPE_ID = RECIPE_ID;
+        this.recipeid = recipeid;
         this.COOKING_NO = COOKING_NO;
         this.COOKING_DC = COOKING_DC;
         this.STEP_TIP = STEP_TIP;

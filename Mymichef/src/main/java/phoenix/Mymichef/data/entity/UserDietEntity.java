@@ -1,6 +1,8 @@
 package phoenix.Mymichef.data.entity;
 
 import lombok.*;
+import org.springframework.security.core.parameters.P;
+import phoenix.Mymichef.data.dto.UserDietDto;
 
 import javax.persistence.*;
 
@@ -34,5 +36,14 @@ public class UserDietEntity {
         this.time = time;
     }
 
+    public UserDietDto toDto(){
+        return UserDietDto.builder()
+                .id(id)
+                .userid(userid)
+                .recipenm(recipenm)
+                .date(date)
+                .time(time)
+                .build();
+    }
     public UserDietEntity(){}
 }
