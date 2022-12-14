@@ -1,7 +1,52 @@
-
 // 추천순 종류
 const selectRecommend = document.getElementById("recommend_type");
 const recommendList = document.getElementById("recommend_list");
+
+// 팝업 만들기
+// recipe: 레시피 리스트
+// date: 날짜 일수
+// time: 아침, 점심, 저녁 선택 개수
+function popupOpen(recipe, date, time) {
+  const popDiv = document.getElementById("popup_container");
+  const popWrap = document.getElementById("popup_wrap");
+
+  for (let i = 0; i < date; i++) {
+    const date = recipe[i * time].date;
+    const recipeDiv = `<div class="recipe_wrap" id=${
+      "recipe" + i
+    }><h1>${date}</h1></div>`;
+    popWrap.innerHTML = popWrap.innerHTML + recipeDiv;
+  }
+
+  for (let i = 0; i < recipe.length; i++) {
+    const name = recipe[i].RECIPE_NM_KO;
+    const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
+
+    recipeDiv.innerHTML = recipeDiv.innerHTML + name;
+  }
+  popWrap.innerHTML += `<button id=submitBtn>완료</button>`;
+
+  document.getElementById("submitBtn").addEventListener("click", popupClose);
+  popDiv.style.display = "block";
+}
+
+// 팝업 제거
+function popupClose() {
+  const popDiv = document.getElementById("popup_container");
+  const popWrap = document.getElementById("popup_wrap");
+  popDiv.style.display = "none";
+  popWrap.innerHTML = "";
+}
+
+// 두 날짜 일수 차이
+const getDateDiff = (d1, d2) => {
+  const date1 = new Date(d1);
+  const date2 = new Date(d2);
+
+  const diffDate = date1.getTime() - date2.getTime();
+
+  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+};
 
 // 추천순 select
 function onRecommend(event) {
@@ -118,6 +163,10 @@ submitBtn.addEventListener("click", (event) => {
   recommend_json.start = startDate.value;
   recommend_json.end = endDate.value;
 
+  const diffDate = getDateDiff(startDate.value, endDate.value) + 1;
+  const selectTime = recommend_json.dish.length;
+  console.log("날짜 차이: " + diffDate);
+
   // 서버 통신
   console.log(recommend_json);
   console.log(Object.keys(recommend_json));
@@ -131,7 +180,9 @@ submitBtn.addEventListener("click", (event) => {
 
       success: function (response) {
         console.log("recommend(nation) success");
-        console.log(response);
+        const data = JSON.parse(response);
+        console.log(data);
+        popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend(nation) error");

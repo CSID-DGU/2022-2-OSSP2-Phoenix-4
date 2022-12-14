@@ -1,5 +1,6 @@
 // 서버 음식 api accept
 let ingredientList = {};
+
 $.ajax({
   url: "/food/list",
   type: "POST",
@@ -14,7 +15,6 @@ $.ajax({
     console.log(foodsUnit);
     let ingredientsData = [];
 
-    let i = 0;
     for (let key in foodsUnit) {
       const ingredient = {};
 
@@ -66,7 +66,6 @@ $.ajax({
     ingredientSearch.addEventListener("keyup", onSearch);
 
     const infoForm = document.getElementById("ingredientInfoForm");
-    const infoDiv = document.getElementById("ingredientInfo");
     const infoName = document.getElementById("infoName");
     const items = Array.from(document.getElementsByClassName("ingredient"));
 

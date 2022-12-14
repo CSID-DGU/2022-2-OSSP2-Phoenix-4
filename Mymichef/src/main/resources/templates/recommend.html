@@ -61,9 +61,8 @@
         <div class="container_period">
           <p>
             기간:
-            <input type="date" id="start" />
-            ~
-            <input type="date" id="end" />
+            <input type="date" id="start" /><label for="start">~</label>
+            <label for="end"></label><input type="date" id="end" />
           </p>
         </div>
 
@@ -84,6 +83,9 @@
         </div>
         <p id="error_msg"></p>
       </form>
+    </div>
+    <div id="popup_container">
+      <div id="popup_wrap"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/recommend.js"></script>
