@@ -7,6 +7,11 @@ import phoenix.Mymichef.data.repository.CookingInfoRepository;
 import phoenix.Mymichef.data.repository.UserIngredRepository;
 import phoenix.Mymichef.service.UserIngredientService;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -43,14 +48,38 @@ class MymichefApplicationTests {
 
    }
 
-//   @Test
-//    public void test(){
-//       String date = "2022-10-15";
-//       for(int i = 0; i < 5; i++){
-//
-//           changeDate(date,i);
-//           System.out.println("date = " + date);
-//       }
-//   }
+   @Test
+    public void countDate() throws ParseException {
+        String date2 = "2022-12-14";
+        String date1 = "2023-12-31";
+        long count = 0;
+
+       DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+       Date d1 = format.parse( date1 );
+       Date d2 = format.parse( date2 );
+
+       long Sec = (d1.getTime() - d2.getTime());
+       long Days = Sec / (24*60*60*1000); // 일자수
+
+       System.out.println(Days + "일 차이");
+       count += Days;
+       System.out.println("count = " + count);
+   }
+
+   @Test
+    public String addOneDayCalendar()
+            throws ParseException {
+        String date = "2022-11-30";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date dt = format.parse(date);
+        cal.setTime(dt);
+
+        cal.add(Calendar.DATE, 1);
+
+        return format.format(cal.getTime());
+
+    }
 }
 

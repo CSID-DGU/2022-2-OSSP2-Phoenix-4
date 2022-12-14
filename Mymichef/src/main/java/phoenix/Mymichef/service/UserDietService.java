@@ -12,6 +12,9 @@ import phoenix.Mymichef.data.entity.IngredEntity;
 import phoenix.Mymichef.data.entity.UserDietEntity;
 import phoenix.Mymichef.data.repository.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -241,19 +244,37 @@ public class UserDietService {
     /**
      * 날짜 변환
      */
-    public String changeDate(String date, int a) {
-        int idate = 0;
-        String sDate;
+    public String addOneDayCalendar(String date) throws ParseException {
 
-        idate = Integer.parseInt(date.substring(8));
-        idate += a;
-        sDate = String.valueOf(idate);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date dt = format.parse(date);
+        cal.setTime(dt);
 
-        StringBuffer replace = new StringBuffer();
-        replace.append(date);
-        String changed = String.valueOf(replace.replace(8, 10, sDate));
+        cal.add(Calendar.DATE, 1);
 
-        return changed;
+        return format.format(cal.getTime());
+    }
+
+    /**
+     *  날짜 계산
+     */
+    public int countDate(String date1, String date2) throws ParseException {
+
+        int count = 0;
+
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date d1 = format.parse( date1 );
+        Date d2 = format.parse( date2 );
+
+        long Sec = (d1.getTime() - d2.getTime());
+        long Days = Sec / (24*60*60*1000); // 일자수
+
+        count += Days;
+        System.out.println(count + "일 차이");
+
+        return count + 1;
     }
 
     /**
