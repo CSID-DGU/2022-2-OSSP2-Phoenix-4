@@ -24,18 +24,20 @@ function popupOpen(recipe, date, time) {
 
     recipeDiv.innerHTML = recipeDiv.innerHTML + name;
   }
-  popWrap.innerHTML += `<button id=submitBtn>완료</button>`;
+  popWrap.innerHTML += `<button id="submitBtn2" value="추천확인"></button>`;
 
-  document.getElementById("submitBtn").addEventListener("click", popupClose);
+  // 팝업 제거
+  function popupClose() {
+    popDiv.style.display = "none";
+    popWrap.innerHTML = "";
+    console.log("click popup close");
+  }
+
+  const submitBtn = document.getElementById("submitBtn2");
+  submitBtn.addEventListener("click", popupClose);
+
+  console.log(submitBtn);
   popDiv.style.display = "block";
-}
-
-// 팝업 제거
-function popupClose() {
-  const popDiv = document.getElementById("popup_container");
-  const popWrap = document.getElementById("popup_wrap");
-  popDiv.style.display = "none";
-  popWrap.innerHTML = "";
 }
 
 // 두 날짜 일수 차이
@@ -202,7 +204,9 @@ submitBtn.addEventListener("click", (event) => {
 
       success: function (response) {
         console.log("recommend(difficulty) success");
-        console.log(response);
+        const data = JSON.parse(response);
+        console.log(data);
+        popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend(difficulty) error");
@@ -220,9 +224,9 @@ submitBtn.addEventListener("click", (event) => {
 
       success: function (response) {
         console.log("recommend success");
-        console.log(response);
-        const userData = JSON.parse(response);
-        console.log("RECIPE_NM_KO: " + userData.RECIPE_NM_KO);
+        const data = JSON.parse(response);
+        console.log(data);
+        popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend error");
