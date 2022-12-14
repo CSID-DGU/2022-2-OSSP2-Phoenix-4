@@ -138,6 +138,7 @@ $.ajax({
   document
     .querySelector(".material-design-hamburger__icon")
     .addEventListener("click", function () {
+      console.log("click");
       var child;
 
       document.body.classList.toggle("background--blur");

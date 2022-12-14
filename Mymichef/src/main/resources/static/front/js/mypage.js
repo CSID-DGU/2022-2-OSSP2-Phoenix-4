@@ -17,16 +17,12 @@ $.ajax({
     console.log("phone: " + userData.phoneNumber);
     console.log("height: " + userData.height);
     console.log("weight: " + userData.weight);
-    console.log("cal: " + userData.calory);
-    console.log("allergy: " + userData.allergy);
 
     const inputName = document.getElementById("name");
     const inputEmail = document.getElementById("email");
     const inputPhone = document.getElementById("phone");
     const inputHeight = document.getElementById("height");
     const inputWeight = document.getElementById("weight");
-    const inputCal = document.getElementById("cal");
-    const inputAllergies = document.getElementById("allergies");
 
     inputName.value = userData.name;
     inputEmail.value = userData.email;
@@ -48,10 +44,7 @@ function updateInfo() {
   const inputPhone = document.getElementById("phone");
   const inputHeight = document.getElementById("height");
   const inputWeight = document.getElementById("weight");
-  const inputCal = document.getElementById("cal");
-  const inputAllergies = document.getElementById("allergies");
   // const inputGender = document.getElementById();
-  // const inputVegan = document.getElementById("");
 
   console.log(typeof userData);
 }
@@ -71,15 +64,11 @@ parentForm.addEventListener("submit", (event) => {
   const inputName = event.target[0].value;
   const inputEmail = event.target[1].value;
 
-  let inputPassword = event.target[2].value;
-
   let inputPhoneNumber = event.target[4].value;
 
   let inputHeight = event.target[5].value;
 
   let inputWeight = event.target[6].value;
-
-  let inputAllergy = event.target[7].value;
 
   let inputGender = event.target[8].value;
   /*와ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ 못해먹겠다 js 후하후하,,,,,,,,,,,,SOS...*/
