@@ -103,7 +103,7 @@
       <workItem from="1670375100116" duration="82000" />
       <workItem from="1670375199656" duration="4147000" />
       <workItem from="1670471598053" duration="6091000" />
-      <workItem from="1671021919510" duration="8971000" />
+      <workItem from="1671021919510" duration="10891000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -294,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671040752467</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="update 식재료 입력 단위">
+      <created>1671042319502</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1671042319502</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

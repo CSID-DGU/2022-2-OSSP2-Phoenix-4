@@ -111,7 +111,15 @@ $.ajax({
 
   success: function (response) {
     console.log("userInfo success");
-    console.log(response);
+    const data = JSON.parse(response);
+    console.log(data);
+
+    const listDoc = document.getElementById("food_list");
+
+    for (const dataKey in data) {
+      const foodDiv = `<div class="user_food"><p class="user_food_name">${dataKey}</p><p class="user_food_amount">${data[dataKey]}</p> </div>`;
+      listDoc.innerHTML += foodDiv;
+    }
   },
   error: function (error) {
     console.log("userInfo error");
