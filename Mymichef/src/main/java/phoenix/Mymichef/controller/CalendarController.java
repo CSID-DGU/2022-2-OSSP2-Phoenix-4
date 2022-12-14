@@ -33,30 +33,32 @@ public class CalendarController {
 
     @PostMapping(value = "/check")
     public @ResponseBody String CheckShoppingList() throws Exception {
-        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonrecipe = new JSONObject();
         String userId = UserDTO.currentUserId();
         try {
             ArrayList<String> recipe = userDietService.CheckRecipe(userId);
             ArrayList<UserDietDto> userDietDtos = userDietService.Dto(userId);
             for (int i = 0; i < recipe.size(); i++) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("recipe", userDietDtos.get(i).getRecipenm());
-                jsonObject.put("date", userDietDtos.get(i).getDate());
-                jsonObject.put("time", userDietDtos.get(i).getTime());
+                JSONObject jsonObjectingred = new JSONObject();
+                JSONObject jsonObjectrecipe = new JSONObject();
+                jsonrecipe.put("recipe", userDietDtos.get(i).getRecipenm());
+                jsonrecipe.put("date", userDietDtos.get(i).getDate());
+                jsonrecipe.put("time", userDietDtos.get(i).getTime());
 
                 ArrayList<String> ingrednamelist = userDietService.IngredientNameList(recipe.get(i));
                 ArrayList<String> ingredcpctylist = userDietService.IngredientCpctyList(recipe.get(i));
                 ArrayList<String> cookingprocess = userDietService.CookingProcessList(recipe.get(i));
 
                 for (int j = 0; j < ingrednamelist.size(); j++) {
-                    jsonObject.put(ingrednamelist.get(j), ingredcpctylist.get(j));
+                    jsonObjectingred.put(ingrednamelist.get(j), ingredcpctylist.get(j));
                 }
+                jsonrecipe.put("재료", jsonObjectingred);
 
                 for(int j = 0 ; j < cookingprocess.size(); j++){
-                    jsonObject.put("조리과정"+ (j+1), cookingprocess.get(j));
+                    jsonObjectrecipe.put("조리과정"+ (j+1), cookingprocess.get(j));
                 }
+                jsonrecipe.put("조리과정", jsonObjectrecipe);
 
-                jsonArray.add(jsonObject);
             }
         }catch (Exception e){
             log.info("e", e);
@@ -64,6 +66,6 @@ public class CalendarController {
         }
 
 
-        return jsonArray.toString();
+        return jsonrecipe.toString();
     }
 }
