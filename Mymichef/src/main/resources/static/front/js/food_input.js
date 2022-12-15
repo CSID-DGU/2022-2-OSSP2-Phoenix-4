@@ -97,31 +97,36 @@ $.ajax({
 
     // 재료 저장 이벤트
     function onSaveClick(event) {
-      // event.preventDefault();
+      event.preventDefault();
       console.log("click save");
       const name = document.getElementById("infoName").innerText;
       const mount = document.getElementById("quantity").value;
-
       console.log(name, mount);
 
-      const saveData = { ingredname: name, ingredamount: mount };
-      console.log(saveData);
+      if (mount !== "" && mount > 0) {
+        const saveData = { ingredname: name, ingredamount: mount };
+        console.log(saveData);
 
-      $.ajax({
-        url: "/food/input",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(saveData),
+        $.ajax({
+          url: "/food/input",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(saveData),
 
-        success: function (response) {
-          console.log("ingredients api post success");
-          console.log(response);
-        },
-        error: function (error) {
-          console.log("ingredients api post error");
-          console.log(error);
-        },
-      });
+          success: function (response) {
+            console.log("ingredients api post success");
+            console.log(response);
+            // event.unbind();
+          },
+          error: function (error) {
+            console.log("ingredients api post error");
+            console.log(error);
+          },
+        });
+      } else {
+        document.getElementById("error_msg").innerText =
+          "수량을 정확히 입력해 주세요";
+      }
     }
     document.getElementById("infoBtn").addEventListener("click", onSaveClick);
   },
@@ -147,10 +152,51 @@ $.ajax({
 
     const listDoc = document.getElementById("food_list");
 
+    // 재료 삭제 이벤트
+    function onDeleteClick(event) {
+      console.log(event);
+      const name = event.target.id;
+      const postData = { ingredname: name };
+      console.log("delete");
+      console.log(postData);
+      $.ajax({
+        url: "/food/delete",
+        type: "POST",
+        contentType: "json",
+        data: JSON.stringify(postData),
+
+        success: function (response) {
+          console.log("delete success");
+          const data = JSON.parse(response);
+          console.log(data);
+        },
+        error: function (error) {
+          console.log("delete error");
+          console.log(error);
+          console.log(error.responseText);
+        },
+      });
+    }
+
+    // 내 식재료 리스트에 DB 추가
     for (const dataKey in data) {
-      const foodDiv = `<div class="user_food"><p class="user_food_name">${dataKey}</p><p class="user_food_amount">${data[dataKey]}</p> </div>`;
+      const foodName = `<p class="user_food_name">${dataKey}</p>`;
+      const foodAmount = `<p class="user_food_amount">${data[dataKey]}</p>`;
+      const deleteBtn = `<button class="food_delete" id=${dataKey}>삭제</button>`;
+      const foodDiv =
+        `<div class="user_food">` +
+        foodName +
+        foodAmount +
+        deleteBtn +
+        `</div>`;
       listDoc.innerHTML += foodDiv;
     }
+
+    // button 삭제 이벤트 추가
+    const deleteBtn = document.querySelectorAll(".food_delete");
+    deleteBtn.forEach((btn) => {
+      btn.addEventListener("click", onDeleteClick);
+    });
   },
   error: function (error) {
     console.log("userInfo error");

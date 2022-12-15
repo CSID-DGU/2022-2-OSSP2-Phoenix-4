@@ -113,3 +113,7 @@ h1 {
   background-color: white;
   margin: 0 auto;
 }
+
+#error_msg {
+  color: red;
+}

@@ -41,10 +41,16 @@
           <div id="ingredientInfo">
             <p id="infoName"></p>
             <h2>수량</h2>
-            <input type="number" id="quantity" name="quantity" /><label
-              for="quantity"
-            ></label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="0"
+              step="1"
+            /><label for="quantity"></label>
           </div>
+          <p id="error_msg"></p>
           <button type="submit" id="infoBtn">확인</button>
         </form>
       </div>
