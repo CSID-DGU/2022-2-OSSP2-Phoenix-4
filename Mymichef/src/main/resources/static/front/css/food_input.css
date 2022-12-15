@@ -23,6 +23,7 @@ body {
   height: 800px;
   padding: 12px;
   background-color: lightyellow;
+  border-radius: 10px;
 }
 
 h1 {
@@ -40,8 +41,10 @@ h1 {
 .form__field {
   font-family: inherit;
   width: 90%;
-  border: 0;
-  border-bottom: 2px solid #9b9b9b;
+  border-bottom: 2px double var(--color-verylightgray);
+  border-top: 4px dashed var(--color-verylightgray);
+  border-left: 4px dashed var(--color-verylightgray);
+  border-right: 4px dashed var(--color-verylightgray);
   outline: 0;
   font-size: 1.3rem;
   color: black;
@@ -103,21 +106,31 @@ h1 {
   width: 12px;
 }
 
-#ingredientsResult::-webkit-scrollbar-thumb,
+#ingredientsResult::-webkit-scrollbar-thumb{
+  border-radius: 100px;
+    border: 3px solid rgba(0, 0, 0, 0.18);
+    border-left: 0;
+    border-right: 0;
+    background-color: var(--color-coral);
+}
 #food_list::-webkit-scrollbar-thumb {
-  border-radius: 18px;
-  background: var(--color-grass);
+  border-radius: 100px;
+    border: 4px solid rgba(0, 0, 0, 0.18);
+    border-left: 0;
+    border-right: 0;
+    background-color: var(--color-coral);
 }
 
 #ingredientsResult::-webkit-scrollbar-track,
 #food_list::-webkit-scrollbar-track {
-  background: var(--color-mint);
-  border-radius: 18px;
+  background: #f5e0c1;
+  border-radius: 100px;
 }
 
 .ingredient {
   display: inline-block;
   background-color: white;
+  border:8px ridge var(--color-verylightgray);
   border-radius: 15px;
   width: 18%;
   height: 140px;
