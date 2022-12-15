@@ -9,9 +9,7 @@ $.ajax({
 
   success: function (response) {
     console.log("userInfo success");
-    console.log(response);
     const userData = JSON.parse(response);
-    console.log(typeof response);
     console.log("name: " + userData.name);
     console.log("email: " + userData.email);
     console.log("phone: " + userData.phoneNumber);
@@ -63,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userdata = {};
 
   parentForm.addEventListener("submit", (event) => {
-    if (confirm('저장하시겠습니까?')) {
+    if (confirm("저장하시겠습니까?")) {
       event.preventDefault();
 
       const inputName = event.target[0].value;
@@ -74,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const inputCal = event.target[5].value;
       const inputGender = event.target[6].value;
       if (
-          inputName !== "" &&
-          inputEmail !== "" &&
-          inputphoneNumber !== "" &&
-          inputHeight !== "" &&
-          inputWeight !== ""
+        inputName !== "" &&
+        inputEmail !== "" &&
+        inputphoneNumber !== "" &&
+        inputHeight !== "" &&
+        inputWeight !== ""
       ) {
         userdata.name = inputName;
         userdata.email = inputEmail;
@@ -107,9 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return;
     }
-
-
-
   });
 });
 (function () {
@@ -137,9 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 function undoEdit() {
-      if(!confirm('취소하시겠습니까?새로 입력한 정보가 사라집니다.')){
-        return;
-      }
+  if (!confirm("취소하시겠습니까?새로 입력한 정보가 사라집니다.")) {
+    return;
+  }
 
   $(".button--trigger").show();
   $(this).removeClass("active").addClass("out");
@@ -155,63 +150,56 @@ $(".button--trigger").on("click", function (e) {
   $(".button--disappear").removeClass("out").addClass("active");
 });
 
-
-$("#chat-label").click(function() {
-
-  $('#live-chat').toggleClass('open-chat');
-  $('#chat-label').toggleClass('open-chat-label');
-  $('.live-chat-up-arrow').toggleClass('hide-up-arrow');
-  $('.live-chat-down-arrow').toggleClass('show-down-arrow');
-
+$("#chat-label").click(function () {
+  $("#live-chat").toggleClass("open-chat");
+  $("#chat-label").toggleClass("open-chat-label");
+  $(".live-chat-up-arrow").toggleClass("hide-up-arrow");
+  $(".live-chat-down-arrow").toggleClass("show-down-arrow");
 });
-
 
 var expression = "";
 var reset = false;
 
 function updateDisplay(val) {
-	// console.log(val);
+  // console.log(val);
   expression = expression + val;
   document.getElementById("display").innerHTML = expression;
 }
 
 function updateDisplayNumber(val) {
-	// console.log(val);
-  if (reset)
-    expression = val;
-  else
-    expression = expression + val;
+  // console.log(val);
+  if (reset) expression = val;
+  else expression = expression + val;
   document.getElementById("display").innerHTML = expression;
 }
 
-function computeExpression () {
-	// console.log(expression)
-	var result = eval(expression);
-	document.getElementById("display").innerHTML = result;
-	expression = result;
+function computeExpression() {
+  // console.log(expression)
+  var result = eval(expression);
+  document.getElementById("display").innerHTML = result;
+  expression = result;
 }
 
 function clearDisplay() {
-	expression = "";
+  expression = "";
   reset = true;
-	// console.log(expression);
-	document.getElementById("display").innerHTML = "0";
+  // console.log(expression);
+  document.getElementById("display").innerHTML = "0";
 }
 
 function deleteChar() {
-	if (expression.length > 1) {
-		expression = expression.substr(0, expression.length-1)
-		document.getElementById("display").innerHTML = expression;
-	} else {
-		document.getElementById("display").innerHTML = "0";
-	}
+  if (expression.length > 1) {
+    expression = expression.substr(0, expression.length - 1);
+    document.getElementById("display").innerHTML = expression;
+  } else {
+    document.getElementById("display").innerHTML = "0";
+  }
 }
 
-function computePercent() {
-}
+function computePercent() {}
 
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
@@ -220,18 +208,18 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+btn.onclick = function () {
+  modal.style.display = "block";
+};
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+span.onclick = function () {
+  modal.style.display = "none";
+};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};

@@ -68,60 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const data = {};
 
-  // // 데이터 형식
-  // let data = {
-  //   userId: "",
-  //   email: "",
-  //   password: "",
-  //   name: "",
-  //   phoneNumber: 0,
-  //   height: 0,
-  //   weight: 0,
-  //   allergy: 0,
-  //   gender: "",
-  // };
-
-  // 로그인 클릭 이벤트
-  // loginForm.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-  //
-  //   const inputId = e.target[0].value;
-  //   const inputPw = e.target[1].value;
-  //
-  //   if (inputId !== "" && inputPw !== "") {
-  //     data.userId = inputId;
-  //     data.password = inputPw;
-  //
-  //     $.ajax({
-  //       url: "localhost8080/join",
-  //       type: "POST",
-  //       // dataType: "json",
-  //       data: JSON.stringify(data),
-  //
-  //       success: function (response) {
-  //         console.log("로그인 post success");
-  //         console.log(response);
-  //       },
-  //       error: function (request, error) {
-  //         console.log("로그인 post error");
-  //         console.log(error);
-  //         console.log(
-  //           "code:" +
-  //             request.status +
-  //             "\n" +
-  //             "message: " +
-  //             request.responseText +
-  //             "\n" +
-  //             "error:" +
-  //             error
-  //         );
-  //       },
-  //     });
-  //   }
-  //
-  //   setFormMessage(loginForm, "error", "Invalid username/password combination");
-  // });
-
   // ID 찾기 이벤트 리스너
   findIDForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -141,22 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         success: function (response) {
           console.log("아이디 찾기 통신 성공");
-          console.log(response);
           const userId = JSON.parse(response);
           alert(userId.userId);
         },
         error: function (error) {
           console.log("아이디 찾기 통신 오류");
-          console.log(error);
         },
       });
     }
-
-    // setFormMessage(
-    //   findIDForm,
-    //   "error",
-    //   "Invalid username/password combination"
-    // );
   });
 
   // Password 찾기 이벤트 리스너
@@ -179,23 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         success: function (response) {
           console.log("비밀번호 찾기 post success");
-          console.log(response);
           const userPw = JSON.parse(response);
           alert(userPw.password);
-          console(data);
         },
         error: function (error) {
           console.log("비밀번호 찾기 post error");
-          console.log(error);
         },
       });
     }
-
-    // setFormMessage(
-    //   findPasswordForm,
-    //   "error",
-    //   "Invalid username/password combination"
-    // );
   });
 
   // 회원가입 이벤트 리스너
@@ -234,8 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
         //        dataType: "json",
         success: function (response) {
           console.log("회원가입 post success");
-          console.log(response);
-          console.log(data);
           if (response === "java.lang.Exception: 회원가입에 성공했습니다!") {
             alert("회원가입이 완료되었습니다.");
             window.location.replace("http://localhost:8080/");
@@ -245,26 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         error: function (request, error) {
           console.log("회원가입 post error");
-          console.log(error);
-          console.log(
-            "code:" +
-              request.status +
-              "\n" +
-              "message: " +
-              request.responseText +
-              "\n" +
-              "error:" +
-              error
-          );
         },
       });
     }
-
-    // setFormMessage(
-    //   createAccountForm,
-    //   "error",
-    //   "Invalid username/password combination"
-    // );
   });
 
   document.querySelectorAll(".form__input").forEach((inputElement) => {

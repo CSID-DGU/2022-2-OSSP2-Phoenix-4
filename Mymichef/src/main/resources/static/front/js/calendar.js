@@ -10,7 +10,6 @@ $.ajax({
   success: function (response) {
     console.log("recipe data success");
     const data = JSON.parse(response);
-    console.log(data);
     for (const dataKey in data) {
       const element = data[dataKey];
       const dateData = {};
@@ -24,9 +23,7 @@ $.ajax({
       dateData.recipe = element.조리과정;
       dateData.time = element.time;
       menuData.push(dateData);
-      console.log(dateData);
     }
-    console.log(menuData);
 
     $(document).ready(function () {
       calendarInit();
@@ -34,8 +31,6 @@ $.ajax({
   },
   error: function (error) {
     console.log("recipedata error");
-    console.log(error);
-    console.log(error.responseText);
   },
 });
 
@@ -61,9 +56,6 @@ function calendarInit() {
   let currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
   let currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
 
-  // kst 기준 현재시간
-  // console.log(thisMonth);
-
   // 캘린더 렌더링
   renderCalender(thisMonth);
 
@@ -83,8 +75,6 @@ function calendarInit() {
     const endDay = new Date(currentYear, currentMonth + 1, 0);
     const nextDate = endDay.getDate();
     const nextDay = endDay.getDay();
-
-    // console.log(prevDate, prevDay, nextDate, nextDay);
 
     // 현재 월 표기
     $(".year-month").text(currentYear + "." + (currentMonth + 1));
@@ -162,16 +152,6 @@ function calendarInit() {
 
   // 날짜 클릭
   function onDayClick(event) {
-    console.log(currentYear, currentMonth, Number(event.target.textContent));
-    console.log(
-      menuData.length,
-      menuData[0].year,
-      menuData[0].month,
-      menuData[0].date,
-      menuData[0].ingredient,
-      menuData[0].recipe
-    );
-
     // 데이터베이스 날짜 비교
     for (let index = 0; index < menuData.length; index++) {
       console.log("find correct");

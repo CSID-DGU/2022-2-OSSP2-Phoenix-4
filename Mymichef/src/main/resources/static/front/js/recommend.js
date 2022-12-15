@@ -46,12 +46,9 @@ function popupOpen(recipe, date, time) {
         success: function (response) {
           console.log("recommend(nation) success");
           const data = JSON.parse(response);
-          console.log(data);
         },
         error: function (error) {
           console.log("recommend(nation) error");
-          console.log(error);
-          console.log(error.responseText);
         },
       });
       modalClose();
@@ -72,13 +69,11 @@ function popupOpen(recipe, date, time) {
   function popupClose() {
     popDiv.style.display = "none";
     popWrap.innerHTML = "";
-    console.log("click popup close");
   }
 
   const submitBtn = document.getElementById("submitBtn2");
   submitBtn.addEventListener("click", popupClose);
 
-  console.log(submitBtn);
   popDiv.style.display = "block";
 }
 
@@ -188,12 +183,10 @@ submitBtn.addEventListener("click", (event) => {
   const today = new Date();
   const start = new Date(startDate.value);
   if (dishList.length === 0) {
-    console.log("dish error");
     errorMsg.innerText = "아침, 점심, 저녁 중 최소 하나를 선택해 주세요";
     return;
   }
   if (startDate.value === "" || endDate.value === "") {
-    console.log("date error1");
     errorMsg.innerText = "날짜를 선택해 주세요";
     return;
   }
@@ -201,7 +194,6 @@ submitBtn.addEventListener("click", (event) => {
     startDate.value > endDate.value ||
     Math.ceil(getDateDiff(start, today)) < 0
   ) {
-    console.log("date error2");
     errorMsg.innerText = "올바른 날짜를 선택해 주세요";
     return;
   }
@@ -212,11 +204,8 @@ submitBtn.addEventListener("click", (event) => {
 
   const diffDate = getDateDiff(endDate.value, startDate.value) + 1;
   const selectTime = recommend_json.dish.length;
-  console.log("날짜 차이: " + diffDate);
 
   // 서버 통신
-  console.log(recommend_json);
-  console.log(Object.keys(recommend_json));
   // 나라별 추천
   if (Object.keys(recommend_json).find((value) => value === "nation")) {
     $.ajax({
@@ -228,13 +217,10 @@ submitBtn.addEventListener("click", (event) => {
       success: function (response) {
         console.log("recommend(nation) success");
         const data = JSON.parse(response);
-        console.log(data);
         popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend(nation) error");
-        console.log(error);
-        console.log(error.responseText);
       },
     });
   } else if (
@@ -248,15 +234,11 @@ submitBtn.addEventListener("click", (event) => {
       data: JSON.stringify(recommend_json),
 
       success: function (response) {
-        console.log("recommend(difficulty) success");
         const data = JSON.parse(response);
-        console.log(data);
         popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend(difficulty) error");
-        console.log(error);
-        console.log(error.responseText);
       },
     });
   } else {
@@ -270,13 +252,10 @@ submitBtn.addEventListener("click", (event) => {
       success: function (response) {
         console.log("recommend success");
         const data = JSON.parse(response);
-        console.log(data);
         popupOpen(data, diffDate, selectTime);
       },
       error: function (error) {
         console.log("recommend error");
-        console.log(error);
-        console.log(error.responseText);
       },
     });
   }
