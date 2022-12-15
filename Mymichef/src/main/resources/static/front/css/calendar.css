@@ -145,12 +145,14 @@ cursor: pointer;
 }
 
 #popupInner {
+  position: relative;
+  top: -50px;
   width: 800px;
   height: 600px;
   margin: 100px auto;
   padding: 20px 30px;
   border-radius: 12px;
-  background: #fff;
+  background: white;
   vertical-align: middle;
   text-align: center;
   overflow: scroll;
@@ -161,12 +163,15 @@ cursor: pointer;
   width: 18px;
 }
 #popupInner::-webkit-scrollbar-thumb {
-  border-radius: 18px;
+  border-radius: 100px;
+  border: 6px solid rgba(0, 0, 0, 0.18);
+  border-left: 0;
+  border-right: 0;
   background-color: var(--color-grass);
 }
 #popupInner::-webkit-scrollbar-track {
   background-color: var(--color-mint);
-  border-radius: 18px;
+  border-radius: 100px;
 }
 
 /*팝업창 내부*/
