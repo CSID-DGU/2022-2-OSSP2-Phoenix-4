@@ -33,14 +33,18 @@ public class UserIngredEntity {
     @Column(name = "ingredtype")
     private String ingredtype;
 
+    @Column(name = "ingredunit")
+    private String ingredunit;
+
     @Builder
-    public UserIngredEntity(Long id, String userid, String ingredname, String ingredamount, String ingreddate, String ingredtype) {
+    public UserIngredEntity(Long id, String userid, String ingredname, String ingredamount, String ingreddate, String ingredtype, String ingredunit) {
         this.id = id;
         this.userid = userid;
         this.ingredname = ingredname;
         this.ingredamount = ingredamount;
         this.ingreddate = ingreddate;
         this.ingredtype = ingredtype;
+        this.ingredunit = ingredunit;
     }
 
     public  UserIngredDto toDto(){
@@ -51,6 +55,7 @@ public class UserIngredEntity {
                 .ingredamount(ingredamount)
                 .ingreddate(ingreddate)
                 .ingredtype(ingredtype)
+                .ingredunit(ingredunit)
                 .build();
     }
 }

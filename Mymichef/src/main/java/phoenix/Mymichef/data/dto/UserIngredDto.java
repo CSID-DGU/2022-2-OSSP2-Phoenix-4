@@ -17,6 +17,7 @@ public class UserIngredDto {
     private String ingredamount;
     private String ingreddate;
     private String ingredtype;
+    private String ingredunit;
 
     public UserIngredEntity toEntity() {
         return UserIngredEntity.builder()
@@ -26,6 +27,7 @@ public class UserIngredDto {
                 .ingredamount(ingredamount)
                 .ingreddate(ingreddate)
                 .ingredtype(ingredtype)
+                .ingredunit(ingredunit)
                 .build();
     }
     /**

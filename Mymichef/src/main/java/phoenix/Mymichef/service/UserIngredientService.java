@@ -73,7 +73,7 @@ public class UserIngredientService {
         }
         else {
             for (int i = 0; i < find.size() ; i ++){
-                Ingredamount.add(find.get(i).getIngredamount());
+                Ingredamount.add(find.get(i).getIngredamount() + find.get(i).getIngredunit());
             }
             return Ingredamount;
         }
