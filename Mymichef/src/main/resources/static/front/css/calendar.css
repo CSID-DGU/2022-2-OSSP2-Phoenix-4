@@ -129,6 +129,10 @@ body {
   color: #ddd;
 }
 
+.dates{
+cursor: pointer;
+}
+
 /*팝업창*/
 #popup {
   position: fixed;
