@@ -80,6 +80,7 @@ function popupOpen(recipe, date, time) {
   submitBtn.addEventListener("click", popupClose);
 
   popDiv.style.display = "block";
+  popWrap.scrollTo(0, 0);
 }
 
 // 두 날짜 일수 차이
