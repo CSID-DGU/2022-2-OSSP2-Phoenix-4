@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.IngredInterface;
 import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserDietDto;
-import phoenix.Mymichef.data.entity.CookingInfoEntity;
-import phoenix.Mymichef.data.entity.CookingProcessEntity;
-import phoenix.Mymichef.data.entity.IngredEntity;
-import phoenix.Mymichef.data.entity.UserDietEntity;
+import phoenix.Mymichef.data.dto.UserIngredDto;
+import phoenix.Mymichef.data.entity.*;
 import phoenix.Mymichef.data.repository.*;
 
 import java.awt.*;
@@ -388,16 +386,25 @@ public class UserDietService {
      * 식단 재료 차감 서비스
      */
 
-/*    public void DeductionRecipe(String recipenm, String UserId){
+    public void DeductionRecipe(String recipenm, String userId) throws Exception{
         String recipeid = cookingInfoRepository.findByRecipenm(recipenm).getRecipeid();
-        ArrayList<String> ingredname = new ArrayList<>();
-        ArrayList<String> ingredamount = new ArrayList<>();
         ArrayList<IngredEntity> NeedIngredList = ingredRepository.findByRecipeid(recipeid);
         for(int i = 0; i<NeedIngredList.size(); i++){
-            ingredname.add(NeedIngredList.get(i).getIRDNT_NM());
-            ingredamount.add(NeedIngredList.get(i).getIRDNT_AM());
+            Optional<UserIngredEntity> find = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userId, NeedIngredList.get(i).getIRDNT_NM()));
+            if(find.isEmpty())
+                throw new Exception("저장 되어 있는 해당 재료가 존재 하지 않습니다.");
+            else{
+                if(Float.valueOf(find.get().getIngredamount()) > Float.valueOf(NeedIngredList.get(i).getIRDNT_AM())){
+                    UserIngredDto finddto = find.get().toDto();
+                    finddto.setIngredamount(String.valueOf(Float.valueOf(find.get().getIngredamount()) - Float.valueOf(NeedIngredList.get(i).getIRDNT_AM())));
+                    userIngredRepository.save(finddto.toEntity());
+                }
+                else{
+                    userIngredRepository.delete(find.get());
+                }
+            }
         }
-    }*/
+    }
 
 
     public ArrayList<String> returnrecipe(String userid){

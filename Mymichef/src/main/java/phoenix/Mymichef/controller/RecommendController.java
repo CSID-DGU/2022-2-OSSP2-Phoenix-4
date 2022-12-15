@@ -297,4 +297,10 @@ public class RecommendController {
         return jsonArray.toString();
     }
 
+/*    @PostMapping("/shopping")
+    @ResponseBody
+    public String recommendtoshopping(@RequestBody HashMap<String, Object> params) throws Exception{
+
+    }*/
+
 }
