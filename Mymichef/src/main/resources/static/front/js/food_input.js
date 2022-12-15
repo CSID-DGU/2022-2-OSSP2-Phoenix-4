@@ -97,7 +97,7 @@ $.ajax({
 
     // 재료 저장 이벤트
     function onSaveClick(event) {
-      event.preventDefault();
+      // event.preventDefault();
       console.log("click save");
       const name = document.getElementById("infoName").innerText;
       const mount = document.getElementById("quantity").value;
