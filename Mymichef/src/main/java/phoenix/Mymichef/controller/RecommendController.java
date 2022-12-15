@@ -7,11 +7,14 @@ import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.CookingInfoDTO;
+import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.data.entity.UserDietEntity;
 import phoenix.Mymichef.data.repository.UserDietRepository;
+import phoenix.Mymichef.data.repository.UserShoppingRepository;
 import phoenix.Mymichef.service.UserDietService;
 import phoenix.Mymichef.service.UserIngredientService;
+import phoenix.Mymichef.service.UserShoppingService;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -26,6 +29,7 @@ public class RecommendController {
 
     private UserDietService userDietService;
     private UserIngredientService userIngredientService;
+    private UserShoppingService userShoppingService;
 
 
     @GetMapping(value = "")
@@ -364,10 +368,14 @@ public class RecommendController {
         return jsonArray.toString();
     }
 
-/*    @PostMapping("/shopping")
+    @PostMapping("/shopping")
     @ResponseBody
-    public String recommendtoshopping(@RequestBody HashMap<String, Object> params) throws Exception{
-
-    }*/
+    public void recommendtoshopping(@RequestBody Map params) throws Exception{
+        String userId = UserDTO.currentUserId();
+        List<String> recipenm = (List<String>) params.get("recipenm");
+        for(int i = 0; i < recipenm.size(); i++){
+            userShoppingService.Shopping(userId, recipenm.get(i));
+        }
+    }
 
 }
