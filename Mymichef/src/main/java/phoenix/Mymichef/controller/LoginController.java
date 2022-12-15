@@ -42,9 +42,9 @@ public class LoginController {
            userService.saveUser(userDTO);
        } catch (Exception e) {
            System.out.println("e = " + e);
-           return "join_fail(server)";
+           return String.valueOf(e);
        }
-       return "join_success(server)";
+       return "success";
    }
 
 

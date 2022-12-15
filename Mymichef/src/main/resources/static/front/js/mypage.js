@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
           success: function (response) {
             console.log("updateUserInfo success");
             console.log(response);
+            alert("저장이 완료되었습니다.");
             window.location.replace("http://localhost:8080/mypage");
           },
           error: function (error) {

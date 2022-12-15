@@ -33,16 +33,19 @@ public class CalendarController {
 
     @PostMapping(value = "/check")
     public @ResponseBody String CheckShoppingList() throws Exception {
-        JSONObject jsonrecipe = new JSONObject();
         JSONObject jsonObject = new JSONObject();
         String userId = UserDTO.currentUserId();
         try {
             ArrayList<String> recipe = userDietService.CheckRecipe(userId);
+            for(int i = 0 ; i < recipe.size() ; i++){
+                System.out.printf("%s\n", recipe.get(i));
+            }
             ArrayList<String> recipename = userDietService.returnrecipe(userId);
             ArrayList<String> recipedate = userDietService.returndate(userId);
             ArrayList<String> recipetime = userDietService.returntime(userId);
 
             for (int i = 0; i < recipe.size(); i++) {
+                JSONObject jsonrecipe = new JSONObject();
                 JSONObject jsonObjectingred = new JSONObject();
                 JSONObject jsonObjectrecipe = new JSONObject();
                 jsonrecipe.put("recipe", recipename.get(i));
@@ -65,6 +68,7 @@ public class CalendarController {
                 }
                 jsonrecipe.put("조리과정", jsonObjectrecipe);
                 jsonObject.put(String.valueOf(i), jsonrecipe);
+
             }
 
         }catch (Exception e){
