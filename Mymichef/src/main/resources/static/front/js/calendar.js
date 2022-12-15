@@ -144,9 +144,19 @@ function calendarInit() {
 
   // 팝업 닫기 함수
   function onPopupClose() {
-    document.getElementById("popup_breakfast").innerHTML = "";
-    document.getElementById("popup_lunch").innerHTML = "";
-    document.getElementById("popup_dinner").innerHTML = "";
+    document.querySelectorAll(".popup_name").forEach((name) => {
+      name.innerHTML = "";
+    });
+    document.querySelectorAll(".popup_ingredient").forEach((ingredient) => {
+      ingredient.innerHTML = "";
+    });
+    document.querySelectorAll(".popup_recipe").forEach((recipe) => {
+      recipe.innerHTML = "";
+    });
+    document.querySelectorAll(".popup_wrap").forEach((wrap) => {
+      wrap.style.display = "none";
+    });
+
     popup.style.display = "none";
   }
 
@@ -203,15 +213,36 @@ function calendarInit() {
 
         // 팝업 html 삽입
         const breakfastDiv = document.getElementById("popup_breakfast");
+        const breakfastName = document.getElementById("name_breakfast");
+        const breakfastIngredient = document.getElementById(
+          "ingredient_breakfast"
+        );
+        const breakfastRecipe = document.getElementById("recipe_breakfast");
         const lunchDiv = document.getElementById("popup_lunch");
+        const lunchName = document.getElementById("name_lunch");
+        const lunchIngredient = document.getElementById("ingredient_lunch");
+        const lunchRecipe = document.getElementById("recipe_lunch");
         const dinnerDiv = document.getElementById("popup_dinner");
+        const dinnerName = document.getElementById("name_dinner");
+        const dinnerIngredient = document.getElementById("ingredient_dinner");
+        const dinnerRecipe = document.getElementById("recipe_dinner");
 
         if (element.time === "breakfast") {
-          breakfastDiv.innerHTML += food + ingredient + recipe;
+          breakfastName.innerText = food;
+          breakfastIngredient.innerHTML =
+            `<p class="guide">재료</p>` + ingredient;
+          breakfastRecipe.innerHTML = `<p class="guide">레시피</p>` + recipe;
+          breakfastDiv.style.display = "flex";
         } else if (element.time === "lunch") {
-          lunchDiv.innerHTML += food + ingredient + recipe;
+          lunchName.innerText = food;
+          lunchIngredient.innerHTML = `<p class="guide">재료</p>` + ingredient;
+          lunchRecipe.innerHTML = `<p class="guide">레시피</p>` + recipe;
+          lunchDiv.style.display = "flex";
         } else if (element.time === "dinner") {
-          dinnerDiv.innerHTML += food + ingredient + recipe;
+          dinnerName.innerText = food;
+          dinnerIngredient.innerHTML = `<p class="guide">재료</p>` + ingredient;
+          dinnerRecipe.innerHTML = `<p class="guide">레시피</p>` + recipe;
+          dinnerDiv.style.display = "flex";
         }
 
         // 팝업 보이게
@@ -222,6 +253,7 @@ function calendarInit() {
         document
           .getElementById("closeBtn")
           .addEventListener("click", onPopupClose);
+        popup.addEventListener("click", onPopupClose);
       }
     }
     // popup.style.display = "none";

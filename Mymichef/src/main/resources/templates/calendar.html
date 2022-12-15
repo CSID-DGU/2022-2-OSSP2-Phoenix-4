@@ -49,10 +49,25 @@
     <div id="popup" style="display: none">
       <div id="popupInner">
         <h1 id="popup_date"></h1>
-        <div id="popup_breakfast"></div>
-        <div id="popup_lunch"></div>
-        <div id="popup_dinner"></div>
-        <button id="closeBtn">닫기</button>
+        <div id="popup_breakfast" class="popup_wrap">
+          <p class="popup_time">아침</p>
+          <p id="name_breakfast" class="popup_name"></p>
+          <div id="ingredient_breakfast" class="popup_ingredient"></div>
+          <div id="recipe_breakfast" class="popup_recipe"></div>
+        </div>
+        <div id="popup_lunch" class="popup_wrap">
+          <p class="popup_time">점심</p>
+          <p id="name_lunch" class="popup_name"></p>
+          <div id="ingredient_lunch" class="popup_ingredient"></div>
+          <div id="recipe_lunch" class="popup_recipe"></div>
+        </div>
+        <div id="popup_dinner" class="popup_wrap">
+          <p class="popup_time">저녁</p>
+          <p id="name_dinner" class="popup_name"></p>
+          <div id="ingredient_dinner" class="popup_ingredient"></div>
+          <div id="recipe_dinner" class="popup_recipe"></div>
+        </div>
+        <button class="button" id="closeBtn">닫기</button>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
