@@ -368,11 +368,13 @@ select:focus + .focus {
 }
 
 #popup_wrap {
+  position: relative;
+  top:-80px;
   width: 800px;
   height: 600px;
   margin: 150px auto;
   padding: 20px 30px;
-  background: white;
+  background: #eef7dc;
   vertical-align: middle;
   text-align: center;
   overflow: scroll;
@@ -385,8 +387,16 @@ select:focus + .focus {
   width: 21px;
 }
 #popup_wrap::-webkit-scrollbar-thumb {
-  border-radius: 18px;
-  background-color: black;
+  border-radius: 100px;
+      border: 6px solid rgba(0, 0, 0, 0.18);
+      border-left: 0;
+      border-right: 0;
+      background-color: #a2b362;
+}
+#popup_wrap::-webkit-scrollbar-track {
+  border-radius: 100px;
+      background: var(--color-olive);
+      border-radius: 100px;
 }
 
 .recipe_wrap {
