@@ -383,6 +383,36 @@ public class UserDietService {
 
     }
 
+    public ArrayList<String> returnrecipe(String userid){
+        ArrayList<String> recipenamelist = new ArrayList<>();
+        ArrayList<UserDietEntity> userDietEntities = userDietRepository.findByUserid(userid);
+        for(int i = 0 ; i< userDietEntities.size(); i++){
+            recipenamelist.add(userDietEntities.get(i).getRecipenm());
+        }
+
+        return recipenamelist;
+    }
+
+    public ArrayList<String> returndate(String userid){
+        ArrayList<String> recipedatelist = new ArrayList<>();
+        ArrayList<UserDietEntity> userDietEntities = userDietRepository.findByUserid(userid);
+        for(int i = 0 ; i< userDietEntities.size(); i++){
+            recipedatelist.add(userDietEntities.get(i).getDate());
+        }
+
+        return recipedatelist;
+    }
+
+    public ArrayList<String> returntime(String userid){
+        ArrayList<String> recipetimelist = new ArrayList<>();
+        ArrayList<UserDietEntity> userDietEntities = userDietRepository.findByUserid(userid);
+        for(int i = 0 ; i< userDietEntities.size(); i++){
+            recipetimelist.add(userDietEntities.get(i).getTime());
+        }
+
+        return recipetimelist;
+    }
+
     public ArrayList<UserDietDto> Dto(String userid){
         ArrayList<UserDietEntity> userDietEntities = userDietRepository.findByUserid(userid);
         ArrayList<UserDietDto> userDietDtos = new ArrayList<>();
