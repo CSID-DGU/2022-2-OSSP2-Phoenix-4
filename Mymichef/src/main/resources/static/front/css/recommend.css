@@ -48,6 +48,10 @@ form {
   margin: auto;
 }
 
+.period_p{
+    font-size: 25px;
+}
+
 .popup_recipe_time{
     font-size: 25px;
     font-weight: 500;
@@ -114,12 +118,6 @@ form {
 .form-container button[type="submit"]:active {
   background-color: #e67e22;
   color: #fefefe;
-}
-
-.container_essential {
-  max-width: 640px;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 17px;
 }
 
 ul.dish-box,
