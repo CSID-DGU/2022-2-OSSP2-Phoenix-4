@@ -1,16 +1,37 @@
-import menuData from "../json/menu.json" assert { type: "json" };
+// import menuData from "../json/menu.json" assert { type: "json" };
 
-let recipedata = {};
+let recipeData = {};
+let menuData = [];
 
 $.ajax({
   url: "/home/calendar/check",
   type: "POST",
   contentType: "json",
-  data: JSON.stringify(recipedata),
+  data: JSON.stringify(recipeData),
 
   success: function (response) {
     console.log("recipedata success");
-    console.log(response);
+    const data = JSON.parse(response);
+    console.log(data);
+    for (const dataKey in data) {
+      const element = data[dataKey];
+      const dateData = {};
+
+      const date = new Date(element.date);
+      dateData.year = date.getFullYear();
+      dateData.month = date.getMonth() + 1;
+      dateData.date = date.getDate();
+      dateData.food = element.recipe;
+      dateData.ingredient = element.재료;
+      dateData.recipe = element.조리과정;
+      menuData.push(dateData);
+      console.log(dateData);
+    }
+    console.log(menuData);
+
+    $(document).ready(function () {
+      calendarInit();
+    });
   },
   error: function (error) {
     console.log("recipedata error");
@@ -135,8 +156,8 @@ function calendarInit() {
       menuData.length,
       menuData[0].year,
       menuData[0].month,
-      menuData[0].day,
-      menuData[0].foods,
+      menuData[0].date,
+      menuData[0].ingredient,
       menuData[0].recipe
     );
 
@@ -146,7 +167,7 @@ function calendarInit() {
       if (
         menuData[index].year === currentYear &&
         menuData[index].month === currentMonth + 1 &&
-        menuData[index].day === Number(event.target.textContent)
+        menuData[index].date === Number(event.target.textContent)
       ) {
         // popup html 생성
         const yearMonth =
@@ -155,9 +176,9 @@ function calendarInit() {
           "-" +
           menuData[index].month +
           "-" +
-          menuData[index].day +
+          menuData[index].date +
           "</h1>";
-        const foods = menuData[index].foods;
+        const foods = menuData[index].ingredient;
         const recipe = "<p>" + menuData[index].recipe + "</p>";
         let food = "";
         for (let i = 0; i < foods.length; i++) {
