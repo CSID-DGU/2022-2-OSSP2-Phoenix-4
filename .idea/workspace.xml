@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 추천에 맞게 팝업 기본 틀 생성">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="fix 식단추천 오늘 날짜 선택 가능하게 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/recommend.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

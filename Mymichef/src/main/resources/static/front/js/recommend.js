@@ -168,7 +168,7 @@ submitBtn.addEventListener("click", (event) => {
   recommend_json.start = startDate.value;
   recommend_json.end = endDate.value;
 
-  const diffDate = getDateDiff(startDate.value, endDate.value) + 1;
+  const diffDate = getDateDiff(endDate.value, startDate.value) + 1;
   const selectTime = recommend_json.dish.length;
   console.log("날짜 차이: " + diffDate);
 
