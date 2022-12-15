@@ -22,19 +22,30 @@ public class UserIngredientService {
     /**
      *  식재료 저장 서비스
      */
-    public void saveUserIngred(UserIngredDto userIngredDto, String userId) throws Exception{
-        userIngredDto.setUserid(userId);
-        UserIngredEntity userIngredEntity = userIngredDto.toEntity();
-        validateDuplicateUserIngred(userIngredEntity);
-    }
+    public void saveUserIngred(UserIngredDto userIngredDto, String userId) {
+        Optional<UserIngredEntity> find = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userId, userIngredDto.getIngredname()));
+        if (find.isEmpty()) {
+            userIngredDto.setUserid(userId);
+            UserIngredEntity userIngredEntity = userIngredDto.toEntity();
+            userIngredRepository.save(userIngredEntity);
+        } else {
+            if (Float.valueOf(userIngredDto.getIngredamount()) > 0) {
+                UserIngredDto finddto = find.get().toDto();
+                finddto.setIngredamount(String.valueOf(Float.valueOf(finddto.getIngredamount()) + Float.valueOf(userIngredDto.getIngredamount())));
+                userIngredRepository.save(finddto.toEntity());
+            }
+            else  {
+                UserIngredDto finddto = find.get().toDto();
+                if (Float.valueOf(finddto.getIngredamount()) + Float.valueOf(userIngredDto.getIngredamount()) > 0) {
+                    finddto.setIngredamount(String.valueOf(Float.valueOf(finddto.getIngredamount()) + Float.valueOf(userIngredDto.getIngredamount())));
+                    userIngredRepository.save(finddto.toEntity());
+                }
+                else {
+                    userIngredRepository.delete(finddto.toEntity());
+                }
 
-    private void validateDuplicateUserIngred(UserIngredEntity userIngredEntity) throws Exception {
-        Optional<UserIngredEntity> find = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userIngredEntity.getUserid(), userIngredEntity.getIngredname()));
-        find.ifPresent(m -> {
-            throw new IllegalStateException("이미 등록 되어있는 재료입니다.");
-        });
-        userIngredRepository.save(userIngredEntity);
-        throw new Exception("재료 등록 성공");
+            }
+        }
     }
 
     /**
@@ -147,6 +158,14 @@ public class UserIngredientService {
         return SaveSeasoning;
     }
 
+    /**
+     *  식재료 삭제 서비스
+     */
+
+
+    public void Deleteingred(String ingred, String userId){
+        userIngredRepository.delete(userIngredRepository.findByUseridAndIngredname(userId, ingred));
+    }
 
 
 }

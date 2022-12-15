@@ -116,7 +116,10 @@ $.ajax({
           success: function (response) {
             console.log("ingredients api post success");
             console.log(response);
-            // event.unbind();
+            if (response === "재료 등록 성공(server)"){
+              alert("재료 등록 성공!");
+              window.location.replace("http://localhost:8080/food");
+            }// event.unbind();
           },
           error: function (error) {
             console.log("ingredients api post error");
@@ -155,20 +158,28 @@ $.ajax({
     // 재료 삭제 이벤트
     function onDeleteClick(event) {
       console.log(event);
+      const postData = {};
       const name = event.target.id;
-      const postData = { ingredname: name };
+      postData.ingredname = name;
+
       console.log("delete");
       console.log(postData);
       $.ajax({
         url: "/food/delete",
         type: "POST",
-        contentType: "json",
+        contentType: "application/json",
         data: JSON.stringify(postData),
 
         success: function (response) {
           console.log("delete success");
-          const data = JSON.parse(response);
+          const data = response;
           console.log(data);
+          if (response === "삭제완료") {
+            alert("재료 삭제 완료");
+            window.location.replace("http://localhost:8080/food");
+          }
+
+
         },
         error: function (error) {
           console.log("delete error");

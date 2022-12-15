@@ -16,6 +16,7 @@ import phoenix.Mymichef.data.repository.*;
 
 import java.awt.*;
 import java.awt.datatransfer.FlavorEvent;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -382,6 +383,22 @@ public class UserDietService {
         }
 
     }
+
+    /**
+     * 식단 재료 차감 서비스
+     */
+
+/*    public void DeductionRecipe(String recipenm, String UserId){
+        String recipeid = cookingInfoRepository.findByRecipenm(recipenm).getRecipeid();
+        ArrayList<String> ingredname = new ArrayList<>();
+        ArrayList<String> ingredamount = new ArrayList<>();
+        ArrayList<IngredEntity> NeedIngredList = ingredRepository.findByRecipeid(recipeid);
+        for(int i = 0; i<NeedIngredList.size(); i++){
+            ingredname.add(NeedIngredList.get(i).getIRDNT_NM());
+            ingredamount.add(NeedIngredList.get(i).getIRDNT_AM());
+        }
+    }*/
+
 
     public ArrayList<String> returnrecipe(String userid){
         ArrayList<String> recipenamelist = new ArrayList<>();

@@ -72,7 +72,7 @@ public class FoodController {
      *    식재료 확인 API
      */
     @PostMapping(value = "/check")
-    public @ResponseBody String CheckIngred()throws Exception{
+    public @ResponseBody String CheckIngred()throws Exception {
         JSONObject jsonObject = new JSONObject();
         String userId = UserDTO.currentUserId();
         ArrayList<String> UserIngred = userIngredientService.CheckIngredname(userId);
@@ -89,6 +89,14 @@ public class FoodController {
         }
         System.out.printf("%s", String.valueOf(jsonObject));
         return jsonObject.toString();
+    }
+
+    @PostMapping(value = "/delete")
+    public @ResponseBody String DeleteIngred(@RequestBody UserIngredDto userIngredDto) {
+        String userId = UserDTO.currentUserId();
+        System.out.printf("%s  %s", userId ,userIngredDto.getIngredname());
+        userIngredientService.Deleteingred(userIngredDto.getIngredname(), userId);
+        return "삭제완료";
     }
 
 

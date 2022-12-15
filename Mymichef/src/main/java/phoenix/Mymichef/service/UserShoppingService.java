@@ -86,6 +86,34 @@ public class UserShoppingService {
 
 
     /**
+     * 장바구니 식재료에 담기 서비스
+     */
+
+    public void ShoppingToIngred(String userId, String ingredname) throws Exception {
+        Optional<UserShoppingEntity> usershopping = userShoppingRepository.findByUseridAndIngred(userId, ingredname);
+        Optional<UserIngredEntity> userIngred = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userId, usershopping.get().getIngred()));
+        if (userIngred.isEmpty()) {
+            if (Float.valueOf(usershopping.get().getAmount()) > 0) {
+                UserIngredDto userIngredDto = new UserIngredDto();
+                userIngredDto.setUserid(userId);
+                userIngredDto.setIngredname(usershopping.get().getIngred());
+                userIngredDto.setIngredamount(usershopping.get().getAmount());
+                userIngredRepository.save(userIngredDto.toEntity());
+            } else {
+                throw new Exception("굳이 필요 없음");
+            }
+        } else {
+            if (Float.valueOf(usershopping.get().getAmount()) > 0) {
+                UserIngredDto userIngredDto = userIngred.get().toDto();
+                userIngredDto.setIngredamount(String.valueOf(Float.valueOf(usershopping.get().getAmount()) + Float.valueOf(userIngredDto.getIngredamount())));
+                userIngredRepository.save(userIngredDto.toEntity());
+            } else {
+                throw new Exception("이미 가지고 있음");
+            }
+        }
+    }
+
+    /**
      * 장바구니 서비스
      */
 
