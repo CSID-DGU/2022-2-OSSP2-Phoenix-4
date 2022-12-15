@@ -153,6 +153,7 @@ public class UserDietService {
         List<IngredInterface> MenuList = ingredRepository.findTest(useringred);
         String MAX = MenuList.get(0).getcnt();
         List<String> RealMenuList = new ArrayList<>();
+
         for(int i = 0 ; i < MenuList.size(); i++){
             if(MenuList.get(i).getcnt().equals(MAX))
                 RealMenuList.add(MenuList.get(i).getrecipe());
@@ -194,31 +195,40 @@ public class UserDietService {
 
         double cal = userRepository.findByUserId(UserDTO.currentUserId()).getCal();
         List<IngredInterface> RecipeList = cookingInfoRepository.findCalorie(Menu);
-        List<String> RealMenu = new ArrayList<>();
+        List<String> CalMenu = new ArrayList<>();
+        List<String> realMenu = new ArrayList<>();
 
         for (int i = 0; i < RecipeList.size(); i++) {
             if (Float.valueOf(StringSplit(RecipeList.get(i).getcnt())) < cal) {
-                RealMenu.add(RecipeList.get(i).getrecipe());
+                CalMenu.add(RecipeList.get(i).getrecipe());
+            }
+        }
+
+        for(String a : Menu){
+            for(String b : CalMenu){
+                if(a.equals(b)){
+                    realMenu.add(b);
+                }
             }
         }
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;
 
-        if (RealMenu.isEmpty()) {
+        if (CalMenu.isEmpty()) {
             throw new Exception("해당하는 데이터가 없습니다.");
         }
         else {
             while (true) {
                 //젤 많은 종류가 537개라
-                a = random.nextInt(538) % (RealMenu.size());
-                if (RealMenu.get(a) != null) {
+                a = random.nextInt(538) % (CalMenu.size());
+                if (CalMenu.get(a) != null) {
                     break;
                 } else {
 
                 }
             }
-            return cookingInfoRepository.findByRecipeid(RealMenu.get(a)).getRecipenm();
+            return cookingInfoRepository.findByRecipeid(realMenu.get(a)).getRecipenm();
         }
     }
 

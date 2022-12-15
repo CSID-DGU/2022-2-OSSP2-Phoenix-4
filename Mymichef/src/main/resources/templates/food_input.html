@@ -30,8 +30,17 @@
     <div class="main container">
       <div class="search container">
         <h1>식재료 검색</h1>
-        <label for="ingredientSearch"></label
-        ><input id="ingredientSearch" placeholder="음식을 입력해 주세요" />
+        <div class="form__group field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="검색"
+            name="name"
+            id="ingredientSearch"
+            required
+          />
+          <label for="ingredientSearch" class="form__label">검색</label>
+        </div>
         <div id="ingredientsResult"></div>
       </div>
 
@@ -40,15 +49,18 @@
         <form id="ingredientInfoForm" style="display: none">
           <div id="ingredientInfo">
             <p id="infoName"></p>
-            <h2>수량</h2>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              value="0"
-              step="1"
-            /><label for="quantity"></label>
+            <div class="form__group field">
+              <input
+                type="number"
+                class="form__field"
+                placeholder="amount"
+                name="quantity"
+                id="quantity"
+                required
+              />
+              <label for="quantity" class="form__label">수량</label>
+              <p id="info_unit"></p>
+            </div>
           </div>
           <p id="error_msg"></p>
           <button type="submit" id="infoBtn">확인</button>
