@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 내 식재료 리스트">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 추천에 맞게 팝업 기본 틀 생성">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
     </list>
@@ -102,7 +102,8 @@
       <workItem from="1670375100116" duration="82000" />
       <workItem from="1670375199656" duration="4147000" />
       <workItem from="1670471598053" duration="6091000" />
-      <workItem from="1671021919510" duration="12038000" />
+      <workItem from="1671021919510" duration="12160000" />
+      <workItem from="1671080180966" duration="1553000" />
     </task>
     <task id="LOCAL-00001" summary="로그인 화면 eventListener 변경">
       <created>1669796949170</created>
@@ -307,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671044531465</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update 추천에 맞게 팝업 기본 틀 생성">
+      <created>1671045713377</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1671045713377</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +357,8 @@
     <MESSAGE value="recommend update" />
     <MESSAGE value="update 식재료 입력 단위" />
     <MESSAGE value="update 내 식재료 리스트" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 내 식재료 리스트" />
+    <MESSAGE value="update 추천에 맞게 팝업 기본 틀 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 추천에 맞게 팝업 기본 틀 생성" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

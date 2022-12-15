@@ -47,7 +47,7 @@ const getDateDiff = (d1, d2) => {
 
   const diffDate = date1.getTime() - date2.getTime();
 
-  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+  return diffDate / (1000 * 60 * 60 * 24); // 밀리세컨 * 초 * 분 * 시 = 일
 };
 
 // 추천순 select
@@ -155,7 +155,10 @@ submitBtn.addEventListener("click", (event) => {
     errorMsg.innerText = "날짜를 선택해 주세요";
     return;
   }
-  if (startDate.value > endDate.value || today > start) {
+  if (
+    startDate.value > endDate.value ||
+    Math.ceil(getDateDiff(start, today)) < 0
+  ) {
     console.log("date error2");
     errorMsg.innerText = "올바른 날짜를 선택해 주세요";
     return;
@@ -264,18 +267,18 @@ submitBtn.addEventListener("click", (event) => {
 //   e.preventDefault();
 // });
 
-$(function(){
-  $("#confirm").click(function(){
-      modalClose();
-      //컨펌 이벤트 처리
+$(function () {
+  $("#confirm").click(function () {
+    modalClose();
+    //컨펌 이벤트 처리
   });
-  $("#submitBtn").click(function(){
-  $("#popup").css('display','flex').hide().fadeIn();
+  $("#submitBtn").click(function () {
+    $("#popup").css("display", "flex").hide().fadeIn();
   });
-  $("#close").click(function(){
-      modalClose();
+  $("#close").click(function () {
+    modalClose();
   });
-  function modalClose(){
+  function modalClose() {
     $("#popup").fadeOut();
   }
 });
