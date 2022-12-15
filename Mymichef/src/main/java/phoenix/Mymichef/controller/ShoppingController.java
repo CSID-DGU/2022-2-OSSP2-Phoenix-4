@@ -24,7 +24,7 @@ public class ShoppingController {
 
     @GetMapping(value = "")
     public String shopping(Model model){
-        return "shopping_ik";
+        return "Spareshopping";
     }
 
     @PostMapping(value = "/input")

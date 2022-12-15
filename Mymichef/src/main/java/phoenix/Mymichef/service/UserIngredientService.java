@@ -73,7 +73,10 @@ public class UserIngredientService {
         }
         else {
             for (int i = 0; i < find.size() ; i ++){
-                Ingredamount.add(find.get(i).getIngredamount() + find.get(i).getIngredunit());
+                if(find.get(i).getIngredunit().equals("양념"))
+                    Ingredamount.add(find.get(i).getIngredunit());
+                else
+                    Ingredamount.add(find.get(i).getIngredamount() + find.get(i).getIngredunit());
             }
             return Ingredamount;
         }
