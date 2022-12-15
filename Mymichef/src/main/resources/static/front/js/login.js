@@ -144,8 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
         success: function (response) {
           console.log("아이디 찾기 통신 성공");
           console.log(response);
-          console.log(data);
-          alert(userId);
+          const userId = JSON.parse(response);
+          alert(userId.userId );
         },
         error: function (error) {
           console.log("아이디 찾기 통신 오류");
@@ -182,7 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
         success: function (response) {
           console.log("비밀번호 찾기 post success");
           console.log(response);
-          alert(password);
+          const userPw = JSON.parse(response);
+          alert(userPw.password);
           console(data);
         },
         error: function (error) {

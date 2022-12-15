@@ -54,15 +54,16 @@ public class LoginController {
 
     @RequestMapping(value = "/findId")
     public @ResponseBody String findId(@RequestBody UserDTO userDTO) throws Exception {
+        JSONObject jsonObject = new JSONObject();
         String returnJSON;
         try {
             returnJSON = userService.findId(userDTO.getName(), userDTO.getEmail());
         }catch (Exception e){
             log.info("e", e);
-            return "data 처리 오류 발생(server)";
+            jsonObject.put("userId", "해당 회원이 존재하지 않습니다.");
+            return jsonObject.toString();
         }
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userId", returnJSON);
+        jsonObject.put("userId", "회원님의 아이디는 " + returnJSON + "입니다.");
         return jsonObject.toString();
     }
 
@@ -73,14 +74,15 @@ public class LoginController {
     @RequestMapping (value = "/findPw")
     public @ResponseBody String findPw(@RequestBody UserDTO userDTO) throws Exception{
         String returnJSON;
+        JSONObject jsonObject = new JSONObject();
         try{
             returnJSON = userService.findPw(userDTO.getName(), userDTO.getUserId(), userDTO.getEmail());
         }catch (Exception e){
             log.info("e", e);
-            return "입력하신 정보를 확인해주세요.(server)";
+            jsonObject.put("password", "해당 회원이 존재하지 않습니다.");
+            return jsonObject.toString();
         }
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("password", returnJSON);
+        jsonObject.put("password", "회원님의 메일로 임시비밀번호가 발급되었습니다.");
         userService.mailsend(userDTO.getEmail(), returnJSON);
 
 
