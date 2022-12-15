@@ -152,11 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    setFormMessage(
-      findIDForm,
-      "error",
-      "Invalid username/password combination"
-    );
+    // setFormMessage(
+    //   findIDForm,
+    //   "error",
+    //   "Invalid username/password combination"
+    // );
   });
 
   // Password 찾기 이벤트 리스너
@@ -191,11 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    setFormMessage(
-      findPasswordForm,
-      "error",
-      "Invalid username/password combination"
-    );
+    // setFormMessage(
+    //   findPasswordForm,
+    //   "error",
+    //   "Invalid username/password combination"
+    // );
   });
 
   // 회원가입 이벤트 리스너

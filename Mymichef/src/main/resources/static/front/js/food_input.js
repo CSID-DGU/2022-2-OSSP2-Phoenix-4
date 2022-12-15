@@ -90,7 +90,7 @@ $.ajax({
         }
       }
       infoName.innerText = clickItem;
-      $("label[for='quantity']").text(unit);
+      document.getElementById("info_unit").innerText = unit;
       // infoDiv.innerHTML += itemImg;
     }
     items.forEach((item) => item.addEventListener("click", onResultClick));
@@ -99,17 +99,17 @@ $.ajax({
     function onSaveClick(event) {
       event.preventDefault();
       console.log("click save");
-      console.log($(`label[for="quantity"]`).text());
+      console.log(document.getElementById("info_unit").innerText);
       const name = document.getElementById("infoName").innerText;
       const mount = document.getElementById("quantity").value;
-      const ingredunit = $(`label[for="quantity"]`).text();
+      const ingredientUnit = document.getElementById("info_unit").innerText;
       console.log(name, mount);
 
       if (mount !== "" && mount > 0) {
         const saveData = {
           ingredname: name,
           ingredamount: mount,
-          ingredunit: ingredunit,
+          ingredunit: ingredientUnit,
         };
         console.log(saveData);
 
@@ -165,8 +165,7 @@ $.ajax({
     function onDeleteClick(event) {
       console.log(event);
       const postData = {};
-      const name = event.target.id;
-      postData.ingredname = name;
+      postData.ingredname = event.target.id;
 
       console.log("delete");
       console.log(postData);
@@ -178,8 +177,7 @@ $.ajax({
 
         success: function (response) {
           console.log("delete success");
-          const data = response;
-          console.log(data);
+          console.log(response);
           if (response === "삭제완료") {
             alert("재료 삭제 완료");
             window.location.replace("http://localhost:8080/food");
@@ -197,7 +195,7 @@ $.ajax({
     for (const dataKey in data) {
       const foodName = `<p class="user_food_name">${dataKey}</p>`;
       const foodAmount = `<p class="user_food_amount">${data[dataKey]}</p>`;
-      const deleteBtn = `<button class="food_delete" id=${dataKey}>삭제</button>`;
+      const deleteBtn = `<button class="food_delete" role="button" id=${dataKey}>삭제</button>`;
       const foodDiv =
         `<div class="user_food">` +
         foodName +
@@ -226,8 +224,7 @@ $.ajax({
   document
     .querySelector(".material-design-hamburger__icon")
     .addEventListener("click", function () {
-      console.log("click");
-      var child;
+      let child;
 
       document.body.classList.toggle("background--blur");
       this.parentNode.nextElementSibling.classList.toggle("menu--on");

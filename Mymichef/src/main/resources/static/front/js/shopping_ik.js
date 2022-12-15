@@ -27,14 +27,20 @@ getNotes().forEach((note) => {
 addNoteButton.addEventListener("click", () => addNote());
 
 function getNotes() {
+  console.log("get notes");
+  console.log(localStorage.getItem("stickynotes-notes"));
   return JSON.parse(localStorage.getItem("stickynotes-notes") || "[]");
 }
 
 function saveNotes(notes) {
+  console.log("save notes");
+  console.log(localStorage.setItem("stickynotes-notes", JSON.stringify(notes)));
   localStorage.setItem("stickynotes-notes", JSON.stringify(notes));
 }
 
 function createNoteElement(id, content) {
+  console.log("create note");
+  console.log(id, content);
   const element = document.createElement("textarea");
 
   element.classList.add("note");
@@ -65,6 +71,7 @@ function addNote() {
 
   const noteElement = createNoteElement(noteObject.id, noteObject.content);
   notesContainer.insertBefore(noteElement, addNoteButton);
+  console.log(notesContainer.insertBefore(noteElement, addNoteButton));
 
   notes.push(noteObject);
   saveNotes(notes);
@@ -73,6 +80,9 @@ function addNote() {
 function updateNote(id, newContent) {
   const notes = getNotes();
   const targetNote = notes.filter((note) => note.id == id)[0];
+
+  console.log("update note");
+  console.log(targetNote);
 
   targetNote.content = newContent;
   saveNotes(notes);
@@ -107,5 +117,3 @@ function deleteNote(id, element) {
       }
     });
 })();
-
-console.log(document.getElementsByClassName("note"));
