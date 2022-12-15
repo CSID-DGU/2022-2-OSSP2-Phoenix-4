@@ -21,7 +21,7 @@ body {
   justify-content: center;
   text-align: center;
   position: relative;
-  top: 10px;
+  top: 20px;
   z-index: 0;
 }
 
@@ -47,6 +47,48 @@ form {
   width: 80%;
   margin: auto;
 }
+
+.popup_recipe_name{
+
+}
+
+.popup_recipe_time{
+
+}
+
+#shoppingBtn{
+margin-right:-4px;
+border-top-left-radius: 7px;
+border-bottom-left-radius: 7px;
+}
+#submitBtn2{
+margin-left:-3px;
+border-top-right-radius: 7px;
+border-bottom-right-radius: 7px;
+}
+
+#shoppingBtn,
+#submitBtn2{
+border: 2px solid white;
+background-color: skyblue;
+color: white;
+padding: 10px;
+font-size: 20px;
+font-weight: 500;
+position: relative;
+bottom: -25px;
+}
+
+#shoppingBtn:hover,
+#submitBtn2:hover{
+border: 1px solid white;
+background-color: white;
+color: #2a89b5;
+padding: 10px;
+font-size: 20px;
+font-weight: 500;
+}
+
 
 .submit-container {
   margin: auto;
