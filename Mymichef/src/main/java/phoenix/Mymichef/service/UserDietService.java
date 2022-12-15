@@ -198,19 +198,27 @@ public class UserDietService {
         List<String> CalMenu = new ArrayList<>();
         List<String> realMenu = new ArrayList<>();
 
+
+        System.out.println("칼로리 구한거 cal = " + cal);
         for (int i = 0; i < RecipeList.size(); i++) {
-            if (Float.valueOf(StringSplit(RecipeList.get(i).getcnt())) < cal) {
+            if (Float.valueOf(StringSplit(RecipeList.get(i).getcnt())) < cal + 30 && Float.valueOf(StringSplit(RecipeList.get(i).getcnt()))> cal - 30) {
                 CalMenu.add(RecipeList.get(i).getrecipe());
             }
         }
 
-        for(String a : Menu){
-            for(String b : CalMenu){
-                if(a.equals(b)){
+    try {
+        for (String a : Menu) {
+            for (String b : CalMenu) {
+                if (a.equals(b)) {
                     realMenu.add(b);
                 }
             }
         }
+    }catch (Exception e){
+        throw new Exception("마이페이지에서 키 몸무게 설정 or 보유 식재료를 입력해주세요 :) ");
+    }
+
+
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;

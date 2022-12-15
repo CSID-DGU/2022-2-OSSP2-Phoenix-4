@@ -200,7 +200,7 @@ public class RecommendController {
                 try {
                     menu = userDietService.recommendCalorie(userIngred);
                 }catch (Exception e){
-                    throw new Exception("식단 찾기 오류(server.controller)");
+                    return e.toString();
                 }
 
                 jsonObject.put("date", realDate);
