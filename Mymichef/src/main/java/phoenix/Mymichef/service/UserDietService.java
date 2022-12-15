@@ -2,9 +2,11 @@ package phoenix.Mymichef.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.apache.bcel.classfile.SourceFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phoenix.Mymichef.data.dto.IngredInterface;
+import phoenix.Mymichef.data.dto.UserDTO;
 import phoenix.Mymichef.data.dto.UserDietDto;
 import phoenix.Mymichef.data.entity.CookingInfoEntity;
 import phoenix.Mymichef.data.entity.CookingProcessEntity;
@@ -12,12 +14,15 @@ import phoenix.Mymichef.data.entity.IngredEntity;
 import phoenix.Mymichef.data.entity.UserDietEntity;
 import phoenix.Mymichef.data.repository.*;
 
+import java.awt.*;
+import java.awt.datatransfer.FlavorEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +41,9 @@ public class UserDietService {
 
     @Autowired
     private CookingProcessRepository cookingProcessRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * 식단 추천 서비스 (default) 폐기
@@ -144,28 +152,84 @@ public class UserDietService {
 
     public String recommendMenu(ArrayList<String> useringred) throws Exception {
         List<IngredInterface> MenuList = ingredRepository.findTest(useringred);
+        String MAX = MenuList.get(0).getcnt();
+        List<String> RealMenuList = new ArrayList<>();
+        for(int i = 0 ; i < MenuList.size(); i++){
+            if(MenuList.get(i).getcnt().equals(MAX))
+                RealMenuList.add(MenuList.get(i).getrecipe());
+        }
+
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
         int a = 0;
         String recipeId;
 
-        if (MenuList.isEmpty()) {
+        if (RealMenuList.isEmpty()) {
             throw new Exception("해당하는 데이터가 없습니다.");
-        } else {
+        }
+        else {
             while (true) {
                 //젤 많은 종류가 537개라
-                a = random.nextInt(538) % (MenuList.size());
+                a = random.nextInt(538) % (RealMenuList.size());
 
-                if (MenuList.get(a) != null) {
+                if (RealMenuList.get(a) != null) {
                     break;
                 }
             }
-            recipeId = MenuList.get(a).getrecipe();
+            recipeId = RealMenuList.get(a);
             return cookingInfoRepository.findByRecipeid(recipeId).getRecipenm();
 
         }
     }
 
+    /**
+     * 식단 추천 서비스 (calories)
+     */
+
+    public String recommendCalorie(ArrayList<String> useringred) throws Exception {
+        List<IngredInterface> MenuList = ingredRepository.findTest(useringred);
+        List<String> Menu = new ArrayList<>();
+        for (int i = 0; i < MenuList.size(); i++) {
+            Menu.add(MenuList.get(i).getrecipe());
+        }
+
+        double cal = userRepository.findByUserId(UserDTO.currentUserId()).getCal();
+        List<IngredInterface> RecipeList = cookingInfoRepository.findCalorie(Menu);
+        List<String> RealMenu = new ArrayList<>();
+
+        for (int i = 0; i < RecipeList.size(); i++) {
+            if (Float.valueOf(StringSplit(RecipeList.get(i).getcnt())) < cal) {
+                RealMenu.add(RecipeList.get(i).getrecipe());
+            }
+        }
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        int a = 0;
+
+        if (RealMenu.isEmpty()) {
+            throw new Exception("해당하는 데이터가 없습니다.");
+        }
+        else {
+            while (true) {
+                //젤 많은 종류가 537개라
+                a = random.nextInt(538) % (RealMenu.size());
+                if (RealMenu.get(a) != null) {
+                    break;
+                } else {
+
+                }
+            }
+            return cookingInfoRepository.findByRecipeid(RealMenu.get(a)).getRecipenm();
+        }
+    }
+
+
+
+
+
+    public String StringSplit(String s){
+        return s.substring(0, s.length() - 4);
+    }
 
     /**
      * 추천 식단 저장 서비스

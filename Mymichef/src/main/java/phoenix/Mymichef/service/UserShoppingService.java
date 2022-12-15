@@ -7,11 +7,10 @@ import phoenix.Mymichef.data.dto.IngredDTO;
 import phoenix.Mymichef.data.dto.UserIngredDto;
 import phoenix.Mymichef.data.dto.UserShoppingDto;
 import phoenix.Mymichef.data.entity.IngredEntity;
+import phoenix.Mymichef.data.entity.UserDietEntity;
 import phoenix.Mymichef.data.entity.UserIngredEntity;
 import phoenix.Mymichef.data.entity.UserShoppingEntity;
-import phoenix.Mymichef.data.repository.IngredRepository;
-import phoenix.Mymichef.data.repository.UserIngredRepository;
-import phoenix.Mymichef.data.repository.UserShoppingRepository;
+import phoenix.Mymichef.data.repository.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -23,6 +22,8 @@ public class UserShoppingService {
     private UserIngredRepository userIngredRepository;
     private IngredRepository cookingIngredRepository;
     private UserShoppingRepository userShoppingRepository;
+    private CookingInfoRepository cookingInfoRepository;
+    private UserDietRepository userDietRepository;
 
 
     /**
@@ -70,11 +71,26 @@ public class UserShoppingService {
             return Ingredunit;
         }
     }
+
+    /**
+     * 식단에 등록된 레시피 받아오는 서비스
+     */
+    public ArrayList<String> ReturnRecipe(String userid){
+        ArrayList<String> recipelist = new ArrayList<>();
+        ArrayList<UserDietEntity> userdiet = userDietRepository.findByUserid(userid);
+        for(int i = 0 ; i< userdiet.size(); i++){
+            recipelist.add(userdiet.get(i).getRecipenm());
+        }
+        return recipelist;
+    }
+
+
     /**
      * 장바구니 서비스
      */
 
-    public void Shopping(String userid, String recipeid) {
+    public void Shopping(String userid, String recipenm) {
+        String recipeid = cookingInfoRepository.findByRecipenm(recipenm).getRecipeid();
         ArrayList<UserShoppingEntity> shoppinglist = userShoppingRepository.findByUserid(userid); // 유저 장바구니 리스트
         ArrayList<IngredEntity> needlist = cookingIngredRepository.findByRecipeid(recipeid); // 재료 리스트
         ArrayList<UserIngredEntity> havelist = userIngredRepository.findByUserid(userid);
@@ -187,19 +203,19 @@ public class UserShoppingService {
                             if (ingredDTO.getIRDNT_NM().equals(havelistname.get(j))) {
                                 userShoppingDto.setHave(havelistamount.get(j));
                                 break;
-                            } else
+                            }
+                            else {
                                 count++;
-                            System.out.printf("%d", count);
-                            System.out.printf("%d", havelist.size());
+                            }
                         }
 
-                        if (count == havelist.size()) {
+                        if (count == havelistname.size()) {
                             userShoppingDto.setHave("0");
-                            if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
-                                userShoppingDto.setUnit("양념");
-                            else
-                                userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
                         }
+                        if(ingredDTO.getIRDNT_TY_NM().equals("양념"))
+                            userShoppingDto.setUnit("양념");
+                        else
+                            userShoppingDto.setUnit(ingredDTO.getIRDNT_UN());
 
 
                         if (Float.valueOf(userShoppingDto.getNeed()) > Float.valueOf(userShoppingDto.getHave())) {

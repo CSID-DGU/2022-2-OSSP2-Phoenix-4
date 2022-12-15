@@ -72,4 +72,11 @@ public class UserEntity {
                 .build();
     }
 
+    public double getCal(){
+        double average = this.getHeight() * 0.22;
+        double cal = average * 32;
+        cal = cal / 3;
+        return cal;
+    }
+
 }

@@ -38,6 +38,71 @@ public class RecommendController {
      * 식단추천 API
      */
 
+    // 식재료 기반 (calories)
+    @PostMapping("/calorie")
+    @ResponseBody
+    public String recommendCaloire(@RequestBody Map params)throws Exception {
+        JSONObject jsonObject = null;
+        JSONArray jsonArray = new JSONArray();
+        String userId = CookingInfoDTO.currentUserId();
+        String menu;
+        ArrayList<String> userIngred = userIngredientService.CheckIngredname(userId);
+        String start, end;
+        LocalDate now = userDietService.currentTime();
+        UserDietDto save = new UserDietDto();
+        int count  = 0;
+        String realDate;
+        realDate = (String) params.get("start");
+
+
+        start = (String) params.get("start");
+        end = (String) params.get("end");
+
+        count = userDietService.countDate(end, start);
+
+        List<String> dish = (List<String>) params.get("dish");
+
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < dish.size(); j++){
+                jsonObject = new JSONObject();
+                try {
+                    menu = userDietService.recommendCalorie(userIngred);
+                }catch (Exception e){
+                    throw new Exception("식단 찾기 오류(server.controller)");
+                }
+
+                jsonObject.put("date", realDate);
+                jsonObject.put("RECIPE_NM_KO",menu);
+                jsonObject.put("userid",userId);
+                jsonObject.put("time",dish.get(j));
+
+                Optional<UserDietEntity> exist = userDietService.OverlapTime(userId, realDate, dish.get(j));
+                if(exist.isEmpty()) {
+                    save.setRecipenm(menu);
+                    save.setUserid(userId);
+                    save.setTime(dish.get(j));
+                    save.setDate(realDate);
+                    try {
+                        userDietService.saveRecommendInfo(save);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
+                }
+                else {
+                    try {
+                        userDietService.ModifyRecommendInfo(exist, menu);
+                    } catch (Exception e) {
+                        throw new Exception("저장 문제 발생(server.controller)");
+                    }
+                }
+                jsonArray.add(jsonObject);
+            }
+            realDate = userDietService.addOneDayCalendar(realDate);
+        }
+        System.out.printf("%s", jsonArray.toString());
+
+        return jsonArray.toString();
+    }
     // 식재료 기반 (default)
     @PostMapping("/default")
     @ResponseBody

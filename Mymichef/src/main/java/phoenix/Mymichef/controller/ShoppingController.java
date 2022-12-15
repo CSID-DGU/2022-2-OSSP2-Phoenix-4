@@ -34,6 +34,11 @@ public class ShoppingController {
         String userId = UserDTO.currentUserId();
 
         try {
+            ArrayList<String> userrecipename = userShoppingService.ReturnRecipe(userId);
+            for(int i = 0 ; i < userrecipename.size(); i++){
+                userShoppingService.Shopping(userId, userrecipename.get(i));
+            }
+
             ArrayList<String> UserIngredname = userShoppingService.CheckShoppingname(userId);
             ArrayList<String> UserIngredamount = userShoppingService.CheckShoppingamount(userId);
             ArrayList<String> UserIngredunit = userShoppingService.CheckShoppingunit(userId);
