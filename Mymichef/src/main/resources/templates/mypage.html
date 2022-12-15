@@ -32,31 +32,35 @@
     <fieldset action="/mypage" class="container">
       <h1 class="title">마이페이지</h1>
 
-      <form id="ModifyAccount">
+      <form id = "ModifyAccount">
         <div class="grid">
           <div class="form-group name-group">
             <label for="name">이름</label>
-            <input id="name" type="text" placeholder="홍길동" />
+            <input id="name" type="text" placeholder="홍길동"/>
           </div>
 
           <div class="form-group email-group">
             <label for="email">Email</label>
-            <input id="email" type="text" placeholder="example@mmc.com" />
+            <input
+                    id="email"
+                    type="text"
+                    placeholder="example@mmc.com"
+            />
           </div>
 
           <div class="form-group phone-group">
             <label for="phone">전화번호</label>
-            <input id="phone" type="text" placeholder="010-1234-1234" />
+            <input id="phone" type="text" placeholder="010-1234-1234"/>
           </div>
 
           <div class="form-group height-group">
             <label for="height">키</label>
-            <input id="height" type="number" placeholder="cm" />
+            <input id="height" type="number" placeholder="cm"/>
           </div>
 
           <div class="form-group weight-group">
             <label for="weight">몸무게</label>
-            <input id="weight" type="number" placeholder="kg" />
+            <input id="weight" type="number" placeholder="kg"/>
           </div>
 
           <div class="form-group cal-group">
@@ -69,23 +73,24 @@
             <input id="switch" type="checkbox" hidden />
             <label for="switch" class="switch">
               <h1 class="female" value="female">✝</h1>
-              <h1 class="male" value="male">➜</h1>
+              <h1 class="male"  value="male">➜</h1>
             </label>
           </div>
 
+
           <div class="btn-group">
             <button
-              class="button button--disappear"
-              type="button"
-              onclick="undoEdit()"
+                    class="button button--disappear"
+                    type="button"
+                    onclick="undoEdit()"
             >
               취소
             </button>
             <button type="submit" class="button button--disappear">저장</button>
             <button
-              id="updateUserInfo"
-              type="button"
-              class="button button--trigger"
+                    id="updateUserInfo"
+                    type="button"
+                    class="button button--trigger"
             >
               수정하기
             </button>
@@ -95,32 +100,72 @@
     </fieldset>
 
     <div id="live-chat" class="live-chat-transition">
+
       <div id="chat-label" class="live-chat-transition">
+
         <h4 class="live-chat-galaxie live-chat-transition">
+
           권장칼로리
 
-          <img
-            src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-up-arrow-icon?wid=15&fmt=png-alpha&op_sharpen=1&resMode=sharp2"
-            alt="live-chat-up-arrow"
-            class="live-chat-arrow live-chat-transition live-chat-up-arrow"
+          <img src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-up-arrow-icon?wid=15&fmt=png-alpha&op_sharpen=1&resMode=sharp2"
+               alt="live-chat-up-arrow"
+               class="live-chat-arrow live-chat-transition live-chat-up-arrow"
           />
 
-          <img
-            src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-down-arrow-icon?wid=15&fmt=png-alpha&resMode=sharp2"
-            alt="live-chat-down-arrow"
-            class="live-chat-arrow live-chat-transition live-chat-down-arrow"
+          <img src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-down-arrow-icon?wid=15&fmt=png-alpha&resMode=sharp2"
+               alt="live-chat-down-arrow"
+               class="live-chat-arrow live-chat-transition live-chat-down-arrow"
           />
+
         </h4>
+
       </div>
 
-      <p>
-        <strong>하루 권장 칼로리</strong><br />표준체중(kg)x활동지수<br />
-        <br /><strong>표준체중</strong><br />(키-100)x0.9<br />
-        <br /><strong>활동지수</strong><br />활동량 적음:25<br />규칙적,보통의
-        활동량:30~35<br />활동량 많음:40
+      <p><strong>하루 권장 칼로리</strong><br>표준체중(kg)x활동지수
+        <br><strong>표준체중</strong><br>(키-100)x0.9
+        <br><strong>활동지수</strong><br>좌식,활동량 적음:25<br>규칙적,보통의 활동량:30~35<br>활동량 많음:40
       </p>
 
-      <a href="#" id="chat-button" class="live-chat-galaxie">계산기</a>
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn" class="live-chat-galaxie">계산기</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-box">
+          <span class="close">&times;</span>
+          <br>
+          <p id="display">0</p>
+
+          <input type="button" id="clear" value="C" onclick="clearDisplay()">
+          <input type="button" id="delete" value="<" onclick="deleteChar()">
+          <input type="button" id="percent" value="%" onclick="computePercent()">
+          <input type="button" id="divide" value="/" onclick="updateDisplay(this.value)">
+          <br>
+          <input type="button" id="num7" value="7" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num8" value="8" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num9" value="9" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="multiply" value="*" onclick="updateDisplay(this.value)">
+          <br>
+          <input type="button" id="num4" value="4" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num5" value="5" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num6" value="6" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="subtract" value="-" onclick="updateDisplay(this.value)">
+          <br>
+          <input type="button" id="num1" value="1" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num2" value="2" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="num3" value="3" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="add" value="+" onclick="updateDisplay(this.value)">
+          <br>
+          <input type="button" id="num0" value="0" onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="period" value="." onclick="updateDisplayNumber(this.value)">
+          <input type="button" id="equals" value="=" onclick="computeExpression()">
+        </div>
+
+      </div>
+
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
