@@ -442,3 +442,124 @@ input:checked + .switch:after {
     -webkit-transform: scale(0);
   }
 }
+
+@font-face{
+  font-family:'GalaxieCondensedMedium';src:url("https://dl.dropboxusercontent.com/s/dgr55wytmqb35f3/PolarisCondensed-Medium.woff") format("woff");
+  font-weight:normal;
+  font-style: normal
+}
+
+.live-chat-galaxie {
+  font-family: 'GalaxieCondensedMedium';
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 0.02em;
+  line-height: 0.8em;
+  text-transform: uppercase;
+}
+
+.live-chat-transition {
+  transition:all 0.5s ease;
+}
+
+#live-chat {
+  background: #f5f5f5;
+  border: 1px solid #d0d3d6;
+  bottom: -187px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  float: left;
+  height: 223px;
+  margin: 0 auto;
+  right: 60px;
+  position: fixed;
+  text-align: center;
+  width: 300px;
+}
+
+#live-chat.open-chat {
+  bottom: -1px;
+}
+
+#chat-label {
+  background: #008fb0;
+  height: 35px;
+  cursor: pointer;
+  position: relative;
+}
+
+#chat-label h4 {
+  color: #ffffff;
+  height: 13px;
+  left: 55px;
+  margin: 0;
+  position: absolute;
+  text-align: left;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+}
+
+.live-chat-arrow {
+  height: 9px;
+  padding-left: 9px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+}
+
+.live-chat-down-arrow {
+  opacity: 0;
+  transform: rotate(180deg) translateY(-50%);
+}
+
+.hide-up-arrow {
+  opacity: 0;
+  padding: 0;
+  transform: rotate(180deg) translateY(-50%);
+  transform-origin: center;
+}
+
+.show-down-arrow {
+  opacity: 1;
+  padding: 0;
+  transform: rotate(0deg) translateY(-50%);
+  transform-origin: center;
+}
+
+#chat-label.open-chat-label {
+  background: #d0d3d6;
+}
+
+#chat-label.open-chat-label h4 {
+  color: #262526;
+}
+
+#live-chat p {
+  color: #262526;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 17px;
+  margin: 20px auto;
+  width: 280px;
+  height: 180px;
+}
+
+#chat-button {
+  background: #008fb0;
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  padding: 12px 0 11px 0;
+  text-decoration: none;
+  width: 140px;
+  position:relative;
+  bottom:-30px;
+}
+
+#chat-button:hover {
+  background: #06748e;
+}

@@ -33,49 +33,49 @@
       <h1 class="title">마이페이지</h1>
 
       <form id = "ModifyAccount">
-      <div class="grid">
-        <div class="form-group name-group">
-          <label for="name">이름</label>
-          <input id="name" type="text" placeholder="홍길동"/>
-        </div>
+        <div class="grid">
+          <div class="form-group name-group">
+            <label for="name">이름</label>
+            <input id="name" type="text" placeholder="홍길동"/>
+          </div>
 
-        <div class="form-group email-group">
-          <label for="email">Email</label>
-          <input
-                  id="email"
-                  type="text"
-                  placeholder="example@mmc.com"
-          />
-        </div>
+          <div class="form-group email-group">
+            <label for="email">Email</label>
+            <input
+                    id="email"
+                    type="text"
+                    placeholder="example@mmc.com"
+            />
+          </div>
 
-        <div class="form-group phone-group">
-          <label for="phone">전화번호</label>
-          <input id="phone" type="text" placeholder="010-1234-1234"/>
-        </div>
+          <div class="form-group phone-group">
+            <label for="phone">전화번호</label>
+            <input id="phone" type="text" placeholder="010-1234-1234"/>
+          </div>
 
-        <div class="form-group height-group">
-          <label for="height">키</label>
-          <input id="height" type="number" placeholder="cm"/>
-        </div>
+          <div class="form-group height-group">
+            <label for="height">키</label>
+            <input id="height" type="number" placeholder="cm"/>
+          </div>
 
-        <div class="form-group weight-group">
-          <label for="weight">몸무게</label>
-          <input id="weight" type="number" placeholder="kg"/>
-        </div>
+          <div class="form-group weight-group">
+            <label for="weight">몸무게</label>
+            <input id="weight" type="number" placeholder="kg"/>
+          </div>
 
-        <div class="form-group cal-group">
-          <label for="cal">희망 칼로리</label>
-          <input id="cal" type="number" placeholder="kcal" disabled />
-        </div>
+          <div class="form-group cal-group">
+            <label for="cal">희망 칼로리</label>
+            <input id="cal" type="number" placeholder="kcal" disabled />
+          </div>
 
-        <div class="form-group gender-group">
-          <label for="switch">성별</label>
-          <input id="switch" type="checkbox" hidden />
-          <label for="switch" class="switch">
-            <h1 class="female" value="female">✝</h1>
-            <h1 class="male"  value="male">➜</h1>
-          </label>
-        </div>
+          <div class="form-group gender-group">
+            <label for="switch">성별</label>
+            <input id="switch" type="checkbox" hidden />
+            <label for="switch" class="switch">
+              <h1 class="female" value="female">✝</h1>
+              <h1 class="male"  value="male">➜</h1>
+            </label>
+          </div>
 
 
           <div class="btn-group">
@@ -95,10 +95,41 @@
               수정하기
             </button>
           </div>
-       </form>
+        </div>
+      </form>
+    </fieldset>
+
+    <div id="live-chat" class="live-chat-transition">
+
+      <div id="chat-label" class="live-chat-transition">
+
+        <h4 class="live-chat-galaxie live-chat-transition">
+
+          권장칼로리
+
+          <img src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-up-arrow-icon?wid=15&fmt=png-alpha&op_sharpen=1&resMode=sharp2"
+               alt="live-chat-up-arrow"
+               class="live-chat-arrow live-chat-transition live-chat-up-arrow"
+          />
+
+          <img src="https://fgl.scene7.com/is/image/FGLSportsLtd/live-chat-down-arrow-icon?wid=15&fmt=png-alpha&resMode=sharp2"
+               alt="live-chat-down-arrow"
+               class="live-chat-arrow live-chat-transition live-chat-down-arrow"
+          />
+
+        </h4>
 
       </div>
-    </fieldset>
+
+      <p><strong>하루 권장 칼로리</strong><br>표준체중(kg)x활동지수<br>
+        <br><strong>표준체중</strong><br>(키-100)x0.9<br>
+        <br><strong>활동지수</strong><br>활동량 적음:25<br>규칙적,보통의 활동량:30~35<br>활동량 많음:40
+      </p>
+
+      <a href="#" id="chat-button" class="live-chat-galaxie">계산기</a>
+
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/front/js/mypage.js"></script>
   </body>
