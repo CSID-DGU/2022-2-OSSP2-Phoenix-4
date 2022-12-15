@@ -5,11 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import phoenix.Mymichef.data.dto.UserDTO;
+import phoenix.Mymichef.data.dto.UserIngredDto;
+import phoenix.Mymichef.data.dto.UserShoppingDto;
 import phoenix.Mymichef.service.UserShoppingService;
 
 import java.util.ArrayList;
@@ -26,6 +25,20 @@ public class ShoppingController {
     @GetMapping(value = "")
     public String shopping(Model model){
         return "shopping_ik";
+    }
+
+    @PostMapping(value = "/input")
+    public @ResponseBody String InputIngred(@RequestBody UserShoppingDto userShoppingDto) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        String userId = UserIngredDto.currentUserId();
+
+        try {
+            userShoppingService.saveUserIngred(userShoppingDto, userId);
+        } catch (Exception e) {
+            System.out.println("e = " + e);
+            return "장바구니 등록 실패(server)";
+        }
+        return "장바구니 등록 성공(server)";
     }
 
     @PostMapping(value = "/check")
@@ -48,15 +61,20 @@ public class ShoppingController {
             }
         }catch (Exception e) {
             log.info("e", e);
-            jsonObject.put("error", "등록된 장바구니가 없습니다.");
-            return jsonObject.toString();
+            return "등록된 장바구니가 없습니다.";
         }
 
         System.out.printf(" %s", String.valueOf(jsonObject));
 
 
         return jsonObject.toString();
+    }
 
+    @PostMapping(value = "/food")
+    public @ResponseBody String ToFoodIngred(@RequestBody UserShoppingDto userShoppingDto) {
+        String userId = UserDTO.currentUserId();
+        userShoppingService.AddIngred(userShoppingDto.getIngred(), userId);
+        return "추가완료";
     }
 }
 

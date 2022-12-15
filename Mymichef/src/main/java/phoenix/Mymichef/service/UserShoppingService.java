@@ -116,7 +116,7 @@ public class UserShoppingService {
     }
 
     /**
-     * 장바구니 서비스
+     *  식단 장바구니 추가 서비스
      */
 
     public void Shopping(String userid, String recipenm) {
@@ -298,6 +298,70 @@ public class UserShoppingService {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     *  식재료 장바구니 추가 서비스
+     */
+
+    public void saveUserIngred(UserShoppingDto userShoppingDto, String userId) {
+        Optional<UserShoppingEntity> find = userShoppingRepository.findByUseridAndIngred(userId, userShoppingDto.getIngred());
+        if (find.isEmpty()) {
+            userShoppingDto.setUserid(userId);
+            UserShoppingEntity userShoppingEntity = userShoppingDto.toEntity();
+            userShoppingRepository.save(userShoppingEntity);
+        } else {
+            if (Float.valueOf(userShoppingDto.getAmount()) > 0) {
+                UserShoppingDto finddto = find.get().toDto();
+                finddto.setAmount(String.valueOf(Float.valueOf(finddto.getAmount()) + Float.valueOf(userShoppingDto.getAmount())));
+                userShoppingRepository.save(finddto.toEntity());
+            }
+            else  {
+                UserShoppingDto finddto = find.get().toDto();
+                if (Float.valueOf(finddto.getAmount()) + Float.valueOf(userShoppingDto.getAmount()) > 0) {
+                    finddto.setAmount(String.valueOf(Float.valueOf(finddto.getAmount()) + Float.valueOf(userShoppingDto.getAmount())));
+                    userShoppingRepository.save(finddto.toEntity());
+                }
+                else {
+                    userShoppingRepository.delete(finddto.toEntity());
+                }
+
+            }
+        }
+
+    }
+
+    /**
+     *  장바구니 to 식재료 서비스
+     */
+
+    public void AddIngred(String ingred, String userId) {
+        Optional<UserIngredEntity> find = Optional.ofNullable(userIngredRepository.findByUseridAndIngredname(userId, ingred));
+        UserShoppingDto userShoppingDto = userShoppingRepository.findByUseridAndIngred(userId, ingred).get().toDto();
+        if(find.isEmpty()) {
+            if (Float.valueOf(userShoppingDto.getAmount()) > 0) {
+                UserIngredDto userIngredDto = new UserIngredDto();
+                userIngredDto.setUserid(userId);
+                userIngredDto.setIngredname(ingred);
+                userIngredDto.setIngredunit(userShoppingDto.getUnit());
+                userIngredDto.setIngredamount(userShoppingDto.getAmount());
+                userIngredRepository.save(userIngredDto.toEntity());
+                userShoppingRepository.delete(userShoppingDto.toEntity());
+            }
+            else
+                userShoppingRepository.delete(userShoppingDto.toEntity());
+        }
+        else {
+            UserIngredDto userIngredDto = find.get().toDto();
+            if (Float.valueOf(userShoppingDto.getAmount()) > 0) {
+                userIngredDto.setIngredamount(String.valueOf(Float.valueOf(userShoppingDto.getAmount()) + Float.valueOf(userIngredDto.getIngredamount())));
+                userIngredRepository.save(userIngredDto.toEntity());
+                userShoppingRepository.delete(userShoppingDto.toEntity());
+            }
+            else
+                userShoppingRepository.delete(userShoppingDto.toEntity());
+
         }
     }
 }

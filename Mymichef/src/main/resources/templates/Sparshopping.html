@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/front/css/food_input.css" />
+  <title>My Mini Chef</title>
+</head>
+
+<body>
+<!--네비-->
+<section class="wrapper">
+  <section class="material-design-hamburger">
+    <button class="material-design-hamburger__icon">
+      <span class="material-design-hamburger__layer"></span>
+    </button>
+  </section>
+
+  <section class="menu menu--off">
+    <div><a href="/home">홈</a></div>
+    <div><a href="/recommend">메뉴추천</a></div>
+    <div><a href="/home/shopping">메모패드</a></div>
+    <div><a href="/home/calendar">식단확인</a></div>
+    <div><a href="/mypage">마이페이지</a></div>
+  </section>
+</section>
+
+<!--본문-->
+<div class="main container">
+  <div class="search container">
+    <h1>식재료 검색</h1>
+    <label for="ingredientSearch"></label
+    ><input id="ingredientSearch" placeholder="음식을 입력해 주세요" />
+    <div id="ingredientsResult"></div>
+  </div>
+
+  <div class="info container">
+    <h1>식재료 입력</h1>
+    <form id="ingredientInfoForm" style="display: none">
+      <div id="ingredientInfo">
+        <p id="infoName"></p>
+        <h2>수량</h2>
+        <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                value="0"
+                step="1"
+        /><label for="quantity"></label>
+      </div>
+      <p id="error_msg"></p>
+      <button type="submit" id="infoBtn">확인</button>
+    </form>
+  </div>
+
+  <div class="save container">
+    <h1>내 장바구니 리스트</h1>
+    <div id="food_list"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/front/js/Spareshopping.js"></script>
+</body>
+</html>
