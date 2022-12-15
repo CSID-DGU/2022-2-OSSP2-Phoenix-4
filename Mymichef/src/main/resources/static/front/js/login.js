@@ -127,9 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const inputName = event.target[0].value;
-    const
-
-    inputEmail = event.target[1].value;
+    const inputEmail = event.target[1].value;
 
     if (inputName !== "" && inputEmail !== "") {
       data.name = inputName;
@@ -145,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("아이디 찾기 통신 성공");
           console.log(response);
           const userId = JSON.parse(response);
-          alert(userId.userId );
+          alert(userId.userId);
         },
         error: function (error) {
           console.log("아이디 찾기 통신 오류");
@@ -174,10 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
       data.email = inputEmail;
 
       $.ajax({
-         url: "/findPw",
-         type: "POST",
-         contentType: "application/json",
-         data: JSON.stringify(data),
+        url: "/findPw",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
 
         success: function (response) {
           console.log("비밀번호 찾기 post success");
@@ -209,19 +207,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputPw = event.target[2].value;
     const inputConfirmPw = event.target[3].value;
 
-    if(inputID === ""){
-      alert("아이디를 입력해주 세요.")
-    }
-    else if(inputEmail === ""){
-      alert("이메일을 입력해 주세요.")
-    }
-    else if(inputPw === "" || inputConfirmPw === ""){
-      alert("비밀번호를 입력해 주세요.")
-    }
-    else if(inputPw !== inputConfirmPw){
-      alert("두 비밀번호가 일치하지 않습니다.")
-    }
-    else if (
+    if (inputID === "") {
+      alert("아이디를 입력해주 세요.");
+    } else if (inputEmail === "") {
+      alert("이메일을 입력해 주세요.");
+    } else if (inputPw === "" || inputConfirmPw === "") {
+      alert("비밀번호를 입력해 주세요.");
+    } else if (inputPw !== inputConfirmPw) {
+      alert("두 비밀번호가 일치하지 않습니다.");
+    } else if (
       inputID !== "" &&
       inputEmail !== "" &&
       inputPw !== "" &&
@@ -242,14 +236,12 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("회원가입 post success");
           console.log(response);
           console.log(data);
-          if(response === "java.lang.Exception: 회원가입에 성공했습니다!"){
+          if (response === "java.lang.Exception: 회원가입에 성공했습니다!") {
             alert("회원가입이 완료되었습니다.");
             window.location.replace("http://localhost:8080/");
-          }
-          else {
+          } else {
             alert("이미 존재하는 아이디 입니다.");
           }
-
         },
         error: function (request, error) {
           console.log("회원가입 post error");
@@ -268,11 +260,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    setFormMessage(
-      createAccountForm,
-      "error",
-      "Invalid username/password combination"
-    );
+    // setFormMessage(
+    //   createAccountForm,
+    //   "error",
+    //   "Invalid username/password combination"
+    // );
   });
 
   document.querySelectorAll(".form__input").forEach((inputElement) => {

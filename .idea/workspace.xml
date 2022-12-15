@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 팝업 닫기 버튼">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/calendar.html" afterDir="false" />
-    </list>
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 식단확인 css 건드려야함" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -344,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671100726082</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update 식단확인 css 건드려야함">
+      <created>1671102786833</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1671102786833</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +394,8 @@
     <MESSAGE value="식단확인 서버 정보에 맞게 업데이트" />
     <MESSAGE value="update 식단확인 팝업창 내용" />
     <MESSAGE value="update 팝업 닫기 버튼" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 팝업 닫기 버튼" />
+    <MESSAGE value="update 식단확인 css 건드려야함" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 식단확인 css 건드려야함" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
