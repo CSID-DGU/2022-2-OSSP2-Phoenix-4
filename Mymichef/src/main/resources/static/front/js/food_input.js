@@ -99,12 +99,18 @@ $.ajax({
     function onSaveClick(event) {
       event.preventDefault();
       console.log("click save");
+      console.log($(`label[for="quantity"]`).text());
       const name = document.getElementById("infoName").innerText;
       const mount = document.getElementById("quantity").value;
+      const ingredunit = $(`label[for="quantity"]`).text();
       console.log(name, mount);
 
       if (mount !== "" && mount > 0) {
-        const saveData = { ingredname: name, ingredamount: mount };
+        const saveData = {
+          ingredname: name,
+          ingredamount: mount,
+          ingredunit: ingredunit,
+        };
         console.log(saveData);
 
         $.ajax({
@@ -116,10 +122,10 @@ $.ajax({
           success: function (response) {
             console.log("ingredients api post success");
             console.log(response);
-            if (response === "재료 등록 성공(server)"){
+            if (response === "재료 등록 성공(server)") {
               alert("재료 등록 성공!");
               window.location.replace("http://localhost:8080/food");
-            }// event.unbind();
+            } // event.unbind();
           },
           error: function (error) {
             console.log("ingredients api post error");
@@ -178,8 +184,6 @@ $.ajax({
             alert("재료 삭제 완료");
             window.location.replace("http://localhost:8080/food");
           }
-
-
         },
         error: function (error) {
           console.log("delete error");
