@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 필요없는 console.log 삭제">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 메뉴추천 디자인">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,13 +104,6 @@
       <workItem from="1670471598053" duration="6091000" />
       <workItem from="1671021919510" duration="12160000" />
       <workItem from="1671080180966" duration="1553000" />
-    </task>
-    <task id="LOCAL-00003" summary="update">
-      <created>1669800673112</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1669800673112</updated>
     </task>
     <task id="LOCAL-00004" summary="뭔가 추가됐는데 뭔지 모름">
       <created>1669801471361</created>
@@ -449,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671140825963</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="update 메뉴추천 디자인">
+      <created>1671143069222</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1671143069222</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="식재료 입력 update" />
     <MESSAGE value="recommend update" />
     <MESSAGE value="update 식재료 입력 단위" />
     <MESSAGE value="update 내 식재료 리스트" />
@@ -504,7 +502,8 @@
     <MESSAGE value="update 식단확인 디자인" />
     <MESSAGE value="update 식단추천 장바구니" />
     <MESSAGE value="update 필요없는 console.log 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 필요없는 console.log 삭제" />
+    <MESSAGE value="update 메뉴추천 디자인" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 메뉴추천 디자인" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

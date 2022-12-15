@@ -381,6 +381,14 @@ select:focus + .focus {
   box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
 }
 
+#popup_wrap::-webkit-scrollbar {
+  width: 21px;
+}
+#popup_wrap::-webkit-scrollbar-thumb {
+  border-radius: 18px;
+  background-color: black;
+}
+
 .recipe_wrap {
   display: flex;
   width: 650px;
