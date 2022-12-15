@@ -20,10 +20,12 @@ function popupOpen(recipe, date, time) {
 
   for (let i = 0; i < recipe.length; i++) {
     const name = recipe[i].RECIPE_NM_KO;
+    const dbTime = recipe[i].time;
     const nameDiv = `<p class="popup_recipe_name">${name}</p>`;
+    const timeDiv = `<p class="popup_recipe_time">${dbTime}</p>`;
     const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
 
-    recipeDiv.innerHTML = recipeDiv.innerHTML + nameDiv;
+    recipeDiv.innerHTML = recipeDiv.innerHTML + timeDiv + nameDiv;
   }
   const shoppingBtn = `<button id="shoppingBtn">장바구니 추가</button>`;
   const submitBtn2 = `<button id="submitBtn2">추천확인</button>`;
