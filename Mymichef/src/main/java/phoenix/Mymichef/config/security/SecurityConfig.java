@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login") //로그인 페이지 설정
                 .defaultSuccessUrl("/home") // 로그인 성공시 뜨는 화면
-                .failureHandler(new LoginFailHandler()) // 로그인 실패하면 생성되는 객체 handler 폴더에서 따로 관리
+                .failureHandler(new LoginFailureHandler()) // 로그인 실패하면 생성되는 객체 handler 폴더에서 따로 관리
                 .and()
                 .logout()
                 .logoutSuccessUrl("/") // 로그아웃 시 페이지
