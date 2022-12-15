@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 식재료 입력 단위 추가">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 식재료 입력 디자인">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/food_input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/food_input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/shopping_ik.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/shopping_ik.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/templates/food_input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671118288450</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="update 식재료 입력 디자인">
+      <created>1671128773138</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1671128773138</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +464,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="calendar 팝업기능 추가&#10;내부 내용과 디자인은 추후 수정" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="updata" />
     <MESSAGE value="추천 수정" />
@@ -485,7 +488,8 @@
     <MESSAGE value="필요없는 파일 삭제" />
     <MESSAGE value="update 추천확인에 아침, 점짐, 저녁 포함" />
     <MESSAGE value="update 식재료 입력 단위 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 식재료 입력 단위 추가" />
+    <MESSAGE value="update 식재료 입력 디자인" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 식재료 입력 디자인" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
