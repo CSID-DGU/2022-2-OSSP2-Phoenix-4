@@ -94,7 +94,38 @@ $.ajax({
       // infoDiv.innerHTML += itemImg;
     }
     items.forEach((item) => item.addEventListener("click", onResultClick));
+
+    // 재료 저장 이벤트
+    function onSaveClick(event) {
+      event.preventDefault();
+      console.log("click save");
+      const name = document.getElementById("infoName").innerText;
+      const mount = document.getElementById("quantity").value;
+
+      console.log(name, mount);
+
+      const saveData = { ingredname: name, ingredamount: mount };
+      console.log(saveData);
+
+      $.ajax({
+        url: "/food/input",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(saveData),
+
+        success: function (response) {
+          console.log("ingredients api post success");
+          console.log(response);
+        },
+        error: function (error) {
+          console.log("ingredients api post error");
+          console.log(error);
+        },
+      });
+    }
+    document.getElementById("infoBtn").addEventListener("click", onSaveClick);
   },
+
   error: function (error) {
     console.log("userInfo error");
     console.log(error);
@@ -127,21 +158,6 @@ $.ajax({
     console.log(error.responseText);
   },
 });
-//$.ajax({
-//  url: "/food/input",
-//  type: "POST",
-//  contentType: "application/json",
-//  data: JSON.stringify(ingredientsData),
-//
-//  success: function (response) {
-//    console.log("ingredients api post success");
-//    console.log(response);
-//  },
-//  error: function (error) {
-//    console.log("ingredients api post error");
-//    console.log(error);
-//  },
-//});
 
 (function () {
   "use strict";
