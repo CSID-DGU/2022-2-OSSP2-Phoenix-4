@@ -17,6 +17,37 @@ body {
     text-align: center;
 }
 
+.bubble {
+    background-color: #f4f4f4;
+    background-image: -webkit-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:    -moz-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:     -ms-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:      -o-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:         linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.3),
+                3px 3px 0 hsla(0,0%,0%,.3);
+    color: #333;
+    display: inline-block;
+    font: 16px/25px sans-serif;
+    padding: 15px 25px;
+    position: relative;
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+}
+.bubble:after, .bubble:before {
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid #f4f4f4;
+    bottom: -25px;
+    content: '';
+    position: absolute;
+    right: 25px;
+}
+.bubble:before {
+    border-right: 25px solid hsla(0,0%,0%,.3);
+    bottom: -28px;
+    right: 22px;
+}
+
 #app {
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
