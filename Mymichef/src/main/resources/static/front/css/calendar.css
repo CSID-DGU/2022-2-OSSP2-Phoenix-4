@@ -40,7 +40,6 @@ body {
 
 .sec_cal .cal_nav .go-prev,
 .sec_cal .cal_nav .go-next {
-  display: block;
   width: 50px;
   height: 78px;
   font-size: 0;
@@ -55,7 +54,6 @@ body {
   display: block;
   width: 20px;
   height: 20px;
-  border: 3px solid #000;
   border-width: 3px 3px 0 0;
   transition: border 0.1s;
 }
@@ -95,7 +93,6 @@ body {
   align-items: center;
   justify-content: center;
   width: calc(100% / 7);
-  text-align: left;
   color: #999;
   font-size: 12px;
   text-align: center;
@@ -146,4 +143,6 @@ body {
   background: #fff;
   vertical-align: middle;
   text-align: center;
+  overflow: scroll;
+  overflow-x: unset;
 }

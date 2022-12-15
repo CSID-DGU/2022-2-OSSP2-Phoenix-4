@@ -10,7 +10,7 @@ $.ajax({
   data: JSON.stringify(recipeData),
 
   success: function (response) {
-    console.log("recipedata success");
+    console.log("recipe data success");
     const data = JSON.parse(response);
     console.log(data);
     for (const dataKey in data) {
@@ -164,33 +164,63 @@ function calendarInit() {
     // 데이터베이스 날짜 비교
     for (let index = 0; index < menuData.length; index++) {
       console.log("find correct");
+      const element = menuData[index];
       if (
-        menuData[index].year === currentYear &&
-        menuData[index].month === currentMonth + 1 &&
-        menuData[index].date === Number(event.target.textContent)
+        element.year === currentYear &&
+        element.month === currentMonth + 1 &&
+        element.date === Number(event.target.textContent)
       ) {
         // popup html 생성
         const yearMonth =
           "<h1>" +
-          menuData[index].year +
+          element.year +
           "-" +
-          menuData[index].month +
+          element.month +
           "-" +
-          menuData[index].date +
+          element.date +
           "</h1>";
-        const foods = menuData[index].ingredient;
-        const recipe = "<p>" + menuData[index].recipe + "</p>";
-        let food = "";
-        for (let i = 0; i < foods.length; i++) {
-          food = food + "<p>" + foods[i] + "</p>";
+        // const foods = element.ingredient;
+        // const recipe = "<p>" + element.recipe + "</p>";
+        // let food = "";
+        // for (let i = 0; i < foods.length; i++) {
+        //   food = food + "<p>" + foods[i] + "</p>";
+        // }
+        const food = element.food;
+        let ingredient = "";
+        for (const key in element.ingredient) {
+          const ingredientText = `<p class="ingredientName">${key}</p>`;
+          const quantity = `<p class="quantity">${element.ingredient[key]}</p>`;
+          ingredient +=
+            `<div class="ingredient_container">` +
+            ingredientText +
+            quantity +
+            `</div>`;
         }
 
-        // 팝업 보이게
-        popup.style.display = "block";
+        const recipeData = Object.keys(element.recipe)
+          .sort()
+          .reduce((accumulator, key) => {
+            accumulator[key] = element.recipe[key];
+
+            return accumulator;
+          }, {});
+        let recipe = "";
+        for (const key in recipeData) {
+          const sequence = `<p class="sequence">${key}</p>`;
+          const detail = `<p class="recipe_detail">${recipeData[key]}</p>`;
+          recipe += `<div class="recipe">` + sequence + detail + `</div>`;
+        }
 
         // 팝업 html 삽입
         popupInner.innerHTML =
-          yearMonth + food + recipe + `<button id="closeBtn">닫기</button>`;
+          yearMonth +
+          food +
+          ingredient +
+          recipe +
+          `<button id="closeBtn">닫기</button>`;
+
+        // 팝업 보이게
+        popup.style.display = "block";
 
         // 팝업 닫기 버튼 이벤트
         document
