@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 식단추천 장바구니">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 필요없는 console.log 삭제">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/mypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/css/recommend.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,13 +105,6 @@
       <workItem from="1670471598053" duration="6091000" />
       <workItem from="1671021919510" duration="12160000" />
       <workItem from="1671080180966" duration="1553000" />
-    </task>
-    <task id="LOCAL-00002" summary="update">
-      <created>1669799921171</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1669799921171</updated>
     </task>
     <task id="LOCAL-00003" summary="update">
       <created>1669800673112</created>
@@ -451,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671139291785</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="update 필요없는 console.log 삭제">
+      <created>1671140825963</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1671140825963</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +479,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="food_input update" />
     <MESSAGE value="식재료 입력 update" />
     <MESSAGE value="recommend update" />
     <MESSAGE value="update 식재료 입력 단위" />
@@ -506,7 +503,8 @@
     <MESSAGE value="delete login error message" />
     <MESSAGE value="update 식단확인 디자인" />
     <MESSAGE value="update 식단추천 장바구니" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 식단추천 장바구니" />
+    <MESSAGE value="update 필요없는 console.log 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 필요없는 console.log 삭제" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

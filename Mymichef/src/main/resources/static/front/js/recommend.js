@@ -14,7 +14,7 @@ function popupOpen(recipe, date, time) {
     const date = recipe[i * time].date;
     const recipeDiv = `<div class="recipe_wrap" id=${
       "recipe" + i
-    }><h1>${date}</h1></div>`;
+    }><h1 class="popup_date">${date}</h1></div>`;
     popWrap.innerHTML = popWrap.innerHTML + recipeDiv;
   }
 
@@ -26,7 +26,12 @@ function popupOpen(recipe, date, time) {
     const timeDiv = `<p class="popup_recipe_time">${dbTime}</p>`;
     const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
 
-    recipeDiv.innerHTML = recipeDiv.innerHTML + timeDiv + nameDiv + "<br>";
+    recipeDiv.innerHTML =
+      recipeDiv.innerHTML +
+      `<div class="time_container">` +
+      timeDiv +
+      nameDiv +
+      `</div>`;
 
     const shopping = { name: name };
     shoppingData.push(shopping);

@@ -6,6 +6,13 @@
   --select-focus: blue;
   --select-arrow: var(--select-border);
 }
+@font-face {
+  font-family: "PuradakGentleGothicR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   background-color: var(--color-coral);
@@ -48,52 +55,51 @@ form {
   margin: auto;
 }
 
-.period_p{
+.period_p {
   font-size: 25px;
 }
 
-.popup_recipe_time{
-    font-size: 25px;
-    font-weight: 500;
+.popup_recipe_time {
+  font-size: 25px;
+  font-weight: 500;
 }
 
-.popup_recipe_name{
-    font-size: 15px;
-    font-weight: 200;
+.popup_recipe_name {
+  font-size: 15px;
+  font-weight: 200;
 }
 
-#shoppingBtn{
-    margin-right:-4px;
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
+#shoppingBtn {
+  margin-right: -4px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
-#submitBtn2{
-    margin-left:-3px;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
+#submitBtn2 {
+  margin-left: -3px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 #shoppingBtn,
-#submitBtn2{
-    border: 2px solid white;
-    background-color: skyblue;
-    color: white;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: 500;
-    position: relative;
+#submitBtn2 {
+  border: 2px solid white;
+  background-color: skyblue;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
 }
 
 #shoppingBtn:hover,
-#submitBtn2:hover{
-    border: 1px solid white;
-    background-color: white;
-    color: #2a89b5;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: 500;
+#submitBtn2:hover {
+  border: 1px solid white;
+  background-color: white;
+  color: #2a89b5;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
 }
-
 
 .submit-container {
   margin: auto;
@@ -364,13 +370,51 @@ select:focus + .focus {
 #popup_wrap {
   width: 800px;
   height: 600px;
-  margin: 50px auto;
+  margin: 150px auto;
   padding: 20px 30px;
-  background: var(--color-mint);
+  background: white;
   vertical-align: middle;
   text-align: center;
   overflow: scroll;
   overflow-x: unset;
   border-radius: 10px;
   box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.recipe_wrap {
+  display: flex;
+  width: 650px;
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--color-ivory);
+  box-shadow: rgba(0, 0, 0, 0.4) 0 3px 5px -1px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.popup_date {
+  width: 100%;
+  margin: 12px;
+}
+
+.popup_recipe_name {
+  font-family: PuradakGentleGothicR, serif;
+  font-size: 24px;
+  margin: 30px auto;
+}
+
+.time_container {
+  width: 580px;
+  margin: 20px auto;
+  background-color: var(--color-beige);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px gray;
+}
+
+.popup_recipe_time {
+  font-size: 18px;
+  margin: 12px auto;
 }
