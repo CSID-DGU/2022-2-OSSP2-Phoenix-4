@@ -1,5 +1,3 @@
-// import menuData from "../json/menu.json" assert { type: "json" };
-
 let recipeData = {};
 let menuData = [];
 
