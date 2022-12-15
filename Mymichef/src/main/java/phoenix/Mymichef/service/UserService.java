@@ -91,6 +91,7 @@ public class UserService implements UserDetailsService {
      */
     public void ModifyUser(UserDTO userDTO, String userId){
         UserDTO user = userRepository.findByUserId(userId).toDto();
+        user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setGender(userDTO.getGender());
         user.setPhoneNumber(userDTO.getPhoneNumber());
