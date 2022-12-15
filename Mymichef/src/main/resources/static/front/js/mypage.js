@@ -58,42 +58,59 @@ const parentForm = document.querySelector(".container");
 
 // 정보 수정
 
-parentForm.addEventListener("submit", (event) => {
-  if(confirm('저장하시겠습니까?')){
-    return;
-  }
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const parentForm = document.querySelector("#ModifyAccount");
+  const userdata = {};
 
-  const inputName = event.target[0].value;
-  const inputEmail = event.target[1].value;
+  parentForm.addEventListener("submit", (event) => {
+    if (confirm('저장하시겠습니까?')) {
+      event.preventDefault();
 
-  let inputPhoneNumber = event.target[4].value;
+      const inputName = event.target[0].value;
+      const inputEmail = event.target[1].value;
+      const inputphoneNumber = event.target[2].value;
+      const inputHeight = event.target[3].value;
+      const inputWeight = event.target[4].value;
+      const inputCal = event.target[5].value;
+      const inputGender = event.target[6].value;
+      if (
+          inputName !== "" &&
+          inputEmail !== "" &&
+          inputphoneNumber !== "" &&
+          inputHeight !== "" &&
+          inputWeight !== ""
+      ) {
+        userdata.name = inputName;
+        userdata.email = inputEmail;
+        userdata.phoneNumber = inputphoneNumber;
+        userdata.height = inputHeight;
+        userdata.weight = inputWeight;
 
-  let inputHeight = event.target[5].value;
+        $.ajax({
+          url: "/mypage/updateUserInfo",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(userdata),
 
-  let inputWeight = event.target[6].value;
+          success: function (response) {
+            console.log("updateUserInfo success");
+            console.log(response);
+            window.location.replace("http://localhost:8080/mypage");
+          },
+          error: function (error) {
+            console.log("updateUserInfo error");
+            console.log(error);
+            console.log(error.responseText);
+          },
+        });
+      }
+      return;
+    }
 
-  let inputGender = event.target[8].value;
-  /*와ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ 못해먹겠다 js 후하후하,,,,,,,,,,,,SOS...*/
 
-  $.ajax({
-    url: "/updateUserInfo",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify(data2),
 
-    success: function (response) {
-      console.log("updateUserInfo success");
-      console.log(response);
-    },
-    error: function (error) {
-      console.log("updateUserInfo error");
-      console.log(error);
-      console.log(error.responseText);
-    },
   });
 });
-
 (function () {
   "use strict";
 

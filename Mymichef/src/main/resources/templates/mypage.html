@@ -32,6 +32,7 @@
     <fieldset action="/mypage" class="container">
       <h1 class="title">마이페이지</h1>
 
+      <form id = "ModifyAccount">
       <div class="grid">
         <div class="form-group name-group">
           <label for="name">이름</label>
@@ -71,12 +72,12 @@
           <label for="switch">성별</label>
           <input id="switch" type="checkbox" hidden />
           <label for="switch" class="switch">
-            <h1 class="female">✝</h1>
-            <h1 class="male">➜</h1>
+            <h1 class="female" value="female">✝</h1>
+            <h1 class="male"  value="male">➜</h1>
           </label>
         </div>
 
-        <form id="parent">
+
           <div class="btn-group">
             <button
                     class="button button--disappear"
@@ -94,7 +95,7 @@
               수정하기
             </button>
           </div>
-        </form>
+       </form>
 
       </div>
     </fieldset>

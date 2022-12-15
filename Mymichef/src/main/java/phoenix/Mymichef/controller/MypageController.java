@@ -64,27 +64,18 @@ public class MypageController {
      */
 
     @PostMapping("/updateUserInfo")
-    public @ResponseBody String updateUserInfo(@RequestBody UserDTO userDTO)throws Exception{
+    public @ResponseBody String updateUserInfo(@RequestBody UserDTO userDTO) throws Exception{
 
         String userId = UserDTO.currentUserId();
         UserDTO update =new UserDTO();
 
         try {
-            update = userService.findUser(userId);
-            update.setUserId(userDTO.getUserId());
-            update.setName(userDTO.getName());
-            update.setEmail(userDTO.getEmail());
-            update.setPassword(userDTO.getPassword());
-            update.setAllergy(userDTO.getAllergy());
-            update.setGender(userDTO.getGender());
-            update.setPhoneNumber(userDTO.getPhoneNumber());
-            update.setHeight(userDTO.getHeight());
-            update.setWeight(userDTO.getWeight());
+            userService.ModifyUser(userDTO, userId);
+
         }catch (Exception e) {
             System.out.println("e = " + e);
             return "update data 오류 (server)";
         }
-        userService.saveUser(update);
         return "update date 통신 성공 (server)";
     }
 

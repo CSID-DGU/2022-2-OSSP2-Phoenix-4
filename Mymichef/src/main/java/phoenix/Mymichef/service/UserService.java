@@ -85,6 +85,20 @@ public class UserService implements UserDetailsService {
         return findUser.get().toDto();
 
     }
+
+    /**
+     * 회원 정보 수정 서비스
+     */
+    public void ModifyUser(UserDTO userDTO, String userId){
+        UserDTO user = userRepository.findByUserId(userId).toDto();
+        user.setEmail(userDTO.getEmail());
+        user.setGender(userDTO.getGender());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setHeight(userDTO.getHeight());
+        user.setWeight(userDTO.getWeight());
+        userRepository.save(user.toModify());
+    }
+
     /**
      * 임시 비밀번호 생성서비스
      */

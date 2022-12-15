@@ -45,6 +45,20 @@ public class UserDTO implements UserDetails {
         this.SecurityUserEntity = SecurityUserEntity;
     }
 
+    public UserEntity toModify(){
+        return UserEntity.builder()
+                .userId(userId)
+                .email(email)
+                .password(password)
+                .name(name)
+                .phoneNumber(phoneNumber)
+                .height(height)
+                .allergy(allergy)
+                .weight(weight)
+                .gender(gender)
+                .build();
+    }
+
     public UserEntity toEntity(PasswordEncoder passwordEncoder){
         return UserEntity.builder()
                 .userId(userId)
