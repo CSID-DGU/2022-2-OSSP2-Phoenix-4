@@ -18,6 +18,7 @@ function popupOpen(recipe, date, time) {
     popWrap.innerHTML = popWrap.innerHTML + recipeDiv;
   }
 
+  const shoppingData = [];
   for (let i = 0; i < recipe.length; i++) {
     const name = recipe[i].RECIPE_NM_KO;
     const dbTime = recipe[i].time;
@@ -26,6 +27,9 @@ function popupOpen(recipe, date, time) {
     const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
 
     recipeDiv.innerHTML = recipeDiv.innerHTML + timeDiv + nameDiv + "<br>";
+
+    const shopping = { name: name };
+    shoppingData.push(shopping);
   }
   const shoppingBtn = `<button id="shoppingBtn">장바구니 추가</button>`;
   const submitBtn2 = `<button id="submitBtn2">확인 완료</button>`;
@@ -33,6 +37,23 @@ function popupOpen(recipe, date, time) {
 
   $(function () {
     $("#confirm").click(function () {
+      $.ajax({
+        url: "recommend/shopping",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(shoppingData),
+
+        success: function (response) {
+          console.log("recommend(nation) success");
+          const data = JSON.parse(response);
+          console.log(data);
+        },
+        error: function (error) {
+          console.log("recommend(nation) error");
+          console.log(error);
+          console.log(error.responseText);
+        },
+      });
       modalClose();
       //컨펌 이벤트 처리
     });
@@ -283,23 +304,3 @@ submitBtn.addEventListener("click", (event) => {
       }
     });
 })();
-
-// $(input[(type = "submit")]).on("click", function (e) {
-//   e.preventDefault();
-// });
-
-// $(function () {
-//   $("#confirm").click(function () {
-//     modalClose();
-//     //컨펌 이벤트 처리
-//   });
-//   $("#shoppingBtn").click(function () {
-//     $("#popup").css("display", "flex").hide().fadeIn();
-//   });
-//   $("#close").click(function () {
-//     modalClose();
-//   });
-//   function modalClose() {
-//     $("#popup").fadeOut();
-//   }
-// });

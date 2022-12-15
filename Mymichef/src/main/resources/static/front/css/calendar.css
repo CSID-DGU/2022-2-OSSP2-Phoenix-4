@@ -215,12 +215,12 @@ body {
 }
 
 .guide {
-  font-size: 20px;
-  margin: 8px;
+  font-size: 24px;
+  margin: 8px 8px 18px;
 }
 
 .recipe {
-  margin: 8px auto;
+  margin: 16px auto;
 }
 
 .button {
