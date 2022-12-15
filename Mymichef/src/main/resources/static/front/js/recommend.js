@@ -24,7 +24,7 @@ function popupOpen(recipe, date, time) {
 
     recipeDiv.innerHTML = recipeDiv.innerHTML + name;
   }
-  popWrap.innerHTML += `<button id="submitBtn2" value="추천확인"></button>`;
+  popWrap.innerHTML += `<button id="submitBtn2">추천확인</button>`;
 
   // 팝업 제거
   function popupClose() {
