@@ -21,7 +21,7 @@ body {
   justify-content: center;
   text-align: center;
   position: relative;
-  top: 20px;
+  top: 10px;
   z-index: 0;
 }
 
@@ -49,7 +49,7 @@ form {
 }
 
 .period_p{
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .popup_recipe_time{
