@@ -25,7 +25,7 @@ function popupOpen(recipe, date, time) {
     const timeDiv = `<p class="popup_recipe_time">${dbTime}</p>`;
     const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
 
-    recipeDiv.innerHTML = recipeDiv.innerHTML + timeDiv + nameDiv;
+    recipeDiv.innerHTML = recipeDiv.innerHTML + timeDiv + nameDiv + "<br>";
   }
   const shoppingBtn = `<button id="shoppingBtn">장바구니 추가</button>`;
   const submitBtn2 = `<button id="submitBtn2">확인 완료</button>`;
