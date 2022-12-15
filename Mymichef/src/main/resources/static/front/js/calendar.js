@@ -24,6 +24,7 @@ $.ajax({
       dateData.food = element.recipe;
       dateData.ingredient = element.재료;
       dateData.recipe = element.조리과정;
+      dateData.time = element.time;
       menuData.push(dateData);
       console.log(dateData);
     }
@@ -142,10 +143,12 @@ function calendarInit() {
 
   // 팝업 div
   const popup = document.getElementById("popup");
-  const popupInner = document.getElementById("popupInner");
 
   // 팝업 닫기 함수
   function onPopupClose() {
+    document.getElementById("popup_breakfast").innerHTML = "";
+    document.getElementById("popup_lunch").innerHTML = "";
+    document.getElementById("popup_dinner").innerHTML = "";
     popup.style.display = "none";
   }
 
@@ -171,20 +174,9 @@ function calendarInit() {
         element.date === Number(event.target.textContent)
       ) {
         // popup html 생성
-        const yearMonth =
-          "<h1>" +
-          element.year +
-          "-" +
-          element.month +
-          "-" +
-          element.date +
-          "</h1>";
-        // const foods = element.ingredient;
-        // const recipe = "<p>" + element.recipe + "</p>";
-        // let food = "";
-        // for (let i = 0; i < foods.length; i++) {
-        //   food = food + "<p>" + foods[i] + "</p>";
-        // }
+        document.getElementById("popup_date").innerText =
+          element.year + "-" + element.month + "-" + element.date;
+
         const food = element.food;
         let ingredient = "";
         for (const key in element.ingredient) {
@@ -212,24 +204,29 @@ function calendarInit() {
         }
 
         // 팝업 html 삽입
-        popupInner.innerHTML =
-          yearMonth +
-          food +
-          ingredient +
-          recipe +
-          `<button id="closeBtn">닫기</button>`;
+        const breakfastDiv = document.getElementById("popup_breakfast");
+        const lunchDiv = document.getElementById("popup_lunch");
+        const dinnerDiv = document.getElementById("popup_dinner");
+
+        if (element.time === "breakfast") {
+          breakfastDiv.innerHTML += food + ingredient + recipe;
+        } else if (element.time === "lunch") {
+          lunchDiv.innerHTML += food + ingredient + recipe;
+        } else if (element.time === "dinner") {
+          dinnerDiv.innerHTML += food + ingredient + recipe;
+        }
 
         // 팝업 보이게
         popup.style.display = "block";
+        document.getElementById("popupInner").scrollTo(0, 0);
 
         // 팝업 닫기 버튼 이벤트
         document
           .getElementById("closeBtn")
           .addEventListener("click", onPopupClose);
-        return;
       }
     }
-    popup.style.display = "none";
+    // popup.style.display = "none";
   }
 
   // 각 날짜에 이벤트리스너 삽입
