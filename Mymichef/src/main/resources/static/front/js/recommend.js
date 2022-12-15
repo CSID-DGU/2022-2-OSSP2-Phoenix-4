@@ -22,7 +22,7 @@ function popupOpen(recipe, date, time) {
     const name = recipe[i].RECIPE_NM_KO;
     const recipeDiv = document.getElementById("recipe" + Math.floor(i / time));
 
-    recipeDiv.innerHTML = recipeDiv.innerHTML + name;
+    recipeDiv.innerHTML = recipeDiv.innerHTML + name+ ", ";
   }
   const shoppingBtn = `<button id="shoppingBtn">장바구니 추가</button>`;
   const submitBtn2 = `<button id="submitBtn2">추천확인</button>`;
