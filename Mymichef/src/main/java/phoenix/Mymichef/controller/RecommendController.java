@@ -370,11 +370,12 @@ public class RecommendController {
 
     @PostMapping("/shopping")
     @ResponseBody
-    public void recommendtoshopping(@RequestBody Map params) throws Exception{
+    public void recommendtoshopping(@RequestBody Map param) throws Exception{
         String userId = UserDTO.currentUserId();
-        List<String> recipenm = (List<String>) params.get("recipenm");
-        for(int i = 0; i < recipenm.size(); i++){
-            userShoppingService.Shopping(userId, recipenm.get(i));
+        for(int i = 0; i<param.size(); i++){
+            String h = (String) param.get(String.valueOf(i));
+            userShoppingService.Shopping(userId, h);
+
         }
     }
 
