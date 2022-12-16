@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 장바구니 형식 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,13 +103,6 @@
       <workItem from="1670471598053" duration="6091000" />
       <workItem from="1671021919510" duration="12160000" />
       <workItem from="1671080180966" duration="1553000" />
-    </task>
-    <task id="LOCAL-00007" summary="update">
-      <created>1670133729943</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1670133729943</updated>
     </task>
     <task id="LOCAL-00008" summary="fix bug">
       <created>1670139426063</created>
@@ -448,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671156289605</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="update 장바구니 형식 변경">
+      <created>1671158253003</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1671158253003</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="recommend update" />
     <MESSAGE value="update 식재료 입력 단위" />
     <MESSAGE value="update 내 식재료 리스트" />
     <MESSAGE value="update 추천에 맞게 팝업 기본 틀 생성" />
@@ -503,7 +501,8 @@
     <MESSAGE value="update 필요없는 console.log 삭제" />
     <MESSAGE value="update 메뉴추천 디자인" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update 장바구니 형식 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 장바구니 형식 변경" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
