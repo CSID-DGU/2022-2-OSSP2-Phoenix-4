@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update 메뉴추천 디자인">
+    <list default="true" id="b80b3e38-3689-416d-a3fa-fc0e9441a26a" name="변경" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/Mymichef/src/main/resources/static/front/js/recommend.js" afterDir="false" />
     </list>
@@ -104,13 +104,6 @@
       <workItem from="1670471598053" duration="6091000" />
       <workItem from="1671021919510" duration="12160000" />
       <workItem from="1671080180966" duration="1553000" />
-    </task>
-    <task id="LOCAL-00006" summary="update">
-      <created>1669943177583</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1669943177583</updated>
     </task>
     <task id="LOCAL-00007" summary="update">
       <created>1670133729943</created>
@@ -448,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671144016213</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="update">
+      <created>1671156289605</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1671156289605</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +487,6 @@
     <MESSAGE value="update 식단확인 팝업창 내용" />
     <MESSAGE value="update 팝업 닫기 버튼" />
     <MESSAGE value="update 식단확인 css 건드려야함" />
-    <MESSAGE value="update" />
     <MESSAGE value="update 로그인 오류메시지 삭제" />
     <MESSAGE value="update 식재료 저장" />
     <MESSAGE value="update 필요없는 데이터 삭제" />
@@ -503,7 +502,8 @@
     <MESSAGE value="update 식단추천 장바구니" />
     <MESSAGE value="update 필요없는 console.log 삭제" />
     <MESSAGE value="update 메뉴추천 디자인" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 메뉴추천 디자인" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

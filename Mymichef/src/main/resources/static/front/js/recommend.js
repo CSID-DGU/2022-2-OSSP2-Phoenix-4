@@ -18,7 +18,7 @@ function popupOpen(recipe, date, time) {
     popWrap.innerHTML = popWrap.innerHTML + recipeDiv;
   }
 
-  const shoppingData = [];
+  const shoppingData = {};
   for (let i = 0; i < recipe.length; i++) {
     const name = recipe[i].RECIPE_NM_KO;
     const dbTime = recipe[i].time;
@@ -33,8 +33,7 @@ function popupOpen(recipe, date, time) {
       nameDiv +
       `</div>`;
 
-    const shopping = { name: name };
-    shoppingData.push(shopping);
+    shoppingData[i] = name;
   }
   const shoppingBtn = `<button id="shoppingBtn">장바구니 추가</button>`;
   const submitBtn2 = `<button id="submitBtn2">확인 완료</button>`;
@@ -47,6 +46,7 @@ function popupOpen(recipe, date, time) {
       console.log("click1");
 
       modalClose();
+      console.log(shoppingData);
       $.ajax({
         url: "recommend/shopping",
         type: "POST",
