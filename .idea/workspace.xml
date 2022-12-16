@@ -105,13 +105,6 @@
       <workItem from="1671021919510" duration="12160000" />
       <workItem from="1671080180966" duration="1553000" />
     </task>
-    <task id="LOCAL-00005" summary="calendar 팝업기능 추가&#10;내부 내용과 디자인은 추후 수정">
-      <created>1669884550594</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1669884550594</updated>
-    </task>
     <task id="LOCAL-00006" summary="update">
       <created>1669943177583</created>
       <option name="number" value="00006" />
@@ -448,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671143382835</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="update 메뉴추천 디자인">
+      <created>1671144016213</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1671144016213</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

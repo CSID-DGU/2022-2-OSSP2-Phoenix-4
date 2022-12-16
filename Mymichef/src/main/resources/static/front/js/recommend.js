@@ -40,8 +40,13 @@ function popupOpen(recipe, date, time) {
   const submitBtn2 = `<button id="submitBtn2">확인 완료</button>`;
   popWrap.innerHTML += shoppingBtn + submitBtn2;
 
+  console.log(shoppingData);
+
   $(function () {
     $("#confirm").click(function () {
+      console.log("click1");
+
+      modalClose();
       $.ajax({
         url: "recommend/shopping",
         type: "POST",
@@ -49,23 +54,28 @@ function popupOpen(recipe, date, time) {
         data: JSON.stringify(shoppingData),
 
         success: function (response) {
-          console.log("recommend(nation) success");
+          console.log("recommend(shopping) success");
           const data = JSON.parse(response);
         },
         error: function (error) {
-          console.log("recommend(nation) error");
+          console.log("recommend(shopping) error");
         },
       });
-      modalClose();
-      //컨펌 이벤트 처리
+      console.log("click2");
     });
     $("#shoppingBtn").click(function () {
+      console.log("click3");
+
       $("#popup").css("display", "flex").hide().fadeIn();
     });
     $("#close").click(function () {
+      console.log("click4");
+
       modalClose();
     });
     function modalClose() {
+      console.log("click5");
+
       $("#popup").fadeOut();
     }
   });
