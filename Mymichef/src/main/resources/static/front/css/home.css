@@ -27,6 +27,14 @@
   --floor_height: 7.7vh;
 }
 
+@font-face {
+  font-family: "PuradakGentleGothicR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 img:hover {
   border: 5px solid #707070;
 }
@@ -142,23 +150,11 @@ body {
 }
 #popup svg {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   left: 50%;
-  top: 15%;
+  top: 13%;
   transform: translatex(-50%);
-}
-#popup .close {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  left: 85%;
-  top: 12%;
-  opacity: 0.3;
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
 }
 #popup .logout_y {
   position: absolute;
@@ -169,6 +165,7 @@ body {
   transform: translatex(-50%);
   background: #1c1b5e;
   border-radius: 5px;
+  font-family: PuradakGentleGothicR, serif;
   font-size: 16px;
   line-height: 21px;
   text-align: center;
@@ -186,6 +183,7 @@ body {
   transform: translatex(-50%);
   background: #1c1b5e;
   border-radius: 5px;
+  font-family: PuradakGentleGothicR, serif;
   font-size: 16px;
   line-height: 21px;
   text-align: center;
@@ -196,14 +194,16 @@ body {
 }
 #popup p {
   width: 100%;
-  font-size: 5px;
   text-align: center;
   color: #000000;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 50vh;
+  height: 33vh;
+  font-family: PuradakGentleGothicR, serif;
+  font-size: 24px;
+  margin: 30px auto;
 }
 
 .enter {

@@ -7,9 +7,6 @@ const logout_n = document.querySelector("#logout_n");
 logout.addEventListener("click", () => {
   popup.className = "enter";
 });
-close.addEventListener("click", () => {
-  popup.className = "exit";
-});
 logout_y.addEventListener("click", () => {
   popup.className = "exit";
 });
