@@ -29,6 +29,8 @@
 </div>
 
 ## <h2> 프로젝트 전체 구조 </h2>
-<img src = "https://user-images.githubusercontent.com/113659622/236185708-e6465639-ced5-45bf-88d2-de0e0ca0f995.png" align="center" width="80%" height="80%">
+<p align="center">
+<img src = "https://user-images.githubusercontent.com/113659622/236185708-e6465639-ced5-45bf-88d2-de0e0ca0f995.png" width="80%" height="80%">
+</p>
 
 ## <h1> 💻 실행 화면 </h1>
