@@ -3,7 +3,10 @@
 2022-2학기 공개SW프로젝트 4조 불사조
 
 ## 개발 멤버
-[Ninky0](https://github.com/Ninky0)
+- BACKEND
+
+- FRONTEND
+ [Ninky0](https://github.com/Ninky0)
 
 
 ## <h1>👋 소개 </h1>
