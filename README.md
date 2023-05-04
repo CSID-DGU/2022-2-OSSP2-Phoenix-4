@@ -4,13 +4,13 @@
 
 ## 개발 멤버
 - BACKEND
- - [0230cp](https://github.com/0230cp)
- - [DaehoGo](https://github.com/DaehoGo)
- - [yonggwonk](https://github.com/yonggwonk)
+  - [0230cp](https://github.com/0230cp)
+  - [DaehoGo](https://github.com/DaehoGo)
+  - [yonggwonk](https://github.com/yonggwonk)
 
 - FRONTEND
- - [Ninky0](https://github.com/Ninky0)
- - [shjk0531](https://github.com/shjk0531)
+  - [Ninky0](https://github.com/Ninky0)
+  - [shjk0531](https://github.com/shjk0531)
 
 
 ## <h1>👋 소개 </h1>
