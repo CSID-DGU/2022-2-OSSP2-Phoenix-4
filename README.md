@@ -2,7 +2,7 @@
  
 2022-2학기 공개SW프로젝트 4조 불사조
 
-## 개발 멤버
+## <h2> 개발 멤버 </h2>
 - BACKEND
   - [0230cp](https://github.com/0230cp) - Team Leader
   - [DaehoGo](https://github.com/DaehoGo)
