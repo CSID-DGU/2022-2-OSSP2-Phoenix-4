@@ -6,7 +6,7 @@
 - BACKEND
 
 - FRONTEND
- [Ninky0](https://github.com/Ninky0)
+ - [Ninky0](https://github.com/Ninky0)
 
 
 ## <h1>👋 소개 </h1>
